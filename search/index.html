@@ -141,19 +141,19 @@
                         
                         
                         <li>
-                            <a href="/categories/活动/">活动</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/categories/地信/">地信</a>
-                        </li>
-                        
-                        <li>
                             <a href="/categories/生物信息/">生物信息</a>
                         </li>
                         
                         <li>
+                            <a href="/categories/活动/">活动</a>
+                        </li>
+                        
+                        <li>
                             <a href="/categories/IT/">IT</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/地信/">地信</a>
                         </li>
                         
                         <li>
@@ -178,14 +178,6 @@
                         
                         
                         <li>
-                            <a href="/tags/培训/">培训</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/SNPs/">SNPs</a>
                         </li>
                         
@@ -194,15 +186,19 @@
                         </li>
                         
                         <li>
+                            <a href="/tags/培训/">培训</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/JAVA/">JAVA</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/表型预测/">表型预测</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/音乐/">音乐</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/爬虫/">爬虫</a>
+                            <a href="/tags/网盘/">网盘</a>
                         </li>
                         
                         <li>
@@ -214,7 +210,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
+                            <a href="/tags/音乐/">音乐</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/爬虫/">爬虫</a>
                         </li>
                         
                         
@@ -276,7 +276,7 @@
     // 获取每页的页码数
     var pageSize = '10'
     var useLeancloud = 'iIqYHzdT8zt3eSt5VKGxnP3o'
-    var useComment = ('true' === 'true')
+    var useComment = ('false' === 'true')
     $.getJSON('/content.json', function (json) {
       $('#search-breadcrumb').append(`搜索'${s}'的结果`)
       var result = getArticles(s, 'posts', json).concat(getArticles(s, 'pages', json))
@@ -300,7 +300,7 @@
       	var [month, day] = article.date.split('-')
         ''
         ''
-        var defaultPreview = '/imgs/preview/preview1.jpg'
+        var defaultPreview = '/imgs/preview/preview4.jpg'
         var preview = article.preview ? article.preview : defaultPreview
         var path = '/' + article.path
         resultList.append(`<div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
@@ -609,31 +609,31 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 8.652399536982866px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/SNPs/" style="font-size: 11.641442352689646px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/地图/" style="font-size: 11.226842046589194px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/进化/" style="font-size: 15.068696752999642px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/SNPs/" style="font-size: 17.527663590329457px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/培训/" style="font-size: 13.551115429202945px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/进化/" style="font-size: 9.835820597438213px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/JAVA/" style="font-size: 9.30501731600654px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/表型预测/" style="font-size: 15.91042792748576px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 12.826617604559218px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/音乐/" style="font-size: 19.97823974052251px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/网盘/" style="font-size: 15.179485616909615px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/爬虫/" style="font-size: 14.455304333768257px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/虚拟机/" style="font-size: 10.895309526669838px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 18.316463335020963px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/Linux/" style="font-size: 15.451459947491387px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Linux/" style="font-size: 19.045975608483005px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/音乐/" style="font-size: 16.738515939353533px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/JAVA/" style="font-size: 13.241316268091946px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/爬虫/" style="font-size: 8.455444873121111px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/网盘/" style="font-size: 15.037416653059335px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/软件/" style="font-size: 12.429597450464007px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/软件/" style="font-size: 15.506990126982421px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/地图/" style="font-size: 12.074817675938647px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/下载/" style="font-size: 9.852701363192473px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/下载/" style="font-size: 12.521811601436426px;" class="tag-cloud-link">下载</a>
     
 </div>
                 
@@ -769,27 +769,5 @@
 </script>
 <script src="/js/comment/leancloud.js"></script>
 
-
-<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
-<script>
-    if(window.commentConfig) {
-      window.commentConfig.id = 'Thu Feb 07 2019 01:15:54 GMT+0800'
-      window.commentConfig.owner = 'https://github.com/liaochenlanruo'
-      window.commentConfig.repo = 'comments'
-      window.commentConfig.client_id = ''
-      window.commentConfig.client_secret = ''
-      window.commentConfig.redirect_uri = ''
-    } else {
-      window.commentConfig = {
-      	id: 'Thu Feb 07 2019 01:15:54 GMT+0800',
-        owner: 'https://github.com/liaochenlanruo',
-        repo: 'comments',
-        client_id: '',
-        client_secret: '',
-        redirect_uri: ''
-      }
-    }
-</script>
-<script src="/js/comment/gitment.js"></script>
 
 </html>
