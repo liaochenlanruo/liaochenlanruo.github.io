@@ -123,11 +123,15 @@
                         
                         
                         <li>
-                            <a href="/categories/活动/">活动</a>
+                            <a href="/categories/地信/">地信</a>
                         </li>
                         
                         <li>
                             <a href="/categories/IT/">IT</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/活动/">活动</a>
                         </li>
                         
                         <li>
@@ -136,10 +140,6 @@
                         
                         <li>
                             <a href="/categories/可视化/">可视化</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/categories/地信/">地信</a>
                         </li>
                         
                         
@@ -160,11 +160,15 @@
                         
                         
                         <li>
-                            <a href="/tags/培训/">培训</a>
+                            <a href="/tags/地图/">地图</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/网盘/">网盘</a>
+                            <a href="/tags/JAVA/">JAVA</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/培训/">培训</a>
                         </li>
                         
                         <li>
@@ -176,11 +180,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/虚拟机/">虚拟机</a>
+                            <a href="/tags/SNPs/">SNPs</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Linux/">Linux</a>
+                            <a href="/tags/进化/">进化</a>
                         </li>
                         
                         <li>
@@ -188,15 +192,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/软件/">软件</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/JAVA/">JAVA</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/下载/">下载</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/虚拟机/">虚拟机</a>
                         </li>
                         
                         
@@ -285,7 +285,7 @@
         </center>
     </div>
     <div class="content-article">
-        <p>Traitar 用于从基因组序列中提取表型，它提供了表型分类器，可以预测与碳和能源使用、氧气需求、形态学、抗生素易感性、蛋白水解和酶活性等有关的67个性状。</p><p>1. 软件安装——<a href="https://github.com/hzi-bifo/traitar" target="_blank">traitar</a></p><p>安装基本依赖：</p><blockquote><p>sudo apt-get install python-scipy python-matplotlib python-pip python-pandas</p></blockquote><p>进入要安装软件的目录，我的为家目录下的tools：</p><blockquote><p>cd ~/tools</p></blockquote><p>=======================================================</p><p>安装主程序到家目录下</p><blockquote><p>pip install traitar –user</p></blockquote><p>将添加到环境变量中：</p><blockquote><br><p>vim ~/.zshrc</p><br><p>i</p><br></blockquote><p>文档末尾添加：</p><p>PATH=$PATH:$HOME/.local/bin/</p><p>ESC</p><blockquote><p>shift + :</p></blockquote><blockquote><p>wq!</p></blockquote><blockquote><p>source ~/.zshrc</p></blockquote><p>安装依赖软件（parallel， prodigal， hmmer）</p><blockquote><p>sudo apt-get install parallel prodigal hmmer</p></blockquote><p>下载pfam数据库到家目录下并建库</p><blockquote><p>traitar pfam ~/</p></blockquote><p>也可以手动下载pfam数据库（如果上一条不出错可以不运行后面的几条命令）：</p><blockquote><p>cd ~/</p></blockquote><p>官方提供的为Pfam27.0，我下载的为最新的Pfam32.0（下面两个命令选一个运行即可）：</p><blockquote><p>wget <a href="ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam27.0/Pfam-A.hmm.gz" target="_blank" rel="noopener">ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam27.0/Pfam-A.hmm.gz</a></p></blockquote><blockquote><p>wget <a href="ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz" target="_blank" rel="noopener">ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz</a></p></blockquote><p>将Pfam-A.hmm.gz解压缩，然后运行下面的命令建库：</p><blockquote><p>traitar pfam –local ~/</p></blockquote><p>软件运行出错的话：</p><p>错误提示：ImportError: C extension: numpy.core.multiarray failed to import not built. If you want to import pandas from the source directory, you may need to run ‘python setup.py build_ext –inplace –force’ to build the C extensions first.</p><p>运行：</p><blockquote><p>conda install -c conda-forge numpy</p></blockquote><p>错误提示：AttributeError: ‘DataFrame’ object has no attribute ‘sort’</p><p>pandas降级：</p><blockquote><p>conda install pandas=0.19.2</p></blockquote><p>错误提示：Python的最大递归深度错误 “maximum recursion depth exceeded while calling a Python object”</p><p>编辑脚本（~/miniconda3/lib/python2.7/site-packages/scipy/cluster/hierarchy.py），第183行加入两行，将默认的1000改大，比如2000（因为我有1000多个基因组）</p><blockquote><p>import sys</p></blockquote><p>#print sys.getrecursionlimit()</p><blockquote><p>sys.setrecursionlimit(2000)</p></blockquote><p>错误提示：RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility</p><blockquote><br><p>pip uninstall -y scipy scikit-learn</p><br><p>pip install –no-binary scipy scikit-learn</p><br></blockquote><hr><p>2. 软件使用</p><p>首先进入含有基因组文件目录的上一级目录，输入命令执行：</p><blockquote><p>traitar phenotype &lt;in dir&gt; &lt;sample file&gt; from_nucleotides &lt;out_dir&gt; -c 2</p></blockquote><p>&lt;in dir&gt;：包含基因组的输入目录</p><p>&lt;sample file&gt;：描述文件，置于&lt;in dir&gt;的父目录下。共3列，第一列为基因组文件的全名（包含文件扩展名），第二列为菌株名称（一般为第一列去掉扩展名，可随意更改），第三列为分组信息（可以将所有的菌株划分到不同的组别）。三列之间以制表符分隔。三列的抬头为“sample_file_name      sample_name       category”，如下面文本框所示：</p><blockquote><br><p>sample_file_name    sample_name    category</p><br><p>1457190.3.RefSeq.faa    Listeria_ivanovii_WSLC3009    environment_1</p><br><p>525367.9.RefSeq.faa    Listeria_grayi_DSM_20601    environment_2</p><br></blockquote><p>&lt;out_dir&gt;：结果输出目录</p><p>-c 2：使用两个线程运行，提高预测速度</p><p><br></p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-82b7bc9d8c442804.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">文件存放示意图</div><br></div><p>我的命令（在phenotype目录下，使用4个线程运行）：</p><blockquote><p>traitar phenotype scaffolds samplefile.txt from_nucleotides output -c 4</p></blockquote><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-132fcd1bdd4eb6ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5192078/pdf/mSystems.00101-16.pdf" target="_blank">软件工作流程</a></div><br></div><p><br></p><hr><h2>输出效果图：<br><br></h2><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-9aee151bc9b10869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">输出效果图_combined</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-e1661fe61c8e5783.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">输出效果图_phypat</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-7793acf090cb7d72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">输出效果图_phypat+PGL</div><br></div><p><br></p><hr><p>引用 Traitar</p><p>If you use Traitar in your research, please cite our paper:</p><p><b>From genomes to phenotypes: Traitar, the microbial trait analyzer</b></p><p>Aaron Weimann, Kyra Mooren, Jeremy Frank, Phillip B Pope, Andreas Bremges, Alice C McHardy</p><p><i>mSystem</i> (2016) doi:<a href="http://dx.doi.org/10.1128/mSystems.00101-16" target="_blank">10.1101/043315</a></p><p><br></p>
+        <p>Traitar 用于从基因组序列中提取表型，它提供了表型分类器，可以预测与碳和能源使用、氧气需求、形态学、抗生素易感性、蛋白水解和酶活性等有关的67个性状。</p><br><a id="more"></a><br><br><p>1. 软件安装——<a href="https://github.com/hzi-bifo/traitar" target="_blank">traitar</a></p><p>安装基本依赖：</p><blockquote><p>sudo apt-get install python-scipy python-matplotlib python-pip python-pandas</p></blockquote><p>进入要安装软件的目录，我的为家目录下的tools：</p><blockquote><p>cd ~/tools</p></blockquote><p>=======================================================</p><p>安装主程序到家目录下</p><blockquote><p>pip install traitar –user</p></blockquote><p>将添加到环境变量中：</p><blockquote><br><p>vim ~/.zshrc</p><br><p>i</p><br></blockquote><p>文档末尾添加：</p><p>PATH=$PATH:$HOME/.local/bin/</p><p>ESC</p><blockquote><p>shift + :</p></blockquote><blockquote><p>wq!</p></blockquote><blockquote><p>source ~/.zshrc</p></blockquote><p>安装依赖软件（parallel， prodigal， hmmer）</p><blockquote><p>sudo apt-get install parallel prodigal hmmer</p></blockquote><p>下载pfam数据库到家目录下并建库</p><blockquote><p>traitar pfam ~/</p></blockquote><p>也可以手动下载pfam数据库（如果上一条不出错可以不运行后面的几条命令）：</p><blockquote><p>cd ~/</p></blockquote><p>官方提供的为Pfam27.0，我下载的为最新的Pfam32.0（下面两个命令选一个运行即可）：</p><blockquote><p>wget <a href="ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam27.0/Pfam-A.hmm.gz" target="_blank" rel="noopener">ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam27.0/Pfam-A.hmm.gz</a></p></blockquote><blockquote><p>wget <a href="ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz" target="_blank" rel="noopener">ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz</a></p></blockquote><p>将Pfam-A.hmm.gz解压缩，然后运行下面的命令建库：</p><blockquote><p>traitar pfam –local ~/</p></blockquote><p>软件运行出错的话：</p><p>错误提示：ImportError: C extension: numpy.core.multiarray failed to import not built. If you want to import pandas from the source directory, you may need to run ‘python setup.py build_ext –inplace –force’ to build the C extensions first.</p><p>运行：</p><blockquote><p>conda install -c conda-forge numpy</p></blockquote><p>错误提示：AttributeError: ‘DataFrame’ object has no attribute ‘sort’</p><p>pandas降级：</p><blockquote><p>conda install pandas=0.19.2</p></blockquote><p>错误提示：Python的最大递归深度错误 “maximum recursion depth exceeded while calling a Python object”</p><p>编辑脚本（~/miniconda3/lib/python2.7/site-packages/scipy/cluster/hierarchy.py），第183行加入两行，将默认的1000改大，比如2000（因为我有1000多个基因组）</p><blockquote><p>import sys</p></blockquote><p>#print sys.getrecursionlimit()</p><blockquote><p>sys.setrecursionlimit(2000)</p></blockquote><p>错误提示：RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility</p><blockquote><br><p>pip uninstall -y scipy scikit-learn</p><br><p>pip install –no-binary scipy scikit-learn</p><br></blockquote><hr><p>2. 软件使用</p><p>首先进入含有基因组文件目录的上一级目录，输入命令执行：</p><blockquote><p>traitar phenotype &lt;in dir&gt; &lt;sample file&gt; from_nucleotides &lt;out_dir&gt; -c 2</p></blockquote><p>&lt;in dir&gt;：包含基因组的输入目录</p><p>&lt;sample file&gt;：描述文件，置于&lt;in dir&gt;的父目录下。共3列，第一列为基因组文件的全名（包含文件扩展名），第二列为菌株名称（一般为第一列去掉扩展名，可随意更改），第三列为分组信息（可以将所有的菌株划分到不同的组别）。三列之间以制表符分隔。三列的抬头为“sample_file_name      sample_name       category”，如下面文本框所示：</p><blockquote><br><p>sample_file_name    sample_name    category</p><br><p>1457190.3.RefSeq.faa    Listeria_ivanovii_WSLC3009    environment_1</p><br><p>525367.9.RefSeq.faa    Listeria_grayi_DSM_20601    environment_2</p><br></blockquote><p>&lt;out_dir&gt;：结果输出目录</p><p>-c 2：使用两个线程运行，提高预测速度</p><p><br></p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-82b7bc9d8c442804.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">文件存放示意图</div><br></div><p>我的命令（在phenotype目录下，使用4个线程运行）：</p><blockquote><p>traitar phenotype scaffolds samplefile.txt from_nucleotides output -c 4</p></blockquote><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-132fcd1bdd4eb6ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5192078/pdf/mSystems.00101-16.pdf" target="_blank">软件工作流程</a></div><br></div><p><br></p><hr><h2>输出效果图：<br><br></h2><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-9aee151bc9b10869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">输出效果图_combined</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-e1661fe61c8e5783.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">输出效果图_phypat</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-7793acf090cb7d72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">输出效果图_phypat+PGL</div><br></div><p><br></p><hr><p>引用 Traitar</p><p>If you use Traitar in your research, please cite our paper:</p><p><b>From genomes to phenotypes: Traitar, the microbial trait analyzer</b></p><p>Aaron Weimann, Kyra Mooren, Jeremy Frank, Phillip B Pope, Andreas Bremges, Alice C McHardy</p><p><i>mSystem</i> (2016) doi:<a href="http://dx.doi.org/10.1128/mSystems.00101-16" target="_blank">10.1101/043315</a></p><p><br></p>
 
     </div>
 </article>
@@ -455,31 +455,31 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 19.20706723051682px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/地图/" style="font-size: 11.856664491162922px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/网盘/" style="font-size: 10.054482776916728px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/JAVA/" style="font-size: 15.663650962072026px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/音乐/" style="font-size: 15.375737711695063px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/培训/" style="font-size: 13.992143534034206px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/爬虫/" style="font-size: 11.274788289998257px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/音乐/" style="font-size: 9.47139939267829px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 12.972788710820044px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/爬虫/" style="font-size: 9.145904830269547px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/Linux/" style="font-size: 13.43146976816662px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/SNPs/" style="font-size: 19.06714674088782px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/表型预测/" style="font-size: 10.999838028808986px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/进化/" style="font-size: 12.367190676449011px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/软件/" style="font-size: 11.224488074075943px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/表型预测/" style="font-size: 15.77158414712839px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/JAVA/" style="font-size: 8.801700521635624px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/下载/" style="font-size: 19.74623497626516px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/下载/" style="font-size: 13.519622479607175px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/虚拟机/" style="font-size: 18.2618221409517px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/地图/" style="font-size: 15.705588451916526px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 11.335765531504235px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/SNPs/" style="font-size: 10.915173070723377px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/软件/" style="font-size: 9.246978734337407px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/进化/" style="font-size: 10.660494428367208px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/网盘/" style="font-size: 15.444407883177877px;" class="tag-cloud-link">网盘</a>
     
 </div>
                 

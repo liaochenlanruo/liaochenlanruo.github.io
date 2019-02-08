@@ -123,11 +123,15 @@
                         
                         
                         <li>
-                            <a href="/categories/活动/">活动</a>
+                            <a href="/categories/地信/">地信</a>
                         </li>
                         
                         <li>
                             <a href="/categories/IT/">IT</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/活动/">活动</a>
                         </li>
                         
                         <li>
@@ -136,10 +140,6 @@
                         
                         <li>
                             <a href="/categories/可视化/">可视化</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/categories/地信/">地信</a>
                         </li>
                         
                         
@@ -160,11 +160,15 @@
                         
                         
                         <li>
-                            <a href="/tags/培训/">培训</a>
+                            <a href="/tags/地图/">地图</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/网盘/">网盘</a>
+                            <a href="/tags/JAVA/">JAVA</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/培训/">培训</a>
                         </li>
                         
                         <li>
@@ -176,11 +180,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/虚拟机/">虚拟机</a>
+                            <a href="/tags/SNPs/">SNPs</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Linux/">Linux</a>
+                            <a href="/tags/进化/">进化</a>
                         </li>
                         
                         <li>
@@ -188,15 +192,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/软件/">软件</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/JAVA/">JAVA</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/下载/">下载</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/虚拟机/">虚拟机</a>
                         </li>
                         
                         
@@ -289,25 +289,9 @@
         </center>
     </div>
     <div class="content-article">
-        <p><blockquote><p>前言：<a href="https://www.jianshu.com/p/2f765a81e7dd" target="_blank">上一篇</a>文章讲到了利用Vmware虚拟机加载Bio-Linux，但有的小伙伴表示Vmware无法安装，也未见有效的错误提示，因此推荐第二款常用的老牌虚拟机软件——VirtualBox。</p></blockquote></p><p>1. <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a>下载与安装。</p><p>    该软件的安装比较简单，双击后根据提示一步步往下走即可。安装完毕后打开软件。</p><p><br></p><hr><p>2. 导入及配置Bio-Linux</p><p>（1）依次点击菜单栏的 “管理”——“导入虚拟电脑”</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-571d4d7ddba3e076.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">Figure 1 导入虚拟电脑1</div><br></div><p>（2）在弹出的窗口中选择下载的 “Bio-Linux-8.0.7.ovf”进行导入</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-a6c955cec07389b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">Figure 2 选择系统文件</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-ce38f58eb9d87d98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">Figure 3 准备导入虚拟电脑</div><br></div><p>（3）虚拟电脑导入设置：此处有三项可以设置，分别是处理器的数量、内存大小和最后面的虚拟硬盘位置。前两者根据自己的电脑配置情况进行设置，硬盘位置一定要选择剩余容量大于50-60G的分区。点击“导入”等待完成即可，此时电脑可能会断网，重新连接一下即可。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-bbda5c1ad0811dcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 4 处理器及内存设置</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-140370931dbc3b86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 5 虚拟硬盘位置自设</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-5b261a13f79e7291.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 6 等待虚拟电脑导入完毕</p></div><br></div><p>（4）鼠标单击导入完成的系统，菜单栏的 “设置”变成彩色可点击状态，点击进行系统设置。所有设置按如下5图（Figure 7-Figure 11）进行。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-7136bffed8701961.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 7 粘贴板与拖放共享</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-520fee7dd398e306.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 8 存储控制 器输入输出</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-ca76c38fb47dc821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 9 开启固态驱动器</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-75ccf98fbbf97d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 10 显存设置（根据配置自设大小）</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-333bd34368d9b4ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 11 创建虚拟光盘</p></div><br></div><p>（5）保存设置后，启动系统。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-f26c49cedf490ca3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 12 启动虚拟电脑</p></div><br></div><p>（6）进入系统后不需要更新，可以通过浏览器测试是否可以上网。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-6e83ecb2661fc193.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 13 系统启动完成</p></div><br></div><p>（7）安装增强功能，参照如下4图（Figure12-Figure 15）</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-ba16243bb4520ca3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 14 安装增强功能1</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-1626909ed7b36761.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 15 安装增强功能2</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-83e661db9b1fde93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 16 安装增强功能3（密码：manager）</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-0e3aa0b41841928b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 17 安装增强功能4（输入yes回车）</p></div><br></div><p>（8）提示按 “Press Return to close this window …”的时候按一下回车键即可，重启Linux。</p><h3>问题：目前无法实现从windows到虚拟机的文件拷贝，暂时未找到解决方案，可通过共享文件夹解决。</h3><p>(9)共享文件夹设置</p><p>通过设置共享文件夹可以实现windows和虚拟机之间的同步，而不需要复制粘贴。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-8032463856bf4c85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 18 共享文件夹设置1</p></div><br></div><p>        点击右上角的 “文件夹+”图标，选择共享文件夹路径（windows上的一个文件夹），共享文件夹名称会自动分配，勾选 “自动挂载” 和 “固定分配”。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-ead5f24448be0c36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 19 共享文件夹设置2</p></div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-054fbf18099da74d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 20 共享文件夹设置3</p></div><br></div><p>        设置完成后重启Linux系统，打开目录，即可看到共享文件夹 “sf_softwares”。若不成功可重新安装增强功能并重启。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-6dfe1cdbe1153fd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><p></p>
-<p>Figure 21 共享文件夹设置4</p></div><br></div><p>以上为基于VirtualBox 的 Bio-Linux配置，有问题的可以在下方留言，统一解答。</p><p></p>
+        <p>前言：<a href="https://www.jianshu.com/p/2f765a81e7dd" target="_blank">上一篇</a>文章讲到了利用Vmware虚拟机加载Bio-Linux，但有的小伙伴表示Vmware无法安装，也未见有效的错误提示，因此推荐第二款常用的老牌虚拟机软件——VirtualBox。<br><a id="more"></a></p>
+<p>1. <a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a>下载与安装。</p><p>    该软件的安装比较简单，双击后根据提示一步步往下走即可。安装完毕后打开软件。</p><p><br></p><hr><p>2. 导入及配置Bio-Linux</p><p>（1）依次点击菜单栏的 “管理”——“导入虚拟电脑”</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-571d4d7ddba3e076.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">Figure 1 导入虚拟电脑1</div><br></div><p>（2）在弹出的窗口中选择下载的 “Bio-Linux-8.0.7.ovf”进行导入</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-a6c955cec07389b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">Figure 2 选择系统文件</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-ce38f58eb9d87d98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption">Figure 3 准备导入虚拟电脑</div><br></div><p>（3）虚拟电脑导入设置：此处有三项可以设置，分别是处理器的数量、内存大小和最后面的虚拟硬盘位置。前两者根据自己的电脑配置情况进行设置，硬盘位置一定要选择剩余容量大于50-60G的分区。点击“导入”等待完成即可，此时电脑可能会断网，重新连接一下即可。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-bbda5c1ad0811dcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 4 处理器及内存设置</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-140370931dbc3b86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 5 虚拟硬盘位置自设</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-5b261a13f79e7291.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 6 等待虚拟电脑导入完毕</div><br></div><p>（4）鼠标单击导入完成的系统，菜单栏的 “设置”变成彩色可点击状态，点击进行系统设置。所有设置按如下5图（Figure 7-Figure 11）进行。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-7136bffed8701961.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 7 粘贴板与拖放共享</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-520fee7dd398e306.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 8 存储控制 器输入输出</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-ca76c38fb47dc821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 9 开启固态驱动器</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-75ccf98fbbf97d75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 10 显存设置（根据配置自设大小）</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-333bd34368d9b4ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 11 创建虚拟光盘</div><br></div><p>（5）保存设置后，启动系统。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-f26c49cedf490ca3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 12 启动虚拟电脑</div><br></div><p>（6）进入系统后不需要更新，可以通过浏览器测试是否可以上网。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-6e83ecb2661fc193.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 13 系统启动完成</div><br></div><p>（7）安装增强功能，参照如下4图（Figure12-Figure 15）</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-ba16243bb4520ca3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 14 安装增强功能1</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-1626909ed7b36761.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 15 安装增强功能2</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-83e661db9b1fde93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 16 安装增强功能3（密码：manager）</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-0e3aa0b41841928b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 17 安装增强功能4（输入yes回车）</div><br></div><p>（8）提示按 “Press Return to close this window …”的时候按一下回车键即可，重启Linux。</p><h3>问题：目前无法实现从windows到虚拟机的文件拷贝，暂时未找到解决方案，可通过共享文件夹解决。</h3><p>(9)共享文件夹设置</p><p>通过设置共享文件夹可以实现windows和虚拟机之间的同步，而不需要复制粘贴。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-8032463856bf4c85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 18 共享文件夹设置1</div><br></div><p>        点击右上角的 “文件夹+”图标，选择共享文件夹路径（windows上的一个文件夹），共享文件夹名称会自动分配，勾选 “自动挂载” 和 “固定分配”。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-ead5f24448be0c36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 19 共享文件夹设置2</div><br></div><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-054fbf18099da74d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 20 共享文件夹设置3</div><br></div><p>        设置完成后重启Linux系统，打开目录，即可看到共享文件夹 “sf_softwares”。若不成功可重新安装增强功能并重启。</p><div class="image-package"><br><img class="uploaded-img" src="http://upload-images.jianshu.io/upload_images/11790868-6dfe1cdbe1153fd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="auto" height="auto"><br><div class="image-caption"><br><br>Figure 21 共享文件夹设置4</div><br></div><p>以上为基于VirtualBox 的 Bio-Linux配置，有问题的可以在下方留言，统一解答。</p>
+
 
     </div>
 </article>
@@ -477,31 +461,31 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 13.91370059561585px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/地图/" style="font-size: 17.672400817430933px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/网盘/" style="font-size: 8.608568669235236px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/JAVA/" style="font-size: 15.114401582786414px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/音乐/" style="font-size: 17.9747971384216px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/培训/" style="font-size: 14.57273927411276px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/爬虫/" style="font-size: 10.278903343710871px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/音乐/" style="font-size: 9.948855473729516px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 12.850202142384001px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/爬虫/" style="font-size: 12.68544468536362px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/Linux/" style="font-size: 9.272551568195372px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/SNPs/" style="font-size: 11.606053232848268px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/表型预测/" style="font-size: 8.19954194070845px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/进化/" style="font-size: 11.692679414980688px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/软件/" style="font-size: 17.30079273902379px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/表型预测/" style="font-size: 19.050188421756555px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/JAVA/" style="font-size: 14.292866879913793px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/下载/" style="font-size: 9.909925166149613px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/下载/" style="font-size: 17.426097903359445px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/虚拟机/" style="font-size: 15.293678561509337px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/地图/" style="font-size: 10.534085210580209px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 12.888248636346828px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/SNPs/" style="font-size: 16.15822875563321px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/软件/" style="font-size: 19.913221355135484px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/进化/" style="font-size: 8.63048301195895px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/网盘/" style="font-size: 19.237698554212113px;" class="tag-cloud-link">网盘</a>
     
 </div>
                 
