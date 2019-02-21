@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liaochenlanruo.hzaubmb.org/photos/data.json</loc>
+    
+    <lastmod>2019-02-21T13:12:31.510Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liaochenlanruo.hzaubmb.org/photos/index.html</loc>
     
     <lastmod>2019-02-21T07:57:07.938Z</lastmod>
@@ -443,14 +450,14 @@
   </url>
   
   <url>
-    <loc>https://liaochenlanruo.hzaubmb.org/photos/ins.json</loc>
+    <loc>https://liaochenlanruo.hzaubmb.org/photos/index.html</loc>
     
     <lastmod>2017-07-28T18:51:08.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://liaochenlanruo.hzaubmb.org/photos/index.html</loc>
+    <loc>https://liaochenlanruo.hzaubmb.org/photos/ins.json</loc>
     
     <lastmod>2017-07-28T18:51:08.000Z</lastmod>
     
