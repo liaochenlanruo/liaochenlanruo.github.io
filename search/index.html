@@ -123,11 +123,11 @@
                         
                         
                         <li>
-                            <a href="/categories/地信/">地信</a>
+                            <a href="/categories/IT/">IT</a>
                         </li>
                         
                         <li>
-                            <a href="/categories/IT/">IT</a>
+                            <a href="/categories/地信/">地信</a>
                         </li>
                         
                         <li>
@@ -135,11 +135,11 @@
                         </li>
                         
                         <li>
-                            <a href="/categories/小说/">小说</a>
+                            <a href="/categories/活动/">活动</a>
                         </li>
                         
                         <li>
-                            <a href="/categories/活动/">活动</a>
+                            <a href="/categories/小说/">小说</a>
                         </li>
                         
                         <li>
@@ -164,11 +164,11 @@
                         
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
+                            <a href="/tags/JAVA/">JAVA</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/网盘/">网盘</a>
+                            <a href="/tags/地图/">地图</a>
                         </li>
                         
                         <li>
@@ -180,7 +180,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/非逻辑小说/">非逻辑小说</a>
+                            <a href="/tags/培训/">培训</a>
                         </li>
                         
                         <li>
@@ -192,11 +192,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
+                            <a href="/tags/非逻辑小说/">非逻辑小说</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/培训/">培训</a>
+                            <a href="/tags/网盘/">网盘</a>
                         </li>
                         
                         <li>
@@ -276,7 +276,7 @@
     // 获取当前页数
     var p = query.length > 1 ? query[1].split('=')[1] : 1
     // 获取每页的页码数
-    var pageSize = '12'
+    var pageSize = '10'
     var useLeancloud = 'iIqYHzdT8zt3eSt5VKGxnP3o'
     var useComment = ('true' === 'true')
     $.getJSON('/content.json', function (json) {
@@ -302,7 +302,7 @@
       	var [month, day] = article.date.split('-')
         ''
         ''
-        var defaultPreview = '/imgs/preview/preview1.jpg'
+        var defaultPreview = '/imgs/preview/preview4.jpg'
         var preview = article.preview ? article.preview : defaultPreview
         var path = '/' + article.path
         resultList.append(`<div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
@@ -508,35 +508,35 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/地图/" style="font-size: 8.16568199799391px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/JAVA/" style="font-size: 13.888331230437498px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/网盘/" style="font-size: 14.078664156213444px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/地图/" style="font-size: 16.53763665399982px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/SNPs/" style="font-size: 9.783728129714154px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 14.957965217880517px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 15.58868885990464px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 15.427115782483323px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 15.542466371104815px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/培训/" style="font-size: 16.47090731150318px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/音乐/" style="font-size: 18.594535914265037px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/音乐/" style="font-size: 12.7835049464681px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/爬虫/" style="font-size: 9.1305860210934px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/爬虫/" style="font-size: 9.507476442194285px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/JAVA/" style="font-size: 12.955798245464425px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 16.377427144404415px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/培训/" style="font-size: 15.031839771351239px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/网盘/" style="font-size: 15.531253900504954px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/表型预测/" style="font-size: 10.289677959744695px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 9.619003955656492px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 19.286303648999485px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 10.452560873831036px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/Linux/" style="font-size: 15.861385845856875px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 9.292534339757141px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/软件/" style="font-size: 19.41067541855913px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 16.838899860417932px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/下载/" style="font-size: 18.310522045723243px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/下载/" style="font-size: 18.13861602526263px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/系统/" style="font-size: 15.396064308318437px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/系统/" style="font-size: 12.709311396030628px;" class="tag-cloud-link">系统</a>
     
 </div>
 		
@@ -718,31 +718,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/19/syncthing搭建自己的同步云网盘/">syncthing搭建自己的同步云网盘</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2011/12/06/亦生亦死/">亦生亦死</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/">JAVA jre 安装或升级1603 error解决办法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
+                    <a href="/2018/12/14/kSNP3寻找SNPs并构建进化树/">kSNP3寻找SNPs并构建进化树</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/03/15/今天的梦/">今天的梦</a>
+                    <a href="/2018/09/17/perl循环调用python爬虫批量下载喜马拉雅音频/">perl循环调用python爬虫批量下载喜马拉雅音频</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/08/08/人鬼之战2015/">人鬼之战2015</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/06/06/人皮/">人皮</a>
                 </span>
             </li>
             
@@ -754,25 +754,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/07/25/2017-peixunban/">微生物基因组学培训活动落幕</a>
+                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/09/12/逍遥于世/">逍遥于世</a>
+                    <a href="/2019/02/01/用wget批量下载含有链接的文件-目录/">用wget批量下载含有链接的文件/目录</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/09/雨夜/">雨夜</a>
+                    <a href="/2011/02/12/杀尸/">杀尸</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/27/苦海或有涯，回头不见岸/">苦海或有涯，回头不见岸</a>
+                    <a href="/2014/07/19/影子/">影子</a>
                 </span>
             </li>
             
@@ -853,7 +853,7 @@
 
 
 <script>
-    window.hot_posts_count = '12'
+    window.hot_posts_count = '10'
     // window.use_leancloud = 'true'
 </script>
 <script src="/js/comment/leancloud.js"></script>
