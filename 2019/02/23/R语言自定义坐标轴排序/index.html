@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Hualin Liu">
+    
+    <meta name="description" content="Good good study, and day day up!">
+    
+    
+    
+    
+    
+    
+    <title>R语言自定义坐标轴排序 | Liaochenlanruo</title>
+    <link href="”https://liaochenlanruo.hzaubmb.org“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <script src="//cdn1.lncld.net/static/js/3.4.2/av-min.js"></script>
+    <script>
+      AV.init({
+        appId: 'Dfqm5YsyQWjrp0pm11CsvQb2-gzGzoHsz',
+        appKey: 'iIqYHzdT8zt3eSt5VKGxnP3o'
+      })
+    </script>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/IMG_7557.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+    <script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+    <script>AV.initialize("Dfqm5YsyQWjrp0pm11CsvQb2-gzGzoHsz", "iIqYHzdT8zt3eSt5VKGxnP3o");</script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d211830a796ceefb38a141fde14e4d5a";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-navbar-collapse" aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://liaochenlanruo.hzaubmb.org">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">了尘兰若的狗窝</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/categories/活动/">活动</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/地信/">地信</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/生物信息/">生物信息</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/IT/">IT</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/小说/">小说</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/小说2/">小说2</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/生物信息/可视化/">可视化</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/可视化/">可视化</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/培训/">培训</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/地图/">地图</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/SNPs/">SNPs</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/进化/">进化</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/音乐/">音乐</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/爬虫/">爬虫</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/网盘/">网盘</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/非逻辑小说/">非逻辑小说</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/非逻辑小说2/">非逻辑小说2</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/JAVA/">JAVA</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/R语言/">R语言</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/绘图/">绘图</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/表型预测/">表型预测</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/虚拟机/">虚拟机</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Linux/">Linux</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/软件/">软件</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/下载/">下载</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/系统/">系统</a>
+                        </li>
+                        
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about/">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://liaochenlanruo.hzaubmb.org">Liaochenlanruo</a>
+        >
+        <span>R语言自定义坐标轴排序</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/02/23/R语言自定义坐标轴排序/">R语言自定义坐标轴排序</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/R语言/">R语言</a>, 
+                
+                <a href="/tags/绘图/">绘图</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-02-23
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/02/23/R语言自定义坐标轴排序/">R语言自定义坐标轴排序</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-02-23
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/R语言/">R语言</a>, 
+                
+                <a href="/tags/绘图/">绘图</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p>R语言作图时，默认情况下软件会按照自己的方式对坐标轴的项目进行排序，然而这种排序往往不是我们所希望的，因此需要想办法让坐标轴的项目按照我们希望的顺序输出。<br><a id="more"></a></p>
+<p>如下所示，我有两列数据，要绘制箱线图，以第一列为Y轴，第二列为X轴，希望X轴的输出顺序按照第二列由上到下排列。<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">size    <span class="built_in">type</span></span><br><span class="line">6.612309456    T-8</span><br><span class="line">5.878857613    T-10</span><br><span class="line">6.724282265    T-15</span><br><span class="line">5.68136692    T-56</span><br><span class="line">5.863334656    T-1723</span><br></pre></td></tr></table></figure></p>
+<p><br>然而软件输出的顺序如下：<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T-10    T-15    T-1723    T-56    T-8</span><br></pre></td></tr></table></figure></p>
+<p>解决方案：<br></p>
+<p>通过一个因子事先自定义X轴顺序，作图命令如下：<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读入数据</span></span><br><span class="line">gsize &lt;- read.delim(<span class="string">"gsize.txt"</span>, header=TRUE, sep=<span class="string">"\t"</span>, stringsAsFactors=FALSE)</span><br><span class="line"><span class="comment">#自定义X轴顺序</span></span><br><span class="line">x1 = factor(gsize<span class="variable">$type</span>, levels=c(<span class="string">"T-8"</span>,<span class="string">"T-10"</span>,<span class="string">"T-15"</span>,<span class="string">"T-56"</span>,<span class="string">"T-1723"</span>))</span><br><span class="line"><span class="comment">#用x1代替gsize$type绘图</span></span><br><span class="line">boxplot(size~x1, data=gsize, xlab=<span class="string">"Sequence Type"</span>, ylab=<span class="string">"Genome Size"</span>, varwidth=TRUE, notch=FALSE)</span><br></pre></td></tr></table></figure></p>
+<p><br>至此，X轴各项目会按照我们自定义的顺序排列。</p>
+
+    </div>
+</article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'R语言自定义坐标轴排序'
+    }
+</script>
+
+
+<p style="text-align:center;">
+    <span style="font-family:'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53;color:#666666;">
+        <span style="font-size:16px;line-height:28px;">
+	    <a href="http://www.dashangcloud.com/sh/87a883" rel="nofollow" target="_blank">
+	        <img src="http://www.dashangcloud.com/static/ds-logo-1.2-64.png" alt="����""">
+	    </a>
+	    <br>
+	</span>
+    </span>
+</p>
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get" action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Hualin Liu
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/IMG_7557.jpg" width="140" height="140" alt="个人头像" class="author-image">
+            <p class="author-description"></p><p>Good good study, and day day up!</p>
+<p></p>
+        </div>
+    </div>
+</aside>
+    
+    <aside id="gal-sets">
+	<div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+	    <ul class="nav nav-pills pills-gal">
+
+		
+		<li>
+		    <a href="/2019/02/23/R语言自定义坐标轴排序/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+		</li>
+		
+		
+		<li>
+	            <a href="/2019/02/23/R语言自定义坐标轴排序/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+		</li>
+		
+		
+		<li>
+		    <a href="/2019/02/23/R语言自定义坐标轴排序/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+		</li>
+		
+	    </ul>
+	    <div class="tab-content">
+		
+		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/培训/" style="font-size: 8.746704688344064px;" class="tag-cloud-link">培训</a>
+    
+    <a href="/tags/地图/" style="font-size: 9.417974945636278px;" class="tag-cloud-link">地图</a>
+    
+    <a href="/tags/SNPs/" style="font-size: 16.816037416016492px;" class="tag-cloud-link">SNPs</a>
+    
+    <a href="/tags/进化/" style="font-size: 19.951209016727354px;" class="tag-cloud-link">进化</a>
+    
+    <a href="/tags/音乐/" style="font-size: 10.285782909012386px;" class="tag-cloud-link">音乐</a>
+    
+    <a href="/tags/爬虫/" style="font-size: 14.731483997649537px;" class="tag-cloud-link">爬虫</a>
+    
+    <a href="/tags/网盘/" style="font-size: 15.065420326695861px;" class="tag-cloud-link">网盘</a>
+    
+    <a href="/tags/非逻辑小说/" style="font-size: 14.203739916317463px;" class="tag-cloud-link">非逻辑小说</a>
+    
+    <a href="/tags/非逻辑小说2/" style="font-size: 19.55609805420004px;" class="tag-cloud-link">非逻辑小说2</a>
+    
+    <a href="/tags/JAVA/" style="font-size: 16.38824286489637px;" class="tag-cloud-link">JAVA</a>
+    
+    <a href="/tags/R语言/" style="font-size: 15.738327466077324px;" class="tag-cloud-link">R语言</a>
+    
+    <a href="/tags/绘图/" style="font-size: 12.202495577396713px;" class="tag-cloud-link">绘图</a>
+    
+    <a href="/tags/表型预测/" style="font-size: 11.318292296842621px;" class="tag-cloud-link">表型预测</a>
+    
+    <a href="/tags/虚拟机/" style="font-size: 16.588162944930723px;" class="tag-cloud-link">虚拟机</a>
+    
+    <a href="/tags/Linux/" style="font-size: 15.428534956049297px;" class="tag-cloud-link">Linux</a>
+    
+    <a href="/tags/软件/" style="font-size: 19.116676274029736px;" class="tag-cloud-link">软件</a>
+    
+    <a href="/tags/下载/" style="font-size: 12.793988174894526px;" class="tag-cloud-link">下载</a>
+    
+    <a href="/tags/系统/" style="font-size: 18.481358129609575px;" class="tag-cloud-link">系统</a>
+    
+</div>
+		
+		
+		<div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://bmb.hzau.edu.cn/" target="_blank">芽胞杆菌分子生物学实验室</a>
+    </li>
+    
+    <li>
+        <a href="http://bcam.hzau.edu.cn/" target="_blank">农业微生物学生物信息中心</a>
+    </li>
+    
+    <li>
+        <a href="http://www.lifesci.sussex.ac.uk/home/Neil_Crickmore/Bt/" target="_blank">Bt Toxin Nomenclature</a>
+    </li>
+    
+</div>
+		
+		
+		<div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/liaochenlanruo" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://www.researchgate.net/profile/Hualin_Liu2" target="_blank">ResearchGate</a>
+    </li>
+    
+    <li>
+        <a href="http://xueshu.baidu.com/scholarID/CN-BN84MG5J" target="_blank">百度学者</a>
+    </li>
+    
+    <li>
+        <a href="https://www.jianshu.com/u/848bd32053b7" target="_blank">简书</a>
+    </li>
+    
+    <li>
+        <a href="http://playlists.youku.com/?spm=a2h3j.8428770.3336676.3" target="_blank">优酷</a>
+    </li>
+    
+    <li>
+        <a href="https://www.douyu.com/2556283" target="_blank">斗鱼</a>
+    </li>
+    
+    <li>
+        <a href="https://weibo.com/2715210923/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">微博</a>
+    </li>
+    
+    <li>
+        <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" target="_blank">邮箱</a>
+    </li>
+    
+    <li>
+        <a href="https://shang.qq.com/wpa/qunwpa?idkey=774169a420882dd4ac93cb264543764f841504cbeae0021e168c61dccacf4f16" target="_blank">QQ群</a>
+    </li>
+    
+</div>
+		
+	    </div>
+	</div>
+    </aside>
+    
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    <aside id="sidebar-hot_posts">
+    <div class="panel panel-gal hot hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-fire"></i>
+            最热文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/02/23/R语言自定义坐标轴排序/">R语言自定义坐标轴排序</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/02/18/获取下一个版本的内部预览版windows系统/">获取下一版本的内部预览版windows系统</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/02/01/用wget批量下载含有链接的文件-目录/">用wget批量下载含有链接的文件/目录</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/12/14/kSNP3寻找SNPs并构建进化树/">kSNP3寻找SNPs并构建进化树</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/12/14/根据基因组预测表型-traitar的安装与使用/">根据基因组预测表型 —— traitar的安装与使用</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/12/01/2018-peixunban/">我校师生于南昌开设2018年微生物基因组学培训班</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/">JAVA jre 安装或升级1603 error解决办法</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/12/01/2018-peixunban/">我校师生于南昌开设2018年微生物基因组学培训班</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/08/08/人鬼之战2015/">人鬼之战2015</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/">JAVA jre 安装或升级1603 error解决办法</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/03/29/奶奶/">奶奶</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/03/17/溪山行旅图/">溪山行旅图</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2010/05/17/滴血的笔/">滴血的笔</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/11/04/神棍节/">神棍节</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("02/14/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+    </div>
+    <div class="container">
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_container_site_uv">本站访客数：<span id="busuanzi_value_site_uv"></span> 人</span>
+    </div>
+    <div class="container">
+        Copyright © 2018 Hualin Liu Powered by <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" target="_blank">liaochenlanruo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<div id="gal-gotop">
+    <i class="fa fa-angle-up"></i>
+</div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+<script>
+    window.hot_posts_count = '20'
+    // window.use_leancloud = 'true'
+</script>
+<script src="/js/comment/leancloud.js"></script>
+
+
+<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.id = 'Sat Feb 23 2019 00:57:21 GMT+0800'
+      window.commentConfig.owner = 'liaochenlanruo'
+      window.commentConfig.repo = 'comments'
+      window.commentConfig.client_id = '5d1f3e39a77775afaf62'
+      window.commentConfig.client_secret = '9f2cfc572b889c8bc8c081f985c31bb72d94dee3'
+      window.commentConfig.redirect_uri = ''
+    } else {
+      window.commentConfig = {
+      	id: 'Sat Feb 23 2019 00:57:21 GMT+0800',
+        owner: 'liaochenlanruo',
+        repo: 'comments',
+        client_id: '5d1f3e39a77775afaf62',
+        client_secret: '9f2cfc572b889c8bc8c081f985c31bb72d94dee3',
+        redirect_uri: ''
+      }
+    }
+</script>
+<script src="/js/comment/gitment.js"></script>
+
+</html>
