@@ -1,0 +1,34 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Allow: /about/
+Allow: /search/
+Allow: /2009/
+Allow: /2010/
+Allow: /2011/
+Allow: /2013/
+Allow: /2014/
+Allow: /2015/
+Allow: /2016/
+Allow: /2017/
+Allow: /2018/
+Allow: /2019/
+
+
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+
+Sitemap: https://liaochenlanruo.github.io/sitemap.xml
+Sitemap: https://liaochenlanruo.github.io/baidusitemap.xml
+Sitemap: https://liaochenlanruo.hzaubmb.org/sitemap.xml
+Sitemap: https://liaochenlanruo.hzaubmb.org/baidusitemap.xml
+Sitemap: https://liaochen.hzaubmb.org/sitemap.xml
+Sitemap: https://liaochen.hzaubmb.org/baidusitemap.xml
+Sitemap: https://liaochenlanruo.coding.me/sitemap.xml
+Sitemap: https://liaochenlanruo.coding.me/baidusitemap.xml
