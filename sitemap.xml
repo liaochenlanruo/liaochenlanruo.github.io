@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liaochenlanruo.hzaubmb.org/photos/data.json</loc>
+    
+    <lastmod>2019-02-27T01:33:33.807Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liaochenlanruo.hzaubmb.org/photos/index.html</loc>
+    
+    <lastmod>2019-02-26T08:34:52.733Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liaochenlanruo.hzaubmb.org/2019/02/23/R%E8%AF%AD%E8%A8%80%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9D%90%E6%A0%87%E8%BD%B4%E6%8E%92%E5%BA%8F/</loc>
     
     <lastmod>2019-02-22T08:57:21.139Z</lastmod>
@@ -432,6 +446,20 @@
     <loc>https://liaochenlanruo.hzaubmb.org/categories/IT/index.html</loc>
     
     <lastmod>2019-01-06T01:53:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liaochenlanruo.hzaubmb.org/photos/ins.json</loc>
+    
+    <lastmod>2017-07-28T18:51:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liaochenlanruo.hzaubmb.org/photos/index.html</loc>
+    
+    <lastmod>2017-07-28T18:51:08.000Z</lastmod>
     
   </url>
   
