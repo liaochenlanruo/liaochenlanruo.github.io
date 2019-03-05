@@ -6,6 +6,7 @@ Allow: /categories/
 Allow: /tags/
 Allow: /about/
 Allow: /search/
+Allow: /Message/
 Allow: /2009/
 Allow: /2010/
 Allow: /2011/
