@@ -1,3 +1,6 @@
+https://liaochenlanruo.hzaubmb.org/2019/04/15/Wget-技巧/
+https://liaochenlanruo.hzaubmb.org/2019/04/01/github操作/
+https://liaochenlanruo.hzaubmb.org/2019/03/30/Ubuntu-open-mpi运行错误/
 https://liaochenlanruo.hzaubmb.org/2019/03/20/OrthoFinder2—同源蛋白家族聚类/
 https://liaochenlanruo.hzaubmb.org/2019/03/18/为PubMed添加功能/
 https://liaochenlanruo.hzaubmb.org/2019/03/05/Hexo博客导航栏menu无法跳转https/
@@ -15,6 +18,3 @@ https://liaochenlanruo.hzaubmb.org/2018/10/03/JAVA-jre-安装或升级1603-error
 https://liaochenlanruo.hzaubmb.org/2018/09/28/ArcMap10.6从世界地图扣取东亚及东南亚国家地图/
 https://liaochenlanruo.hzaubmb.org/2018/09/19/syncthing搭建自己的同步云网盘/
 https://liaochenlanruo.hzaubmb.org/2018/09/17/perl循环调用python爬虫批量下载喜马拉雅音频/
-https://liaochenlanruo.hzaubmb.org/2018/08/23/设置元素加载时间解决D3.js文字被图像覆盖的问题/
-https://liaochenlanruo.hzaubmb.org/2017/07/25/2017-peixunban/
-https://liaochenlanruo.hzaubmb.org/2017/07/18/焦尸/
