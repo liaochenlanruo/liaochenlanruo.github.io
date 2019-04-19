@@ -1,3 +1,4 @@
+https://liaochenlanruo.hzaubmb.org/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/
 https://liaochenlanruo.hzaubmb.org/2019/04/15/Wget-技巧/
 https://liaochenlanruo.hzaubmb.org/2019/04/01/github操作/
 https://liaochenlanruo.hzaubmb.org/2019/03/30/Ubuntu-open-mpi运行错误/
@@ -17,4 +18,3 @@ https://liaochenlanruo.hzaubmb.org/2018/11/16/生物信息学1：虚拟机及Bio
 https://liaochenlanruo.hzaubmb.org/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/
 https://liaochenlanruo.hzaubmb.org/2018/09/28/ArcMap10.6从世界地图扣取东亚及东南亚国家地图/
 https://liaochenlanruo.hzaubmb.org/2018/09/19/syncthing搭建自己的同步云网盘/
-https://liaochenlanruo.hzaubmb.org/2018/09/17/perl循环调用python爬虫批量下载喜马拉雅音频/
