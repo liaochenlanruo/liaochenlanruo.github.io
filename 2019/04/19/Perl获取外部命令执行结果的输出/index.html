@@ -12,7 +12,7 @@
     
     
     
-    <title>生物信息学3：微生物基因组学常用软件安装 | Liaochenlanruo</title>
+    <title>Perl获取外部命令执行结果的输出 | Liaochenlanruo</title>
     <link href="”https://liaochenlanruo.hzaubmb.org“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -305,13 +305,13 @@
         <i class="fa fa-home"></i>
         <a href="https://liaochenlanruo.hzaubmb.org">Liaochenlanruo</a>
         >
-        <span>生物信息学3：微生物基因组学常用软件安装</span>
+        <span>Perl获取外部命令执行结果的输出</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
+                <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -319,12 +319,16 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/软件/">软件</a>
+                <a href="/tags/perl/">perl</a>, 
+                
+                <a href="/tags/编程/">编程</a>, 
+                
+                <a href="/tags/Linux/">Linux</a>
                 
             </span>
             
             <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2018-12-05
+                <i class="fa fa-calendar"></i> 2019-04-19
             </span>
             
             <span class="label label-gal">
@@ -338,17 +342,21 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </h4>
             </div>
             <p>
-                <i class="fa fa-calendar"></i> 2018-12-05
+                <i class="fa fa-calendar"></i> 2019-04-19
             </p>
             <p>
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/软件/">软件</a>
+                <a href="/tags/perl/">perl</a>, 
+                
+                <a href="/tags/编程/">编程</a>, 
+                
+                <a href="/tags/Linux/">Linux</a>
                 
                 
                 
@@ -358,72 +366,17 @@
         </center>
     </div>
     <div class="content-article">
-        <p>本文详细介绍了Linux各发行版通用的几种软件安装方案，并有实例，主要是微生物基因组学常用软件的安装。<br><a id="more"></a></p>
-<p><strong>一、Linux 安装软件的常用方法：</strong><br>（1）将可执行程序加入环境变量</p>
-<p>一些软件包内包含的是可执行程序，不需要进行编译，这类程序可以在软件目录中通过终端“./主程序名”命令运行。所以可以将主程序所在的目录加入到环境变量中即可。常见的环境变量配置文件包括家目录下的“zshrc”、“bashrc”以及/etc目录下的“profile”。</p>
-<p>（2）创建可执行程序的软连接到已在环境变量的目录下</p>
-<p>可以视为方法一的另一种实现策略，通过“ln -s A B”进行创建，软连接可以理解为Windows下的快捷方式。A为主程序的绝对路径（包含主程序名称），B为目标路径，即放置软件快捷方式的地方（包含主程序名），一般可存于“/usr/loacl/bin”下。</p>
-<p>（3）源码配置编译及安装</p>
-<p>特点为解压源码包之后，存在“configure”文件，一般分三步安装，即在软件目录下打开终端，依次运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-<p>（4）通过源进行安装</p>
-<p>不同的Linux发行版含有不同的源和软件安装工具，只要联网，一条命令即可安装源中含有的软件。</p>
-<p>Ubuntu可以通过“sudo apt-get install 程序名”进行安装</p>
-<p>Centos可以通过“sudo yum install 程序名”进行安装</p>
-<blockquote>注：前三种方法适合任意Linux发行版，安装软件前可以先通过方法4进行，若源中不包含此软件再用前三种方法。</blockquote>
-
-
-<p><strong>二、软件下载及存储</strong><br>首先在Home目录下创建Tools目录，所有下载的软件均存放于tools目录之下，此处我的家目录为“manager”，即我软件存放目录为“/home/manager/Tools”。</p>
-<p><strong>三、软件安装</strong><br><strong>1. ABySS</strong></p>
-<p>首先安装依赖包：</p>
-<p>Open MPI</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf openmpi-4.0.0.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> openmpi-4.0.0</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">sudo make all install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
-<p>Git（可以不安装）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev git</span><br></pre></td></tr></table></figure>
-<p>sparsehash</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/sparsehash/sparsehash.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> sparsehash</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
-<p>ABySS</p>
-<p>首先删除旧版本（Bio-Linux自带的）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove abyss</span><br><span class="line"></span><br><span class="line">tar zxvf abyss-2.1.4.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> abyss-2.1.4</span><br><span class="line"></span><br><span class="line">wget http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.bz2</span><br><span class="line"></span><br><span class="line">tar jxf boost_1_56_0.tar.bz2</span><br><span class="line"></span><br><span class="line">./configure --<span class="built_in">enable</span>-maxk=160 --with-mpi=/usr/<span class="built_in">local</span>/lib/openmpi</span><br><span class="line"></span><br><span class="line"><span class="comment">#（注：openmpi的路径用“whereis openmpi”寻找）</span></span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-<p>不能多线程运行时（np=2），错误提示为“/usr/local/bin/mpirun: error while loading shared libraries: libopen-rte.so.40: cannot open shared object file: No such file or directory”，则需运行如下命令解决。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure></p>
-<p><strong>2. SPAdes</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf SPAdes-3.13.0-Linux.tar.gz</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/SPAdes-3.13.0-Linux/bin<span class="comment">#(加入环境变量)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p><strong>3. prokka</strong></p>
-<p>先安装依赖</p>
-<p>aragorn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line">i<span class="comment">#(进入插入模式），在文末建立新的一行</span></span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/Tools/prokka/aragorn.1.2.38</span><br><span class="line"></span><br><span class="line">esc <span class="comment">#(退出插入模式）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + :</span><br><span class="line"></span><br><span class="line">wq! <span class="comment">#(w,write; q,quit, !强制）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>barrnap</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/barrnap-0.6/bin</span><br><span class="line"></span><br><span class="line">esc</span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + :</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>tbl2asn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除旧版本：</span></span><br><span class="line">sudo rm -f /usr/bin/tbl2asn</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装新版本。解压，把主程序的名称改为 tbl2asn</span></span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/prokka/tbl2asn /usr/<span class="built_in">local</span>/bin/tbl2asn</span><br></pre></td></tr></table></figure>
-<p>minced<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压，进入程序所在的目录中</span></span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/prokka/minced-master/minced /usr/<span class="built_in">local</span>/bin/minced</span><br></pre></td></tr></table></figure></p>
-<p>parallel<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压缩，进入目录</span></span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
-<p>prodigal<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压缩，进入目录</span></span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
-<p>signalp<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压缩，用文本编辑器打开signalp主程序，改路径（第13行），并保存：</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$ENV</span>&#123;SIGNALP&#125; = <span class="string">'/home/manager/Tools/prokka/signalp-4.1'</span>;</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/signalp-4.1</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
-<p>rnammer</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压后进入文件夹，用文本编辑器打开rnammer主程序，修改第35行路径如下：</span></span><br><span class="line"></span><br><span class="line">my <span class="variable">$INSTALL_PATH</span> = <span class="string">"/home/manager/Tools/prokka/rnammer-1.2.src"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#通过whereis hammsearch命令查看其所在路径，修改第50行和53行，如下：</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$HMMSEARCH_BINARY</span> = <span class="string">"/usr/bin/hmmsearch"</span>;</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/rnammer-1.2.src</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>prokka</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/prokka-1.12/bin</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line">prokka --setupdb</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>Parsnp</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/marbl/parsnp/releases/download/v1.2/parsnp-Linux64-v1.2.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf parsnp-Linux64-v1.2.tar.gz</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/Parsnp-Linux64-v1.2<span class="comment">#(加入环境变量)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>roary（blast+, fasttree）</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install bedtools <span class="built_in">cd</span>-hit ncbi-blast+ mcl parallel cpanminus prank mafft fasttree</span><br><span class="line"></span><br><span class="line">sudo cpanm -f Bio::Roary</span><br><span class="line"></span><br><span class="line"><span class="comment">#出错的话运行：</span></span><br><span class="line"></span><br><span class="line">sudo cpan -f Bio::Roary</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>RAxML</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> standard-RAxML-master </span><br><span class="line"></span><br><span class="line">make -f Makefile.gcc</span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/standard-RAxML-master/raxmlHPC /usr/<span class="built_in">local</span>/bin/raxmlHPC</span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li>Prottest</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install prottest</span><br></pre></td></tr></table></figure>
-<ol start="8">
-<li>jModelTest</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install jmodeltest</span><br></pre></td></tr></table></figure>
+        <p>有时候perl脚本需要与Linux外部命令进行交互，本文讲解如何将外部命令的执行结果的输出（此处指的不是运行结果的返回值，而是标准输出上的内容之类）赋给perl变量。<br><a id="more"></a><br>首先需要了解perl调用shell命令的三种方式：</p>
+<p><br><br><strong>1. system</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system(<span class="string">"command"</span>);</span><br></pre></td></tr></table></figure>
+<p><br><br>通过system运行得到的结果是一个返回值，其实是一串数字，若外部命令运行成功，则返回值为“0”，若运行失败，则返回非0的值。</p>
+<p><br><br><strong>2. 反引号</strong> （ESC下面的那个键）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="built_in">command</span>`;</span><br></pre></td></tr></table></figure>
+<p><br><br>通过反引号运行，会返回shell运行结果的输出，下面的脚本通过“whereis”查询“COG_2014.phr”的绝对路径，并将其赋值给“$path”。然后通过正则表达式获取“COG_2014.phr”所在的目录的路径，并将其赋值给变量“$cogdb_dir”。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">my <span class="variable">$cogdb_dir</span>;</span><br><span class="line">my <span class="variable">$path</span> = `<span class="built_in">which</span> COG_2014.phr`;</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$path</span>=~/(.+)COG_2014.*/) &#123;</span><br><span class="line">	<span class="variable">$cogdb_dir</span> = <span class="variable">$1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span> <span class="variable">$cogdb_dir</span>;</span><br></pre></td></tr></table></figure>
+<p><br><br><strong>3. exec</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span>(<span class="string">"command"</span>);</span><br></pre></td></tr></table></figure>
+<p><br><br>exec与system相似，但是执行完exec命令之后，perl会终止运行，不再执行后续的代码。</p>
 
     </div>
 </article>
@@ -434,7 +387,7 @@
 <script>
 	if(!window.commentConfig) {
       window.commentConfig = {}
-      window.commentConfig.title = '生物信息学3：微生物基因组学常用软件安装'
+      window.commentConfig.title = 'Perl获取外部命令执行结果的输出'
     }
 </script>
 
@@ -485,17 +438,17 @@
 	    <ul class="nav nav-pills pills-gal">
 		
 		<li>
-		    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+		    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
 		</li>
 		
 		
 		<li>
-	            <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+	            <a href="/2019/04/19/Perl获取外部命令执行结果的输出/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
 		</li>
 		
 		
 		<li>
-		    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+		    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
 		</li>
 		
 	    </ul>
@@ -503,53 +456,53 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 10.68725583712021px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/培训/" style="font-size: 18.827000529731556px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/JAVA/" style="font-size: 14.494749605218448px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 9.807065008645754px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/Hexo/" style="font-size: 14.76736746048454px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/Hexo/" style="font-size: 10.97412921779375px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/perl/" style="font-size: 16.03034798910527px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/perl/" style="font-size: 10.431047562136547px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/编程/" style="font-size: 18.695614998555765px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/编程/" style="font-size: 14.970701996911233px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/Linux/" style="font-size: 19.58005799231684px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 9.353191964185747px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/地图/" style="font-size: 11.512207118113725px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/地图/" style="font-size: 11.497726069700093px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 10.284081663812628px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/同源家族/" style="font-size: 9.655200460843798px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/R语言/" style="font-size: 18.81109479550797px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/R语言/" style="font-size: 15.219395534715499px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/绘图/" style="font-size: 11.312601740058273px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/绘图/" style="font-size: 13.384451020855952px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/下载/" style="font-size: 18.454421106248528px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/下载/" style="font-size: 10.854131639127786px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/Github/" style="font-size: 12.188265451223774px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/Github/" style="font-size: 16.322202087120147px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/SNPs/" style="font-size: 13.754306806177638px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 13.218784662977136px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 19.249881575117875px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 15.949050536456673px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/音乐/" style="font-size: 15.625588800980708px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/音乐/" style="font-size: 10.16317933234272px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/爬虫/" style="font-size: 19.844492596989113px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/爬虫/" style="font-size: 16.058636334189593px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/网盘/" style="font-size: 16.898559020749758px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 13.551558157843633px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 17.010139144383295px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/系统/" style="font-size: 11.27587631060564px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/PubMed/" style="font-size: 14.960934952612254px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/PubMed/" style="font-size: 17.189134497604005px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 13.69806961710214px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 18.152414644266525px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 13.592535373037485px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 11.778201458525526px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/表型预测/" style="font-size: 14.416004930628063px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 10.928607039665561px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 12.799625888334832px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 15.605654441005298px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 14.108508019259503px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 16.410796899597816px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -738,19 +691,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2017/07/25/2017-peixunban/">微生物基因组学培训活动落幕</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/">JAVA jre 安装或升级1603 error解决办法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/20/OrthoFinder2—同源蛋白家族聚类/">OrthoFinder2—同源蛋白家族聚类</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/04/01/github操作/">Github操作</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </span>
             </li>
             
@@ -762,37 +715,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/03/15/今天的梦/">今天的梦</a>
+                    <a href="/2010/06/17/复仇/">复仇</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
+                    <a href="/2016/05/29/新生/">新生</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                    <a href="/2018/12/14/根据基因组预测表型-traitar的安装与使用/">根据基因组预测表型 —— traitar的安装与使用</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2010/10/11/老婆一家“人”/">老婆一家“人”</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2013/07/16/肩上的手/">肩上的手</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/02/01/用wget批量下载含有链接的文件-目录/">用wget批量下载含有链接的文件/目录</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2017/07/18/焦尸/">焦尸</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2015/03/02/逃亡/">逃亡</a>
                 </span>
             </li>
             
@@ -914,7 +867,7 @@
 <script src="https://myau.moe/js/comment/gitment.browser.js"></script>
 <script>
     if(window.commentConfig) {
-      window.commentConfig.id = 'Wed Dec 05 2018 05:42:18 GMT+0800'
+      window.commentConfig.id = 'Fri Apr 19 2019 23:54:38 GMT+0800'
       window.commentConfig.owner = 'liaochenlanruo'
       window.commentConfig.repo = 'comments'
       window.commentConfig.client_id = '5d1f3e39a77775afaf62'
@@ -922,7 +875,7 @@
       window.commentConfig.redirect_uri = ''
     } else {
       window.commentConfig = {
-      	id: 'Wed Dec 05 2018 05:42:18 GMT+0800',
+      	id: 'Fri Apr 19 2019 23:54:38 GMT+0800',
         owner: 'liaochenlanruo',
         repo: 'comments',
         client_id: '5d1f3e39a77775afaf62',
