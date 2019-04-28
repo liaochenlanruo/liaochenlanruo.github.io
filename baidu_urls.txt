@@ -1,4 +1,4 @@
-https://liaochenlanruo.hzaubmb.org/2019/04/28/PCGAP-Chinese-instruction/
+https://liaochenlanruo.hzaubmb.org/2019/04/28/PCGAP中文说明/
 https://liaochenlanruo.hzaubmb.org/2019/04/19/Perl获取外部命令执行结果的输出/
 https://liaochenlanruo.hzaubmb.org/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/
 https://liaochenlanruo.hzaubmb.org/2019/04/15/Wget-技巧/
