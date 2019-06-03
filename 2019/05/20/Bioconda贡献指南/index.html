@@ -164,7 +164,11 @@
                         
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
+                            <a href="/tags/培训/">培训</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -180,15 +184,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/JAVA/">JAVA</a>
                         </li>
                         
                         <li>
                             <a href="/tags/同源家族/">同源家族</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/比较基因组学/">比较基因组学</a>
                         </li>
                         
                         <li>
@@ -197,10 +201,6 @@
                         
                         <li>
                             <a href="/tags/编程/">编程</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Linux/">Linux</a>
                         </li>
                         
                         
@@ -225,7 +225,11 @@
                         
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
+                            <a href="/tags/培训/">培训</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -241,15 +245,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/JAVA/">JAVA</a>
                         </li>
                         
                         <li>
                             <a href="/tags/同源家族/">同源家族</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/比较基因组学/">比较基因组学</a>
                         </li>
                         
                         <li>
@@ -258,10 +262,6 @@
                         
                         <li>
                             <a href="/tags/编程/">编程</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Linux/">Linux</a>
                         </li>
                         
                         
@@ -398,7 +398,7 @@
 
 <p><br><br>例如，创建并切换到一个名字为 “pgcgap” 的 新分支</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b pgcgap</span><br></pre></td></tr></table></figure>
-<p><br><br>在”bioconda-recipes/recipes/“目录下新建”pgcgap”目录，并将撰写好的”build.sh”和”meta.yaml”存入其中。</p>
+<p><br><br>在”bioconda-recipes/recipes/“目录下新建”pgcgap”目录，并将撰写好的”<a href="https://docs.conda.io/projects/conda-build/en/latest/resources/build-scripts.html" target="_blank" rel="noopener">build.sh</a>“和”<a href="https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#architecture-independent-packages" target="_blank" rel="noopener">meta.yaml</a>“存入其中。</p>
 <p><br><br>注：Step6和Step7可以跳过</p>
 <p><br></p>
 <b>Step6：本地测试 recipe</b> （可选，即可以直接在线测试）<br><br><br><br>在”bioconda-recipes/“目录下依次运行如下命令：<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$./bootstrap.py /tmp/miniconda</span><br><span class="line"><span class="variable">$source</span> ~/.config/bioconda/activate</span><br><span class="line"></span><br><span class="line"><span class="comment"># optional linting</span></span><br><span class="line"><span class="variable">$bioconda</span>-utils lint recipes config.yml --git-range master</span><br><span class="line"></span><br><span class="line"><span class="comment"># build and test</span></span><br><span class="line"><span class="variable">$bioconda</span>-utils build recipes config.yml --docker --mulled-test --git-range master</span><br></pre></td></tr></table></figure><br><br><br><br><b>Step7：更新 recipes</b> (可选）<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$bioconda</span>-utils update-pinning recipes/ config.yml --packages pgcgap --create-pr</span><br></pre></td></tr></table></figure><br><br><br><br><b>Step8：推送修改，等待测试通过，提交 pull 请求</b>
@@ -531,57 +531,57 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/JAVA/" style="font-size: 10.638295473013791px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/培训/" style="font-size: 16.866098411200866px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 8.83585893965197px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Hexo/" style="font-size: 17.713595963026577px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/Github/" style="font-size: 10.735882702571315px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/地图/" style="font-size: 15.78211056234801px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 13.465305225644709px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Github/" style="font-size: 9.187111727798465px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Hexo/" style="font-size: 8.70385784409017px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/Bioconda/" style="font-size: 9.371732022299536px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/同源家族/" style="font-size: 9.90250217812116px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 11.17315590659788px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 17.94621730150871px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/JAVA/" style="font-size: 8.533640697129478px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 9.272253157188166px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 11.869624466971782px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 11.097681039368432px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/perl/" style="font-size: 11.135825647532261px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/Linux/" style="font-size: 17.480602958403225px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/编程/" style="font-size: 8.896797499761057px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/培训/" style="font-size: 13.206840179753968px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Linux/" style="font-size: 15.444979722916088px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/下载/" style="font-size: 8.977878958515225px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/R语言/" style="font-size: 12.43792743686555px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/系统/" style="font-size: 17.440262604744326px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/绘图/" style="font-size: 10.23160976040727px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/SNPs/" style="font-size: 12.060350718254064px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/下载/" style="font-size: 13.510821745111627px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/进化/" style="font-size: 10.476978768560812px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/SNPs/" style="font-size: 10.127081652197035px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/音乐/" style="font-size: 13.213059634866475px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/进化/" style="font-size: 8.983449239824681px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/爬虫/" style="font-size: 17.04319637892145px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/音乐/" style="font-size: 17.95287420214214px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/网盘/" style="font-size: 18.8340679455578px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/爬虫/" style="font-size: 11.572859012458192px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 9.71319342161264px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 16.913660398533295px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 13.960932359007845px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/PubMed/" style="font-size: 19.41079589629284px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/PubMed/" style="font-size: 14.796281040345203px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 15.365977268032836px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/R语言/" style="font-size: 11.387631665375107px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/网盘/" style="font-size: 13.315236855434327px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/绘图/" style="font-size: 11.757261056410464px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/系统/" style="font-size: 15.09600976977205px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/软件/" style="font-size: 10.235746846745517px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/表型预测/" style="font-size: 13.265561479361216px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 10.997969183967289px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 13.468476822754582px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/表型预测/" style="font-size: 8.682386852010913px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/软件/" style="font-size: 16.169215303061435px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -770,7 +770,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/01/2018-peixunban/">我校师生于南昌开设2018年微生物基因组学培训班</a>
+                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/03/18/为PubMed添加功能/">为PubMed添加功能</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/12/06/亦生亦死/">亦生亦死</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2013/06/08/南湖异事/">南湖异事</a>
                 </span>
             </li>
             
@@ -782,49 +800,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
+                    <a href="/2010/01/09/河岸的老者/">河岸的老者</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/03/29/奶奶/">奶奶</a>
+                    <a href="/2017/07/18/焦尸/">焦尸</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/05/17/滴血的笔/">滴血的笔</a>
+                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
+                    <a href="/2013/07/16/肩上的手/">肩上的手</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/11/04/神棍节/">神棍节</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2015/03/02/逃亡/">逃亡</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2010/12/13/葬/">葬</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2015/09/12/逍遥于世/">逍遥于世</a>
+                    <a href="/2014/07/19/影子/">影子</a>
                 </span>
             </li>
             
