@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Hualin Liu">
+    
+    <meta name="description" content="Good good study, and day day up!">
+    
+    
+    
+    
+    
+    
+    <title>Learning microbial bioinformatics | Liaochenlanruo</title>
+    <link href="”https://liaochenlanruo.hzaubmb.org“" rel="”prefetch”">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/highslide/highslide-full.min.js"></script>
+    <link rel="stylesheet" href="/js/highslide/highslide.css">
+    <style type="text/css">
+        @media (max-width: 768px) {
+            body {
+                background-color: #f0f0f0;
+                background: url('/imgs/xsbg.gif');
+                background-attachment: fixed;
+            }
+        }
+    </style>
+    
+    <script src="//cdn1.lncld.net/static/js/3.4.2/av-min.js"></script>
+    <script>
+      AV.init({
+        appId: 'Dfqm5YsyQWjrp0pm11CsvQb2-gzGzoHsz',
+        appKey: 'iIqYHzdT8zt3eSt5VKGxnP3o'
+      })
+    </script>
+    
+    <!--<script type="text/javascript">
+      if (document.images) {
+        var avatar = new Image();
+        avatar.src = '/imgs/IMG_7557.jpg'
+        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
+        var previewsPreLoad = []
+        for(var i = 0; i < length; i++) {
+          previewsPreLoad.push(new Image())
+          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
+        }
+      }
+    </script>-->
+    <script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+    <script>AV.initialize("Dfqm5YsyQWjrp0pm11CsvQb2-gzGzoHsz", "iIqYHzdT8zt3eSt5VKGxnP3o");</script>
+    <!-- 百度统计代码 -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d211830a796ceefb38a141fde14e4d5a";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    <!-- 百度自动推送工具代码 -->
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
+    <!-- 360自动推送工具代码 -->
+    <script>
+    (function(){
+    var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?9bd5505551482c3846d5965bed26217c":"https://jspassport.ssl.qhimg.com/11.0.1.js?9bd5505551482c3846d5965bed26217c";
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+    </script>
+    <script>
+    (function(){
+    var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?8b414491520379aa65764fa15b8bfb07":"https://jspassport.ssl.qhimg.com/11.0.1.js?8b414491520379aa65764fa15b8bfb07";
+    document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+    </script>
+    <!-- 顶部加载条 -->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+</head></html>
+<body>
+    <!-- 背景轮播图功能 -->
+    <section class="hidden-xs">
+    <ul class="cb-slideshow">
+        <li><span>天若</span></li>
+        <li><span>有情</span></li>
+        <li><span>天亦老</span></li>
+        <li><span>我为</span></li>
+        <li><span>长者</span></li>
+        <li><span>续一秒</span></li>
+    </ul>
+</section>
+    <!-- 欧尼酱功能, 谁用谁知道 -->
+    
+    <header class="navbar navbar-inverse" id="gal-header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target=".bs-navbar-collapse"
+                    aria-expanded="false">
+                <span class="fa fa-lg fa-reorder"></span>
+            </button>
+            <a href="https://liaochenlanruo.hzaubmb.org">
+                
+                <style>
+                    #gal-header .navbar-brand {
+                        height: 54px;
+                        line-height: 24px;
+                        font-size: 28px;
+                        opacity: 1;
+                        background-color: rgba(0,0,0,0);
+                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
+                    }
+                </style>
+                <!-- 这里使用文字(navbar_text or config.title) -->
+                <div class="navbar-brand">了尘兰若的狗窝</div>
+                
+            </a>
+        </div>
+        <div class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav" id="menu-gal">
+                
+                
+                <li class="">
+                    <a href="/">
+                        <i class="fa fa-home"></i>首页
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/archives/">
+                        <i class="fa fa-archive"></i>归档
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/categories/">
+                        <i class="fa fa-list"></i>分类
+                    </a>
+                </li>
+                
+                
+                
+                
+                <li class="dropdown">
+                    <!-- TODO 添加hover dropdown效果 -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
+                        <i class="fa fa-tags"></i>标签
+                    </a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li>
+                            <a href="/tags/培训/">培训</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Linux/">Linux</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/WGS/">WGS</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/地图/">地图</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Hexo/">Hexo</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/perl/">perl</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/编程/">编程</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/R语言/">R语言</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/绘图/">绘图</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                        </li>
+                        
+                        
+                        <li>
+                            <a href="/tags/">...</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+                
+                <li class="">
+                    <a href="/about/">
+                        <i class="fa fa-user"></i>关于我
+                    </a>
+                </li>
+                
+                
+                
+                <li class="">
+                    <a href="/Message/">
+                        <i class="fa fa-comments"></i>留言板
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</header>
+    <div id="gal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 gal-right" id="mainstay">
+                    
+<article class="article well article-body" id="article">
+    <div class="breadcrumb">
+        <i class="fa fa-home"></i>
+        <a href="https://liaochenlanruo.hzaubmb.org">Liaochenlanruo</a>
+        >
+        <span>Learning microbial bioinformatics</span>
+    </div>
+    <!-- 大型设备详细文章 -->
+    <div class="hidden-xs">
+        <div class="title-article">
+            <h1>
+                <a href="/2019/10/30/Learning-microbial-bioinformatics/">Learning microbial bioinformatics</a>
+            </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Linux/">Linux</a>, 
+                
+                <a href="/tags/WGS/">WGS</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2019-10-30
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-eye"></i>
+            </span>
+            
+        </div>
+    </div>
+    <!-- 小型设备详细文章 -->
+    <div class="visible-xs">
+        <center>
+            <div class="title-article">
+                <h4>
+                    <a href="/2019/10/30/Learning-microbial-bioinformatics/">Learning microbial bioinformatics</a>
+                </h4>
+            </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2019-10-30
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/Linux/">Linux</a>, 
+                
+                <a href="/tags/WGS/">WGS</a>
+                
+                
+                
+                <i class="fa fa-eye"></i>
+                
+            </p>
+        </center>
+    </div>
+    <div class="content-article">
+        <p>This article introduces you to the basics of Linux, common commands usage, and software installation, and the whole-genome sequencing technology was also introduced to help you get started with bioinformatics.<br><a id="more"></a></p>
+<h1 id="1-Learning-Linux"><a href="#1-Learning-Linux" class="headerlink" title="1. Learning Linux"></a>1. Learning Linux</h1><h2 id="A-Directory-structure-and-path"><a href="#A-Directory-structure-and-path" class="headerlink" title="(A) Directory structure and path"></a>(A) Directory structure and path</h2><p><strong>Root directory:</strong> The root directory is the top-level directory of a file system, which was represented by <strong>“/“</strong>, and all other directories are subdirectories of the root directory.</p>
+<p><strong>Home directory:</strong> A home directory, represented by <strong>“~/“</strong>, is the directory that serves as the repository for a user’s personal files, directories and programs. It is also the directory that a user is first in after logging into the system.</p>
+<p><strong>Absolute path:</strong> An absolute path, also known as full path, refers to the absolute location of a directory or file, and is the full path starting from the root directory, such as “/home/bio/“. The absolute path of the current directory can be obtained by the <strong>“pwd”</strong> command.</p>
+<p><strong>Relative path:</strong> A relative path is a way to specify the location of a directory relative to another directory. The relative path does not need to start from the root directory.</p>
+<p><strong>Current directory:</strong> The current path is represented by <strong>“./“</strong>.</p>
+<p><strong>Parent directory:</strong> The <strong>“../“</strong> represents the parent directory, <strong>“../../“</strong> represents parent directory of the parent directory, and so on.</p>
+<h2 id="B-Nomenclature"><a href="#B-Nomenclature" class="headerlink" title="(B) Nomenclature"></a>(B) Nomenclature</h2><p><strong>(i)</strong> Documents and directories need to be named in English, with letters, numbers, and underscores;</p>
+<p><strong>(ii)</strong> Avoid using spaces in the names of documents and directories;</p>
+<p><strong>(iii)</strong> The name is case sensitive.</p>
+<h2 id="C-Terminal-tools"><a href="#C-Terminal-tools" class="headerlink" title="(C) Terminal tools"></a>(C) Terminal tools</h2><p>A terminal is a tool for running Linux commands, similar to the command-line tool of Windows. When remotely manipulating a Linux server, users can use third-party terminal tools such as <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="noopener">PuTTy</a> software. File transfer between the local computer and the remote server can be done via FTP software, such as <a href="https://filezilla-project.org/" target="_blank" rel="noopener">FileZilla</a>. Enter the server’s IP address, username, password, and port to sign in the server. If the server uses the FTP protocol, the port should be <strong>21</strong>. If the SFTP protocol is used, the port is set to <strong>22</strong>.</p>
+<h2 id="D-Commonly-used-commands"><a href="#D-Commonly-used-commands" class="headerlink" title="(D) Commonly used commands"></a>(D) Commonly used commands</h2><p><strong>pwd:</strong> Get the absolute path of the current location<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$pwd</span><br></pre></td></tr></table></figure></p>
+<p><strong>mkdir:</strong> Create a directory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mkdir tools</span><br></pre></td></tr></table></figure></p>
+<p><strong>ls:</strong> View the contents of the current directory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p>View all directories and files (including hidden contents)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls -a</span><br></pre></td></tr></table></figure></p>
+<p>View the contents of the root directory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls /</span><br></pre></td></tr></table></figure></p>
+<p>View the contents of the home directory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls ~/</span><br></pre></td></tr></table></figure></p>
+<p><strong>cd:</strong> Switch path</p>
+<p>Go to the “tools” directory<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cd tools</span><br></pre></td></tr></table></figure></p>
+<p><strong>vim:</strong> create/edit a document<br>All of the following operations must be performed in English input mode. Firstly, create a new document named “example.txt” and enter some words.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vim example.txt</span><br></pre></td></tr></table></figure></p>
+<p>The user is unable to enter content until the <strong>“i”</strong> key was pressed to switch to input mode. When <strong>“–INSERT –”</strong> appears in the lower left corner, users can enter text. When the input is completed, users need to press the <strong>“ESC”</strong> button to exit the edit mode. At this time, the word “–INSERT –” disappears. Press <strong>“shift + ;”</strong> to switch to the vim mode, and a <strong>“:”</strong> appears in the lower left corner. Enter <strong>“wq!”</strong> to save your changes and exit.</p>
+<p>Check if the created file is in the directory.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><strong>cp:</strong> copy directories or files</p>
+<p>Copy the created “example.txt” document to the parent directory.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cp example.txt ../</span><br></pre></td></tr></table></figure></p>
+<p>Check if the document was copied successfully.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls ../</span><br></pre></td></tr></table></figure></p>
+<p><strong>rm:</strong> delete the directories or files</p>
+<p>Delete the “example.txt” document in the tools directory.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$rm example.txt</span><br></pre></td></tr></table></figure></p>
+<p>Check if the document has been deleted successfully.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><strong>mv:</strong> move or rename</p>
+<p>Move the “example.txt” document in the parent directory to the current directory.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mv ../example.txt ./</span><br></pre></td></tr></table></figure></p>
+<p>Check if the document was moved successfully.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ls ../</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p>Rename the “example.txt” document to “examp2.txt”.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mv example.txt examp2.txt</span><br></pre></td></tr></table></figure></p>
+<p>View the results of the rename.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><strong>wget:</strong> Download</p>
+<p>Use the wget tool to download the genomic assembly software “AbySS” to the tools directory.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$wget http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases/2.1.5/abyss-2.1.5.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p><strong>tar:</strong> compression/decompression</p>
+<p>The file in “tar.gz” format can be decompressed with “tar zxvf”, decompress the “abyss-2.1.5.tar.gz” that you just downloaded.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$tar zxvf abyss-2.1.5.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p><strong>top:</strong> View system processes<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$top</span><br></pre></td></tr></table></figure></p>
+<p>Press the key “q” to exit. Ubuntu also comes with a more intuitive tool <strong>“htop”</strong> for viewing system processes.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$htop</span><br></pre></td></tr></table></figure>
+<h2 id="E-Environment-Variables"><a href="#E-Environment-Variables" class="headerlink" title="(E) Environment Variables"></a>(E) Environment Variables</h2><p>It is often necessary to set environment variables when installing software. The so-called environment variable is to tell the computer where the software was installed. The file that stores the environment variable is hidden in the user’s home directory and can be viewed with the <strong>“ls -a”</strong> command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls -a ~/</span><br></pre></td></tr></table></figure>
+<p><strong>“.bashrc”</strong> and <strong>“.profile”</strong> are both environment variable configuration files, usually we only need to edit “.bashrc”.</p>
+<h2 id="F-Software-Installation-on-Linux"><a href="#F-Software-Installation-on-Linux" class="headerlink" title="(F) Software Installation on Linux"></a>(F) Software Installation on Linux</h2><h3 id="i-Source-code-compilation-and-installation"><a href="#i-Source-code-compilation-and-installation" class="headerlink" title="(i) Source code compilation and installation"></a>(i) Source code compilation and installation</h3><p>The source code installation is suitable for all Linux distributions and macOS. Take the “AbySS” genome assembly software as an example to demonstrate the source code compilation and installation, a total of three steps are required: configuration (./configure), compilation (make) and installation (sudo make install). First enter the “AbySS” software directory, and view the files in the directory, find the configuration file “configure”, and configure the software according to the instructions in “README.md”.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$cd abyss-2.1.5/</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure>
+<p>“./configure” means running configure for pre-installation configuration.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./configure</span><br></pre></td></tr></table></figure></p>
+<p>Execute compilation<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$make</span><br></pre></td></tr></table></figure></p>
+<p>To install, you need the “sudo” command to provide write access to the system directory.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo make install</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong> The above steps only show the general installation method, but the “AbySS” software relies on some other software. Users need to install the dependency packages first, and finally install “AbySS”, otherwise the installation will fail.</p>
+<h3 id="ii-Install-software-through-the-package-management-tool"><a href="#ii-Install-software-through-the-package-management-tool" class="headerlink" title="(ii) Install software through the package management tool"></a>(ii) Install software through the package management tool</h3><p>Different Linux distributions have their own package manager. Currently used Linux distributions are mainly based on <strong>“RedHat”</strong> and <strong>“Debian”</strong>. The package manager of the RedHat series is <strong>“yum”</strong>. The method is to enter <strong>“sudo yum install -y software-name”</strong> in the terminal. The package manager of the Debian series is <strong>“apt-get”</strong>. The method is to enter <strong>“sudo apt-get install software-name”</strong> in the terminal.</p>
+<p><strong>Example:</strong> Install AbySS software in Ubuntu via apt-get, enter the command and password, and then enter “Y” as prompted and press Enter to auto-install.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo apt-get install abyss</span><br></pre></td></tr></table></figure>
+<h3 id="iii-Install-software-by-editing-environment-variables"><a href="#iii-Install-software-by-editing-environment-variables" class="headerlink" title="(iii) Install software by editing environment variables"></a>(iii) Install software by editing environment variables</h3><p>The prokaryotic gene prediction software “Prodigal” was used as an example. First find the prodigal source codes on Github, click on “Clone or download” and copy the git address. Enter the tools directory in the terminal and enter the clone command to clone the project to local computer. The command formula is <strong>“git clone link”</strong>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$git clone https://github.com/hyattpd/Prodigal.git</span><br></pre></td></tr></table></figure>
+<p>Go to the “Prodigal” directory after the clone is complete.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cd Prodigal</span><br></pre></td></tr></table></figure></p>
+<p>Compilation the software<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$make</span><br></pre></td></tr></table></figure></p>
+<p>If the “gcc” was not installed, there will be an error message shows that the gcc command cannot be found, so users need to install gcc first. After entering the command, enter the password as prompted until the installation is complete.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo apt-get install gcc</span><br></pre></td></tr></table></figure>
+<p>Recompile prodigal<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$make</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p>When the compilation is complete, the executable is obtained, but the system cannot find the path of prodigal, so users need to add its path to the environment variable. Open the environment variable configuration file “.bashrc” via vim.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>Add the configuration statement <strong>“export PATH=$PATH:$HOME/tools/Prodigal”</strong> at the end of the document. $HOME represents the home directory, and “$HOME/tools/Prodigal” represents the directory where the prodigal executable is located.</p>
+<p>Save and exit after editing is complete. Then execute the <strong>“source ~/.bashrc”</strong> command to notice the system that the “.bashrc” document has been changed.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>Check if the configuration is successful.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$prodigal -h</span><br></pre></td></tr></table></figure></p>
+<p>To add other software to the environment variable, just write their path behind the previous one. The paths of each software are separated by “:”, and there must be no spaces.</p>
+<h3 id="iv-Create-a-soft-link"><a href="#iv-Create-a-soft-link" class="headerlink" title="(iv) Create a soft link"></a>(iv) Create a soft link</h3><p>Soft Link is similar to the shortcut of Windows system. Users can store the soft link of the executable program into the system default environment variables, such as <strong>“/usr/bin/“</strong> or <strong>“/usr/local/bin”</strong>. Still taking the newly compiled prodigal software as an example, the formula for creating a soft link is <strong>“sudo ln -s /home/bio/tools/Prodigal/prodigal /usr/local/bin/prodigal”</strong>. Enter the password as prompted to complete the creation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ln -s /home/bio/tools/Prodigal/prodigal /usr/local/bin/prodigal</span><br></pre></td></tr></table></figure>
+<p>Check if the soft link is created successfully by using the “whereis” command.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$whereis prodigal</span><br></pre></td></tr></table></figure></p>
+<p><strong>Notice:</strong> Users must enter the absolute path when creating a soft link, otherwise you will get error message “Too many levels of symbolic links”.</p>
+<h3 id="v-Install-the-software-via-Anaconda-Package-Manager"><a href="#v-Install-the-software-via-Anaconda-Package-Manager" class="headerlink" title="(v) Install the software via Anaconda Package Manager"></a>(v) Install the software via Anaconda Package Manager</h3><p>Anaconda is a free, platform-agnostic, easy-to-install package manager and environment manager. Bioconda is a channel for the conda package manager specializing in bioinformatics software. When installing the software via conda, all the dependencies will be installed with one command, which saves time and reduces the installation difficulty. Bioconda currently has more than 600 contributors and 500 members, and most bioinformatics software is included. Users can go to the official website to search for the software they need.</p>
+<p><strong>Installation of conda</strong></p>
+<p>Here, <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener">Miniconda</a> will be installed, go to the <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener">official website</a>, and select the installation file suitable for your system and python version.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p><strong>start installation</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></p>
+<p>Press Enter when prompted to view the license, enter “yes” and press “Enter” to continue. Press “Enter” to confirm the installation location. Miniconda is installed in the miniconda3 directory under the home directory. Type “yes” and press “Enter” to initialize. Finally run the “source ~/.bashrc” command.</p>
+<p><strong>Set up bioconda channel</strong></p>
+<p>Add the channels by entering the following three commands in the terminal:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$conda config --add channels defaults</span><br><span class="line">$conda config --add channels bioconda</span><br><span class="line">$conda config --add channels conda-forge</span><br></pre></td></tr></table></figure></p>
+<p>Now, bioconda was configured and bioinformatics software can be installed via conda. Next, the mapping software “bwa” will be installed via conda.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$conda install bwa</span><br></pre></td></tr></table></figure>
+<p>Enter <strong>“y”</strong> as prompted to complete the installation.</p>
+<h2 id="G-Install-bioinformatics-software-on-MacOS"><a href="#G-Install-bioinformatics-software-on-MacOS" class="headerlink" title="(G) Install bioinformatics software on MacOS"></a>(G) Install bioinformatics software on MacOS</h2><h3 id="i-Source-code-compilation-and-installation-1"><a href="#i-Source-code-compilation-and-installation-1" class="headerlink" title="(i) Source code compilation and installation"></a>(i) Source code compilation and installation</h3><p>The source code installation method of macOS is same as the Linux installation method.</p>
+<h3 id="ii-Create-a-soft-link"><a href="#ii-Create-a-soft-link" class="headerlink" title="(ii) Create a soft link"></a>(ii) Create a soft link</h3><p>The configuration method is the same as Linux.</p>
+<h3 id="iii-Install-software-by-adding-environment-variables"><a href="#iii-Install-software-by-adding-environment-variables" class="headerlink" title="(iii) Install software by adding environment variables"></a>(iii) Install software by adding environment variables</h3><p>The macOS environment variable configuration method is the same as that of the Linux, but the configuration file is “.bash_profile” in the home directory. Run the following command to edit it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vim ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>After the editing is completed and saved, users need to run the source command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$source ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<h3 id="iv-Install-software-through-the-package-management-tool"><a href="#iv-Install-software-through-the-package-management-tool" class="headerlink" title="(iv) Install software through the package management tool"></a>(iv) Install software through the package management tool</h3><p>The package manager of macOS is Homebrew, and it can be installed with the following command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+<p>Install mapping software “bwa” via Homebrew.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$brew install bwa</span><br></pre></td></tr></table></figure></p>
+<h3 id="v-Configuration-Anaconda-on-macOS"><a href="#v-Configuration-Anaconda-on-macOS" class="headerlink" title="(v) Configuration Anaconda on macOS"></a>(v) Configuration Anaconda on macOS</h3><p>Installation of Miniconda3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh</span><br><span class="line">$sh Miniconda3-latest-MacOSX-x86_64.sh</span><br><span class="line">$source ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<p>Add channels of Bioconda<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$conda config --add channels defaults</span><br><span class="line">$conda config --add channels bioconda</span><br><span class="line">$conda config --add channels conda-forge</span><br></pre></td></tr></table></figure></p>
+<p>Installation of the software bwa<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$conda install bwa</span><br></pre></td></tr></table></figure></p>
+<h1 id="2-Sequencing-technology"><a href="#2-Sequencing-technology" class="headerlink" title="2. Sequencing technology"></a>2. Sequencing technology</h1><h2 id="A-“Next-generation”-sequencing-technology"><a href="#A-“Next-generation”-sequencing-technology" class="headerlink" title="(A) “Next-generation” sequencing technology"></a>(A) “Next-generation” sequencing technology</h2><p>The core idea of the next-generation sequencing technology (NGS) is “Sequencing by Synthesis”, which determines the sequence of DNA by capturing the newly added dNTP. The most widely used platform is mainly Illumina’s products. The advantages of NGS includes high throughput, scalability, low error rate, low cost, and speed.</p>
+<p><strong>Terms in Illumina sequencing:</strong></p>
+<p><strong>Read length:</strong> The number of base pairs (bp) sequenced from a DNA fragment.</p>
+<p><strong>Insert size:</strong> The length of sequence between paired-end adapters.</p>
+<p><strong>Junction:</strong> The unsequenced part in the middle of the insert.</p>
+<p><strong>Flowcell:</strong> The location where the sequencing reaction occurs. One flowcell contains 8 lanes.</p>
+<p><strong>Lane:</strong> There are eight lanes on each flowcell, samples can be loaded on the lane for simultaneous analysis on the Illumina sequencing system.</p>
+<p><strong>Raw data:</strong> Reads with adapters, linker, low quality sequences and short sequences.</p>
+<p><strong>Clean data:</strong> The adapters, linker, low-quality reads, shorter reads and reads produced by ribosomal RNA and ncRNA were removed from Raw data.</p>
+<p><strong>Data size:</strong> (Read length) x (Reads number).</p>
+<h2 id="B-Third-generation-sequencing"><a href="#B-Third-generation-sequencing" class="headerlink" title="(B) Third-generation sequencing"></a>(B) Third-generation sequencing</h2><p>Third-generation sequencing, also known as single-molecule sequencing, the sequencing process does not require PCR amplification step and can produce ultra-long reads, which can span regions with high GC content and highly repetitive regions. Currently used sequencing platforms include Pacific Biosciences (PacBio) and Oxford Nanopore.</p>
+<p><strong>PacBio</strong> uses SMRT Cell as a carrier for sequencing reactions. PacBio also uses “Sequencing by Synthesis” method, sequencing reactions are carried out in nanopores, and a DNA polymerase and a DNA template are immobilized in a nanopore. The dNTP fluorescence signal is detected during the extension reaction to determine the base sequence. The <strong>nanopore</strong> sequencing technology developed by Oxford is truly real-time sequencing, which is based on electrical signals to determine the bases.</p>
+<h2 id="C-Common-sequence-format"><a href="#C-Common-sequence-format" class="headerlink" title="(C) Common sequence format"></a>(C) Common sequence format</h2><p><strong>Fastq</strong></p>
+<p>A FASTQ file is a text file that contains the sequence data from the clusters that pass filter on a <a href="https://support.illumina.com/bulletins/2016/04/fastq-files-explained.html" target="_blank" rel="noopener">flow cell</a>. Reads data are usually in fastq format, and each read contains 4 lines, the first line describes information about sequencing, the second line contains nucleotide sequence, the third line generally has no information, and the fourth line shows the sequencing quality of each base in the second line.</p>
+<p><strong>Fasta</strong></p>
+<p>The <a href="http://scikit-bio.org/docs/0.5.2/generated/skbio.io.format.fasta.html?highlight=fasta#module-skbio.io.format.fasta" target="_blank" rel="noopener">FASTA format</a> is a text-based format for representing nucleotide sequences or amino acid sequences. Each sequence including two parts, the first part contains ID of the sequence with <strong>“&gt;”</strong> at the start, the second part contains the nucleotide sequences or amino acid sequences.</p>
+<p><strong>Genbank</strong></p>
+<p><a href="http://scikit-bio.org/docs/0.5.2/generated/skbio.io.format.genbank.html" target="_blank" rel="noopener">GenBank format</a> stores sequence and its annotation together.</p>
+<p><strong>GFF3</strong></p>
+<p><a href="http://scikit-bio.org/docs/0.5.2/generated/skbio.io.format.gff3.html?highlight=gff#module-skbio.io.format.gff3" target="_blank" rel="noopener">GFF3</a> (Generic Feature Format version 3) describes features for biological sequences. Each line consisting of 9 tab-delimited columns.</p>
+<h2 id="D-Basic-concepts-of-genome-assembly"><a href="#D-Basic-concepts-of-genome-assembly" class="headerlink" title="(D) Basic concepts of genome assembly"></a>(D) Basic concepts of genome assembly</h2><p><strong>Sequencing depth:</strong> Sequencing depth refers to the ratio of the total number of bases (read length x reads number) obtained by sequencing to the haploid genome length.</p>
+<p><strong>Coverage:</strong> Coverage refers to the proportion of sequences obtained by sequencing to the whole genome. Due to the presence of complex regions such as high GC and repetitive sequences in the genome, sequences obtained by sequencing often fail to cover all regions of the genome. For example, the coverage is 96%, indicating that 4% of the genome regions were not sequenced.</p>
+<p><strong>Read, Contig and Scaffold:</strong><br>The sequences obtained by sequencing were called <strong>reads</strong>. the sequence assembled from reads according to their overlap is known as <strong>contig</strong>. The contigs are arranged in order according to the pair ends information to obtain a <strong>scaffold</strong>.</p>
+<p><strong>N50:</strong> <a href="http://www.metagenomics.wiki/pdf/definition/assembly/n50" target="_blank" rel="noopener">N50</a> is a measure to describe the quality of assembled genomes that are fragmented in contigs of different length. The N50 is defined as the minimum contig length needed to cover 50% of the genome.</p>
+
+    </div>
+</article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = 'Learning microbial bioinformatics'
+    }
+
+</script>
+
+
+<p style="text-align:center;">
+    <span style="font-family:'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, u5b8bu4f53;color:#666666;">
+        <span style="font-size:16px;line-height:28px;">
+	    <a href="http://www.dashangcloud.com/sh/87a883" rel="nofollow" target="_blank">
+	       <img src="http://www.dashangcloud.com/static/ds-logo-1.2-64.png" alt="打赏">
+	    </a>
+	    <br>
+	</span>
+    </span>
+</p>
+                </div>
+                <aside class="col-md-4 gal-left" id="sidebar">
+    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
+<aside id="sidebar-search">
+    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <form class="form-inline clearfix" id="search-form" method="get"
+              action="/search/index.html">
+            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
+            <button class="btn btn-danger btn-gal" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+</aside>
+    <aside id="sidebar-author">
+    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
+        <div class="panel-heading" style="text-align: center">
+            <i class="fa fa-quote-left"></i>
+            Hualin Liu
+            <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="author-panel text-center">
+            <img src="/imgs/IMG_7557.jpg" width="140" height="140"
+                 alt="个人头像" class="author-image">
+            <p class="author-description"><p>Good good study, and day day up!</p>
+</p>
+        </div>
+    </div>
+</aside>
+</aside>
+
+<aside class="col-md-4 gal-left" id="sidebar">
+    
+    <aside id="gal-sets">
+	<div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+	    <ul class="nav nav-pills pills-gal">
+		
+		<li>
+		    <a href="/2019/10/30/Learning-microbial-bioinformatics/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+		</li>
+		
+		
+		<li>
+	            <a href="/2019/10/30/Learning-microbial-bioinformatics/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+		</li>
+		
+		
+		<li>
+		    <a href="/2019/10/30/Learning-microbial-bioinformatics/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+		</li>
+		
+	    </ul>
+	    <div class="tab-content">
+		
+		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
+    
+    <a href="/tags/培训/" style="font-size: 18.74382724012544px;" class="tag-cloud-link">培训</a>
+    
+    <a href="/tags/Linux/" style="font-size: 13.966086543058214px;" class="tag-cloud-link">Linux</a>
+    
+    <a href="/tags/WGS/" style="font-size: 14.535328921427084px;" class="tag-cloud-link">WGS</a>
+    
+    <a href="/tags/地图/" style="font-size: 8.975524109007408px;" class="tag-cloud-link">地图</a>
+    
+    <a href="/tags/Hexo/" style="font-size: 12.28762081699388px;" class="tag-cloud-link">Hexo</a>
+    
+    <a href="/tags/perl/" style="font-size: 15.370359043912753px;" class="tag-cloud-link">perl</a>
+    
+    <a href="/tags/编程/" style="font-size: 8.679280416014894px;" class="tag-cloud-link">编程</a>
+    
+    <a href="/tags/R语言/" style="font-size: 8.547152905140775px;" class="tag-cloud-link">R语言</a>
+    
+    <a href="/tags/绘图/" style="font-size: 10.663310148260107px;" class="tag-cloud-link">绘图</a>
+    
+    <a href="/tags/比较基因组学/" style="font-size: 11.266057838706251px;" class="tag-cloud-link">比较基因组学</a>
+    
+    <a href="/tags/音乐/" style="font-size: 13.412249392570905px;" class="tag-cloud-link">音乐</a>
+    
+    <a href="/tags/爬虫/" style="font-size: 18.85067452824179px;" class="tag-cloud-link">爬虫</a>
+    
+    <a href="/tags/Github/" style="font-size: 13.402127731480924px;" class="tag-cloud-link">Github</a>
+    
+    <a href="/tags/下载/" style="font-size: 14.867151594017901px;" class="tag-cloud-link">下载</a>
+    
+    <a href="/tags/非逻辑小说2/" style="font-size: 16.535606747701546px;" class="tag-cloud-link">非逻辑小说2</a>
+    
+    <a href="/tags/非逻辑小说/" style="font-size: 14.81916885905742px;" class="tag-cloud-link">非逻辑小说</a>
+    
+    <a href="/tags/系统/" style="font-size: 15.80608087785117px;" class="tag-cloud-link">系统</a>
+    
+    <a href="/tags/SNPs/" style="font-size: 13.279856704216183px;" class="tag-cloud-link">SNPs</a>
+    
+    <a href="/tags/进化/" style="font-size: 15.972305028978159px;" class="tag-cloud-link">进化</a>
+    
+    <a href="/tags/PubMed/" style="font-size: 17.11934263139381px;" class="tag-cloud-link">PubMed</a>
+    
+    <a href="/tags/Bioconda/" style="font-size: 11.896394666037803px;" class="tag-cloud-link">Bioconda</a>
+    
+    <a href="/tags/JAVA/" style="font-size: 17.212804594287718px;" class="tag-cloud-link">JAVA</a>
+    
+    <a href="/tags/表型预测/" style="font-size: 8.973289071367965px;" class="tag-cloud-link">表型预测</a>
+    
+    <a href="/tags/网盘/" style="font-size: 19.94431329179041px;" class="tag-cloud-link">网盘</a>
+    
+    <a href="/tags/同源家族/" style="font-size: 15.55020996073026px;" class="tag-cloud-link">同源家族</a>
+    
+    <a href="/tags/虚拟机/" style="font-size: 14.385870613158605px;" class="tag-cloud-link">虚拟机</a>
+    
+    <a href="/tags/软件/" style="font-size: 10.677222775891718px;" class="tag-cloud-link">软件</a>
+    
+</div>
+		
+		
+		<div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
+    
+    <li>
+        <a href="http://bmb.hzau.edu.cn/" target="_blank">芽胞杆菌分子生物学实验室</a>
+    </li>
+    
+    <li>
+        <a href="http://bcam.hzau.edu.cn/" target="_blank">农业微生物学生物信息中心</a>
+    </li>
+    
+    <li>
+        <a href="http://www.lifesci.sussex.ac.uk/home/Neil_Crickmore/Bt/" target="_blank">Bt Toxin Nomenclature</a>
+    </li>
+    
+</div>
+		
+		
+		<div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
+    
+    <li>
+        <a href="https://github.com/liaochenlanruo" target="_blank">Github</a>
+    </li>
+    
+    <li>
+        <a href="https://orcid.org/0000-0002-3630-5522" target="_blank">ORCID</a>
+    </li>
+    
+    <li>
+        <a href="https://www.researchgate.net/profile/Hualin_Liu2" target="_blank">ResearchGate</a>
+    </li>
+    
+    <li>
+        <a href="http://xueshu.baidu.com/scholarID/CN-BN84MG5J" target="_blank">百度学者</a>
+    </li>
+    
+    <li>
+        <a href="https://www.jianshu.com/u/848bd32053b7" target="_blank">简书</a>
+    </li>
+    
+    <li>
+        <a href="http://playlists.youku.com/?spm=a2h3j.8428770.3336676.3" target="_blank">优酷</a>
+    </li>
+    
+    <li>
+        <a href="https://www.douyu.com/2556283" target="_blank">斗鱼</a>
+    </li>
+    
+    <li>
+        <a href="https://weibo.com/2715210923/profile?topnav=1&amp;wvr=6&amp;is_all=1" target="_blank">微博</a>
+    </li>
+    
+    <li>
+        <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" target="_blank">邮箱</a>
+    </li>
+    
+    <li>
+        <a href="https://shang.qq.com/wpa/qunwpa?idkey=774169a420882dd4ac93cb264543764f841504cbeae0021e168c61dccacf4f16" target="_blank">QQ群</a>
+    </li>
+    
+</div>
+		
+	    </div>
+	</div>
+    </aside>
+    
+</aside>
+
+<aside class="col-md-4 gal-left" id="sidebar">
+    <script type="text/javascript" src="//ra.revolvermaps.com/0/0/6.js?i=0ett3z77b0x&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+</aside>
+
+<aside class="col-md-4 gal-left" id="sidebar">
+    
+    <aside id="sidebar-recent_comments">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-comments"></i>
+            最新评论
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    <!-- 要配置好leancloud才能开启此小工具 -->
+    
+    <aside id="sidebar-hot_posts">
+    <div class="panel panel-gal hot hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-fire"></i>
+            最热文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush"></ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-recent_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            近期文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/10/30/Learning-microbial-bioinformatics/">Learning microbial bioinformatics</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/05/20/Bioconda贡献指南/">Bioconda贡献指南</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/28/PGCGAP中文说明/">PGCGAP中文说明</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/">Perl捕获外部命令执行异常并继续运行后续代码</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/15/Wget-技巧/">Wget 技巧</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/01/github操作/">Github操作</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/03/30/Ubuntu-open-mpi运行错误/">Ubuntu open-mpi运行错误</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/03/20/OrthoFinder2—同源蛋白家族聚类/">OrthoFinder2—同源蛋白家族聚类</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/03/18/为PubMed添加功能/">为PubMed添加功能</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+    
+    <aside id="sidebar-rand_posts">
+    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="panel-heading">
+            <i class="fa fa-refresh"></i>
+            随机文章
+            <i class="fa fa-times-circle panel-remove"></i>
+            <i class="fa fa-chevron-circle-up panel-toggle"></i>
+        </div>
+        <ul class="list-group list-group-flush">
+            
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/10/30/Learning-microbial-bioinformatics/">Learning microbial bioinformatics</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/03/30/Ubuntu-open-mpi运行错误/">Ubuntu open-mpi运行错误</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/15/Wget-技巧/">Wget 技巧</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/03/15/今天的梦/">今天的梦</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/11/10/屠龙/">屠龙</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/12/15/圈/">圈</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2010/06/17/复仇/">复仇</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/02/12/杀尸/">杀尸</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/03/20/OrthoFinder2—同源蛋白家族聚类/">OrthoFinder2—同源蛋白家族聚类</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/09/12/逍遥于世/">逍遥于世</a>
+                </span>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+    
+</aside>
+            </div>
+        </div>
+    </div>
+    <footer id="gal-footer">
+    <div class="container">
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime() { 
+                var grt= new Date("02/14/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+                now.setTime(now.getTime()+250); 
+                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+            } 
+        setInterval("createtime()",250);
+        </script>
+    </div>
+
+    <div class="container">
+            <span class="post-count">博客全站共193.8k 字 | </span>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_container_site_uv">本站访客数：<span id="busuanzi_value_site_uv"></span> 人</span>
+    </div>
+    <div class="container">
+        Copyright © 2018 Hualin Liu Powered by <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" target="_blank">liaochenlanruo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+    </div>
+</footer>
+
+<!-- 回到顶端 -->
+<!-- 大型设备详细文章 -->
+<div class="hidden-xs">
+    <div id="gal-gotop">
+        <i class="fa fa-angle-up"></i>
+    </div>
+</div>
+
+<!-- 小型设备详细文章 -->
+<div class="visible-xs">
+    <div id="gal-gotops">
+        <i class="fa fa-angle-up"></i>
+    </div>
+</div>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":75,"height":100},"mobile":{"show":false},"log":false});</script></body>
+<script src="/js/activate-power-mode.js"></script>
+<script>
+
+    // 配置highslide
+	hs.graphicsDir = '/js/highslide/graphics/'
+    hs.outlineType = "rounded-white";
+    hs.dimmingOpacity = 0.8;
+    hs.outlineWhileAnimating = true;
+    hs.showCredits = false;
+    hs.captionEval = "this.thumb.alt";
+    hs.numberPosition = "caption";
+    hs.align = "center";
+    hs.transitions = ["expand", "crossfade"];
+    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.addSlideshow({
+      interval: 5000,
+      repeat: true,
+      useControls: true,
+      fixedControls: "fit",
+      overlayOptions: {
+        opacity: 0.75,
+        position: "bottom center",
+        hideOnMouseOut: true
+      }
+    })
+
+    // 初始化aos
+    AOS.init({
+      duration: 1000,
+      delay: 0,
+      easing: 'ease-out-back'
+    });
+
+</script>
+<script>
+	POWERMODE.colorful = 'true';    // make power mode colorful
+	POWERMODE.shake = 'true';       // turn off shake
+	// TODO 这里根据具体情况修改
+	document.body.addEventListener('input', POWERMODE);
+</script>
+<script>
+    window.slideConfig = {
+      prefix: '/imgs/slide/background',
+      ext: 'jpg',
+      maxCount: '6'
+    }
+</script>
+<script src="/js/hs.js"></script>
+<script src="/js/blog.js"></script>
+
+
+<script>
+    window.hot_posts_count = '20'
+    // window.use_leancloud = 'true'
+</script>
+<script src="/js/comment/leancloud.js"></script>
+
+
+<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.id = 'Wed Oct 30 2019 23:23:49 GMT+0800'
+      window.commentConfig.owner = 'liaochenlanruo'
+      window.commentConfig.repo = 'comments'
+      window.commentConfig.client_id = '5d1f3e39a77775afaf62'
+      window.commentConfig.client_secret = '9f2cfc572b889c8bc8c081f985c31bb72d94dee3'
+      window.commentConfig.redirect_uri = ''
+    } else {
+      window.commentConfig = {
+      	id: 'Wed Oct 30 2019 23:23:49 GMT+0800',
+        owner: 'liaochenlanruo',
+        repo: 'comments',
+        client_id: '5d1f3e39a77775afaf62',
+        client_secret: '9f2cfc572b889c8bc8c081f985c31bb72d94dee3',
+        redirect_uri: ''
+      }
+    }
+</script>
+<script src="/js/comment/gitment.js"></script>
+
+<!-- 页面点击礼花fireworks小红心love爆炸explosion.min文字text -->
+<script src="/js/fireworks.js"></script>
+
+<!--崩溃欺骗-->
+<script src="/js/crash_cheat.js"></script>
+
+</html>
