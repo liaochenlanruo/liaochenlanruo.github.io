@@ -175,15 +175,15 @@
                         
                         
                         <li>
+                            <a href="/tags/地图/">地图</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/Github/">Github</a>
                         </li>
                         
                         <li>
                             <a href="/tags/Bioconda/">Bioconda</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/培训/">培训</a>
                         </li>
                         
                         <li>
@@ -195,23 +195,23 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/JAVA/">JAVA</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/R语言/">R语言</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/绘图/">绘图</a>
+                            <a href="/tags/培训/">培训</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/JAVA/">JAVA</a>
                         </li>
                         
                         
@@ -482,7 +482,7 @@
 <table>
 <thead>
 <tr>
-<th>Platform∖Instrument</th>
+<th>Platform\Instrument</th>
 <th>Throughput (Gb)</th>
 <th>Read length (bp)</th>
 <th>Strength</th>
@@ -495,7 +495,8 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Sanger sequencing</strong><br>ABI 3500/3730    |0.0003    |Up to 1 kb    |Read accuracy and length    |Cost and throughput<br><strong>Illumina</strong><br>MiniSeq    |1.7–7.5    |1×75 to ×150    |Low initial investment    |Run and read length<br>MiSeq    |0.3–15    |1×36 to 2×300    |Read length, scalability    |Run length<br>NextSeq    |10–120    |1×75 to 2×150    |Throughput    |Run and read length<br>HiSeq (2500)    |10–1000    |×50 to ×250    |Read accuracy, throughput    |High initial investment, run<br>NovaSeq 5000/6000    |2000–6000    |2×50 to ×150    |Read accuracy, throughput    |High initial investment, run<br><strong>IonTorrent</strong><br>PGM    |0.08–2    |Up to 400    |Read length, speed    |Throughput, homopolymers<br>S5    |0.6–15    |Up to 400    |Read length, speed,    |Homopolymers<br>Proton    |10–15    |Up to 200    |Speed, throughput    |Homopolymers<br><strong>Pacific BioSciences</strong><br>PacBio RSII    |0.5–1    |Up to 60 kb    |Read length, speed (Average 10 kb, N50 20 kb)    |High error rate and initial<br>Sequel    |5–10    |Up to 60 kb    |Read length, speed (Average 10 kb, N50 20 kb)    |High error rate<br><strong>Oxford Nanopore</strong><br>MInION    |0.1–1    |Up to 100 kb    |Read length, portability    |High error rate, run length</p>
+<p><strong>Sanger sequencing</strong><br>ABI 3500/3730    |0.0003    |Up to 1 kb    |Read accuracy and length                      |Cost and throughput<br><strong>Illumina</strong><br>MiniSeq          |1.7–7.5   |1×75 to ×150  |Low initial investment                        |Run and read length<br>MiSeq            |0.3–15    |1×36 to 2×300 |Read length, scalability                      |Run length<br>NextSeq          |10–120    |1×75 to 2×150 |Throughput                                    |Run and read length<br>HiSeq (2500)     |10–1000   |×50 to ×250   |Read accuracy, throughput                     |High initial investment, run<br>NovaSeq 5000/6000|2000–6000 |2×50 to ×150  |Read accuracy, throughput                     |High initial investment, run<br><strong>IonTorrent</strong><br>PGM              |0.08–2    |Up to 400     |Read length, speed                            |Throughput, homopolymers<br>S5               |0.6–15    |Up to 400     |Read length, speed                            |Homopolymers<br>Proton           |10–15     |Up to 200     |Speed, throughput                             |Homopolymers<br><strong>Pacific BioSciences*<br>PacBio RSII      |0.5–1     |Up to 60 kb   |Read length, speed (Average 10 kb, N50 20 kb) |High error rate and initial<br>Sequel           |5–10      |Up to 60 kb   |Read length, speed (Average 10 kb, N50 20 kb) |High error rate
+</strong>Oxford Nanopore**<br>MInION           |0.1–1     |Up to 100 kb  |Read length, portability                      |High error rate, run length</p>
 <h2 id="常见序列格式"><a href="#常见序列格式" class="headerlink" title="常见序列格式"></a>常见序列格式</h2><h3 id="Fastq"><a href="#Fastq" class="headerlink" title="Fastq"></a>Fastq</h3><p>我们得到的下机序列一般为fastq格式，每一条read包含4行，第一行为测序仪器信息以及测序信息，第二行为碱基序列，第三行一般无信息，第四行为对应第二行中每个碱基的测序质量信息。</p>
 <p><img src="/imgs/pgcgap/Linux_WGS/fastq.png" alt="fastq文件内容"></p>
 <p>Table 2. Descriptions of the first line of the fastq file</p>
@@ -508,21 +509,20 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
 <td>@ST-E00310</td>
-<td>the unique instrument name</td>
+<td>The unique instrument name</td>
 </tr>
 <tr>
 <td>147</td>
-<td>the run id</td>
+<td>The run id</td>
 </tr>
 <tr>
 <td>HVT25CCXX</td>
-<td>the flowcell id</td>
+<td>The flowcell id</td>
 </tr>
 <tr>
 <td>3</td>
-<td>flowcell lane</td>
+<td>Flowcell lane</td>
 </tr>
 <tr>
 <td>1011</td>
@@ -643,59 +643,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Github/" style="font-size: 16.29949999056284px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/地图/" style="font-size: 14.188647953671785px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 10.612175180359756px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Github/" style="font-size: 18.710731359436636px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/培训/" style="font-size: 10.965288426938242px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Bioconda/" style="font-size: 19.422732003017373px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/Linux/" style="font-size: 18.753149245651443px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 12.680789920349623px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/WGS/" style="font-size: 11.830001755350988px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/WGS/" style="font-size: 9.930877256899944px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Hexo/" style="font-size: 12.33076036991532px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/同源家族/" style="font-size: 12.320972345504064px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/JAVA/" style="font-size: 11.349055881332228px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/Hexo/" style="font-size: 16.312827409519144px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/同源家族/" style="font-size: 16.738403882152202px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/培训/" style="font-size: 15.020442848135879px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/R语言/" style="font-size: 13.21980336741434px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/比较基因组学/" style="font-size: 16.5953038696561px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/绘图/" style="font-size: 19.572427025444153px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/JAVA/" style="font-size: 8.192044180526505px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 8.696891580969867px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/perl/" style="font-size: 13.748276683582965px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/下载/" style="font-size: 13.312733949151106px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/编程/" style="font-size: 8.965591504095979px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/perl/" style="font-size: 10.321727791082214px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/R语言/" style="font-size: 14.545332358738108px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/编程/" style="font-size: 16.006132739286482px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/绘图/" style="font-size: 17.290361897881432px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/SNPs/" style="font-size: 12.108409312457603px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/下载/" style="font-size: 18.60955128614056px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/进化/" style="font-size: 18.440119091838813px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/音乐/" style="font-size: 19.41108737120653px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/网盘/" style="font-size: 14.444230992626306px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/爬虫/" style="font-size: 8.824974623604284px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/音乐/" style="font-size: 18.73236824663384px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/SNPs/" style="font-size: 19.984713771259955px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/爬虫/" style="font-size: 13.910661419755px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/进化/" style="font-size: 17.18767332704515px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/系统/" style="font-size: 14.897053751346865px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/系统/" style="font-size: 10.403280809980112px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 9.404487689535161px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/PubMed/" style="font-size: 12.92107968719636px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/PubMed/" style="font-size: 12.7514043767879px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 16.24119018073943px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 19.532230737215333px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 12.883583283587825px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/地图/" style="font-size: 16.22917625417594px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/网盘/" style="font-size: 18.1576945600846px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/表型预测/" style="font-size: 14.370274048675709px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/虚拟机/" style="font-size: 12.408769042238223px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/软件/" style="font-size: 12.765289120523633px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/表型预测/" style="font-size: 17.509137929098934px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 9.621573074434508px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/软件/" style="font-size: 12.180132781811352px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -894,31 +894,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/20/OrthoFinder2—同源蛋白家族聚类/">OrthoFinder2—同源蛋白家族聚类</a>
+                    <a href="/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/">JAVA jre 安装或升级1603 error解决办法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/30/Ubuntu-open-mpi运行错误/">Ubuntu open-mpi运行错误</a>
+                    <a href="/2011/05/11/拖地的女人/">拖地的女人</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/14/kSNP3寻找SNPs并构建进化树/">kSNP3寻找SNPs并构建进化树</a>
+                    <a href="/2011/06/05/日记/">日记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/02/windows-10-中文乱码解决方案/">windows 10 中文乱码解决方案</a>
+                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/05/16/枣院传奇/">枣院传奇</a>
+                    <a href="/2017/03/17/溪山行旅图/">溪山行旅图</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/12/14/根据基因组预测表型-traitar的安装与使用/">根据基因组预测表型 —— traitar的安装与使用</a>
                 </span>
             </li>
             
@@ -930,19 +936,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                    <a href="/2015/03/02/逃亡/">逃亡</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/02/17/骗你是小狗/">骗你是小狗</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2017/07/18/焦尸/">焦尸</a>
+                    <a href="/2010/10/11/老婆一家“人”/">老婆一家“人”</a>
                 </span>
             </li>
             
