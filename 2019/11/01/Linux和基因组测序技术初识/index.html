@@ -175,11 +175,11 @@
                         
                         
                         <li>
-                            <a href="/tags/培训/">培训</a>
+                            <a href="/tags/地图/">地图</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
+                            <a href="/tags/培训/">培训</a>
                         </li>
                         
                         <li>
@@ -191,10 +191,6 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/Linux/">Linux</a>
                         </li>
                         
@@ -203,7 +199,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                            <a href="/tags/Hexo/">Hexo</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/JAVA/">JAVA</a>
                         </li>
                         
                         <li>
@@ -391,7 +391,7 @@
 <p><img src="/imgs/pgcgap/Linux_WGS/top.png" alt="通过top查看系统进程"></p>
 <p>按字母键“q”退出。Ubuntu还带有另一个更加直观的查看系统进程的工具“htop”。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$htop</span><br></pre></td></tr></table></figure></p>
 <p><img src="/imgs/pgcgap/Linux_WGS/htop.png" alt="通过htop查看系统进程"></p>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>在软件安装的时候经常需要设置环境变量，所谓的环境变量就是告诉计算机软件的安装位置。存放环境变量的文件在用户的家目录下，为隐藏文件，可通过“ls -a”命令查看。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls -a ~、</span><br></pre></td></tr></table></figure></p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>在软件安装的时候经常需要设置环境变量，所谓的环境变量就是告诉计算机软件的安装位置。存放环境变量的文件在用户的家目录下，为隐藏文件，可通过“ls -a”命令查看。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls -a ~/</span><br></pre></td></tr></table></figure></p>
 <p><img src="/imgs/pgcgap/Linux_WGS/lsahome.png" alt="查看家目录中的所有文档和目录"></p>
 <p>“.bashrc”和“.profile”均为环境变量配置文件，通常我们只需要编辑“.bashrc”。</p>
 <h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h3 id="源码编译安装"><a href="#源码编译安装" class="headerlink" title="源码编译安装"></a>源码编译安装</h3><p>源码安装适合于所有的Linux发行版以及macOS。以刚下载的“AbySS”基因组拼接软件为例演示源码编译安装，一共分三步：配置（./configure）、编译（make）和安装（sudo make install）。首先进入“AbySS”软件目录下，并查看目录中的文件，找到配置文件“configure”，根据“README.md”中的指示对软件进行配置。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$cd abyss-2.1.5/</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
@@ -487,8 +487,12 @@
 <table border="1"><br><tr><br><th>Strings</th><br><th>Description</th><br></tr><br><tr><br><td>@ST-E00310</td><br><td>The unique instrument name</td><br></tr><br><tr><br><td>147</td><br><td>The run id</td><br></tr><br><tr><br><td>HVT25CCXX</td><br><td>The flowcell id</td><br></tr><br><tr><br><td>3</td><br><td>Flowcell lane</td><br></tr><br><tr><br><td>1011</td><br><td>The number within the flowcell lane</td><br></tr><br><tr><br><td>13382</td><br><td>‘x’-coordinate of the cluster within the title</td><br></tr><br><tr><br><td>1819</td><br><td>‘y’-coordinate of the cluster within the title</td><br></tr><br><tr><br><td>1</td><br><td>The number of a pair, 1 or 2 (paired-end or mate-pair reads only)</td><br></tr><br><tr><br><td>N</td><br><td>Y if the read fails filter (read is bad), N otherwise</td><br></tr><br><tr><br><td>0</td><br><td>0 when none of the control bits are on, otherwise it is an even number</td><br></tr><br><tr><br><td>TGAAGACA</td><br><td>Index sequence</td><br></tr><br></table>
 
 
-<h3 id="Fasta"><a href="#Fasta" class="headerlink" title="Fasta"></a>Fasta</h3><p><img src="/imgs/pgcgap/Linux_WGS/fasta.png" alt="fasta文件内容"></p>
-<h3 id="Genbank"><a href="#Genbank" class="headerlink" title="Genbank"></a>Genbank</h3><p><img src="/imgs/pgcgap/Linux_WGS/Genbank.png" alt="Genbank文件内容"></p>
+<h3 id="Fasta"><a href="#Fasta" class="headerlink" title="Fasta"></a>Fasta</h3><p><a href="http://scikit-bio.org/docs/0.5.2/generated/skbio.io.format.fasta.html?highlight=fasta#module-skbio.io.format.fasta" target="_blank" rel="noopener">FASTA</a>格式为文本文档，内含核苷酸或氨基酸序列以及其IDs。每条序列包含两部分，第一部分为ID及注释信息，以 <strong>“&gt;”</strong> 开头，at the start, 第二部分为核苷酸序列或氨基酸序列。</p>
+<p><img src="/imgs/pgcgap/Linux_WGS/fasta.png" alt="fasta文件内容"></p>
+<h3 id="Genbank"><a href="#Genbank" class="headerlink" title="Genbank"></a>Genbank</h3><p><a href="http://scikit-bio.org/docs/0.5.2/generated/skbio.io.format.genbank.html" target="_blank" rel="noopener">GenBank</a>格式包含了基因组序列和注释信息。</p>
+<p><img src="/imgs/pgcgap/Linux_WGS/Genbank.png" alt="Genbank文件内容"></p>
+<h3 id="GFF3"><a href="#GFF3" class="headerlink" title="GFF3"></a>GFF3</h3><p><a href="http://scikit-bio.org/docs/0.5.2/generated/skbio.io.format.gff3.html?highlight=gff#module-skbio.io.format.gff3" target="_blank" rel="noopener">GFF3</a> (Generic Feature Format version 3) 格式描述了序列的特征，每一行含有9列数据，列与列之间以制表符分割。</p>
+<p><img src="/imgs/pgcgap/Linux_WGS/GFF3.PNG" alt="GFF3文件内容"></p>
 <h2 id="基因组拼接基本概念"><a href="#基因组拼接基本概念" class="headerlink" title="基因组拼接基本概念"></a>基因组拼接基本概念</h2><h3 id="测序深度"><a href="#测序深度" class="headerlink" title="测序深度"></a>测序深度</h3><p>测序深度（Sequencing depth）指测序得到的总碱基数（read长度x reads数目）与待测基因组大小的比值。假设一个基因组大小为2M，测序深度为10X，那么获得的总数据量为20M。</p>
 <h3 id="测序覆盖度"><a href="#测序覆盖度" class="headerlink" title="测序覆盖度"></a>测序覆盖度</h3><p>指测序获得的序列占整个基因组的比例。由于基因组中的高GC、重复序列等复杂区域的存在，测序获得的序列经常无法覆盖基因组上所有的区域。例如覆盖度是96%，表明还有4%的序列区域未测到。</p>
 <h3 id="Read、Contig、Scaffold"><a href="#Read、Contig、Scaffold" class="headerlink" title="Read、Contig、Scaffold"></a>Read、Contig、Scaffold</h3><p>测序得到的序列被称作reads，在一个read中连续的N个碱基所组成的序列称作k-mer，把k-mer集合拼接起来形成的长DNA序列称为contig。通过pair ends信息将contigs按顺序进行排列得到scaffold。</p>
@@ -576,59 +580,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 8.361857160936456px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/地图/" style="font-size: 13.248047757616678px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/JAVA/" style="font-size: 11.024090109538228px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/培训/" style="font-size: 17.775711435315987px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/Github/" style="font-size: 17.553350300428374px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/Github/" style="font-size: 12.858581970258228px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 19.022289203962952px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Bioconda/" style="font-size: 14.909476236990336px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/Hexo/" style="font-size: 13.033982483327309px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/Linux/" style="font-size: 9.070007475693938px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Linux/" style="font-size: 11.342835435446375px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/WGS/" style="font-size: 13.160277469623846px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/WGS/" style="font-size: 18.047311754978427px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/Hexo/" style="font-size: 14.967721341054279px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 12.579822294409993px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/JAVA/" style="font-size: 12.310004806960373px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/同源家族/" style="font-size: 19.232514327231783px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/同源家族/" style="font-size: 16.416542042765244px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/perl/" style="font-size: 12.079969062066322px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/perl/" style="font-size: 13.91045341623448px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/编程/" style="font-size: 16.67203005177739px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/编程/" style="font-size: 19.15689063733111px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/R语言/" style="font-size: 8.84695405791112px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/比较基因组学/" style="font-size: 15.705449737043711px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/绘图/" style="font-size: 11.531858533812581px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/R语言/" style="font-size: 14.775417457360895px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/下载/" style="font-size: 11.830558761298843px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/绘图/" style="font-size: 18.459718303554407px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/网盘/" style="font-size: 17.73243732543646px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/下载/" style="font-size: 17.870943316066068px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/SNPs/" style="font-size: 16.166547805326005px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 14.784478011808257px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 8.687325283949548px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 9.937066582109338px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/系统/" style="font-size: 8.272200700445858px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 12.06634707963497px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 13.104114351524505px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/爬虫/" style="font-size: 14.258777502295262px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/音乐/" style="font-size: 12.68513392911231px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 14.769581698069064px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/爬虫/" style="font-size: 13.547172322594065px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 10.768616472812965px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/PubMed/" style="font-size: 14.992452411719462px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/网盘/" style="font-size: 18.57973853006075px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 18.457165142896095px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 17.00928704703925px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/地图/" style="font-size: 12.21724537227827px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/PubMed/" style="font-size: 11.394717007371105px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/表型预测/" style="font-size: 12.657436250290857px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 12.48226402805132px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 10.486284893368094px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 11.360416319647278px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/软件/" style="font-size: 9.464870562729043px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 14.755220837453766px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -821,61 +825,61 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/01/Linux和基因组测序技术初识/">Linux和基因组测序技术初识</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/03/20/OrthoFinder2—同源蛋白家族聚类/">OrthoFinder2—同源蛋白家族聚类</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/15/Wget-技巧/">Wget 技巧</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/19/syncthing搭建自己的同步云网盘/">syncthing搭建自己的同步云网盘</a>
+                    <a href="/2019/03/30/Ubuntu-open-mpi运行错误/">Ubuntu open-mpi运行错误</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/12/06/亦生亦死/">亦生亦死</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2010/06/17/复仇/">复仇</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2011/02/12/杀尸/">杀尸</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/12/14/根据基因组预测表型-traitar的安装与使用/">根据基因组预测表型 —— traitar的安装与使用</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                    <a href="/2019/03/18/为PubMed添加功能/">为PubMed添加功能</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2011/11/04/神棍节/">神棍节</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/02/01/用wget批量下载含有链接的文件-目录/">用wget批量下载含有链接的文件/目录</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2010/10/11/老婆一家“人”/">老婆一家“人”</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2010/12/13/葬/">葬</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/07/18/焦尸/">焦尸</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/02/17/骗你是小狗/">骗你是小狗</a>
                 </span>
             </li>
             
@@ -909,7 +913,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195k 字 | </span>
+            <span class="post-count">博客全站共195.1k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>
