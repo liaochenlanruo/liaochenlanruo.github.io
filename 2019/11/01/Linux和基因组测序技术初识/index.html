@@ -179,11 +179,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/培训/">培训</a>
                         </li>
                         
                         <li>
@@ -195,15 +191,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/同源家族/">同源家族</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/培训/">培训</a>
+                            <a href="/tags/R语言/">R语言</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         <li>
@@ -211,7 +207,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
+                            <a href="/tags/下载/">下载</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/perl/">perl</a>
                         </li>
                         
                         
@@ -478,82 +478,15 @@
 <h2 id="三代测序"><a href="#三代测序" class="headerlink" title="三代测序"></a>三代测序</h2><p>三代测序又称为单分子测序，测序过程无需进行PCR扩增，可以产生超长的reads，因此能够跨越高GC含量区域和高度重复区域。目前常用的测序平台包括Pacific Biosciences（PacBio）和Oxford Nanopore。</p>
 <p>PacBio以SMRT Cell为载体进行测序反应，SMRT Cell是一张带有纳米孔的超薄金属片。PacBio采用边合成便测序的方式，测序反应在纳米孔中进行，一个纳米孔中固定一个DNA聚合酶和一条DNA模板。延伸反应的过程中检测dNTP荧光信号以确定碱基顺序。</p>
 <p>Oxford开发的纳米单分子测序技术属于真正的实时测序，它基于电信号来判读碱基。</p>
-<p>Table 1. Characteristics, strengths and weaknesses of commonly used sequencing platforms (Besser et al. 2018)</p>
-<table>
-<thead>
-<tr>
-<th>Platform\Instrument</th>
-<th>Throughput (Gb)</th>
-<th>Read length (bp)</th>
-<th>Strength</th>
-<th>Weakness</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Sanger sequencing</strong><br>ABI 3500/3730    |0.0003    |Up to 1 kb    |Read accuracy and length                      |Cost and throughput<br><strong>Illumina</strong><br>MiniSeq          |1.7–7.5   |1×75 to ×150  |Low initial investment                        |Run and read length<br>MiSeq            |0.3–15    |1×36 to 2×300 |Read length, scalability                      |Run length<br>NextSeq          |10–120    |1×75 to 2×150 |Throughput                                    |Run and read length<br>HiSeq (2500)     |10–1000   |×50 to ×250   |Read accuracy, throughput                     |High initial investment, run<br>NovaSeq 5000/6000|2000–6000 |2×50 to ×150  |Read accuracy, throughput                     |High initial investment, run<br><strong>IonTorrent</strong><br>PGM              |0.08–2    |Up to 400     |Read length, speed                            |Throughput, homopolymers<br>S5               |0.6–15    |Up to 400     |Read length, speed                            |Homopolymers<br>Proton           |10–15     |Up to 200     |Speed, throughput                             |Homopolymers<br><strong>Pacific BioSciences*<br>PacBio RSII      |0.5–1     |Up to 60 kb   |Read length, speed (Average 10 kb, N50 20 kb) |High error rate and initial<br>Sequel           |5–10      |Up to 60 kb   |Read length, speed (Average 10 kb, N50 20 kb) |High error rate
-</strong>Oxford Nanopore**<br>MInION           |0.1–1     |Up to 100 kb  |Read length, portability                      |High error rate, run length</p>
+<p><caption>Table 1. Characteristics, strengths and weaknesses of commonly used sequencing platforms (Besser et al. 2018)</caption></p>
+<table border="1"><br><tr><br><th>Platform\Instrument</th><br><th>Throughput (Gb)</th><br><th>Read length (bp)</th><br><th>Strength</th><br><th>Weakness</th><br></tr><br><tr><br><td><b>Sanger sequencing</b></td><br></tr><br><tr><br><td>ABI 3500/3730</td><br><td>0.0003</td><br><td>Up to 1 kb</td><br><td>Read accuracy and length</td><br><td>Cost and throughput</td><br></tr><br><tr><br><td><b>Illumina</b></td><br></tr><br><tr><br><td>MiniSeq</td><br><td>1.7–7.5</td><br><td>1×75 to ×150</td><br><td>Low initial investment</td><br><td>Run and read length</td><br></tr><br><tr><br><td>MiSeq</td><br><td>0.3–15</td><br><td>1×36 to 2×300</td><br><td>Read length, scalability</td><br><td>Run length</td><br></tr><br><tr><br><td>NextSeq</td><br><td>10–120</td><br><td>1×75 to 2×150</td><br><td>Throughput</td><br><td>Run and read length</td><br></tr><br><tr><br><td>HiSeq (2500)</td><br><td>10–1000</td><br><td>×50 to ×250</td><br><td>Read accuracy, throughput</td><br><td>High initial investment, run</td><br></tr><br><tr><br><td>NovaSeq 5000/6000</td><br><td>2000–6000</td><br><td>2×50 to ×150</td><br><td>Read accuracy, throughput</td><br><td>High initial investment, run</td><br></tr><br><tr><br><td><b>IonTorrent</b></td><br></tr><br><tr><br><td>PGM</td><br><td>0.08–2</td><br><td>Up to 400</td><br><td>Read length, speed</td><br><td>Throughput, homopolymers</td><br></tr><br><tr><br><td>S5</td><br><td>0.6–15</td><br><td>Up to 400</td><br><td>Read length, speed</td><br><td>Homopolymers</td><br></tr><br><tr><br><td>Proton</td><br><td>10–15</td><br><td>Up to 200</td><br><td>Speed, throughput</td><br><td>Homopolymers</td><br></tr><br><tr><br><td><b>Pacific BioSciences</b></td><br></tr><br><tr><br><td>PacBio RSII</td><br><td>0.5–1</td><br><td>Up to 60 kb</td><br><td>ead length, speed (Average 10 kb, N50 20 kb)</td><br><td>High error rate and initial</td><br></tr><br><tr><br><td>Sequel</td><br><td>5–10</td><br><td>Up to 60 kb</td><br><td>Read length, speed (Average 10 kb, N50 20 kb)</td><br><td>High error rate</td><br></tr><br><tr><br><td><b>Oxford Nanopore</b></td><br></tr><br><tr><br><td>MInION</td><br><td>0.1–1</td><br><td>Up to 100 kb</td><br><td>Read length, portability</td><br><td>High error rate, run length</td><br></tr><br></table>
+
 <h2 id="常见序列格式"><a href="#常见序列格式" class="headerlink" title="常见序列格式"></a>常见序列格式</h2><h3 id="Fastq"><a href="#Fastq" class="headerlink" title="Fastq"></a>Fastq</h3><p>我们得到的下机序列一般为fastq格式，每一条read包含4行，第一行为测序仪器信息以及测序信息，第二行为碱基序列，第三行一般无信息，第四行为对应第二行中每个碱基的测序质量信息。</p>
 <p><img src="/imgs/pgcgap/Linux_WGS/fastq.png" alt="fastq文件内容"></p>
-<p>Table 2. Descriptions of the first line of the fastq file</p>
-<table>
-<thead>
-<tr>
-<th>Strings</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@ST-E00310</td>
-<td>The unique instrument name</td>
-</tr>
-<tr>
-<td>147</td>
-<td>The run id</td>
-</tr>
-<tr>
-<td>HVT25CCXX</td>
-<td>The flowcell id</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Flowcell lane</td>
-</tr>
-<tr>
-<td>1011</td>
-<td>The number within the flowcell lane</td>
-</tr>
-<tr>
-<td>13382</td>
-<td>‘x’-coordinate of the cluster within the title</td>
-</tr>
-<tr>
-<td>1819</td>
-<td>‘y’-coordinate of the cluster within the title</td>
-</tr>
-<tr>
-<td>1</td>
-<td>The number of a pair, 1 or 2 (paired-end or mate-pair reads only)</td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y if the read fails filter (read is bad), N otherwise</td>
-</tr>
-<tr>
-<td>0</td>
-<td>0 when none of the control bits are on, otherwise it is an even number</td>
-</tr>
-<tr>
-<td>TGAAGACA</td>
-<td>Index sequence</td>
-</tr>
-</tbody>
-</table>
+<p><caption style="padding:10px 10px;">Table 2. Descriptions of the first line of the fastq file</caption></p>
+<table border="1"><br><tr><br><th>Strings</th><br><th>Description</th><br></tr><br><tr><br><td>@ST-E00310</td><br><td>The unique instrument name</td><br></tr><br><tr><br><td>147</td><br><td>The run id</td><br></tr><br><tr><br><td>HVT25CCXX</td><br><td>The flowcell id</td><br></tr><br><tr><br><td>3</td><br><td>Flowcell lane</td><br></tr><br><tr><br><td>1011</td><br><td>The number within the flowcell lane</td><br></tr><br><tr><br><td>13382</td><br><td>‘x’-coordinate of the cluster within the title</td><br></tr><br><tr><br><td>1819</td><br><td>‘y’-coordinate of the cluster within the title</td><br></tr><br><tr><br><td>1</td><br><td>The number of a pair, 1 or 2 (paired-end or mate-pair reads only)</td><br></tr><br><tr><br><td>N</td><br><td>Y if the read fails filter (read is bad), N otherwise</td><br></tr><br><tr><br><td>0</td><br><td>0 when none of the control bits are on, otherwise it is an even number</td><br></tr><br><tr><br><td>TGAAGACA</td><br><td>Index sequence</td><br></tr><br></table>
+
+
 <h3 id="Fasta"><a href="#Fasta" class="headerlink" title="Fasta"></a>Fasta</h3><p><img src="/imgs/pgcgap/Linux_WGS/fasta.png" alt="fasta文件内容"></p>
 <h3 id="Genbank"><a href="#Genbank" class="headerlink" title="Genbank"></a>Genbank</h3><p><img src="/imgs/pgcgap/Linux_WGS/Genbank.png" alt="Genbank文件内容"></p>
 <h2 id="基因组拼接基本概念"><a href="#基因组拼接基本概念" class="headerlink" title="基因组拼接基本概念"></a>基因组拼接基本概念</h2><h3 id="测序深度"><a href="#测序深度" class="headerlink" title="测序深度"></a>测序深度</h3><p>测序深度（Sequencing depth）指测序得到的总碱基数（read长度x reads数目）与待测基因组大小的比值。假设一个基因组大小为2M，测序深度为10X，那么获得的总数据量为20M。</p>
@@ -643,59 +576,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/地图/" style="font-size: 14.188647953671785px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/地图/" style="font-size: 13.85363587458447px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/Github/" style="font-size: 18.710731359436636px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/培训/" style="font-size: 12.383761941236479px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 19.422732003017373px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Linux/" style="font-size: 11.991421040106289px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Linux/" style="font-size: 12.680789920349623px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/WGS/" style="font-size: 19.560054807733987px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/WGS/" style="font-size: 9.930877256899944px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/Hexo/" style="font-size: 19.470688852766465px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/同源家族/" style="font-size: 12.320972345504064px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/R语言/" style="font-size: 10.143239736067194px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 16.312827409519144px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 13.690415485241537px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/培训/" style="font-size: 15.020442848135879px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/比较基因组学/" style="font-size: 10.941500944528165px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 16.5953038696561px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 13.879772357850051px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/JAVA/" style="font-size: 8.192044180526505px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/perl/" style="font-size: 16.870726819210756px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/perl/" style="font-size: 13.748276683582965px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/编程/" style="font-size: 8.696049253551244px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/编程/" style="font-size: 8.965591504095979px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/SNPs/" style="font-size: 10.700784359069909px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/R语言/" style="font-size: 14.545332358738108px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/进化/" style="font-size: 14.724161276436988px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/绘图/" style="font-size: 17.290361897881432px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/音乐/" style="font-size: 15.515630821848072px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/下载/" style="font-size: 18.60955128614056px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/爬虫/" style="font-size: 8.998996284290055px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/音乐/" style="font-size: 19.41108737120653px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/网盘/" style="font-size: 13.641564034421679px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/爬虫/" style="font-size: 8.824974623604284px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 18.204232511992352px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/SNPs/" style="font-size: 19.984713771259955px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/Github/" style="font-size: 17.311912811934498px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/进化/" style="font-size: 17.18767332704515px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/同源家族/" style="font-size: 8.141297911084369px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/系统/" style="font-size: 10.403280809980112px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/JAVA/" style="font-size: 8.16341764444967px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/PubMed/" style="font-size: 12.92107968719636px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 8.388827377617748px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 16.24119018073943px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/PubMed/" style="font-size: 10.338423056808642px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 12.883583283587825px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/Bioconda/" style="font-size: 13.051930709284239px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/网盘/" style="font-size: 18.1576945600846px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 17.570927545063945px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 12.408769042238223px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/表型预测/" style="font-size: 8.843083648970868px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/表型预测/" style="font-size: 17.509137929098934px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/虚拟机/" style="font-size: 15.989943670439139px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/软件/" style="font-size: 12.180132781811352px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 9.600072188088658px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -888,37 +821,43 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/05/20/Bioconda贡献指南/">Bioconda贡献指南</a>
+                    <a href="/2019/11/01/Linux和基因组测序技术初识/">Linux和基因组测序技术初识</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/">JAVA jre 安装或升级1603 error解决办法</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/05/11/拖地的女人/">拖地的女人</a>
+                    <a href="/2018/12/14/kSNP3寻找SNPs并构建进化树/">kSNP3寻找SNPs并构建进化树</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/06/05/日记/">日记</a>
+                    <a href="/2018/09/17/perl循环调用python爬虫批量下载喜马拉雅音频/">perl循环调用python爬虫批量下载喜马拉雅音频</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
+                    <a href="/2015/03/15/今天的梦/">今天的梦</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/03/17/溪山行旅图/">溪山行旅图</a>
+                    <a href="/2017/04/04/双山记/">双山记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/03/29/奶奶/">奶奶</a>
                 </span>
             </li>
             
@@ -930,19 +869,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
+                    <a href="/2010/12/13/葬/">葬</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/03/02/逃亡/">逃亡</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2010/10/11/老婆一家“人”/">老婆一家“人”</a>
+                    <a href="/2019/02/18/获取下一个版本的内部预览版windows系统/">获取下一版本的内部预览版windows系统</a>
                 </span>
             </li>
             
