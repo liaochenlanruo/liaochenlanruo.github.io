@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -315,7 +315,7 @@
 <p>可以视为方法一的另一种实现策略，通过“ln -s A B”进行创建，软连接可以理解为Windows下的快捷方式。A为主程序的绝对路径（包含主程序名称），B为目标路径，即放置软件快捷方式的地方（包含主程序名），一般可存于“/usr/loacl/bin”下。</p>
 <p>（3）源码配置编译及安装</p>
 <p>特点为解压源码包之后，存在“configure”文件，一般分三步安装，即在软件目录下打开终端，依次运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 <p>（4）通过源进行安装</p>
 <p>不同的Linux发行版含有不同的源和软件安装工具，只要联网，一条命令即可安装源中含有的软件。</p>
 <p>Ubuntu可以通过“sudo apt-get install 程序名”进行安装</p>
@@ -327,53 +327,53 @@
 <p><strong>三、软件安装</strong><br><strong>1. ABySS</strong></p>
 <p>首先安装依赖包：</p>
 <p>Open MPI</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf openmpi-4.0.0.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> openmpi-4.0.0</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">sudo make all install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar zxvf openmpi-4.0.0.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> openmpi-4.0.0</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">sudo make all install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
 <p>Git（可以不安装）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev git</span><br></pre></td></tr></table></figure>
 <p>sparsehash</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/sparsehash/sparsehash.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> sparsehash</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/sparsehash/sparsehash.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> sparsehash</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ..</span><br></pre></td></tr></table></figure>
 <p>ABySS</p>
 <p>首先删除旧版本（Bio-Linux自带的）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove abyss</span><br><span class="line"></span><br><span class="line">tar zxvf abyss-2.1.4.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> abyss-2.1.4</span><br><span class="line"></span><br><span class="line">wget http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.bz2</span><br><span class="line"></span><br><span class="line">tar jxf boost_1_56_0.tar.bz2</span><br><span class="line"></span><br><span class="line">./configure --<span class="built_in">enable</span>-maxk=160 --with-mpi=/usr/<span class="built_in">local</span>/lib/openmpi</span><br><span class="line"></span><br><span class="line"><span class="comment">#（注：openmpi的路径用“whereis openmpi”寻找）</span></span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-<p>不能多线程运行时（np=2），错误提示为“/usr/local/bin/mpirun: error while loading shared libraries: libopen-rte.so.40: cannot open shared object file: No such file or directory”，则需运行如下命令解决。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove abyss</span><br><span class="line"></span><br><span class="line">tar zxvf abyss-2.1.4.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> abyss-2.1.4</span><br><span class="line"></span><br><span class="line">wget http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.bz2</span><br><span class="line"></span><br><span class="line">tar jxf boost_1_56_0.tar.bz2</span><br><span class="line"></span><br><span class="line">./configure --<span class="built_in">enable</span>-maxk=160 --with-mpi=/usr/<span class="built_in">local</span>/lib/openmpi</span><br><span class="line"></span><br><span class="line"><span class="comment">#（注：openmpi的路径用“whereis openmpi”寻找）</span></span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>不能多线程运行时（np=2），错误提示为“/usr/local/bin/mpirun: error while loading shared libraries: libopen-rte.so.40: cannot open shared object file: No such file or directory”，则需运行如下命令解决。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure></p>
 <p><strong>2. SPAdes</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf SPAdes-3.13.0-Linux.tar.gz</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/SPAdes-3.13.0-Linux/bin<span class="comment">#(加入环境变量)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf SPAdes-3.13.0-Linux.tar.gz</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/SPAdes-3.13.0-Linux/bin<span class="comment">#(加入环境变量)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 <p><strong>3. prokka</strong></p>
 <p>先安装依赖</p>
 <p>aragorn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line">i<span class="comment">#(进入插入模式），在文末建立新的一行</span></span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/Tools/prokka/aragorn.1.2.38</span><br><span class="line"></span><br><span class="line">esc <span class="comment">#(退出插入模式）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + :</span><br><span class="line"></span><br><span class="line">wq! <span class="comment">#(w,write; q,quit, !强制）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line">i<span class="comment">#(进入插入模式），在文末建立新的一行</span></span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/Tools/prokka/aragorn.1.2.38</span><br><span class="line"></span><br><span class="line">esc <span class="comment">#(退出插入模式）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + :</span><br><span class="line"></span><br><span class="line">wq! <span class="comment">#(w,write; q,quit, !强制）</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 <p>barrnap</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/barrnap-0.6/bin</span><br><span class="line"></span><br><span class="line">esc</span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + :</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/barrnap-0.6/bin</span><br><span class="line"></span><br><span class="line">esc</span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + :</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 <p>tbl2asn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除旧版本：</span></span><br><span class="line">sudo rm -f /usr/bin/tbl2asn</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装新版本。解压，把主程序的名称改为 tbl2asn</span></span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/prokka/tbl2asn /usr/<span class="built_in">local</span>/bin/tbl2asn</span><br></pre></td></tr></table></figure>
-<p>minced<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压，进入程序所在的目录中</span></span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/prokka/minced-master/minced /usr/<span class="built_in">local</span>/bin/minced</span><br></pre></td></tr></table></figure></p>
-<p>parallel<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压缩，进入目录</span></span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
-<p>prodigal<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压缩，进入目录</span></span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
-<p>signalp<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压缩，用文本编辑器打开signalp主程序，改路径（第13行），并保存：</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$ENV</span>&#123;SIGNALP&#125; = <span class="string">'/home/manager/Tools/prokka/signalp-4.1'</span>;</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/signalp-4.1</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#删除旧版本：</span></span><br><span class="line">sudo rm -f /usr/bin/tbl2asn</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装新版本。解压，把主程序的名称改为 tbl2asn</span></span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/prokka/tbl2asn /usr/<span class="built_in">local</span>/bin/tbl2asn</span><br></pre></td></tr></table></figure>
+<p>minced<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解压，进入程序所在的目录中</span></span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/prokka/minced-master/minced /usr/<span class="built_in">local</span>/bin/minced</span><br></pre></td></tr></table></figure></p>
+<p>parallel<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解压缩，进入目录</span></span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
+<p>prodigal<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解压缩，进入目录</span></span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
+<p>signalp<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解压缩，用文本编辑器打开signalp主程序，改路径（第13行），并保存：</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$ENV</span>&#123;SIGNALP&#125; = <span class="string">'/home/manager/Tools/prokka/signalp-4.1'</span>;</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/signalp-4.1</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></p>
 <p>rnammer</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压后进入文件夹，用文本编辑器打开rnammer主程序，修改第35行路径如下：</span></span><br><span class="line"></span><br><span class="line">my <span class="variable">$INSTALL_PATH</span> = <span class="string">"/home/manager/Tools/prokka/rnammer-1.2.src"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#通过whereis hammsearch命令查看其所在路径，修改第50行和53行，如下：</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$HMMSEARCH_BINARY</span> = <span class="string">"/usr/bin/hmmsearch"</span>;</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/rnammer-1.2.src</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解压后进入文件夹，用文本编辑器打开rnammer主程序，修改第35行路径如下：</span></span><br><span class="line"></span><br><span class="line">my <span class="variable">$INSTALL_PATH</span> = <span class="string">"/home/manager/Tools/prokka/rnammer-1.2.src"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#通过whereis hammsearch命令查看其所在路径，修改第50行和53行，如下：</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$HMMSEARCH_BINARY</span> = <span class="string">"/usr/bin/hmmsearch"</span>;</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/rnammer-1.2.src</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 <p>prokka</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/prokka-1.12/bin</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line">prokka --setupdb</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/prokka/prokka-1.12/bin</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line">prokka --setupdb</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li>Parsnp</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/marbl/parsnp/releases/download/v1.2/parsnp-Linux64-v1.2.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf parsnp-Linux64-v1.2.tar.gz</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/Parsnp-Linux64-v1.2<span class="comment">#(加入环境变量)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/marbl/parsnp/releases/download/v1.2/parsnp-Linux64-v1.2.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf parsnp-Linux64-v1.2.tar.gz</span><br><span class="line"></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="variable">$HOME</span>/Tools/Parsnp-Linux64-v1.2<span class="comment">#(加入环境变量)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>roary（blast+, fasttree）</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install bedtools <span class="built_in">cd</span>-hit ncbi-blast+ mcl parallel cpanminus prank mafft fasttree</span><br><span class="line"></span><br><span class="line">sudo cpanm -f Bio::Roary</span><br><span class="line"></span><br><span class="line"><span class="comment">#出错的话运行：</span></span><br><span class="line"></span><br><span class="line">sudo cpan -f Bio::Roary</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install bedtools <span class="built_in">cd</span>-hit ncbi-blast+ mcl parallel cpanminus prank mafft fasttree</span><br><span class="line"></span><br><span class="line">sudo cpanm -f Bio::Roary</span><br><span class="line"></span><br><span class="line"><span class="comment">#出错的话运行：</span></span><br><span class="line"></span><br><span class="line">sudo cpan -f Bio::Roary</span><br></pre></td></tr></table></figure>
 <ol start="6">
 <li>RAxML</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解压</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> standard-RAxML-master </span><br><span class="line"></span><br><span class="line">make -f Makefile.gcc</span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/standard-RAxML-master/raxmlHPC /usr/<span class="built_in">local</span>/bin/raxmlHPC</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#解压</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> standard-RAxML-master </span><br><span class="line"></span><br><span class="line">make -f Makefile.gcc</span><br><span class="line"></span><br><span class="line">sudo ln -s /home/manager/Tools/standard-RAxML-master/raxmlHPC /usr/<span class="built_in">local</span>/bin/raxmlHPC</span><br></pre></td></tr></table></figure>
 <ol start="7">
 <li>Prottest</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install prottest</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install prottest</span><br></pre></td></tr></table></figure>
 <ol start="8">
 <li>jModelTest</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install jmodeltest</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install jmodeltest</span><br></pre></td></tr></table></figure>
 
     </div>
 </article>
@@ -456,59 +456,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 17.234831427791136px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 17.207428560344276px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 10.405427599227398px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 8.571674253270762px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 9.931569907343748px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 18.55025723733698px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 16.58084614762129px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 14.203568381517858px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 9.272976957269407px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 10.48169200911013px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 12.510552870421904px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 12.62370519405231px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 15.644918478845721px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 15.346329241140344px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 17.334615953699963px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 9.796083542080794px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 11.257080622453277px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 8.755974469137277px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 17.16140776292239px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 11.25646713723428px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 19.25526935060844px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 12.589584028964751px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 9.300506905177322px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 13.689412170871405px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 10.986639332415358px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 11.574797874940277px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 11.068449076947493px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 19.118727910673968px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 19.426887146518663px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 15.90376737844134px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 8.870503246153946px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 14.866166238431589px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 17.437561159175907px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 17.72168441451537px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 19.63152492036973px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 19.644840187759097px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 16.447218215141138px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 19.40548555200896px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 16.836647049052004px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 8.706462617613475px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 12.860786595385083px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 15.383857508858739px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 9.99025844910387px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 17.50341306521127px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 11.665433134316398px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 10.561207881278726px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 18.17545899600763px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 16.245849057602143px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 13.6800127308214px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 17.439552284569224px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 10.636623763807322px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 13.405512455144216px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 8.644877161629626px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 12.960207314772706px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -701,61 +701,61 @@
             
             <li class="list-group-item">
                 <span class="post-title">
+                    <a href="/2018/12/01/2018-peixunban/">我校师生于南昌开设2018年微生物基因组学培训班</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
                     <a href="/2019/11/01/Linux和基因组测序技术初识/">Linux和基因组测序技术初识</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/">JAVA jre 安装或升级1603 error解决办法</a>
+                    <a href="/2019/03/30/Ubuntu-open-mpi运行错误/">Ubuntu open-mpi运行错误</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/">Perl捕获外部命令执行异常并继续运行后续代码</a>
+                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/28/PGCGAP中文说明/">PGCGAP中文说明</a>
+                    <a href="/2016/06/06/人皮/">人皮</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/02/23/R语言自定义坐标轴排序/">R语言自定义坐标轴排序</a>
+                    <a href="/2011/12/06/亦生亦死/">亦生亦死</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/03/15/今天的梦/">今天的梦</a>
+                    <a href="/2013/06/08/南湖异事/">南湖异事</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/06/05/日记/">日记</a>
+                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                    <a href="/2010/05/17/滴血的笔/">滴血的笔</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/03/17/溪山行旅图/">溪山行旅图</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2009/11/27/元宵鬼话/">元宵鬼话</a>
+                    <a href="/2010/12/13/葬/">葬</a>
                 </span>
             </li>
             
@@ -789,7 +789,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>

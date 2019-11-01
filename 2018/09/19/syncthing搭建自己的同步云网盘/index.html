@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -316,9 +316,9 @@
 <p>You are probably reading this because you encountered the following error with the filesystem watcher on linux:</p>
 <p>Failed to start filesystem watcher for folder yourLabel (yourID): failed to setup inotify handler. Please increase inotify limits, see<a href="https://docs.syncthing.net/users/faq.html#inotify-limits" target="_blank" rel="noopener">https://docs.syncthing.net/users/faq.html#inotify-limits</a></p>
 <p>Linux typically restricts the amount of watches per user (usually 8192). When you have more directories you need to adjust that number.</p>
-<p>On many Linux distributions you can run the following to fix it:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p</span><br></pre></td></tr></table></figure></p>
-<p>On Arch Linux and potentially others it is preferred to write this line into a separate file, i.e. you should run:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"fs.inotify.max_user_watches=204800"</span> | sudo tee -a /etc/sysctl.d/90-override.conf</span><br></pre></td></tr></table></figure></p>
-<p>This only takes effect after a reboot. To adjust the limit immediately, run:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh-c <span class="string">'echo 204800 &gt; /proc/sys/fs/inotify/max_user_watches'</span></span><br></pre></td></tr></table></figure></p>
+<p>On many Linux distributions you can run the following to fix it:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p</span><br></pre></td></tr></table></figure></p>
+<p>On Arch Linux and potentially others it is preferred to write this line into a separate file, i.e. you should run:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"fs.inotify.max_user_watches=204800"</span> | sudo tee -a /etc/sysctl.d/90-override.conf</span><br></pre></td></tr></table></figure></p>
+<p>This only takes effect after a reboot. To adjust the limit immediately, run:<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sh-c <span class="string">'echo 204800 &gt; /proc/sys/fs/inotify/max_user_watches'</span></span><br></pre></td></tr></table></figure></p>
 
     </div>
 </article>
@@ -401,59 +401,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 18.213757852346333px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 16.608053150255884px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 15.02155495492312px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 8.54501280982261px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 9.740606990398959px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 9.536893209883498px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 12.17940981117617px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 14.598791053699802px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 19.550803269185817px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 15.458426070472541px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 18.212233614924358px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 16.37818617070127px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 10.466687755158073px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 15.067651500847152px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 15.481931313902141px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 14.066508911059628px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 17.767744575041885px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 12.231755561395056px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 13.484039856644142px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 16.18840869404659px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 8.247885612063246px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 10.302545359602272px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 18.999361110153014px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 8.318436868794794px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 19.79245601070073px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 13.638627961625165px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 10.143938859916684px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 9.939062908155115px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 9.937583380822634px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 9.225083441768334px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 9.343214353027857px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 14.785739347631914px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 9.169233995064566px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 10.535976769251734px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 18.53382927372536px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 15.486314276510214px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 19.24362004789682px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 17.805871982521154px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 18.75202452485738px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 8.169880430887378px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 9.455080708248296px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 13.354796972641978px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 18.738994887316178px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 18.25386709944495px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 14.020340081257585px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 15.920745565686307px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 13.089506904900935px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 14.181055240752944px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 13.874017045965802px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 18.774704044675865px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 13.310175302495065px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 18.636511259233593px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 17.095122271461708px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 10.749592924288638px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -646,61 +646,61 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/01/Linux和基因组测序技术初识/">Linux和基因组测序技术初识</a>
+                    <a href="/2019/02/23/R语言自定义坐标轴排序/">R语言自定义坐标轴排序</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/28/ArcMap10.6从世界地图扣取东亚及东南亚国家地图/">ArcMap10.6从世界地图扣取东亚及东南亚国家地图</a>
+                    <a href="/2019/04/28/PGCGAP中文说明/">PGCGAP中文说明</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/05/Hexo博客导航栏menu无法跳转https/">Hexo博客导航栏menu无法跳转https</a>
+                    <a href="/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/">Perl捕获外部命令执行异常并继续运行后续代码</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/02/windows-10-中文乱码解决方案/">windows 10 中文乱码解决方案</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/02/反锁的门/">反锁的门</a>
+                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/03/15/今天的梦/">今天的梦</a>
+                    <a href="/2011/05/11/拖地的女人/">拖地的女人</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/04/04/双山记/">双山记</a>
+                    <a href="/2011/05/16/枣院传奇/">枣院传奇</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/06/05/日记/">日记</a>
+                    <a href="/2018/12/14/根据基因组预测表型-traitar的安装与使用/">根据基因组预测表型 —— traitar的安装与使用</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/07/18/焦尸/">焦尸</a>
+                    <a href="/2019/02/01/用wget批量下载含有链接的文件-目录/">用wget批量下载含有链接的文件/目录</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                    <a href="/2013/07/16/肩上的手/">肩上的手</a>
                 </span>
             </li>
             
@@ -734,7 +734,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>

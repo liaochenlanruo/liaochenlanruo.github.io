@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -314,43 +314,43 @@
 </ol>
 <ul>
 <li><p>下载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/davidemms/OrthoFinder/releases/download/v2.2.7/OrthoFinder-2.2.7.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/davidemms/OrthoFinder/releases/download/v2.2.7/OrthoFinder-2.2.7.tar.gz</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>解压</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf OrthoFinder-2.2.7.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar zxvf OrthoFinder-2.2.7.tar.gz</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装（加入环境变量即可）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line"></span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/tools/OrthoFinder-2.2.7</span><br><span class="line"></span><br><span class="line">Esc</span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + ;</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line"></span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/tools/OrthoFinder-2.2.7</span><br><span class="line"></span><br><span class="line">Esc</span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + ;</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>依赖包</p>
 <p>（1）<a href="url:https://github.com/bbuchfink/diamond/releases" target="_blank" rel="noopener">DIAMOND</a></p>
-<p>下载对应版本，解压并将主程序拷贝至存在于环境变量的目录下或将其所在的目录加入环境变量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/bbuchfink/diamond/releases/download/v0.9.24/diamond-linux64.tar.gz</span><br><span class="line"></span><br><span class="line">tar xzf diamond-linux64.tar.gz</span><br><span class="line"></span><br><span class="line">sudo cp diamond /usr/<span class="built_in">local</span>/bin</span><br></pre></td></tr></table></figure></p>
+<p>下载对应版本，解压并将主程序拷贝至存在于环境变量的目录下或将其所在的目录加入环境变量：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/bbuchfink/diamond/releases/download/v0.9.24/diamond-linux64.tar.gz</span><br><span class="line"></span><br><span class="line">tar xzf diamond-linux64.tar.gz</span><br><span class="line"></span><br><span class="line">sudo cp diamond /usr/<span class="built_in">local</span>/bin</span><br></pre></td></tr></table></figure></p>
 <p>没有root权限的可以把diamond所在目录加入环境变量。</p>
 <p>(2) <a href="url:https://github.com/soedinglab/MMseqs2/releases" target="_blank" rel="noopener">MMseqs2</a></p>
-<p>下载对应版本，解压并将主程序拷贝至存在于环境变量的目录下或将其所在的目录加入环境变量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/soedinglab/MMseqs2/releases/download/7-4e23d/MMseqs2-Linux-AVX2.tar.gz</span><br><span class="line"></span><br><span class="line">tar xzf MMseqs2-Linux-AVX2.tar.gz</span><br><span class="line"></span><br><span class="line">sudo cp mmseqs2/bin/mmseqs /usr/<span class="built_in">local</span>/bin</span><br></pre></td></tr></table></figure></p>
+<p>下载对应版本，解压并将主程序拷贝至存在于环境变量的目录下或将其所在的目录加入环境变量：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/soedinglab/MMseqs2/releases/download/7-4e23d/MMseqs2-Linux-AVX2.tar.gz</span><br><span class="line"></span><br><span class="line">tar xzf MMseqs2-Linux-AVX2.tar.gz</span><br><span class="line"></span><br><span class="line">sudo cp mmseqs2/bin/mmseqs /usr/<span class="built_in">local</span>/bin</span><br></pre></td></tr></table></figure></p>
 <p>(3) <a href="url:http://micans.org/mcl/" target="_blank" rel="noopener">MCL</a></p>
 <ul>
 <li><p>Ubuntu, Debian, Linux Mint安装方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mcl</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install mcl</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Centos, Redhat安装方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget https://micans.org/mcl/src/mcl-latest.tar.gz</span><br><span class="line">tar zxvf mcl-latest.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mcl-14-137（视具体情况而定）</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://micans.org/mcl/src/mcl-latest.tar.gz</span><br><span class="line">tar zxvf mcl-latest.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mcl-14-137（视具体情况而定）</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>(4) <a href="url:http://www.atgc-montpellier.fr/fastme/binaries.php" target="_blank" rel="noopener">FastME</a></p>
-<p>下载二进制文件，解压并将主程序拷贝至存在于环境变量的目录下或将其所在的目录加入环境变量：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.atgc-montpellier.fr/download/sources/fastme/fastme-2.1.5.tar.gz</span><br><span class="line">tar zxvf fastme-2.1.5.tar.gz</span><br><span class="line">sudo cp fastme-2.1.5/binaries/fastme-2.1.5-linux64 /usr/<span class="built_in">local</span>/bin/fastme</span><br></pre></td></tr></table></figure></p>
+<p>下载二进制文件，解压并将主程序拷贝至存在于环境变量的目录下或将其所在的目录加入环境变量：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://www.atgc-montpellier.fr/download/sources/fastme/fastme-2.1.5.tar.gz</span><br><span class="line">tar zxvf fastme-2.1.5.tar.gz</span><br><span class="line">sudo cp fastme-2.1.5/binaries/fastme-2.1.5-linux64 /usr/<span class="built_in">local</span>/bin/fastme</span><br></pre></td></tr></table></figure></p>
 <p>(5) 可选: <a href="url:ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/" target="_blank" rel="noopener">BLAST+</a></p>
 <ul>
 <li><p>Ubuntu, Debian, Linux Mint安装方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ncbi-blast+</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ncbi-blast+</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Centos, Redhat安装方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-x64-linux.tar.gz</span><br><span class="line">tar zxvf ncbi-blast-2.8.1+-x64-linux.tar.gz</span><br><span class="line">vim ~/.bashrc</span><br><span class="line">i</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/tools/ncbi-blast-2.8.1+/bin</span><br><span class="line">Esc</span><br><span class="line"><span class="built_in">shift</span> + ;</span><br><span class="line">wq!</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-x64-linux.tar.gz</span><br><span class="line">tar zxvf ncbi-blast-2.8.1+-x64-linux.tar.gz</span><br><span class="line">vim ~/.bashrc</span><br><span class="line">i</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/tools/ncbi-blast-2.8.1+/bin</span><br><span class="line">Esc</span><br><span class="line"><span class="built_in">shift</span> + ;</span><br><span class="line">wq!</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ol start="2">
-<li>运行 OrthoFinder<br>(1) 运行示例数据：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> OrthoFinder-2.2.7</span><br><span class="line">orthofinder -f ExampleData</span><br></pre></td></tr></table></figure>
+<li>运行 OrthoFinder<br>(1) 运行示例数据：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> OrthoFinder-2.2.7</span><br><span class="line">orthofinder -f ExampleData</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>运行结果如下，会显示输出文件的路径，表明运行成功：</p>
@@ -364,7 +364,7 @@
 <ul>
 <li>step2：运行程序</li>
 </ul>
-<p>在Data目录的上一级目录打开终端，运行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orthofinder -f Data -t 线程数</span><br></pre></td></tr></table></figure></p>
+<p>在Data目录的上一级目录打开终端，运行如下命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">orthofinder -f Data -t 线程数</span><br></pre></td></tr></table></figure></p>
 <ol start="3">
 <li>结果解读</li>
 </ol>
@@ -403,11 +403,11 @@
 <ol start="4">
 <li>高级用法</li>
 </ol>
-<p>（1）添加新物种到之前的分析<br>（previous_orthofinder_directory指的是包含“SpeciesIDs.txt”的目录）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orthofinder -b previous_orthofinder_directory -f new_fasta_directory</span><br></pre></td></tr></table></figure></p>
+<p>（1）添加新物种到之前的分析<br>（previous_orthofinder_directory指的是包含“SpeciesIDs.txt”的目录）<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">orthofinder -b previous_orthofinder_directory -f new_fasta_directory</span><br></pre></td></tr></table></figure></p>
 <p>（2）从之前的分析中移除物种</p>
-<p>从输出目录下找到工作目录“WorkingDirectory”中的“SpeciesIDs.txt”文件，在要移除的物种那一行最前面加上一个“#”并保存，然后运行（previous_orthofinder_directory指的是包含“SpeciesIDs.txt”的目录）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orthofinder -b previous_orthofinder_directory</span><br></pre></td></tr></table></figure></p>
+<p>从输出目录下找到工作目录“WorkingDirectory”中的“SpeciesIDs.txt”文件，在要移除的物种那一行最前面加上一个“#”并保存，然后运行（previous_orthofinder_directory指的是包含“SpeciesIDs.txt”的目录）：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">orthofinder -b previous_orthofinder_directory</span><br></pre></td></tr></table></figure></p>
 <p>（3）同时添加和删除物种</p>
-<p>编辑好“SpeciesIDs.txt”后，运行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orthofinder -b previous_orthofinder_directory -f new_fasta_directory</span><br></pre></td></tr></table></figure></p>
+<p>编辑好“SpeciesIDs.txt”后，运行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">orthofinder -b previous_orthofinder_directory -f new_fasta_directory</span><br></pre></td></tr></table></figure></p>
 <p>（4）更多高级功能请阅读官方文档<br>主要包括“Inferring MSA Gene Trees”、并行计算、单独运行BLAST、使用预先计算的BLAST结果以及回归检测。</p>
 
     </div>
@@ -491,59 +491,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 19.59584094364795px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 11.231157882673184px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 14.799335095832859px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 8.166206095695856px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 15.08697700789974px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 16.75570011547233px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 9.162974441691205px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 14.466123317719696px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 16.26121977859221px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 13.880701653966707px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 18.08147708004958px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 12.645782975403392px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 18.87925971168986px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 14.098669050918044px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 18.360290254775567px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 14.912013396954634px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 16.45360007139138px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 9.413873287733157px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 16.873010138044148px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 12.856355978145537px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 13.546095224910463px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 17.52535315161741px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 16.149788536546588px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 16.885488419282524px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 12.171312628340544px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 13.64717363138576px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 16.08429945569306px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 17.127641710725666px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 14.162519351967873px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 11.856081658726339px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 15.503646660094931px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 13.250003409294028px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 11.409531956831579px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 16.716371615423874px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 9.230857065204319px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 12.044547289745077px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 13.094302613958913px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 18.491961646928335px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 9.333199981649152px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 19.667485216014818px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 13.903786548837063px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 19.053460839499248px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 8.735872719069867px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 8.127160452154072px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 16.61743578216459px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 11.422220930693179px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 18.84689079496748px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 8.178458760630399px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 18.363979347878356px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 10.354246429954394px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 18.68528098905106px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 13.910264463213549px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 9.275987725153144px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 15.279606409623522px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -736,61 +736,61 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/19/syncthing搭建自己的同步云网盘/">syncthing搭建自己的同步云网盘</a>
+                    <a href="/2019/11/01/Linux和基因组测序技术初识/">Linux和基因组测序技术初识</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/02/反锁的门/">反锁的门</a>
+                    <a href="/2019/03/05/Hexo博客导航栏menu无法跳转https/">Hexo博客导航栏menu无法跳转https</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/11/10/屠龙/">屠龙</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/05/30/夏冰/">夏冰</a>
+                    <a href="/2019/03/02/windows-10-中文乱码解决方案/">windows 10 中文乱码解决方案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/05/29/新生/">新生</a>
+                    <a href="/2017/04/04/双山记/">双山记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/05/17/滴血的笔/">滴血的笔</a>
+                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/07/18/焦尸/">焦尸</a>
+                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/12/13/葬/">葬</a>
+                    <a href="/2013/07/16/肩上的手/">肩上的手</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/02/18/获取下一个版本的内部预览版windows系统/">获取下一版本的内部预览版windows系统</a>
+                    <a href="/2013/07/09/雨夜/">雨夜</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/08/23/设置元素加载时间解决D3.js文字被图像覆盖的问题/">设置元素加载时间解决D3.js文字被图像覆盖的问题</a>
+                    <a href="/2015/03/02/逃亡/">逃亡</a>
                 </span>
             </li>
             
@@ -824,7 +824,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>

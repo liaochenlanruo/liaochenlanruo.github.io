@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -314,13 +314,13 @@
     <div class="content-article">
         <p>kSNP3可以利用reads、draft genomes或complete genomes寻找SNPs，并构建进化树。操作比较简单，小白比较容易上手。<br><a id="more"></a></p>
 <p><strong>1. kSNP3 安装</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/tools</span><br><span class="line"></span><br><span class="line">wget https://sourceforge.net/projects/ksnp/files/kSNP3.1_Linux_package.zip</span><br><span class="line"></span><br><span class="line">unzip kSNP3.1_Linux_package.zip</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入环境变量：</span></span><br><span class="line"></span><br><span class="line">vim ~/.bashrc</span><br><span class="line"></span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/tools/kSNP3.1_Linux_package/kSNP3</span><br><span class="line"></span><br><span class="line">ESC</span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + ：</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/tools</span><br><span class="line"></span><br><span class="line">wget https://sourceforge.net/projects/ksnp/files/kSNP3.1_Linux_package.zip</span><br><span class="line"></span><br><span class="line">unzip kSNP3.1_Linux_package.zip</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入环境变量：</span></span><br><span class="line"></span><br><span class="line">vim ~/.bashrc</span><br><span class="line"></span><br><span class="line">i</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/tools/kSNP3.1_Linux_package/kSNP3</span><br><span class="line"></span><br><span class="line">ESC</span><br><span class="line"></span><br><span class="line"><span class="built_in">shift</span> + ：</span><br><span class="line"></span><br><span class="line">wq!</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>编辑主程序kSNP3的第8行：</p>
 <p>将 set kSNP=/usr/local/kSNP3</p>
 <p>改为：set kSNP=/home/lhl/tools/kSNP3.1_Linux_package/kSNP3</p>
 <p>注：根据自己的路径进行修改</p>
 <p><strong>2. 基本用法</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将所有的基因组文件放于988_ksnp目录之中，在其上一级目录下运行命令创建输入列表：</span></span><br><span class="line"></span><br><span class="line">MakeKSNP3infile 988_ksnp inlist A</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行命令创建输入序列集合：</span></span><br><span class="line"></span><br><span class="line">MakeFasta inlist fastainput_988</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算最佳K值：</span></span><br><span class="line"></span><br><span class="line">Kchooser fastainput_988</span><br><span class="line"></span><br><span class="line"><span class="comment">#寻找SNPs并构建进化树：</span></span><br><span class="line"></span><br><span class="line">kSNP3 -<span class="keyword">in</span> inlist -outdir SNPs_20181214 -k 23 -ML -NJ -vcf  -CPU 30 -core -min_frac 0.5 |tee Log_988_20181214.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将所有的基因组文件放于988_ksnp目录之中，在其上一级目录下运行命令创建输入列表：</span></span><br><span class="line"></span><br><span class="line">MakeKSNP3infile 988_ksnp inlist A</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行命令创建输入序列集合：</span></span><br><span class="line"></span><br><span class="line">MakeFasta inlist fastainput_988</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算最佳K值：</span></span><br><span class="line"></span><br><span class="line">Kchooser fastainput_988</span><br><span class="line"></span><br><span class="line"><span class="comment">#寻找SNPs并构建进化树：</span></span><br><span class="line"></span><br><span class="line">kSNP3 -<span class="keyword">in</span> inlist -outdir SNPs_20181214 -k 23 -ML -NJ -vcf  -CPU 30 -core -min_frac 0.5 |tee Log_988_20181214.txt</span><br></pre></td></tr></table></figure>
 
     </div>
 </article>
@@ -403,59 +403,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 9.811664752394158px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 17.03698261544881px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 8.345119440005814px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 15.0034985066299px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 14.175365187880933px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 16.618807278222654px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 18.083252845354366px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 9.597703937425317px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 9.791919550054569px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 15.07883835409952px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 16.492844205879454px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 19.74878132657923px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 16.87995708180619px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 14.150223569809175px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 10.406128666444786px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 18.479011077154546px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 18.72941748396158px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 8.156767750718215px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 13.702105589398943px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 12.598837972962588px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 8.05387258145107px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 13.77151341033466px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 9.483744245471902px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 12.918677359551548px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 14.892977507912793px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 10.77679700110347px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 8.748875231373432px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 16.202527196785333px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 9.660667502084674px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 16.553101567273828px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 15.99982450177163px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 16.729561605506138px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 13.121662218255908px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 9.91638948186387px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 13.497081813636663px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 16.62933923620249px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 10.713420198041952px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 17.070282944039107px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 16.760196861294403px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 12.728594475021227px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 14.014026170702076px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 17.373779970733192px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 14.977664729719173px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 17.05417509310832px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 19.488659218581276px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 15.128240641496383px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 13.06276740370425px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 16.59648258749543px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 11.400731057053703px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 12.495590120909663px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 10.318667573242717px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 14.139320974421297px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 13.746114354707505px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 17.891980167601186px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -648,49 +648,49 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/15/Wget-技巧/">Wget 技巧</a>
+                    <a href="/2019/05/20/Bioconda贡献指南/">Bioconda贡献指南</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/03/15/今天的梦/">今天的梦</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/05/30/夏冰/">夏冰</a>
+                    <a href="/2019/03/30/Ubuntu-open-mpi运行错误/">Ubuntu open-mpi运行错误</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/06/05/日记/">日记</a>
+                    <a href="/2019/03/02/windows-10-中文乱码解决方案/">windows 10 中文乱码解决方案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/05/29/新生/">新生</a>
+                    <a href="/2018/09/28/ArcMap10.6从世界地图扣取东亚及东南亚国家地图/">ArcMap10.6从世界地图扣取东亚及东南亚国家地图</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/05/16/枣院传奇/">枣院传奇</a>
+                    <a href="/2013/07/02/反锁的门/">反锁的门</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/14/根据基因组预测表型-traitar的安装与使用/">根据基因组预测表型 —— traitar的安装与使用</a>
+                    <a href="/2013/05/20/归乡/">归乡</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/03/17/溪山行旅图/">溪山行旅图</a>
+                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
                 </span>
             </li>
             
@@ -702,7 +702,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/09/12/逍遥于世/">逍遥于世</a>
+                    <a href="/2019/02/18/获取下一个版本的内部预览版windows系统/">获取下一版本的内部预览版windows系统</a>
                 </span>
             </li>
             
@@ -736,7 +736,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>

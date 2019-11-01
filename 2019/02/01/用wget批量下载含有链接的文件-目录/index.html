@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -314,19 +314,19 @@
 <ol>
 <li>安装Chocolatey<br>方案A：以管理员身份运行cmd.exe<br>输入：</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="string">"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"</span> -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command <span class="string">"iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"</span> &amp;&amp; SET <span class="string">"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="string">"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"</span> -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command <span class="string">"iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))"</span> &amp;&amp; SET <span class="string">"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"</span></span><br></pre></td></tr></table></figure>
 <p>回车等待安装完成。</p>
 <p>方案B：PowerShell用户输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString(<span class="string">'https://chocolatey.org/install.ps1'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString(<span class="string">'https://chocolatey.org/install.ps1'</span>))</span><br></pre></td></tr></table></figure>
 <p>测试是否安装成功，在命令行中输入“choco”看到help信息表明安装成功。</p>
 <ol start="2">
 <li>安装wget</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco install wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">choco install wget</span><br></pre></td></tr></table></figure>
 <p>升级wget</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choco upgrade wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">choco upgrade wget</span><br></pre></td></tr></table></figure>
 <p><strong>二、用wget下载数据</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -r -c -nH -nc --cut-dirs=3 -i file_contain_url_lists</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -r -c -nH -nc --cut-dirs=3 -i file_contain_url_lists</span><br></pre></td></tr></table></figure>
 <p>-i file_contain_url_lists：含有文件/目录链接的文件，每个链接一行</p>
 <p>-nc：不覆盖已下载的文件</p>
 <p>-c：断点续传</p>
@@ -415,59 +415,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 11.092703181267897px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 14.2448871055215px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 14.762167840002146px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 9.0491830337615px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 14.063768882606048px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 15.69660097313269px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 15.885144142793468px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 8.44895528582796px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 14.675752375789466px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 13.835920116848367px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 11.366933862610562px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 16.395256651198142px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 19.806068761604553px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 13.299926642119381px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 15.124411222822559px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 11.556619607183217px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 13.52388767822536px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 10.04470132812309px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 8.394508115063823px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 19.875136915227255px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 11.93922696737824px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 12.294697833432755px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 15.704270974247393px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 18.26495762188316px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 11.111458357401967px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 9.355459872529018px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 11.027581497898144px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 10.838109023259625px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 19.362202243018825px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 10.20889701991194px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 19.031261599163432px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 14.98026242114007px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 18.676682412496543px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 11.378011411860346px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 10.286782377503165px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 10.828711350607382px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 15.232496066334857px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 18.144270654564775px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 11.168157864397376px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 11.840095328240707px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 12.884116302244962px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 12.4991801191835px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 8.206833909008669px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 15.645242894386673px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 18.471744112483467px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 17.20695845479874px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 13.535012799783955px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 19.475243562963573px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 15.647534398026284px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 18.921366723742093px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 12.417332240140855px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 17.6361067838147px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 15.945975952616468px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 12.24725496494813px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -660,7 +660,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/01/Linux和基因组测序技术初识/">Linux和基因组测序技术初识</a>
+                    <a href="/2019/03/05/Hexo博客导航栏menu无法跳转https/">Hexo博客导航栏menu无法跳转https</a>
                 </span>
             </li>
             
@@ -672,19 +672,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/03/15/今天的梦/">今天的梦</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/05/20/归乡/">归乡</a>
+                    <a href="/2019/04/01/github操作/">Github操作</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/01/29/垃圾桶边的空座/">垃圾桶边的空座</a>
+                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/06/06/人皮/">人皮</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2013/06/08/南湖异事/">南湖异事</a>
                 </span>
             </li>
             
@@ -696,19 +708,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/03/29/奶奶/">奶奶</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2015/09/13/新课题/">新课题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2013/07/16/肩上的手/">肩上的手</a>
+                    <a href="/2011/05/11/拖地的女人/">拖地的女人</a>
                 </span>
             </li>
             
@@ -748,7 +748,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>

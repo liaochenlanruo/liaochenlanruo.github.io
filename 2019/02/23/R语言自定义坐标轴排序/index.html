@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -313,10 +313,10 @@
     </div>
     <div class="content-article">
         <p>R语言作图时，默认情况下软件会按照自己的方式对坐标轴的项目进行排序，然而这种排序往往不是我们所希望的，因此需要想办法让坐标轴的项目按照我们希望的顺序输出。<br><a id="more"></a></p>
-<p>如下所示，我有两列数据，要绘制箱线图，以第一列为Y轴，第二列为X轴，希望X轴的输出顺序按照第二列由上到下排列。<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">size    <span class="built_in">type</span></span><br><span class="line">6.612309456    T-8</span><br><span class="line">5.878857613    T-10</span><br><span class="line">6.724282265    T-15</span><br><span class="line">5.68136692    T-56</span><br><span class="line">5.863334656    T-1723</span><br></pre></td></tr></table></figure></p>
-<p><br>然而软件输出的顺序如下：<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T-10    T-15    T-1723    T-56    T-8</span><br></pre></td></tr></table></figure></p>
+<p>如下所示，我有两列数据，要绘制箱线图，以第一列为Y轴，第二列为X轴，希望X轴的输出顺序按照第二列由上到下排列。<br><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">size    <span class="built_in">type</span></span><br><span class="line">6.612309456    T-8</span><br><span class="line">5.878857613    T-10</span><br><span class="line">6.724282265    T-15</span><br><span class="line">5.68136692    T-56</span><br><span class="line">5.863334656    T-1723</span><br></pre></td></tr></table></figure></p>
+<p><br>然而软件输出的顺序如下：<br><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">T-10    T-15    T-1723    T-56    T-8</span><br></pre></td></tr></table></figure></p>
 <p>解决方案：<br></p>
-<p>通过一个因子事先自定义X轴顺序，作图命令如下：<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读入数据</span></span><br><span class="line">gsize &lt;- read.delim(<span class="string">"gsize.txt"</span>, header=TRUE, sep=<span class="string">"\t"</span>, stringsAsFactors=FALSE)</span><br><span class="line"><span class="comment">#自定义X轴顺序</span></span><br><span class="line">x1 = factor(gsize<span class="variable">$type</span>, levels=c(<span class="string">"T-8"</span>,<span class="string">"T-10"</span>,<span class="string">"T-15"</span>,<span class="string">"T-56"</span>,<span class="string">"T-1723"</span>))</span><br><span class="line"><span class="comment">#用x1代替gsize$type绘图</span></span><br><span class="line">boxplot(size~x1, data=gsize, xlab=<span class="string">"Sequence Type"</span>, ylab=<span class="string">"Genome Size"</span>, varwidth=TRUE, notch=FALSE)</span><br></pre></td></tr></table></figure></p>
+<p>通过一个因子事先自定义X轴顺序，作图命令如下：<br><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#读入数据</span></span><br><span class="line">gsize &lt;- read.delim(<span class="string">"gsize.txt"</span>, header=TRUE, sep=<span class="string">"\t"</span>, stringsAsFactors=FALSE)</span><br><span class="line"><span class="comment">#自定义X轴顺序</span></span><br><span class="line">x1 = factor(gsize<span class="variable">$type</span>, levels=c(<span class="string">"T-8"</span>,<span class="string">"T-10"</span>,<span class="string">"T-15"</span>,<span class="string">"T-56"</span>,<span class="string">"T-1723"</span>))</span><br><span class="line"><span class="comment">#用x1代替gsize$type绘图</span></span><br><span class="line">boxplot(size~x1, data=gsize, xlab=<span class="string">"Sequence Type"</span>, ylab=<span class="string">"Genome Size"</span>, varwidth=TRUE, notch=FALSE)</span><br></pre></td></tr></table></figure></p>
 <p><br>至此，X轴各项目会按照我们自定义的顺序排列。</p>
 
     </div>
@@ -400,59 +400,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 17.636409453245683px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 10.323513069536357px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 8.416682298113777px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 18.969812355649935px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 11.193079052796676px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 9.868913806826463px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 16.322059257253414px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 17.04810451538453px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 16.3709908388287px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 12.192428253063744px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 15.587948771729357px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 19.191533376724614px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 9.100763007142621px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 14.308247964246991px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 18.760304197291795px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 19.012345280563522px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 15.718636279750534px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 19.454250306724667px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 15.821988659036489px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 18.60966894116034px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 18.865151519039458px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 8.77685086170083px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 13.101012537351473px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 19.96247203481977px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 16.29530178169204px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 16.46205072656976px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 12.315587279935027px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 19.960811512593686px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 9.75000955276521px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 14.319857715509215px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 19.620453904150644px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 12.441226159047012px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 9.387638008806613px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 11.72648460420427px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 17.49803490491759px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 8.094571218658817px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 13.90503381467563px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 12.791335554041225px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 17.394162910754154px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 15.839776830608962px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 17.762589210977076px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 13.014616521727557px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 9.870548805857208px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 15.633895700763215px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 8.164948816476603px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 18.22118427307652px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 15.990002092182051px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 8.221186663118635px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 11.930239184237783px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 12.035538398960147px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 12.93868748222443px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 12.295812830506385px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 8.323163916960489px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 12.927686239762348px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -645,13 +645,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/19/syncthing搭建自己的同步云网盘/">syncthing搭建自己的同步云网盘</a>
+                    <a href="/2019/04/28/PGCGAP中文说明/">PGCGAP中文说明</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/06/08/南湖异事/">南湖异事</a>
+                    <a href="/2019/04/15/Wget-技巧/">Wget 技巧</a>
                 </span>
             </li>
             
@@ -663,43 +663,43 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/09/13/新课题/">新课题</a>
+                    <a href="/2011/05/11/拖地的女人/">拖地的女人</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/03/11/蛇魇/">蛇魇</a>
+                    <a href="/2011/02/12/杀尸/">杀尸</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/08/23/设置元素加载时间解决D3.js文字被图像覆盖的问题/">设置元素加载时间解决D3.js文字被图像覆盖的问题</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/11/04/神棍节/">神棍节</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2019/02/18/获取下一个版本的内部预览版windows系统/">获取下一版本的内部预览版windows系统</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2015/09/12/逍遥于世/">逍遥于世</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2011/02/17/骗你是小狗/">骗你是小狗</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2015/03/02/逃亡/">逃亡</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2010/01/09/河岸的老者/">河岸的老者</a>
                 </span>
             </li>
             
@@ -733,7 +733,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>

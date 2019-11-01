@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -318,13 +318,13 @@
 
 <p><br><br>(1) 将开发完成的软件上传到GitHub</p>
 <p><br><br>(2) 在本地软件目录下创建tag</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> tag v1.0.0 -m <span class="string">'first version'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$git</span> tag v1.0.0 -m <span class="string">'first version'</span></span><br></pre></td></tr></table></figure>
 <p><br><br>(3) 上传到GitHub</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin v1.0.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$git</span> push origin v1.0.0</span><br></pre></td></tr></table></figure>
 <p><br><br>(4) 存档tag(非必需)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> archive -v --format=tar v1.0.0 &gt; v1.0.0.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$git</span> archive -v --format=tar v1.0.0 &gt; v1.0.0.tar.gz</span><br></pre></td></tr></table></figure>
 <p><br><br>(5) 计算压缩包的”sha256”以供bioconda校验</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sha256sum</span> v1.0.0.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$sha256sum</span> v1.0.0.tar.gz</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <b>Step1：fork bioconda-recipes</b>
 
@@ -334,27 +334,27 @@
 <p><br></p>
 <b>Step2：将项目克隆到本地</b>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> <span class="built_in">clone</span> https://github.com/liaochenlanruo/bioconda-recipes.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$git</span> <span class="built_in">clone</span> https://github.com/liaochenlanruo/bioconda-recipes.git</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <b>Step3: Then add the main bioconda-recipes repo as an upstream remote to more easily update your branch with the upstream master branch:</b>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cd</span> bioconda-recipes</span><br><span class="line"><span class="variable">$git</span> remote add upstream https://github.com/bioconda/bioconda-recipes.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$cd</span> bioconda-recipes</span><br><span class="line"><span class="variable">$git</span> remote add upstream https://github.com/bioconda/bioconda-recipes.git</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <b>Step4：更新 repo</b>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout master</span><br><span class="line"><span class="variable">$git</span> pull upstream master</span><br><span class="line"><span class="variable">$git</span> push origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout master</span><br><span class="line"><span class="variable">$git</span> pull upstream master</span><br><span class="line"><span class="variable">$git</span> push origin master</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <b>Step5：写自己的 recipe</b>
 
 <p><br><br>例如，创建并切换到一个名字为 “pgcgap” 的 新分支</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b pgcgap</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$git</span> checkout -b pgcgap</span><br></pre></td></tr></table></figure>
 <p><br><br>在”bioconda-recipes/recipes/“目录下新建”pgcgap”目录，并将撰写好的”<a href="https://docs.conda.io/projects/conda-build/en/latest/resources/build-scripts.html" target="_blank" rel="noopener">build.sh</a>“和”<a href="https://docs.conda.io/projects/conda-build/en/latest/resources/define-metadata.html#architecture-independent-packages" target="_blank" rel="noopener">meta.yaml</a>“存入其中。</p>
 <p><br><br>注：Step6和Step7可以跳过</p>
 <p><br></p>
-<b>Step6：本地测试 recipe</b> （可选，即可以直接在线测试）<br><br><br><br>在”bioconda-recipes/“目录下依次运行如下命令：<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$./bootstrap.py /tmp/miniconda</span><br><span class="line"><span class="variable">$source</span> ~/.config/bioconda/activate</span><br><span class="line"></span><br><span class="line"><span class="comment"># optional linting</span></span><br><span class="line"><span class="variable">$bioconda</span>-utils lint recipes config.yml --git-range master</span><br><span class="line"></span><br><span class="line"><span class="comment"># build and test</span></span><br><span class="line"><span class="variable">$bioconda</span>-utils build recipes config.yml --docker --mulled-test --git-range master</span><br></pre></td></tr></table></figure><br><br><br><br><b>Step7：更新 recipes</b> (可选）<br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$bioconda</span>-utils update-pinning recipes/ config.yml --packages pgcgap --create-pr</span><br></pre></td></tr></table></figure><br><br><br><br><b>Step8：推送修改，等待测试通过，提交 pull 请求</b>
+<b>Step6：本地测试 recipe</b> （可选，即可以直接在线测试）<br><br><br><br>在”bioconda-recipes/“目录下依次运行如下命令：<br><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$./bootstrap.py /tmp/miniconda</span><br><span class="line"><span class="variable">$source</span> ~/.config/bioconda/activate</span><br><span class="line"></span><br><span class="line"><span class="comment"># optional linting</span></span><br><span class="line"><span class="variable">$bioconda</span>-utils lint recipes config.yml --git-range master</span><br><span class="line"></span><br><span class="line"><span class="comment"># build and test</span></span><br><span class="line"><span class="variable">$bioconda</span>-utils build recipes config.yml --docker --mulled-test --git-range master</span><br></pre></td></tr></table></figure><br><br><br><br><b>Step7：更新 recipes</b> (可选）<br><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$bioconda</span>-utils update-pinning recipes/ config.yml --packages pgcgap --create-pr</span><br></pre></td></tr></table></figure><br><br><br><br><b>Step8：推送修改，等待测试通过，提交 pull 请求</b>
 
 <p><br><br>(1) 将本地更改同步到自己的pgcgap分枝</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$git</span> push -u origin pgcgap</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$git</span> push -u origin pgcgap</span><br></pre></td></tr></table></figure>
 <p><br><br>(2) 在“liaochenlanruo/bioconda-recipes”的“pgcgap”分支下点击“New pull request”。base repository选择“liaochenlanruo/bioconda-recipes”，base选择“pgcgap”；head repository选择“bioconda/bioconda-recipes”，compare 选择”master”。</p>
 <p><img src="/imgs/papers/new_pull_request_LI.jpg" alt="new_pull_request"></p>
 <center>Create a new pull request</center>
@@ -399,7 +399,7 @@
 <p><br></p>
 <h2 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h2><ol>
 <li><p>If linting fails：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git pull upstream master</span><br><span class="line">git checkout pgcgap</span><br><span class="line">git merge master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git pull upstream master</span><br><span class="line">git checkout pgcgap</span><br><span class="line">git merge master</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -484,59 +484,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 14.8516148899717px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 15.963134911866527px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 13.25126742884377px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 14.251416986642226px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 10.60751904014063px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 18.32613563729147px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 11.263555312969086px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 19.988493876727333px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 16.456000324814774px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 11.253210362672437px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 12.097675870264336px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 16.39514908581687px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 14.309240876067875px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 9.227556856403307px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 13.26265749689366px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 18.348254997057957px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 15.616496967186109px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 17.963037754458764px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 11.77795738215099px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 8.949921320699687px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 13.616679736900913px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 18.896550137915042px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 18.12810090607713px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 16.04795877404422px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 14.68467490260717px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 14.246779288360836px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 13.214898722863152px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 12.721791453331404px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 14.267937118526401px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 9.61222471005283px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 16.641349806444133px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 11.209509074170642px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 19.09935119439278px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 15.65084239733023px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 18.943301466746362px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 9.07486659148174px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 15.064503856075298px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 14.210547114571712px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 12.126261218293614px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 16.549939335637706px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 8.718044261863362px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 10.39907790695705px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 12.876397176857786px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 10.683793695327427px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 9.687347316365608px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 15.974288431277335px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 19.23053900963815px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 18.352463366198503px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 18.345687967022116px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 14.142497281038477px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 11.286039578012028px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 9.185907708297936px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 12.771202087250753px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 18.46928233326656px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -729,13 +729,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/01/2018-peixunban/">我校师生于南昌开设2018年微生物基因组学培训班</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2019/05/20/Bioconda贡献指南/">Bioconda贡献指南</a>
+                    <a href="/2019/03/05/Hexo博客导航栏menu无法跳转https/">Hexo博客导航栏menu无法跳转https</a>
                 </span>
             </li>
             
@@ -747,19 +741,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/20/OrthoFinder2—同源蛋白家族聚类/">OrthoFinder2—同源蛋白家族聚类</a>
+                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/19/syncthing搭建自己的同步云网盘/">syncthing搭建自己的同步云网盘</a>
+                    <a href="/2016/12/15/圈/">圈</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
+                    <a href="/2011/05/11/拖地的女人/">拖地的女人</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/04/04/双山记/">双山记</a>
                 </span>
             </li>
             
@@ -771,19 +771,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
+                    <a href="/2011/06/05/日记/">日记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
+                    <a href="/2019/02/18/获取下一个版本的内部预览版windows系统/">获取下一版本的内部预览版windows系统</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/02/17/骗你是小狗/">骗你是小狗</a>
+                    <a href="/2015/03/02/逃亡/">逃亡</a>
                 </span>
             </li>
             
@@ -817,7 +817,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>

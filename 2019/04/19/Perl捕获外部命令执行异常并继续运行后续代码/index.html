@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -319,11 +319,11 @@
         <p>在编写perl脚本时经常会调用外部命令，由于种种原因，会遇到外部命令执行异常，而导致整个脚本终止运行。这对于大的项目来说很不经济，因此，可以想办法越过这个异常并继续执行后续脚本。<br><a id="more"></a></p>
 <p>Examples：</p>
 <p><br><br>假设有一个外部命令“command”需要执行，将该命令存到一个数组当中：</p>
-<p><br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my @arr = (<span class="string">"command"</span>);</span><br></pre></td></tr></table></figure></p>
+<p><br><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">my @arr = (<span class="string">"command"</span>);</span><br></pre></td></tr></table></figure></p>
 <p><br><br>将外部命令的返回值赋给一个变量：</p>
-<p><br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my <span class="variable">$return</span> = sysstem(@arr);</span><br></pre></td></tr></table></figure></p>
+<p><br><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">my <span class="variable">$return</span> = sysstem(@arr);</span><br></pre></td></tr></table></figure></p>
 <p><br><br>判断返回值是否为“0”，0代表运行正常，任何非0的值均表示有运行异常。如果返回值不为0，则记录错误，然后继续运行后续代码：</p>
-<p><br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!(<span class="variable">$return</span> == 0))&#123;</span><br><span class="line">    <span class="built_in">print</span> <span class="string">"There are some errors when running the command!\n"</span>;</span><br><span class="line">    command2;<span class="comment">#继续运行其他命令</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br><br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!(<span class="variable">$return</span> == 0))&#123;</span><br><span class="line">    <span class="built_in">print</span> <span class="string">"There are some errors when running the command!\n"</span>;</span><br><span class="line">    command2;<span class="comment">#继续运行其他命令</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><br></p>
 <p><strong>注：</strong>本方案仅在Linux系统下测试，不晓得Windows和Mac的返回值与Linux是否一致，Linux中的“core dump”就可以如此来捕获。</p>
 
@@ -408,59 +408,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 13.035063916834032px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 12.654030796911886px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 11.899166716105665px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 12.336069502136523px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 11.15837483956824px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 12.240079459032588px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 16.90245590766621px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 10.220785474106915px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 13.872047918206736px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 19.361897647104463px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 16.358162324381126px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 14.681011090507827px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 8.9074751899517px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 10.001057443455867px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 9.496196060607577px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 19.987027268584136px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 16.6756326615714px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 13.954653279471785px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 18.14756523370263px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 14.604006207575935px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 9.607611650574732px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 10.7708860056184px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 9.872640178114299px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 10.397452106019458px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 11.63972728984362px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 11.272674361884427px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 17.819583583033683px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 8.710851193512422px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 16.367171682952154px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 14.780112778153311px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 17.68509475856665px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 13.091782878540506px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 19.936612042233662px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 11.527558954497033px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 10.321947560574738px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 13.552622357811806px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 13.649658205298929px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 9.298880176636754px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 16.05612371955619px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 13.671620635186738px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 17.612383602206346px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 19.294999027973283px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 12.53450002719887px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 8.29734119719869px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 9.687921200331509px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 14.683443605850172px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 17.390153364217593px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 19.932077210403584px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 9.90571237715447px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 14.449523788216002px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 16.345891217239288px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 11.021997990682028px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 8.153687752765842px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 13.943658179518899px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -653,61 +653,61 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/">Perl捕获外部命令执行异常并继续运行后续代码</a>
+                    <a href="/2019/02/23/R语言自定义坐标轴排序/">R语言自定义坐标轴排序</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/01/github操作/">Github操作</a>
+                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/14/kSNP3寻找SNPs并构建进化树/">kSNP3寻找SNPs并构建进化树</a>
+                    <a href="/2019/03/18/为PubMed添加功能/">为PubMed添加功能</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/09/17/perl循环调用python爬虫批量下载喜马拉雅音频/">perl循环调用python爬虫批量下载喜马拉雅音频</a>
+                    <a href="/2011/03/29/奶奶/">奶奶</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
+                    <a href="/2013/05/20/归乡/">归乡</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/05/17/滴血的笔/">滴血的笔</a>
+                    <a href="/2010/06/17/复仇/">复仇</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
+                    <a href="/2016/05/29/新生/">新生</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/16/肩上的手/">肩上的手</a>
+                    <a href="/2010/10/11/老婆一家“人”/">老婆一家“人”</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/11/04/神棍节/">神棍节</a>
+                    <a href="/2013/07/27/苦海或有涯，回头不见岸/">苦海或有涯，回头不见岸</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/08/23/设置元素加载时间解决D3.js文字被图像覆盖的问题/">设置元素加载时间解决D3.js文字被图像覆盖的问题</a>
+                    <a href="/2017/07/18/焦尸/">焦尸</a>
                 </span>
             </li>
             
@@ -741,7 +741,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>

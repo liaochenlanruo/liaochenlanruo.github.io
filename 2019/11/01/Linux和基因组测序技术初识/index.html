@@ -175,6 +175,14 @@
                         
                         
                         <li>
+                            <a href="/tags/Github/">Github</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,15 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Github/">Github</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Bioconda/">Bioconda</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -203,15 +203,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/perl/">perl</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/编程/">编程</a>
+                            <a href="/tags/R语言/">R语言</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/绘图/">绘图</a>
                         </li>
                         
                         
@@ -325,141 +325,141 @@
 <li>名称区分大小写。</li>
 </ul>
 <h2 id="终端工具"><a href="#终端工具" class="headerlink" title="终端工具"></a>终端工具</h2><p>终端（terminal）是运行Linux命令的工具，类似于Windows的命令行工具。Linux各发行版均自带终端。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/Terminal.png" alt="Linux自带终端"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/Terminal.png" alt="Linux自带终端"></p>
 <p>远程操控Linux服务器时，可以使用第三方的终端工具，如PuTTy软件。输入IP地址即可远程登录服务器运行命令。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/putty.png" alt="Putty"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/putty.png" alt="Putty"></p>
 <p>本地计算机与服务器之间的文件传输可以通过FTP软件实现,如FileZilla。输入服务器的IP地址、用户名、密码以及端口即可链接服务器。如果服务器采用的时FTP协议，则端口填写21，若采用的是SFTP协议，则端口设置为22。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/filezilla.png" alt="FileZilla"></p>
-<h2 id="常用的命令"><a href="#常用的命令" class="headerlink" title="常用的命令"></a>常用的命令</h2><p><strong>pwd：</strong> 获取当前位置的绝对路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$pwd</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/pwd.png" alt="获取当前位置的绝对路径"></p>
-<p><strong>mkdir：</strong> 创建目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mkdir</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/mkdir.png" alt="创建tools目录"></p>
-<p><strong>ls：</strong> 查看当前目录包含的内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/ls1.png" alt="查看当前目录包含的内容"></p>
-<p>查看所有的目录和文件（包含隐藏的内容）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls -a</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/lsa.png" alt="查看当前目录包含的所有内容"></p>
-<p>查看根目录所含内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls /</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/lsroot.png" alt="查看根目录所含内容"></p>
-<p>查看家目录所含内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls ~/</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/lshome.png" alt="查看家目录所含内容"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/filezilla.png" alt="FileZilla"></p>
+<h2 id="常用的命令"><a href="#常用的命令" class="headerlink" title="常用的命令"></a>常用的命令</h2><p><strong>pwd：</strong> 获取当前位置的绝对路径<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pwd</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/pwd.png" alt="获取当前位置的绝对路径"></p>
+<p><strong>mkdir：</strong> 创建目录<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$mkdir</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/mkdir.png" alt="创建tools目录"></p>
+<p><strong>ls：</strong> 查看当前目录包含的内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/ls1.png" alt="查看当前目录包含的内容"></p>
+<p>查看所有的目录和文件（包含隐藏的内容）<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls -a</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/lsa.png" alt="查看当前目录包含的所有内容"></p>
+<p>查看根目录所含内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls /</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/lsroot.png" alt="查看根目录所含内容"></p>
+<p>查看家目录所含内容<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls ~/</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/lshome.png" alt="查看家目录所含内容"></p>
 <p><strong>cd：</strong> 切换路径</p>
-<p>进入“tools”目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cd tools</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/cdtools.png" alt="进入“tools”目录"></p>
+<p>进入“tools”目录<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$cd tools</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/cdtools.png" alt="进入“tools”目录"></p>
 <p><strong>vim：</strong> 创建/编辑文档</p>
-<p>以下所有操作均需在英文输入法状态下进行。首先创建一个新文档“example.txt”，并输入内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vim example.txt</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/vimexample.png" alt="创建“example.txt”文档"></p>
-<p><img src="imgs/pgcgap/Linux_WGS/unwritable.png" alt="此时无法输入内容"></p>
+<p>以下所有操作均需在英文输入法状态下进行。首先创建一个新文档“example.txt”，并输入内容。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$vim example.txt</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/vimexample.png" alt="创建“example.txt”文档"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/unwritable.png" alt="此时无法输入内容"></p>
 <p>此时无法输入内容，需要按一下字母“i”键切换到输入模式。当左下角出现“–NSERT –” 字样时，可以输入文字。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/viminsert.png" alt="vim插入模式"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/viminsert.png" alt="vim插入模式"></p>
 <p>输入相关的内容。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/inputsth.png" alt="vim输入内容"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/inputsth.png" alt="vim输入内容"></p>
 <p>输入完毕时需要先按一下“ESC”键退出编辑模式，此时“–NSERT –” 字样消失。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/vimesc.png" alt="退出vim编辑模式"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/vimesc.png" alt="退出vim编辑模式"></p>
 <p>按住组合键“shift + :”切换到vim操作模式，此时左下角出现一个“:”。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/vimshift.png" alt="shift + :"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/vimshift.png" alt="shift + :"></p>
 <p>输入“wq!”保存修改并退出。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/vimquit.png" alt="保存并退出vim"></p>
-<p>查看创建的文件是否在于目录下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/ls2.png" alt="查看当前目录下的文件及目录"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/vimquit.png" alt="保存并退出vim"></p>
+<p>查看创建的文件是否在于目录下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/ls2.png" alt="查看当前目录下的文件及目录"></p>
 <p><strong>cp：</strong> 复制目录或文件</p>
-<p>将创建的“example.txt”文档复制到上一级目录下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cp example.txt ../</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/cpup.png" alt="向上级目录复制文件"></p>
-<p>查看上一级目录下是否存在刚刚复制的文档。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls ../</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/lsup.png" alt="查看父目录下的文件及目录"></p>
+<p>将创建的“example.txt”文档复制到上一级目录下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$cp example.txt ../</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/cpup.png" alt="向上级目录复制文件"></p>
+<p>查看上一级目录下是否存在刚刚复制的文档。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls ../</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/lsup.png" alt="查看父目录下的文件及目录"></p>
 <p><strong>rm：</strong> 删除目录或文件</p>
-<p>删除tools目录下的“example.txt”文档。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$rm example.txt</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/rmexample.png" alt="删除tools目录下的“example.txt”文档"></p>
-<p>查看文档是否被删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/ls3.png" alt="查看是否成功删除文件"></p>
+<p>删除tools目录下的“example.txt”文档。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$rm example.txt</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/rmexample.png" alt="删除tools目录下的“example.txt”文档"></p>
+<p>查看文档是否被删除。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/ls3.png" alt="查看是否成功删除文件"></p>
 <p><strong>mv：</strong> 移动/重命名</p>
-<p>将上一级目录下的“example.txt”文档移动到当前目录下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mv ../example.txt ./</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/mv1.png" alt="移动文件"></p>
-<p>查看文档是否移动成功。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ls ../</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/ls4.png" alt="查看是否成功移动文件"></p>
-<p>将“example.txt”文档重命名为“examp2.txt”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mv example.txt examp2.txt</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/rename.png" alt="文档重命名"></p>
+<p>将上一级目录下的“example.txt”文档移动到当前目录下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$mv ../example.txt ./</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/mv1.png" alt="移动文件"></p>
+<p>查看文档是否移动成功。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls ../</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/ls4.png" alt="查看是否成功移动文件"></p>
+<p>将“example.txt”文档重命名为“examp2.txt”。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$mv example.txt examp2.txt</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/rename.png" alt="文档重命名"></p>
 <p>查看重命名结果。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/lsrename.png" alt="查看重命名结果"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/lsrename.png" alt="查看重命名结果"></p>
 <p><strong>wget：</strong> 下载</p>
-<p>使用wget工具下载基因组拼接软件“AbySS”到tools目录下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$wget http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases/2.1.5/abyss-2.1.5.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/wgetabyss.png" alt="下载AbySS软件"></p>
+<p>使用wget工具下载基因组拼接软件“AbySS”到tools目录下。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$wget http://www.bcgsc.ca/platform/bioinfo/software/abyss/releases/2.1.5/abyss-2.1.5.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/wgetabyss.png" alt="下载AbySS软件"></p>
 <p><strong>tar：</strong> 压缩/解压缩</p>
-<p>tar.gz格式的文件可用“tar zxvf”进行解压，将刚才下载的“abyss-2.1.5.tar.gz”解压缩。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$tar zxvf abyss-2.1.5.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/tar.png" alt="解压缩AbySS软件"></p>
+<p>tar.gz格式的文件可用“tar zxvf”进行解压，将刚才下载的“abyss-2.1.5.tar.gz”解压缩。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$tar zxvf abyss-2.1.5.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/tar.png" alt="解压缩AbySS软件"></p>
 <p><strong>top：</strong> 查看系统进程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$top</span><br></pre></td></tr></table></figure>
-<p><img src="imgs/pgcgap/Linux_WGS/top.png" alt="通过top查看系统进程"></p>
-<p>按字母键“q”退出。Ubuntu还带有另一个更加直观的查看系统进程的工具“htop”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$htop</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/htop.png" alt="通过htop查看系统进程"></p>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>在软件安装的时候经常需要设置环境变量，所谓的环境变量就是告诉计算机软件的安装位置。存放环境变量的文件在用户的家目录下，为隐藏文件，可通过“ls -a”命令查看。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ls -a ~、</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/lsahome.png" alt="查看家目录中的所有文档和目录"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$top</span><br></pre></td></tr></table></figure>
+<p><img src="/imgs/pgcgap/Linux_WGS/top.png" alt="通过top查看系统进程"></p>
+<p>按字母键“q”退出。Ubuntu还带有另一个更加直观的查看系统进程的工具“htop”。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$htop</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/htop.png" alt="通过htop查看系统进程"></p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>在软件安装的时候经常需要设置环境变量，所谓的环境变量就是告诉计算机软件的安装位置。存放环境变量的文件在用户的家目录下，为隐藏文件，可通过“ls -a”命令查看。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ls -a ~、</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/lsahome.png" alt="查看家目录中的所有文档和目录"></p>
 <p>“.bashrc”和“.profile”均为环境变量配置文件，通常我们只需要编辑“.bashrc”。</p>
-<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h3 id="源码编译安装"><a href="#源码编译安装" class="headerlink" title="源码编译安装"></a>源码编译安装</h3><p>源码安装适合于所有的Linux发行版以及macOS。以刚下载的“AbySS”基因组拼接软件为例演示源码编译安装，一共分三步：配置（./configure）、编译（make）和安装（sudo make install）。首先进入“AbySS”软件目录下，并查看目录中的文件，找到配置文件“configure”，根据“README.md”中的指示对软件进行配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$cd abyss-2.1.5/</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/lsabyss.png" alt="进入AbySS目录并查看其所含内容"></p>
-<p>“./configure”表示运行configure进行安装前配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$./configure</span><br></pre></td></tr></table></figure></p>
-<p>进行编译<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$make</span><br></pre></td></tr></table></figure></p>
-<p>进行安装，需要“sudo”命令提供对系统目录的写入权限。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
+<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h3 id="源码编译安装"><a href="#源码编译安装" class="headerlink" title="源码编译安装"></a>源码编译安装</h3><p>源码安装适合于所有的Linux发行版以及macOS。以刚下载的“AbySS”基因组拼接软件为例演示源码编译安装，一共分三步：配置（./configure）、编译（make）和安装（sudo make install）。首先进入“AbySS”软件目录下，并查看目录中的文件，找到配置文件“configure”，根据“README.md”中的指示对软件进行配置。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$cd abyss-2.1.5/</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/lsabyss.png" alt="进入AbySS目录并查看其所含内容"></p>
+<p>“./configure”表示运行configure进行安装前配置。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$./configure</span><br></pre></td></tr></table></figure></p>
+<p>进行编译<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$make</span><br></pre></td></tr></table></figure></p>
+<p>进行安装，需要“sudo”命令提供对系统目录的写入权限。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo make install</span><br></pre></td></tr></table></figure></p>
 <p><strong>注意：</strong> 以上只演示了一般的安装方法，但是“AbySS”软件依赖其他的一些软件，需要先安装依赖包，最后安装“AbySS”，否则会安装失败。</p>
 <h2 id="通过包管理工具安装"><a href="#通过包管理工具安装" class="headerlink" title="通过包管理工具安装"></a>通过包管理工具安装</h2><p>不同的Linux发行版具有各自的软件包管理器。目前常用的Linux发行版主要是基于“RedHat”和“Debian”而制作的。<br>RedHat 系列的包管理器为“yum”，使用方法为在终端输入“sudo yum install -y 软件名称”。</p>
 <p>Debian 系列的包管理器为“apt-get”，使用方法为在终端输入“sudo apt-get install 软件名称”。</p>
-<p>示例：通过apt-get在Ubuntu中安装AbySS软件，输入命令和密码后，根据提示输入“Y”并按回车键进行自动安装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo apt-get install abyss</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/aptabyss1.png" alt="通过apt-get安装AbySS"></p>
-<p><img src="imgs/pgcgap/Linux_WGS/aptabyss2.png" alt="通过apt-get安装AbySS"></p>
+<p>示例：通过apt-get在Ubuntu中安装AbySS软件，输入命令和密码后，根据提示输入“Y”并按回车键进行自动安装。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$sudo apt-get install abyss</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/aptabyss1.png" alt="通过apt-get安装AbySS"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/aptabyss2.png" alt="通过apt-get安装AbySS"></p>
 <h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>以原核生物基因预测软件“Prodigal”为例演示。首先在Github上找到prodigal的源码，点击“Clone or download”，并按照图示点击链接右侧的图标以复制git地址。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/githubprodigal.png" alt="复制prodigal链接"></p>
-<p>在终端中进入tools目录，并输入克隆命令将项目克隆到本地计算机。命令公式为“git clone link”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$git clone https://github.com/hyattpd/Prodigal.git</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/cloneprodigal.png" alt="克隆prodigal"></p>
-<p>克隆完成后进入“Prodigal”目录。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$cd Prodigal</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/cdprodigal.png" alt="进入Prodigal目录"></p>
-<p>编译软件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$make</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/makeprodigal.png" alt="编译prodigal"></p>
-<p>报错信息提示找不到gcc命令，因此需要首先安装gcc，输入命令后根据提示输入密码，直至安装完成。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo apt-get install gcc</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/installgcc.png" alt="安装gcc"></p>
-<p>重新编译prodigal<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$make</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/lsprodigal.png" alt="查看prodigal编译结果"></p>
-<p>编译完成后得到了可执行程序，但是系统无法找到prodigal的路径，因此需要我们将其所在的路径加入到环境变量中。通过vim打开环境变量配置文件“.bashrc”，进入编辑模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vim ~/.bashrc</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/vimbashrc.png" alt="打开环境变量文件"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/githubprodigal.png" alt="复制prodigal链接"></p>
+<p>在终端中进入tools目录，并输入克隆命令将项目克隆到本地计算机。命令公式为“git clone link”。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$git clone https://github.com/hyattpd/Prodigal.git</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/cloneprodigal.png" alt="克隆prodigal"></p>
+<p>克隆完成后进入“Prodigal”目录。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$cd Prodigal</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/cdprodigal.png" alt="进入Prodigal目录"></p>
+<p>编译软件<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$make</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/makeprodigal.png" alt="编译prodigal"></p>
+<p>报错信息提示找不到gcc命令，因此需要首先安装gcc，输入命令后根据提示输入密码，直至安装完成。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$sudo apt-get install gcc</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/installgcc.png" alt="安装gcc"></p>
+<p>重新编译prodigal<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$make</span><br><span class="line">$ls</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/lsprodigal.png" alt="查看prodigal编译结果"></p>
+<p>编译完成后得到了可执行程序，但是系统无法找到prodigal的路径，因此需要我们将其所在的路径加入到环境变量中。通过vim打开环境变量配置文件“.bashrc”，进入编辑模式。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$vim ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/vimbashrc.png" alt="打开环境变量文件"></p>
 <p>在文档末尾添加配置语句 <strong>“export PATH=$PATH:$HOME/tools/Prodigal”</strong> 。$HOME代表家目录，“$HOME/tools/Prodigal”代表prodigal可执行程序所在的目录。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/prodigalpath.png" alt="在环境变量中添加prodigal路径"></p>
-<p>编辑完成后保存并退出。然后执行“source ~/.bashrc”命令刷新，通知系统“.bashrc”文档已经更改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/sourcebashrc.png" alt="刷新环境变量"></p>
-<p>测试配置是否成功。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$prodigal -h</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/prodigalhelp.png" alt="查看prodigal帮助信息"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/prodigalpath.png" alt="在环境变量中添加prodigal路径"></p>
+<p>编辑完成后保存并退出。然后执行“source ~/.bashrc”命令刷新，通知系统“.bashrc”文档已经更改。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/sourcebashrc.png" alt="刷新环境变量"></p>
+<p>测试配置是否成功。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$prodigal -h</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/prodigalhelp.png" alt="查看prodigal帮助信息"></p>
 <p>若要将其他软件加入到环境变量，只需在后面加入其他软件所在路径即可，各软件的路径间以英文“:“分割，不得有空格。下图为将多个软件加入到环境变量的示例。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/multiplepath.png" alt="添加多个软件路径"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/multiplepath.png" alt="添加多个软件路径"></p>
 <h2 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h2><p>软链接（Soft Link）相当于Windows系统中的快捷方式，可以将可执行程序的软链接存放至系统默认的环境变量之中，如“/usr/bin/”或“/usr/local/bin”之中。仍旧以刚编译好的prodigal软件为例，创建软链接的公式为 <strong>“sudo ln -s /home/bio/tools/Prodigal/prodigal /usr/local/bin/prodigal”</strong> ，根据提示输入密码完成创建。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo ln -s /home/bio/tools/Prodigal/prodigal /usr/local/bin/prodigal</span><br></pre></td></tr></table></figure>
-<p>通过“whereis”命令查看软链接是否创建成功。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$whereis prodigal</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/whereisprodigal.png" alt="查看prodigal安装路径"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$sudo ln -s /home/bio/tools/Prodigal/prodigal /usr/local/bin/prodigal</span><br></pre></td></tr></table></figure>
+<p>通过“whereis”命令查看软链接是否创建成功。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$whereis prodigal</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/whereisprodigal.png" alt="查看prodigal安装路径"></p>
 <p><strong>注意：</strong> 创建软链接时要输入绝对路径，否则会报错“Too many levels of symbolic links”。</p>
 <h2 id="通过Anaconda包管理器进行安装"><a href="#通过Anaconda包管理器进行安装" class="headerlink" title="通过Anaconda包管理器进行安装"></a>通过Anaconda包管理器进行安装</h2><p><a href="https://www.anaconda.com/" target="_blank" rel="noopener">Anaconda</a>是一款比较易用的跨平台软件包管理器，<a href="http://bioconda.github.io/" target="_blank" rel="noopener">Bioconda</a>是conda的一个通道，专门管理生物信息学软件。通过conda安装软件时可以一键安装所有的依赖包，大大节约了时间并降低了安装难度。Bioconda目前有超过600个贡献者和500个成员，大部分生物信息学软件都被包含其中。用户可以到其官网搜索需要的软件是否被囊括其中。</p>
 <p><strong>（1）安装conda</strong></p>
 <p>此处，我们安装Miniconda，进入<a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank" rel="noopener">官网</a>，选择适应自身系统及python版本的安装文件。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/Minicondapackages.png" alt="查看Miniconda安装包"></p>
-<p>查看系统python版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$python -v</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/pythonv.png" alt="查看python版本"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/Minicondapackages.png" alt="查看Miniconda安装包"></p>
+<p>查看系统python版本<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$python -v</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/pythonv.png" alt="查看python版本"></p>
 <p>可以看出该系统已经安装了python3，因此下载Linux Python 3.7 64-bit (bash installer)。右键单击相应安装包获取链接，使用wget下载至tools目录下。建议用户安装Python 3，因为Python 软件基金会将于2020年元旦停止对Python 2的维护（<a href="https://pythonclock.org/）。" target="_blank" rel="noopener">https://pythonclock.org/）。</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-<p><img src="imgs/pgcgap/Linux_WGS/DownloadMiniconda.png" alt="下载Miniconda"></p>
-<p>开始安装Miniconda<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p><img src="/imgs/pgcgap/Linux_WGS/DownloadMiniconda.png" alt="下载Miniconda"></p>
+<p>开始安装Miniconda<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure></p>
 <p>根据提示按“Enter”键查看license，并输入“yes” 按“Enter”继续，按“Enter”确认安装位置，miniconda被安装到家目录下的miniconda3目录中。最后输入“yes”，按“Enter”进行初始化。最后，通过“source ~/.bashrc”命令刷新。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/initialMiniconda.png" alt="初始化Miniconda"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/initialMiniconda.png" alt="初始化Miniconda"></p>
 <p><strong>（2）设置bioconda channel</strong></p>
-<p>在终端中输入以下三条命令添加channels：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$conda config --add channels defaults</span><br><span class="line">$conda config --add channels bioconda</span><br><span class="line">$conda config --add channels conda-forge</span><br></pre></td></tr></table></figure></p>
-<p>至此，bioconda配置完毕，可以通过conda安装生物信息学软件。下面通过conda安装mapping软件“bwa”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$conda install bwa</span><br></pre></td></tr></table></figure></p>
-<p><img src="imgs/pgcgap/Linux_WGS/installbwa.png" alt="安装bwa"></p>
+<p>在终端中输入以下三条命令添加channels：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda config --add channels defaults</span><br><span class="line">$conda config --add channels bioconda</span><br><span class="line">$conda config --add channels conda-forge</span><br></pre></td></tr></table></figure></p>
+<p>至此，bioconda配置完毕，可以通过conda安装生物信息学软件。下面通过conda安装mapping软件“bwa”。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda install bwa</span><br></pre></td></tr></table></figure></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/installbwa.png" alt="安装bwa"></p>
 <p>根据提示输入“y”完成安装。</p>
 <h2 id="MacOS相关操作"><a href="#MacOS相关操作" class="headerlink" title="MacOS相关操作"></a>MacOS相关操作</h2><p>MacOS与Linux系统相似，基本命令相同，但是软件安装存在一些差异。</p>
 <h3 id="MacOS安装生物信息学软件"><a href="#MacOS安装生物信息学软件" class="headerlink" title="MacOS安装生物信息学软件"></a>MacOS安装生物信息学软件</h3><h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><p>源码安装方式与Linux安装方式一致。</p>
 <h3 id="创建软链接-1"><a href="#创建软链接-1" class="headerlink" title="创建软链接"></a>创建软链接</h3><p>配置方法与Linux一致。</p>
 <h3 id="环境变量-1"><a href="#环境变量-1" class="headerlink" title="环境变量"></a>环境变量</h3><p>MacOS环境变量配置方法与Linux配置方法一致，但配置文件为家目录下的“.bash_profile”，即运行如下命令进行编辑。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$vim ~/.bash_profile</span><br></pre></td></tr></table></figure>
-<p>编辑完成并保存后需要运行source命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$source ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
-<h3 id="包管理器"><a href="#包管理器" class="headerlink" title="包管理器"></a>包管理器</h3><p>MacOS的软件包管理器为Homebrew，可以在终端中通过以下命令安装Homebrew。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
-<p>通过Homebrew安装mapping软件“bwa”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$brew install bwa</span><br></pre></td></tr></table></figure></p>
-<h3 id="MacOS配置Anaconda"><a href="#MacOS配置Anaconda" class="headerlink" title="MacOS配置Anaconda"></a>MacOS配置Anaconda</h3><p>安装Miniconda<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh</span><br><span class="line">$sh Miniconda3-latest-MacOSX-x86_64.sh</span><br></pre></td></tr></table></figure></p>
-<p>添加Bioconda通道<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$conda config --add channels defaults</span><br><span class="line">$conda config --add channels bioconda</span><br><span class="line">$conda config --add channels conda-forge</span><br></pre></td></tr></table></figure></p>
-<p>安装软件bwa<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$conda install bwa</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$vim ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>编辑完成并保存后需要运行source命令。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$source ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<h3 id="包管理器"><a href="#包管理器" class="headerlink" title="包管理器"></a>包管理器</h3><p>MacOS的软件包管理器为Homebrew，可以在终端中通过以下命令安装Homebrew。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>通过Homebrew安装mapping软件“bwa”。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$brew install bwa</span><br></pre></td></tr></table></figure></p>
+<h3 id="MacOS配置Anaconda"><a href="#MacOS配置Anaconda" class="headerlink" title="MacOS配置Anaconda"></a>MacOS配置Anaconda</h3><p>安装Miniconda<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh</span><br><span class="line">$sh Miniconda3-latest-MacOSX-x86_64.sh</span><br></pre></td></tr></table></figure></p>
+<p>添加Bioconda通道<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda config --add channels defaults</span><br><span class="line">$conda config --add channels bioconda</span><br><span class="line">$conda config --add channels conda-forge</span><br></pre></td></tr></table></figure></p>
+<p>安装软件bwa<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda install bwa</span><br></pre></td></tr></table></figure></p>
 <h1 id="现代测序技术"><a href="#现代测序技术" class="headerlink" title="现代测序技术"></a>现代测序技术</h1><h2 id="二代测序-“Next-generation”-sequencing-technology"><a href="#二代测序-“Next-generation”-sequencing-technology" class="headerlink" title="二代测序(“Next-generation” sequencing technology)"></a>二代测序(“Next-generation” sequencing technology)</h2><p>第二代测序技术的核心思想是边合成边测序（Sequencing by Synthesis），即通过捕捉新合成的末端的标记来确定DNA的序列。应用最广的技术平台主要为Illumina公司的产品。其优点为高通量、错误率低、成本低等。</p>
 <ul>
 <li>Illumina测序中的几个名词<ul>
@@ -474,7 +474,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="imgs/pgcgap/Linux_WGS/nextseqs.png" alt="二代测序名词示意图"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/nextseqs.png" alt="二代测序名词示意图"></p>
 <h2 id="三代测序"><a href="#三代测序" class="headerlink" title="三代测序"></a>三代测序</h2><p>三代测序又称为单分子测序，测序过程无需进行PCR扩增，可以产生超长的reads，因此能够跨越高GC含量区域和高度重复区域。目前常用的测序平台包括Pacific Biosciences（PacBio）和Oxford Nanopore。</p>
 <p>PacBio以SMRT Cell为载体进行测序反应，SMRT Cell是一张带有纳米孔的超薄金属片。PacBio采用边合成便测序的方式，测序反应在纳米孔中进行，一个纳米孔中固定一个DNA聚合酶和一条DNA模板。延伸反应的过程中检测dNTP荧光信号以确定碱基顺序。</p>
 <p>Oxford开发的纳米单分子测序技术属于真正的实时测序，它基于电信号来判读碱基。</p>
@@ -497,7 +497,7 @@
 </table>
 <p><strong>Sanger sequencing</strong><br>ABI 3500/3730    |0.0003    |Up to 1 kb    |Read accuracy and length    |Cost and throughput<br><strong>Illumina</strong><br>MiniSeq    |1.7–7.5    |1×75 to ×150    |Low initial investment    |Run and read length<br>MiSeq    |0.3–15    |1×36 to 2×300    |Read length, scalability    |Run length<br>NextSeq    |10–120    |1×75 to 2×150    |Throughput    |Run and read length<br>HiSeq (2500)    |10–1000    |×50 to ×250    |Read accuracy, throughput    |High initial investment, run<br>NovaSeq 5000/6000    |2000–6000    |2×50 to ×150    |Read accuracy, throughput    |High initial investment, run<br><strong>IonTorrent</strong><br>PGM    |0.08–2    |Up to 400    |Read length, speed    |Throughput, homopolymers<br>S5    |0.6–15    |Up to 400    |Read length, speed,    |Homopolymers<br>Proton    |10–15    |Up to 200    |Speed, throughput    |Homopolymers<br><strong>Pacific BioSciences</strong><br>PacBio RSII    |0.5–1    |Up to 60 kb    |Read length, speed (Average 10 kb, N50 20 kb)    |High error rate and initial<br>Sequel    |5–10    |Up to 60 kb    |Read length, speed (Average 10 kb, N50 20 kb)    |High error rate<br><strong>Oxford Nanopore</strong><br>MInION    |0.1–1    |Up to 100 kb    |Read length, portability    |High error rate, run length</p>
 <h2 id="常见序列格式"><a href="#常见序列格式" class="headerlink" title="常见序列格式"></a>常见序列格式</h2><h3 id="Fastq"><a href="#Fastq" class="headerlink" title="Fastq"></a>Fastq</h3><p>我们得到的下机序列一般为fastq格式，每一条read包含4行，第一行为测序仪器信息以及测序信息，第二行为碱基序列，第三行一般无信息，第四行为对应第二行中每个碱基的测序质量信息。</p>
-<p><img src="imgs/pgcgap/Linux_WGS/fastq.png" alt="fastq文件内容"></p>
+<p><img src="/imgs/pgcgap/Linux_WGS/fastq.png" alt="fastq文件内容"></p>
 <p>Table 2. Descriptions of the first line of the fastq file</p>
 <table>
 <thead>
@@ -554,8 +554,8 @@
 </tr>
 </tbody>
 </table>
-<h3 id="Fasta"><a href="#Fasta" class="headerlink" title="Fasta"></a>Fasta</h3><p><img src="imgs/pgcgap/Linux_WGS/fasta.png" alt="fasta文件内容"></p>
-<h3 id="Genbank"><a href="#Genbank" class="headerlink" title="Genbank"></a>Genbank</h3><p><img src="imgs/pgcgap/Linux_WGS/Genbank.png" alt="Genbank文件内容"></p>
+<h3 id="Fasta"><a href="#Fasta" class="headerlink" title="Fasta"></a>Fasta</h3><p><img src="/imgs/pgcgap/Linux_WGS/fasta.png" alt="fasta文件内容"></p>
+<h3 id="Genbank"><a href="#Genbank" class="headerlink" title="Genbank"></a>Genbank</h3><p><img src="/imgs/pgcgap/Linux_WGS/Genbank.png" alt="Genbank文件内容"></p>
 <h2 id="基因组拼接基本概念"><a href="#基因组拼接基本概念" class="headerlink" title="基因组拼接基本概念"></a>基因组拼接基本概念</h2><h3 id="测序深度"><a href="#测序深度" class="headerlink" title="测序深度"></a>测序深度</h3><p>测序深度（Sequencing depth）指测序得到的总碱基数（read长度x reads数目）与待测基因组大小的比值。假设一个基因组大小为2M，测序深度为10X，那么获得的总数据量为20M。</p>
 <h3 id="测序覆盖度"><a href="#测序覆盖度" class="headerlink" title="测序覆盖度"></a>测序覆盖度</h3><p>指测序获得的序列占整个基因组的比例。由于基因组中的高GC、重复序列等复杂区域的存在，测序获得的序列经常无法覆盖基因组上所有的区域。例如覆盖度是96%，表明还有4%的序列区域未测到。</p>
 <h3 id="Read、Contig、Scaffold"><a href="#Read、Contig、Scaffold" class="headerlink" title="Read、Contig、Scaffold"></a>Read、Contig、Scaffold</h3><p>测序得到的序列被称作reads，在一个read中连续的N个碱基所组成的序列称作k-mer，把k-mer集合拼接起来形成的长DNA序列称为contig。通过pair ends信息将contigs按顺序进行排列得到scaffold。</p>
@@ -643,59 +643,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 19.355329730662913px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Github/" style="font-size: 16.29949999056284px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Linux/" style="font-size: 16.09196636386445px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Bioconda/" style="font-size: 10.612175180359756px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/WGS/" style="font-size: 13.332437048951487px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/培训/" style="font-size: 10.965288426938242px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 17.697652005488106px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Linux/" style="font-size: 18.753149245651443px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Github/" style="font-size: 12.760303833123954px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/WGS/" style="font-size: 11.830001755350988px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 10.531876331392898px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Hexo/" style="font-size: 12.33076036991532px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/JAVA/" style="font-size: 19.367803899514215px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/JAVA/" style="font-size: 11.349055881332228px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/perl/" style="font-size: 19.62536730758714px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/同源家族/" style="font-size: 16.738403882152202px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/编程/" style="font-size: 19.87265869024661px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/R语言/" style="font-size: 13.21980336741434px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/Hexo/" style="font-size: 19.416073895959855px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/绘图/" style="font-size: 19.572427025444153px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 8.975175232727885px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/比较基因组学/" style="font-size: 8.696891580969867px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 13.367330836313037px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/下载/" style="font-size: 13.312733949151106px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 12.660444165722563px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 10.321727791082214px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 17.620442688157084px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 16.006132739286482px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/SNPs/" style="font-size: 13.406263294110573px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/SNPs/" style="font-size: 12.108409312457603px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/进化/" style="font-size: 15.64092971192171px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/进化/" style="font-size: 18.440119091838813px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/网盘/" style="font-size: 9.709654455685673px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 14.444230992626306px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 18.790778490631855px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/音乐/" style="font-size: 18.73236824663384px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 14.263035011543261px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 13.910661419755px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 12.172949822095287px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 14.897053751346865px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/下载/" style="font-size: 10.478595547293407px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 9.404487689535161px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 19.398059760602482px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/PubMed/" style="font-size: 12.7514043767879px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 14.869603736283118px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 19.532230737215333px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 18.589139831868735px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/地图/" style="font-size: 16.22917625417594px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/表型预测/" style="font-size: 18.871762953016987px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 14.370274048675709px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 12.287928725448609px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 12.765289120523633px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 13.89446550089441px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 9.621573074434508px;" class="tag-cloud-link">虚拟机</a>
     
 </div>
 		
@@ -888,12 +888,6 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/12/01/2018-peixunban/">我校师生于南昌开设2018年微生物基因组学培训班</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/05/20/Bioconda贡献指南/">Bioconda贡献指南</a>
                 </span>
             </li>
@@ -906,37 +900,43 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/01/github操作/">Github操作</a>
+                    <a href="/2019/03/30/Ubuntu-open-mpi运行错误/">Ubuntu open-mpi运行错误</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/02/23/R语言自定义坐标轴排序/">R语言自定义坐标轴排序</a>
+                    <a href="/2018/12/14/kSNP3寻找SNPs并构建进化树/">kSNP3寻找SNPs并构建进化树</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
+                    <a href="/2019/03/02/windows-10-中文乱码解决方案/">windows 10 中文乱码解决方案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/03/29/奶奶/">奶奶</a>
+                    <a href="/2011/05/16/枣院传奇/">枣院传奇</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/08/08/人鬼之战2015/">人鬼之战2015</a>
+                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/02/12/杀尸/">杀尸</a>
+                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/02/17/骗你是小狗/">骗你是小狗</a>
                 </span>
             </li>
             
@@ -976,7 +976,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共195k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>
