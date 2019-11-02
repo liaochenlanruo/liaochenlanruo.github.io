@@ -175,6 +175,10 @@
                         
                         
                         <li>
+                            <a href="/tags/培训/">培训</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/地图/">地图</a>
                         </li>
                         
@@ -187,10 +191,6 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/培训/">培训</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/Linux/">Linux</a>
                         </li>
                         
@@ -199,11 +199,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -309,7 +309,591 @@
     </div>
     <div class="content-article">
         <p>为了方便广大中文用户学习PGCGAP的使用，特意书写该中文文档，希望对大家有所帮助！<br><a id="more"></a><br><a href="https://liaochenlanruo.github.io/pgcgap?_blank" target="_blank" rel="noopener">English Readme</a> | <a href="https://liaochenlanruo.github.io/2019/04/28/PGCGAP%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/?_blank" target="_blank" rel="noopener">中文说明</a></p>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2>
+<p><img src="https://badgen.net/badge/platform/WSL,Linux,macOS?list=|" alt="Platform"><img src="https://badgen.net/github/license/liaochenlanruo/pgcgap" alt="License"></p>
+<p><a href="https://badge.fury.io/gh/liaochenlanruo%2Fpgcgap" target="_blank" rel="noopener"><img src="https://badge.fury.io/gh/liaochenlanruo%2Fpgcgap.svg" alt="GitHubversion"></a><img src="https://img.shields.io/conda/dn/bioconda/pgcgap.svg?style=flat" alt="Downloads conda"><a href="http://bioconda.github.io/recipes/pgcgap/README.html" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat" alt="install with bioconda"></a></p>
+<center><br><script type="text/javascript" src="//rf.revolvermaps.com/0/0/4.js?i=0ett3z77b0x&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=0" async="async"></script> &nbsp;&nbsp;&nbsp;&nbsp; <script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=0ett3z77b0x&amp;d=3&amp;p=1&amp;b=1&amp;w=293&amp;g=2&amp;f=arial&amp;fs=13&amp;r=0&amp;c0=ff8a00&amp;c1=0006ff&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script><br></center>
+
+<p><br><br><a href="https://liaochenlanruo.github.io/pgcgap" target="_blank" rel="noopener">English Readme</a> | <a href="https://liaochenlanruo.github.io/2019/04/28/PGCGAP%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/" target="_blank" rel="noopener">中文说明</a></p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ul>
+<li><p><a href="#introduction">Introduction</a></p>
+</li>
+<li><p><a href="#installation">Installation</a></p>
+</li>
+<li><p><a href="#required-dependencies">Required dependencies</a></p>
+</li>
+<li><p><a href="#usage">Usage</a></p>
+</li>
+<li><p><a href="#examples">Examples</a></p>
+</li>
+<li><p><a href="#generating-input-files">Generating Input files</a></p>
+<ul>
+<li><p><a href="#working-directory">Working directory</a></p>
+</li>
+<li><p><a href="#assemble">Assemble</a></p>
+</li>
+<li><p><a href="#annotate">Annotate</a></p>
+</li>
+<li><p><a href="#ani">ANI</a></p>
+</li>
+<li><p><a href="#coretree">CoreTree</a></p>
+</li>
+<li><p><a href="#orthof">OrthoF</a></p>
+</li>
+<li><p><a href="#pan">Pan</a></p>
+</li>
+<li><p><a href="#cog">COG</a></p>
+</li>
+<li><p><a href="#var">VAR</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#output-files">Output Files</a></p>
+<ul>
+<li><p><a href="#assemble-1">Assemble</a></p>
+</li>
+<li><p><a href="#annotate-1">Annotate</a></p>
+</li>
+<li><p><a href="#ani-1">ANI</a></p>
+</li>
+<li><p><a href="#coretree-1">CoreTree</a></p>
+</li>
+<li><p><a href="#orthof-1">OrthoF</a></p>
+</li>
+<li><p><a href="#pan-1">Pan</a></p>
+</li>
+<li><p><a href="#cog">COG</a></p>
+</li>
+<li><p><a href="#var-1">VAR</a></p>
+</li>
+</ul>
+</li>
+<li><p><a href="#license">License</a></p>
+</li>
+<li><p><a href="#feedback-and-issues">Feedback and Issues</a></p>
+</li>
+<li><p><a href="#citation">Citation</a></p>
+</li>
+<li><p><a href="#faq">FAQ</a></p>
+<ul>
+<li><a href="#q1-var-founction-ran-failed-to-get-annotated-vcfs-and-core-results">Q1 VAR FOUNCTION ran failed to get annotated VCFs and Core results</a></li>
+<li><a href="#q2-could-not-determine-version-of-minced-please-install-version-2-or-higher">Q2 Could not determine version of minced please install version 2.0 or higher</a></li>
+<li><a href="#q3-dyld:-Library-not-loaded:-@rpath/libcrypto.1.0.0.dylib">Q3 dyld: Library not loaded: @rpath/libcrypto.1.0.0.dylib</a></li>
+<li><a href="#q4-use-of-uninitialized-value-in-require-at-encode.pm-line-61">Q4 Use of uninitialized value in require at Encode.pm line 61</a></li>
+</ul>
+</li>
+<li><p><a href="#updates">Updates</a></p>
+</li>
+</ul>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>PGCGAP是用于原核生物基因组学和比较基因组学分析管道，该管道包含9个模块，可以接受Illumina双端reads、Oxford reads或PacBio reads作为输入，可以完成基因组组装、基因预测和注释，并可以进行比较基因组学分析，包括构建单拷贝核心蛋白进化树以及单拷贝核心基因SNPs进化树，泛基因组分析，全基因组平均核苷酸一致性（ANI）计算，同源蛋白家族聚类，COG注释，SNPs和INDELs calling。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>PGCGAP可以安装于Windows子系统Linux（WSL）、Linux x64系统以及macOS中。由于该管道依赖众多的软件包，因此建议用户通过 <strong><a href="https://bioconda.github.io/index.html" target="_blank" rel="noopener">Bioconda</a></strong> 进行安装。PGCGAP同时依赖 <strong>Gubbins</strong> 和 <strong>Orthofinder</strong>, 二者依赖不同版本的python，因此需要单独安装Gubbins。Orthofinder将于2020年更新至python 3，届时可以通过一条命令完成PGCGAP的安装。</p>
+<p><strong>Step1：安装 Gubbins</strong></p>
+<p>如果用户的系统安装了python 3版本的miniconda，可以直接进行Gubbins的安装。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda install gubbins</span><br></pre></td></tr></table></figure>
+<p>如果系统安装的为python 2版本的miniconda，用户需要创建一个python 3环境安装Gubbins，并且需要将Gubbins安装路径加入环境变量中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#创建一个名为“gubbins”的python 3环境</span><br><span class="line"></span><br><span class="line">$conda create -n gubbins python=3</span><br><span class="line"></span><br><span class="line">#激活gubbins环境</span><br><span class="line">$conda activate gubbins</span><br><span class="line"></span><br><span class="line">#安装Gubbins</span><br><span class="line"></span><br><span class="line">$conda install gubbins</span><br></pre></td></tr></table></figure>
+<p>查看gubbins的安装路径，并将其加入环境变量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$whereis gubbins</span><br></pre></td></tr></table></figure>
+<p>退出gubbins环境</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda deactivate</span><br></pre></td></tr></table></figure>
+<p><strong>Step2：安装PGCGAP</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda create -n pgcgap python=2</span><br><span class="line"></span><br><span class="line">$conda activate pgcgap</span><br><span class="line"></span><br><span class="line">$conda install pgcgap</span><br><span class="line"></span><br><span class="line">$conda deactivate</span><br></pre></td></tr></table></figure>
+<p><strong>Step3：配置COG数据库</strong> (初次安装PGCGAP后需要执行此步骤)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda activate pgcgap</span><br><span class="line"></span><br><span class="line">$pgcgap --setup-COGdb</span><br><span class="line"></span><br><span class="line">$conda deactivate</span><br></pre></td></tr></table></figure>
+<h2 id="依赖包"><a href="#依赖包" class="headerlink" title="依赖包"></a>依赖包</h2><ul>
+<li><a href="http://www.bcgsc.ca/platform/bioinfo/software/abyss/" target="_blank" rel="noopener">ABySS</a></li>
+<li><a href="http://canu.readthedocs.org/" target="_blank" rel="noopener">Canu</a></li>
+<li><a href="http://weizhongli-lab.org/cd-hit/" target="_blank" rel="noopener">CD-HIT</a></li>
+<li><a href="https://www.gnu.org/software/coreutils/" target="_blank" rel="noopener">Coreutils</a></li>
+<li><a href="https://github.com/bbuchfink/diamond" target="_blank" rel="noopener">Diamond</a></li>
+<li><a href="https://github.com/ParBLiSS/FastANI" target="_blank" rel="noopener">FastANI</a></li>
+<li><a href="http://www.atgc-montpellier.fr/fastme/binaries.php" target="_blank" rel="noopener">Fastme</a></li>
+<li><a href="http://www.microbesonline.org/fasttree/" target="_blank" rel="noopener">FastTree</a></li>
+<li><a href="https://github.com/sanger-pathogens/gubbins" target="_blank" rel="noopener">Gubbins</a> &gt;=2.3.4</li>
+<li><a href="https://github.com/samtools/htslib" target="_blank" rel="noopener">Htslib</a></li>
+<li><a href="https://mafft.cbrc.jp/alignment/software/" target="_blank" rel="noopener">Mafft</a></li>
+<li><a href="https://github.com/marbl/Mash" target="_blank" rel="noopener">Mash</a></li>
+<li><a href="https://github.com/soedinglab/mmseqs2" target="_blank" rel="noopener">Mmseqs2</a></li>
+<li><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&amp;PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download" target="_blank" rel="noopener">NCBI-blast+</a></li>
+<li><a href="https://github.com/davidemms/OrthoFinder" target="_blank" rel="noopener">OrthoFinder</a></li>
+<li><a href="https://openjdk.java.net/" target="_blank" rel="noopener">OpenJDK8</a></li>
+<li><a href="http://www.bork.embl.de/pal2nal/" target="_blank" rel="noopener">PAL2NAL v14</a></li>
+<li><a href="http://www.perl.org/get.html" target="_blank" rel="noopener">Perl</a> &amp; the modules<ul>
+<li><a href="http://metacpan.org/pod/BioPerl" target="_blank" rel="noopener">perl-bioperl</a></li>
+<li><a href="http://metacpan.org/pod/Data::Dumper" target="_blank" rel="noopener">perl-data-dumper</a></li>
+<li><a href="http://metacpan.org/pod/File::Tee" target="_blank" rel="noopener">perl-file-tee</a></li>
+<li><a href="http://metacpan.org/pod/Getopt::Long" target="_blank" rel="noopener">perl-getopt-long</a></li>
+<li><a href="http://search.cpan.org/~marekr/Pod-Usage-1.69/" target="_blank" rel="noopener">perl-pod-usage</a></li>
+<li><a href="https://metacpan.org/pod/release/DLUX/Parallel-ForkManager-0.7.5/ForkManager.pm" target="_blank" rel="noopener">perl-parallel-forkmanager</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/tseemann/prokka" target="_blank" rel="noopener">Prokka</a></li>
+<li><a href="https://www.python.org/" target="_blank" rel="noopener">Python</a> &amp; the modules<ul>
+<li><a href="https://biopython.org/" target="_blank" rel="noopener">biopython</a></li>
+<li><a href="https://matplotlib.org/" target="_blank" rel="noopener">matplotlib</a></li>
+<li><a href="http://www.numpy.org/" target="_blank" rel="noopener">numpy</a></li>
+<li><a href="http://pandas.pydata.org/" target="_blank" rel="noopener">pandas</a></li>
+<li><a href="http://seaborn.pydata.org/" target="_blank" rel="noopener">seaborn</a></li>
+</ul>
+</li>
+<li><a href="https://www.r-project.org/" target="_blank" rel="noopener">R</a> &amp; the packages<ul>
+<li><a href="https://cran.r-project.org/web/packages/corrplot/index.html" target="_blank" rel="noopener">corrplot</a></li>
+<li><a href="https://cran.r-project.org/web/packages/ggplot2/" target="_blank" rel="noopener">ggplot2</a></li>
+<li><a href="https://cran.r-project.org/web/packages/gplots/" target="_blank" rel="noopener">gplots</a></li>
+<li><a href="https://cran.r-project.org/web/packages/pheatmap/index.html" target="_blank" rel="noopener">pheatmap</a></li>
+<li><a href="https://cran.r-project.org/web/packages/plotrix/" target="_blank" rel="noopener">plotrix</a></li>
+</ul>
+</li>
+<li><a href="https://sanger-pathogens.github.io/Roary/" target="_blank" rel="noopener">Roary</a></li>
+<li><a href="https://github.com/najoshi/sickle" target="_blank" rel="noopener">Sickle-trim</a></li>
+<li><a href="https://github.com/tseemann/snippy" target="_blank" rel="noopener">Snippy</a></li>
+<li><a href="https://github.com/sanger-pathogens/snp-sites" target="_blank" rel="noopener">Snp-sites</a></li>
+<li><a href="https://www.gnu.org/software/wget/" target="_blank" rel="noopener">wget</a></li>
+</ul>
+<h2 id="PGCGAP用法"><a href="#PGCGAP用法" class="headerlink" title="PGCGAP用法"></a>PGCGAP用法</h2><ul>
+<li><strong>Print the help messages:</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --help</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>General usage:</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap [functions] [options]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>Setup COG database:</strong> (Users should execute this after first installation of pgcgap)  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --setup-COGdb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><p><strong>功能模块：</strong></p>
+<ul>
+<li><p><strong>[–All]</strong>                          运行Assemble, Annotate, CoreTree, Pan, OrthoF, ANI, MASH 和 pCOG模块</p>
+</li>
+<li><p><strong>[–Assemble]</strong>                     基因组组装</p>
+</li>
+<li><p><strong>[–Annotate]</strong>                     基因预测及注释</p>
+</li>
+<li><p><strong>[–CoreTree]</strong>                     构建单拷贝核心蛋白进化树与核心SNPs进化树</p>
+</li>
+<li><p><strong>[–Pan]</strong>                          泛基因组分析并构建单拷贝核心蛋白进化树</p>
+</li>
+<li><p><strong>[–OrthoF]</strong>                       同源蛋白家族聚类</p>
+</li>
+<li><p><strong>[–ANI]</strong>                          计算平均核苷酸一致性 ( ANI )</p>
+</li>
+<li><p><strong>[–MASH]</strong>                         通过MinHash估算基因组/宏基因组相似性</p>
+</li>
+<li><p><strong>[–pCOG]</strong>                         COG注释</p>
+</li>
+<li><p><strong>[–VAR]</strong>                          变异检测并构建核心基因组进化树<br><br></p>
+</li>
+</ul>
+</li>
+<li><p><strong>全局参数：</strong></p>
+<ul>
+<li><p><strong>[–strain_num (INT)]</strong>             [Required by “–All”, “–CoreTree”, “–Pan”, “–VAR” and “–COG”] The total number of strains used for analysis, not including the reference genome</p>
+</li>
+<li><p><strong>[–ReadsPath (PATH)]</strong>             [Required by “–All”, “–Assemble” and “–VAR”] Reads of all strains as file paths ( Default ./Reads/Illumina )</p>
+</li>
+<li><p><strong>[–scafPath (PATH)]</strong>              [Required by “–All”, “–Annotate” and “–MASH”] Path for contigs/scaffolds (Default “Results/Assembles/Scaf/Illumina”)</p>
+</li>
+<li><p><strong>[–AAsPath (PATH)]</strong>               [Required by “–All”, “–CoreTree”, “–Pan”, “–OrthoF” and “–pCOG”] Amino acids of all strains as fasta file paths ( Default “./Results/Annotations/AAs” )</p>
+</li>
+<li><p><strong>[–reads1 (STRING)]</strong>              [Required by “–All”, “–Assemble” and “–VAR”] The suffix name of reads 1 ( for example: if the name of reads 1 is “YBT-1520_L1_I050.R1.clean.fastq.gz”, “YBT-1520” is the strain same, so the suffix name should be “.R1.clean.fastq.gz”)</p>
+</li>
+<li><p><strong>[–reads2 (STRING)]</strong>              [Required by “–All”, “–Assemble” and “–VAR”] The suffix name of reads 2( for example: if the name of reads 2 is “YBT-1520_2.fq”, the suffix name should be “_2.fq” )</p>
+</li>
+<li><p><strong>[–Scaf_suffix (STRING)]</strong>         [Required by “–All”, “–Annotate” “MASH” and “–ANI”] The suffix of scaffolds or genomes. Here, “-8.fa” for Illumina data, “.contigs.fasta” for PacBio data and Oxford data. Users can also fill in other suffixes according to the actual situation (Default -8.fa)</p>
+</li>
+<li><p><strong>[–codon (INT)]</strong>                  [Required by “–All”, “–Annotate”, “–CoreTree” and “–Pan”] Translation table ( Default 11 )</p>
+<ul>
+<li>1                             Universal code</li>
+<li>2                             Vertebrate mitochondrial code</li>
+<li>3                             Yeast mitochondrial code</li>
+<li>4                             Mold, Protozoan, and Coelenterate Mitochondrial code and Mycoplasma/Spiroplasma code</li>
+<li>5                             Invertebrate mitochondrial</li>
+<li>6                             Ciliate, Dasycladacean and Hexamita nuclear code</li>
+<li>9                             Echinoderm and Flatworm mitochondrial code</li>
+<li>10                            Euplotid nuclear code</li>
+<li>11                            Bacterial, archaeal and plant plastid code ( Default )</li>
+<li>12                            Alternative yeast nuclear code</li>
+<li>13                            Ascidian mitochondrial code</li>
+<li>14                            Alternative flatworm mitochondrial code</li>
+<li>15                            Blepharisma nuclear code</li>
+<li>16                            Chlorophycean mitochondrial code</li>
+<li>21                            Trematode mitochondrial code</li>
+<li>22                            Scenedesmus obliquus mitochondrial code</li>
+<li>23                            Thraustochytrium mitochondrial code</li>
+</ul>
+</li>
+<li><p><strong>[–suffix_len (INT)]</strong>             [Required by “–All”, “–Assemble” and “–VAR”] <strong>(Strongly recommended)</strong> The suffix length of the reads, that is the length of your reads name minus the length of your strain name. For example the –suffix_len of “YBT-1520_L1_I050.R1.clean.fastq.gz” is 26 ( “YBT-1520” is the strain name ) ( Default 0 )</p>
+</li>
+<li><p><strong>[–logs (STRING)]</strong>                Name of the log file ( Default Logs.txt )</p>
+</li>
+<li><p><strong>[–threads (INT)]</strong>                Number of threads to be used ( Default 4 )<br><br></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Local Options:</strong></p>
+<ul>
+<li><p><strong>–Assemble</strong></p>
+<ul>
+<li><p><strong>[–platform (STRING)]</strong>        Sequencing Platform, “illumina”, “pacbio” and “oxford” available (Default illumina)</p>
+</li>
+<li><p><strong>[–kmmer (INT)]</strong>              [Required] k-mer size for genome assembly of Illumina data ( Default 81 )</p>
+</li>
+<li><p><strong>[–genomeSize (FLOAT)]</strong>       [Required] An estimate of the size of the genome. Common suffices are allowed, for example, 3.7m or 2.8g. Needed by PacBio data and Oxford data (Default Unset)</p>
+</li>
+</ul>
+</li>
+<li><p><strong>–Annotate</strong></p>
+<ul>
+<li><p><strong>[–genus (STRING)]</strong>           Genus name of your strain ( Default “NA” )</p>
+</li>
+<li><p><strong>[–species (STRING)]</strong>         Species name of your strain ( Default “NA”)<br><br></p>
+</li>
+</ul>
+</li>
+<li><p><strong>–CoreTree</strong></p>
+<ul>
+<li><p><strong>[–CDsPath (PATH)]</strong>           [Required] CDs of all strains as fasta file paths ( Default “./Results/Annotations/CDs” ), if set to “NO”, the SNPs of single-copy core genes will not be called</p>
+</li>
+<li><p><strong>[-c (FLOAT)]</strong>                 Sequence identity threshold, ( Default 0.5)</p>
+</li>
+<li><p><strong>[-n (INT)]</strong>                   Word_length,  -n 2 for thresholds 0.4-0.5, -n 3 for thresholds 0.5-0.6, -n 4 for thresholds 0.6-0.7, -n 5 for thresholds 0.7-1.0 ( Default 2 )</p>
+</li>
+<li><p><strong>[-G (INT)]</strong>                   Use global (set to 1) or local (set to 0) sequence identity, ( Default 0 )</p>
+</li>
+<li><p><strong>[-t (INT)]</strong>                   Tolerance for redundance ( Default 0 )</p>
+</li>
+<li><p><strong>[-aL (FLOAT)]</strong>                Alignment coverage for the longer sequence. If set to 0.9, the alignment must covers 90% of the sequence ( Default 0.5 )</p>
+</li>
+<li><p><strong>[-aS (FLOAT)]</strong>                Alignment coverage for the shorter sequence. If set to 0.9, the alignment must covers 90% of the sequence ( Default 0.7 )</p>
+</li>
+<li><p><strong>[-g (INT)]</strong>                   If set to 0, a sequence is clustered to the first cluster that meet the threshold (fast cluster). If set to 1, the program will cluster it into the most similar cluster that meet the threshold (accurate but slow mode, Default 1)</p>
+</li>
+<li><p><strong>[-d (INT)]</strong>                   length of description in .clstr file. if set to 0, it takes the fasta defline and stops at first space ( Default 0 )<br><br></p>
+</li>
+</ul>
+</li>
+<li><p><strong>–Pan</strong></p>
+<ul>
+<li><strong>[–GffPath (PATH)]</strong>           [Required] Gff files of all strains as paths ( Default “./Results/Annotations/GFF” )<br><br></li>
+</ul>
+</li>
+<li><p><strong>–OrthoF</strong></p>
+<ul>
+<li><strong>[–Sprogram (STRING)]</strong>        Sequence search program, Options: blast, mmseqs, blast_gz, diamond ( Default blast)<br><br></li>
+</ul>
+</li>
+<li><p><strong>–ANI</strong></p>
+<ul>
+<li><p><strong>[–queryL (FILE)]</strong>            [Required] The file containing paths to query genomes, one per line ( Default scaf.list )</p>
+</li>
+<li><p><strong>[–refL (FILE)]</strong>              [Required] The file containing paths to reference genomes, one per line. ( Default scaf.list )</p>
+</li>
+<li><p><strong>[–ANIO (FILE)]</strong>              The name of output file ( Default “Results/ANI/ANIs” )</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><p><strong>–VAR</strong></p>
+<ul>
+<li><p><strong>[–refgbk (FILE)]</strong>            [Required] The full path and name of reference genome in GENBANK format ( recommended ), fasta format is also OK. For example: “/mnt/g/test/ref.gbk”</p>
+</li>
+<li><p><strong>[–qualtype (STRING)]</strong>        [Required] Type of quality values (solexa (CASAVA &lt; 1.3), illumina (CASAVA 1.3 to 1.7), sanger (which is CASAVA &gt;= 1.8)). ( Default sanger )</p>
+</li>
+<li><p><strong>[–qual (INT)]</strong>               Threshold for trimming based on average quality in a window. ( Default 20 )</p>
+</li>
+<li><p><strong>[–length (INT)]</strong>             Threshold to keep a read based on length after trimming. ( Default 20 )</p>
+</li>
+<li><p><strong>[–mincov (INT)]</strong>             The minimum number of reads covering a site to be considered ( Default 10 )</p>
+</li>
+<li><p><strong>[–minfrac (FLOAT)]</strong>          The minimum proportion of those reads which must differ from the reference ( Default 0.9 )</p>
+</li>
+<li><p><strong>[–minqual (INT)]</strong>            The minimum VCF variant call “quality” ( Default 100 )</p>
+</li>
+<li><p><strong>[–ram (INT)]</strong>                Try and keep RAM under this many GB ( Default 8 )</p>
+</li>
+<li><p><strong>[–tree_builder (STRING)]</strong>    Application to use for tree building [raxml|fasttree|hybrid] ( Default fasttree)</p>
+</li>
+<li><p><strong>[–iterations (INT)]</strong>         Maximum No. of iterations for gubbins ( Default 5 )<br><br></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>依赖软件安装目录</strong></p>
+<p>Not needed if they were in the environment variables path. Users can check with the “–check-external-programs” option for the essential programs.<br><br></p>
+<ul>
+<li><p><strong>[–abyss-bin (PATH)]</strong>             Path to abyss binary file. Default tries if abyss is in PATH;</p>
+</li>
+<li><p><strong>[–canu-bin (PATH)]</strong>              Path to canu binary file. Default tries if canu is in PATH;</p>
+</li>
+<li><p><strong>[–prodigal-bin (PATH)]</strong>          Path to prodigal binary file. Default tries if prodigal is in PATH;</p>
+</li>
+<li><p><strong>[–prokka-bin (PATH)]</strong>            Path to prokka binary file. Default tries if prokka is in PATH;</p>
+</li>
+<li><p><strong>[–cd-hit-bin (PATH)]</strong>            Path to cd-hit binary file. Default tries if cd-hit is in PATH;</p>
+</li>
+<li><p><strong>[–mafft-bin (PATH)]</strong>             Path to mafft binary file. Default tries if mafft is in PATH;</p>
+</li>
+<li><p><strong>[–fasttree-bin (PATH)]</strong>          Path to the fasttree binary file. Default tries if fasttree is in PATH;</p>
+</li>
+<li><p><strong>[–pal2nal-bin (PATH)]</strong>           Path to the pal2nal.pl binary file. Default tries if pal2nal.pl is in PATH;</p>
+</li>
+<li><p><strong>[–snp-sites-bin (PATH)]</strong>         Path to the snp-sites binary file. Default tries if snp-sites is in PATH;</p>
+</li>
+<li><p><strong>[–roary-bin (PATH)]</strong>             Path to the roary binary file. Default tries if roary is in PATH;</p>
+</li>
+<li><p><strong>[–orthofinder-bin (PATH)]</strong>       Path to the orthofinder binary file. Default tries if orthofinder is in PATH;</p>
+</li>
+<li><p><strong>[–fastANI-bin (PATH)]</strong>           Path to the fastANI binary file. Default tries if fastANI is in PATH;</p>
+</li>
+<li><p><strong>[–gubbins-bin (PATH)]</strong>           Path to the run_gubbins.py binary file. Default tries if run_gubbins.py is in PATH;</p>
+</li>
+<li><p><strong>[–snippy-bin (PATH)]</strong>            Path to the snippy binary file. Default tries if snippy is in PATH;</p>
+</li>
+<li><p><strong>[–sickle-bin (PATH)]</strong>            Path to the sickle-trim binary file. Default tries if sickle is in PATH.</p>
+</li>
+<li><p><strong>[–mash-bin (PATH)]</strong>              Path to the mash binary file. Default tries if mash is in PATH.<br><br></p>
+</li>
+</ul>
+</li>
+<li><p><strong>配置COG数据库</strong></p>
+</li>
+</ul>
+<ul>
+<li><strong>[–setup-COGdb]</strong>                  首次安装PGCGAP后需要执行此步<br><br></li>
+</ul>
+<ul>
+<li><p>检查依赖软件包是否安装 (<strong>强烈建议在安装完PGCGAP之后运行此步</strong>):</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --check-external-programs</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li><p><strong>Example 1:</strong> 执行所有模块，以 <em>Escherichia coli</em> 的6个Illumina 双端reads为数据集。</p>
+<p><strong>注</strong>：为了提高灵活性，”VAR” 模块需要额外添加。<br></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --All --platform illumina --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --suffix_len 11 --kmmer 81 --genus Escherichia --species “Escherichia coli” --codon 11 --strain_num 6 --threads 4 --VAR --refgbk /mnt/h/PGCGAP_Examples/Reads/MG1655.gbff --qualtype sanger</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 2:</strong> 基因组组装。</p>
+<ul>
+<li><p>Illumina双端reads组装</p>
+<p>该数据集中，reads的命名格式为 “strain_1.fastq.gz” 和 “strain_2.fastq.gz”。 后缀名为 “_1.fastq.gz”，其长度为11，因此 “–suffix_len” 设置为11。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform illumina --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --kmmer 81 --threads 4 --suffix_len 11</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Oxford reads组装</p>
+<p>Oxford nanopore测序仅产生一个reads文件，因此只需要设置 “–reads1” 参数，其值为 “.fasta”。 “–genomeSize” 是预估的基因组大小，用户可以到NCBI数据库中查看同物种基因组的大小作为参考，此处设置为 “4.8m”。Reads文件的后缀名为 “.fasta”，其长度为6，因此将 “–suffix_len” 设置为6。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform oxford --ReadsPath Reads/Oxford --reads1 .fasta --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PacBio reads组装</p>
+<p>PacBio同样只产生一个文件 “pacbio.fastq”，参数设置与Oxford类似。此处，文件的后缀名为 “.fastq”，其长度为6，因此 “–suffix_len” 设置为6。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform pacbio --ReadsPath Reads/PacBio --reads1 .fastq --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>Example 3:</strong> 基因预测及注释。</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Annotate --scafPath Results/Assembles/Scaf/Illumina --Scaf_suffix -8.fa --genus Escherichia --species “Escherichia coli” --codon 11 --threads 4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 4:</strong> 构建单拷贝核心蛋白进化树与核心SNPs进化树。</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --CoreTree --CDsPath Results/Annotations/CDs --AAsPath Results/Annotations/AAs --codon 11 --strain_num 6 --threads 4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 5:</strong> 仅构建单拷贝核心蛋白进化树。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --CoreTree --CDsPath NO --AAsPath Results/Annotations/AAs --codon 11 --strain_num 6 --threads 4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 6:</strong> 进行泛基因组分析并构建单拷贝核心蛋白进化树。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Pan --codon 11 --strain_num 6 --threads 4 --GffPath Results/Annotations/GFF --PanTree --AAsPath Results/Annotations/AAs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 7:</strong> 同源蛋白家族聚类分析。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --OrthoF --threads 4 --AAsPath Results/Annotations/AAs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 8:</strong> 计算两两基因组之间的平均核苷酸一致性(ANI)。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --ANI --threads 4 --queryL scaf.list --refL scaf.list --ANIO Results/ANI/ANIs --Scaf_suffix .fa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 9:</strong> 通过MinHash计算基因组及宏基因组的相似性。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --MASH --scafPath &lt;PATH&gt; --Scaf_suffix &lt;STRING&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 10:</strong> 对所有基因组进行COG注释。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --pCOG --threads 4 --strain_num 6 --AAsPath Results/Annotations/AAs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 11:</strong> 变异(SNPs, Indels)检测与注释，并构建基于参考基因组的SNPs进化树。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --VAR --threads 4 --refgbk /mnt/h/PGCGAP_Examples/Reads/MG1655.gbff --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --suffix_len 11 --strain_num 6 --qualtype sanger --PanTree</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="准备输入文件"><a href="#准备输入文件" class="headerlink" title="准备输入文件"></a>准备输入文件</h2><h3 id="工作目录"><a href="#工作目录" class="headerlink" title="工作目录"></a>工作目录</h3><p>PGCGAP的运行目录。</p>
+<h3 id="Assemble"><a href="#Assemble" class="headerlink" title="Assemble"></a>Assemble</h3><p>将所有双端reads、或PacBio reads 或 Oxford nanopore reads存于某个目录下 (Default: ./Reads/Illumina/)。</p>
+<h3 id="Annotate"><a href="#Annotate" class="headerlink" title="Annotate"></a>Annotate</h3><p>基因组文件(完整或不完整)存放于某个目录下 (Default: Results/Assembles/Scaf/Illumina)。</p>
+<h3 id="ANI"><a href="#ANI" class="headerlink" title="ANI"></a>ANI</h3><p>QUERY_LIST 和 REFERENCE_LIST 文件，每个文件中含有需要计算的基因组的绝对路径，每个基因组一行 (default: 工作目录下的”scaf.list”)。若先运行了 “–Assemble” 模块，该文件会自动生成。</p>
+<h3 id="CoreTree"><a href="#CoreTree" class="headerlink" title="CoreTree"></a>CoreTree</h3><p>将所有菌株的氨基酸文件 (后缀名必须为 “.faa”) 和核苷酸文件 (需以 “.ffn” 为后缀) 分别存放于两个目录中 (default: “./Results/Annotations/AAs/” 和 “./Results/Annotations/CDs/”)。“.faa” 和 “.ffn” 文件需要有相同的前缀名字，且 protein IDs 和 gene IDs 需以菌株名开头。建议用 “Prokka” 软件获取输入文件，若已经运行了 “–Annotate” 模块，则该模块的输入文件会自动生产。若 “–CDsPath” 设置为 “NO”，则不需要提供核苷酸文件，但也不会生产核心SNPs进化树。</p>
+<h3 id="MASH"><a href="#MASH" class="headerlink" title="MASH"></a>MASH</h3><p>基因组文件(完整或不完整)存放于某个目录下 (Default: Results/Assembles/Scaf/Illumina)。</p>
+<h3 id="OrthoF"><a href="#OrthoF" class="headerlink" title="OrthoF"></a>OrthoF</h3><p>所有菌株的fasta格式氨基酸文件(每个菌株一个文件)存放于一个目录中 (default: “./Results/Annotations/AAs/”)。 若先运行了 “–Assemble” 模块，该文件会自动生成。</p>
+<h3 id="Pan"><a href="#Pan" class="headerlink" title="Pan"></a>Pan</h3><p>GFF3 files (With “.gff” as the suffix) of each strain placed into a directory. They must contain the nucleotide sequence at the end of the file. All GFF3 files created by Prokka are valid (default: ./Results/Annotations/GFF/). protein sequence files (one per species) in FASTA format under another directory were also needed (default: “./Results/Annotations/AAs/”). If the “–Annotate” function was run first, the files will be generated automatically.</p>
+<h3 id="pCOG"><a href="#pCOG" class="headerlink" title="pCOG"></a>pCOG</h3><p>Amino acids file (With “.faa” as the suffix) of each strain placed into a directory (default: ./Results/Annotations/AAs/). 若先运行了 “–Assemble” 模块，该文件会自动生成。</p>
+<h3 id="VAR"><a href="#VAR" class="headerlink" title="VAR"></a>VAR</h3><ul>
+<li><p>Pair-end reads of all strains in a directory (default: ./Reads/Over/ under the working directory).<br><br></p>
+</li>
+<li><p>The full path of reference genome in fasta format or GenBank format (<strong>must be provided</strong>).</p>
+</li>
+</ul>
+<h2 id="输出文件解读"><a href="#输出文件解读" class="headerlink" title="输出文件解读"></a>输出文件解读</h2><h3 id="Assemble-1"><a href="#Assemble-1" class="headerlink" title="Assemble"></a>Assemble</h3><ul>
+<li><p><strong>Results/Assembles/Illumina/*_assembly</strong><br><br>Directories contain Illumina assembly files and information of each strain.<br><br></p>
+</li>
+<li><p><strong>Results/Assembles/PacBio</strong><br><br>Directories contain PacBio assembly files and information of each strain.<br><br></p>
+</li>
+<li><p><strong>Results/Assembles/Illumina/Oxford</strong><br><br>Directories contain Oxford nanopore assembly files and information of each strain.<br><br></p>
+</li>
+<li><p><strong>Results/Assembles/Scaf/Illumina</strong><br><br>Directory contains Illumina contigs/scaffolds of all strains.<br><br></p>
+</li>
+<li><p><strong>Results/Assembles/Scaf/Oxford</strong><br><br>Directory contains Oxford nanopore contigs/scaffolds of all strains.<br><br></p>
+</li>
+<li><p><strong>Results/Assembles/Scaf/PacBio</strong><br><br>Directory contains PacBio contigs/scaffolds of all strains.<br><br></p>
+</li>
+</ul>
+<h3 id="Annotate-1"><a href="#Annotate-1" class="headerlink" title="Annotate"></a>Annotate</h3><ul>
+<li><p><strong>Results/Annotations/*_annotation</strong><br><br>directories contain <a href="https://github.com/tseemann/prokka?_blank" target="_blank" rel="noopener">annotation files</a> of each strain.<br><br></p>
+</li>
+<li><p><strong>Results/Annotations/AAs</strong><br><br>Directory contain amino acids sequences of all strains.<br><br></p>
+</li>
+<li><p><strong>Results/Annotations/CDs</strong><br><br>Directory contain nucleotide sequences of all strains.<br><br></p>
+</li>
+<li><p><strong>Results/Annotations/GFF</strong><br><br>Directory contain the master annotation of all strains in GFF3 format.</p>
+</li>
+</ul>
+<h3 id="ANI-1"><a href="#ANI-1" class="headerlink" title="ANI"></a>ANI</h3><ul>
+<li><p><strong>Results/ANI/ANIs</strong><br><br>The file contains comparation information of genome pairs. The document is composed of five columns, each of which represents query genome, reference genome, ANI value, count of bidirectional fragment mappings, total query fragments.<br><br></p>
+</li>
+<li><p><strong>Results/ANI/ANIs.matrix</strong><br><br>file with identity values arranged in a <a href="https://www.mothur.org/wiki/Phylip-formatted_distance_matrix?_blank" target="_blank" rel="noopener">phylip-formatted lower triangular matrix</a>.<br><br></p>
+</li>
+<li><p><strong>Results/ANI/ANIs.heatmap</strong><br><br>An ANI matrix of all strains.<br><br></p>
+</li>
+<li><p><strong>Results/ANI/ANI_matrix.pdf</strong><br><br>The heatmap plot of “ANIs.heatmap”.</p>
+</li>
+</ul>
+<h3 id="CoreTree-1"><a href="#CoreTree-1" class="headerlink" title="CoreTree"></a>CoreTree</h3><ul>
+<li><p><strong>Results/CoreTrees/faa/ALL.core.protein.fasta</strong><br><br>Concatenated and aligned sequences file of single-copy core proteins.<br><br></p>
+</li>
+<li><p><strong>Results/CoreTrees/faa2ffn/ALL.core.nucl.fasta</strong><br><br>Concatenated and aligned sequences file of single-copy core genes.<br><br></p>
+</li>
+<li><p><strong>Results/CoreTrees/faa2ffn/ALL.core.snp.fasta</strong><br><br>Core SNPs of single-copy core genes in fasta format.<br><br></p>
+</li>
+<li><p><strong>Results/CoreTrees/ALL.core.protein.nwk</strong><br><br>The phylogenetic tree file of single-copy proteins for all strains.<br><br></p>
+</li>
+<li><p><strong>Results/CoreTrees/faa2ffn/ALL.core.snp.nwk</strong><br><br>The phylogenetic tree file of SNPs of single-copy core genes for all strains.<br><br></p>
+</li>
+</ul>
+<ul>
+<li><strong>Results/CoreTrees/“Other_files”</strong><br><br>Intermediate directories and files.<br><br></li>
+</ul>
+<h3 id="MASH-1"><a href="#MASH-1" class="headerlink" title="MASH"></a>MASH</h3><ul>
+<li><p><strong>Results/MASH/MASH</strong><br><br>Pairwise distance between pair genomes, each column represents Reference-ID, Query-ID, Mash-distance, P-value, and Matching-hashes, respectively.</p>
+</li>
+<li><p><strong>Results/MASH/MASH2</strong><br><br>Pairwise similarity between pair genomes, each column represents Reference-ID, Query-ID, similarity, P-value, and Matching-hashes, respectively.</p>
+</li>
+<li><p><strong>Results/MASH/MASH.heatmap</strong><br><br>A similarity matrix of all genomes.</p>
+</li>
+<li><p><strong>Results/MASH/MASH_matrix.pdf</strong><br><br>A heat map plot of “MASH.heatmap”.</p>
+</li>
+</ul>
+<h3 id="OrthoF-1"><a href="#OrthoF-1" class="headerlink" title="OrthoF"></a>OrthoF</h3><ul>
+<li><strong>Results/OrthoFinder/Results_orthoF</strong><br><br>Same as <a href="https://github.com/davidemms/OrthoFinder?_blank" target="_blank" rel="noopener">OrthoFinder</a> outputs.<br><br></li>
+</ul>
+<h3 id="Pan-1"><a href="#Pan-1" class="headerlink" title="Pan"></a>Pan</h3><ul>
+<li><p><strong>Results/PanGenome/Pangenome_Pie.pdf</strong><br><br>A 3D pie chart and a fan chart of the breakdown of genes and the number of isolate they are present in.<br><br></p>
+</li>
+<li><p><strong>Results/PanGenome/pangenome_frequency.pdf</strong><br><br>A graph with the frequency of genes versus the number of genomes.<br><br></p>
+</li>
+<li><p><strong>Results/PanGenome/Pangenome_matrix.pdf</strong><br><br>A figure showing the tree compared to a matrix with the presence and absence of core and accessory genes.<br><br></p>
+</li>
+<li><p><strong>Results/PanGenome/Core/Roary.core.protein.nwk</strong><br><br>A phylogenetic tree based on single-copy core proteins called by roary software.<br><br></p>
+</li>
+<li><p><strong>Results/PanGenome/Other_files</strong><br><br>see <a href="https://sanger-pathogens.github.io/Roary/?_blank" target="_blank" rel="noopener">roary</a> outputs.<br><br></p>
+</li>
+</ul>
+<h3 id="pCOG-1"><a href="#pCOG-1" class="headerlink" title="pCOG"></a>pCOG</h3><ul>
+<li><p><strong><em>.COG.xml, </em>.2gi.table, <em>.2id.table, </em>.2Sid.table</strong><br><br>Intermediate files.<br><br></p>
+</li>
+<li><p><strong>*.2Scog.table</strong><br><br>The super COG table of each strain.<br><br></p>
+</li>
+<li><p><strong>*.2Scog.table.pdf</strong><br><br>A plot of super COG table in pdf format.<br><br></p>
+</li>
+<li><p><strong>All_flags_relative_abundances.table</strong><br>A table containing the relative abundance of each flag for all strains.</p>
+</li>
+</ul>
+<h3 id="VAR-1"><a href="#VAR-1" class="headerlink" title="VAR"></a>VAR</h3><ul>
+<li><p><strong>Results/Variants/directory-named-in-strains</strong><br><br>directories containing substitutions (snps) and insertions/deletions (indels) of each strain. See <a href="https://github.com/tseemann/snippy?_blank" target="_blank" rel="noopener">Snippy</a> outputs for detail.</p>
+</li>
+<li><p><strong>Results/Variants/Core</strong><br><br>The directory containing Core SNP phylogeny files.</p>
+<ul>
+<li><strong>.aln</strong> : A core SNP alignment includes only SNP sites.</li>
+<li><strong>.full.aln</strong> : A whole genome SNP alignment (includes invariant sites).</li>
+<li><strong>.nwk</strong> : Phylogenetic tree constructed with <strong>FastTree</strong> (ignoring possible recombination).</li>
+<li><strong>_tree.tre</strong> : Phylogenetic tree constructed with <strong>gubbins</strong> (get rid of recombination).</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用许可"><a href="#使用许可" class="headerlink" title="使用许可"></a>使用许可</h2><p>PGCGAP 不可商用，其它情况可使用免费(licensed under GPLv3)。</p>
+<h2 id="反馈与提问"><a href="#反馈与提问" class="headerlink" title="反馈与提问"></a>反馈与提问</h2><p>若有问题，可在 <a href="https://github.com/liaochenlanruo/pgcgap/issues?_blank" target="_blank" rel="noopener">issues page</a> 提出或通过邮件咨询 <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" target="_blank" rel="noopener">liaochenlanruo@webmail.hzau.edu.cn</a>。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>请耐心等待</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q1-VAR-founction-ran-failed-to-get-annotated-VCFs-and-Core-results"><a href="#Q1-VAR-founction-ran-failed-to-get-annotated-VCFs-and-Core-results" class="headerlink" title="Q1 VAR founction ran failed to get annotated VCFs and Core results"></a>Q1 VAR founction ran failed to get annotated VCFs and Core results</h3><p>Check the log file named in “strain_name.log” under Results/Variants/&lt;strain_name&gt;/ directory. If you find a sentence like “WARNING: All frames are zero! This seems rather odd, please check that ‘frame’ information in your ‘genes’ file is accurate.” This is an snpEff error. Users can install JDK8 to solve this problem.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$conda install java-jdk=8.0.112</span><br></pre></td></tr></table></figure>
+<p>Click <a href="https://github.com/tseemann/snippy/issues/259?_blank" target="_blank" rel="noopener">here</a> for more solutions.</p>
+<h3 id="Q2-Could-not-determine-version-of-minced-please-install-version-2-or-higher"><a href="#Q2-Could-not-determine-version-of-minced-please-install-version-2-or-higher" class="headerlink" title="Q2 Could not determine version of minced please install version 2 or higher"></a>Q2 Could not determine version of minced please install version 2 or higher</h3><p>When running prokka of Assemble founction, this error could happened, the error message shows as following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Error: A JNI error has occurred, please check your installation and try again</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: minced has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0</span><br><span class="line">	at java.lang.ClassLoader.defineClass1(Native Method)</span><br><span class="line">	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)</span><br><span class="line">	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)</span><br><span class="line">	at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)</span><br><span class="line">	at java.net.URLClassLoader.access$100(URLClassLoader.java:74)</span><br><span class="line">	at java.net.URLClassLoader$1.run(URLClassLoader.java:369)</span><br><span class="line">	at java.net.URLClassLoader$1.run(URLClassLoader.java:363)</span><br><span class="line">	at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">	at java.net.URLClassLoader.findClass(URLClassLoader.java:362)</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)</span><br><span class="line">	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)</span><br><span class="line">	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)</span><br><span class="line">[01:09:40] Could not determine version of minced - please install version 2.0 or higher</span><br></pre></td></tr></table></figure>
+<p>Users can downgrade the minced to version 0.3 to solve this problem.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$conda install minced=0.3</span><br></pre></td></tr></table></figure>
+<p>Click <a href="https://github.com/bioconda/bioconda-recipes/pull/15407?_blank" target="_blank" rel="noopener">here</a> for detail informations.</p>
+<h3 id="Q3-dyld-Library-not-loaded-rpath-libcrypto-1-0-0-dylib"><a href="#Q3-dyld-Library-not-loaded-rpath-libcrypto-1-0-0-dylib" class="headerlink" title="Q3 dyld: Library not loaded: @rpath/libcrypto.1.0.0.dylib"></a>Q3 dyld: Library not loaded: @rpath/libcrypto.1.0.0.dylib</h3><p>This error may happen when running function “VAR” on macOS. It is an error of openssl. Users can solve this problem as following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#Firstly, install brew if have not installed before</span><br><span class="line">$ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line"></span><br><span class="line">#Install openssl with brew</span><br><span class="line">$brew install openssl</span><br><span class="line"></span><br><span class="line">#Create the soft link for libraries</span><br><span class="line">$ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/</span><br><span class="line"></span><br><span class="line">$ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/</span><br></pre></td></tr></table></figure>
+<p>Click <a href="https://gist.github.com/aklap/e885721ef15c8668ed0a1dd64d2ea1a7" target="_blank" rel="noopener">here</a> for more informations</p>
+<h3 id="Q4-Use-of-uninitialized-value-in-require-at-Encode-pm-line-61"><a href="#Q4-Use-of-uninitialized-value-in-require-at-Encode-pm-line-61" class="headerlink" title="Q4 Use of uninitialized value in require at Encode.pm line 61"></a>Q4 Use of uninitialized value in require at Encode.pm line 61</h3><p>This warning may happen when running function “Pan”. It is a warning of Roary software.<br>The content of line 61 is “require Encode::ConfigLocal;”. Users can ignore the warning.<br>Click <a href="https://github.com/sanger-pathogens/Roary/issues/323" target="_blank" rel="noopener">here</a> for details.</p>
+<h2 id="Updates"><a href="#Updates" class="headerlink" title="Updates"></a>Updates</h2><ul>
+<li><p>V1.0.3</p>
+<ul>
+<li>Updated ANI fuction.</li>
+</ul>
+</li>
+<li><p>V1.0.4</p>
+<ul>
+<li>Add parallel for function “COG”.</li>
+<li>Optimized drawing of ANI heat map.</li>
+</ul>
+</li>
+<li><p>V1.0.5</p>
+<ul>
+<li>Bug repair for input of gubbins.</li>
+</ul>
+</li>
+<li><p>V1.0.6</p>
+<ul>
+<li>Modified CoreTree to split protein and SNPs tree constructing.</li>
+</ul>
+</li>
+<li><p>V1.0.7</p>
+<ul>
+<li>Split Assemble and Annotate into two functions.</li>
+<li>Added third generation genome assembly function.</li>
+<li>Changed the default parameters of the CoreTree function (aS 0.8 to 0.7 and aL 0.8 to 0.5).</li>
+<li>Changed the name of function “COG” to “pCOG”.</li>
+<li>Fixed the sorting bug for ANI heat map.</li>
+</ul>
+</li>
+<li><p>V1.0.8</p>
+<ul>
+<li>Add the “MASH” function to compute genome distance and similarity using MinHash.</li>
+</ul>
+</li>
+<li><p>V1.0.9</p>
+<ul>
+<li>The function of constructing a single-copy core protein phylogenetic tree was added to “Pan”.</li>
+<li>Fixed a bug of plot_3Dpie.R, Optimized image display, and a fan chart has been added.</li>
+<li>Fixed a bug for ploting the ANI matrix.</li>
+</ul>
+</li>
+</ul>
+
     </div>
 </article>
 
@@ -391,59 +975,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/地图/" style="font-size: 14.066578405243275px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/培训/" style="font-size: 12.823497027407797px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/Github/" style="font-size: 11.210887478930537px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/地图/" style="font-size: 13.490730616405884px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 18.750568185204457px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Github/" style="font-size: 19.79046448467411px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/培训/" style="font-size: 19.550833942185292px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/Bioconda/" style="font-size: 17.495560231172117px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/Linux/" style="font-size: 18.956347322791707px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Linux/" style="font-size: 17.469027505919993px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/WGS/" style="font-size: 12.457744723809293px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/WGS/" style="font-size: 14.848840512984967px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/Hexo/" style="font-size: 13.625487820576845px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/同源家族/" style="font-size: 12.8487148910037px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 14.32383872024069px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/Hexo/" style="font-size: 13.556649694297903px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/perl/" style="font-size: 16.228170907335514px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/perl/" style="font-size: 9.131606195134182px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/编程/" style="font-size: 19.51177185936018px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/编程/" style="font-size: 15.508109548987637px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/同源家族/" style="font-size: 10.141175458984904px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/R语言/" style="font-size: 18.117439852083194px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/R语言/" style="font-size: 11.078819875279336px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/绘图/" style="font-size: 12.60198602114978px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/绘图/" style="font-size: 8.769715320743646px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/比较基因组学/" style="font-size: 9.526010141880807px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/下载/" style="font-size: 16.23220033971854px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/SNPs/" style="font-size: 8.277450860944935px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/SNPs/" style="font-size: 18.594785329298226px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/进化/" style="font-size: 19.714384008359964px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/进化/" style="font-size: 14.225988187106292px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/音乐/" style="font-size: 13.373109101886172px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/网盘/" style="font-size: 17.354313152901327px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/爬虫/" style="font-size: 8.91061821202349px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/音乐/" style="font-size: 19.772817196025112px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/下载/" style="font-size: 19.782868796139013px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/爬虫/" style="font-size: 19.91862279956183px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/网盘/" style="font-size: 18.39671559618273px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/PubMed/" style="font-size: 10.598738364456118px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/系统/" style="font-size: 11.662940266259238px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/系统/" style="font-size: 15.156416353922985px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 11.221028428189456px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 18.53796788703258px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 18.32899392745385px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/JAVA/" style="font-size: 16.75998528259235px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/PubMed/" style="font-size: 9.674729116495579px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 10.740765012899466px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/JAVA/" style="font-size: 16.826335255540783px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/表型预测/" style="font-size: 8.790533257936232px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 18.407896898578272px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 15.630380697569969px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 14.102189095487313px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/软件/" style="font-size: 13.178863355739537px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 13.09885829198831px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -636,61 +1220,61 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/05/20/Bioconda贡献指南/">Bioconda贡献指南</a>
+                    <a href="/2019/03/05/Hexo博客导航栏menu无法跳转https/">Hexo博客导航栏menu无法跳转https</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/01/Linux和基因组测序技术初识/">Linux和基因组测序技术初识</a>
+                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/">Perl捕获外部命令执行异常并继续运行后续代码</a>
+                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/19/Perl获取外部命令执行结果的输出/">Perl获取外部命令执行结果的输出</a>
+                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/04/04/双山记/">双山记</a>
+                    <a href="/2018/08/23/设置元素加载时间解决D3.js文字被图像覆盖的问题/">设置元素加载时间解决D3.js文字被图像覆盖的问题</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/06/06/人皮/">人皮</a>
+                    <a href="/2015/03/02/逃亡/">逃亡</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                    <a href="/2010/12/13/葬/">葬</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/07/18/焦尸/">焦尸</a>
+                    <a href="/2010/10/11/老婆一家“人”/">老婆一家“人”</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/27/苦海或有涯，回头不见岸/">苦海或有涯，回头不见岸</a>
+                    <a href="/2009/11/27/元宵鬼话/">元宵鬼话</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/09/雨夜/">雨夜</a>
+                    <a href="/2014/07/19/影子/">影子</a>
                 </span>
             </li>
             
@@ -724,7 +1308,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共195.1k 字 | </span>
+            <span class="post-count">博客全站共199.4k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>
