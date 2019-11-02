@@ -179,15 +179,23 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/Github/">Github</a>
                         </li>
                         
                         <li>
                             <a href="/tags/Bioconda/">Bioconda</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/地图/">地图</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Hexo/">Hexo</a>
                         </li>
                         
                         <li>
@@ -199,19 +207,11 @@
                         </li>
                         
                         <li>
+                            <a href="/tags/JAVA/">JAVA</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/同源家族/">同源家族</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/Hexo/">Hexo</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/perl/">perl</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/编程/">编程</a>
                         </li>
                         
                         
@@ -309,81 +309,9 @@
     </div>
     <div class="content-article">
         <p>为了方便广大中文用户学习PGCGAP的使用，特意书写该中文文档，希望对大家有所帮助！<br><a id="more"></a><br><a href="https://liaochenlanruo.github.io/pgcgap?_blank" target="_blank" rel="noopener">English Readme</a> | <a href="https://liaochenlanruo.github.io/2019/04/28/PGCGAP%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/?_blank" target="_blank" rel="noopener">中文说明</a></p>
-<p><img src="https://badgen.net/badge/platform/WSL,Linux,macOS?list=|" alt="Platform"><img src="https://badgen.net/github/license/liaochenlanruo/pgcgap" alt="License"></p>
-<p><a href="https://badge.fury.io/gh/liaochenlanruo%2Fpgcgap" target="_blank" rel="noopener"><img src="https://badge.fury.io/gh/liaochenlanruo%2Fpgcgap.svg" alt="GitHubversion"></a><img src="https://img.shields.io/conda/dn/bioconda/pgcgap.svg?style=flat" alt="Downloads conda"><a href="http://bioconda.github.io/recipes/pgcgap/README.html" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat" alt="install with bioconda"></a></p>
 <center><br><script type="text/javascript" src="//rf.revolvermaps.com/0/0/4.js?i=0ett3z77b0x&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=0" async="async"></script> &nbsp;&nbsp;&nbsp;&nbsp; <script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=0ett3z77b0x&amp;d=3&amp;p=1&amp;b=1&amp;w=293&amp;g=2&amp;f=arial&amp;fs=13&amp;r=0&amp;c0=ff8a00&amp;c1=0006ff&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script><br></center>
 
 <p><br><br><a href="https://liaochenlanruo.github.io/pgcgap" target="_blank" rel="noopener">English Readme</a> | <a href="https://liaochenlanruo.github.io/2019/04/28/PGCGAP%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/" target="_blank" rel="noopener">中文说明</a></p>
-<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ul>
-<li><p><a href="#introduction">Introduction</a></p>
-</li>
-<li><p><a href="#installation">Installation</a></p>
-</li>
-<li><p><a href="#required-dependencies">Required dependencies</a></p>
-</li>
-<li><p><a href="#usage">Usage</a></p>
-</li>
-<li><p><a href="#examples">Examples</a></p>
-</li>
-<li><p><a href="#generating-input-files">Generating Input files</a></p>
-<ul>
-<li><p><a href="#working-directory">Working directory</a></p>
-</li>
-<li><p><a href="#assemble">Assemble</a></p>
-</li>
-<li><p><a href="#annotate">Annotate</a></p>
-</li>
-<li><p><a href="#ani">ANI</a></p>
-</li>
-<li><p><a href="#coretree">CoreTree</a></p>
-</li>
-<li><p><a href="#orthof">OrthoF</a></p>
-</li>
-<li><p><a href="#pan">Pan</a></p>
-</li>
-<li><p><a href="#cog">COG</a></p>
-</li>
-<li><p><a href="#var">VAR</a></p>
-</li>
-</ul>
-</li>
-<li><p><a href="#output-files">Output Files</a></p>
-<ul>
-<li><p><a href="#assemble-1">Assemble</a></p>
-</li>
-<li><p><a href="#annotate-1">Annotate</a></p>
-</li>
-<li><p><a href="#ani-1">ANI</a></p>
-</li>
-<li><p><a href="#coretree-1">CoreTree</a></p>
-</li>
-<li><p><a href="#orthof-1">OrthoF</a></p>
-</li>
-<li><p><a href="#pan-1">Pan</a></p>
-</li>
-<li><p><a href="#cog">COG</a></p>
-</li>
-<li><p><a href="#var-1">VAR</a></p>
-</li>
-</ul>
-</li>
-<li><p><a href="#license">License</a></p>
-</li>
-<li><p><a href="#feedback-and-issues">Feedback and Issues</a></p>
-</li>
-<li><p><a href="#citation">Citation</a></p>
-</li>
-<li><p><a href="#faq">FAQ</a></p>
-<ul>
-<li><a href="#q1-var-founction-ran-failed-to-get-annotated-vcfs-and-core-results">Q1 VAR FOUNCTION ran failed to get annotated VCFs and Core results</a></li>
-<li><a href="#q2-could-not-determine-version-of-minced-please-install-version-2-or-higher">Q2 Could not determine version of minced please install version 2.0 or higher</a></li>
-<li><a href="#q3-dyld:-Library-not-loaded:-@rpath/libcrypto.1.0.0.dylib">Q3 dyld: Library not loaded: @rpath/libcrypto.1.0.0.dylib</a></li>
-<li><a href="#q4-use-of-uninitialized-value-in-require-at-encode.pm-line-61">Q4 Use of uninitialized value in require at Encode.pm line 61</a></li>
-</ul>
-</li>
-<li><p><a href="#updates">Updates</a></p>
-</li>
-</ul>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>PGCGAP是用于原核生物基因组学和比较基因组学分析管道，该管道包含9个模块，可以接受Illumina双端reads、Oxford reads或PacBio reads作为输入，可以完成基因组组装、基因预测和注释，并可以进行比较基因组学分析，包括构建单拷贝核心蛋白进化树以及单拷贝核心基因SNPs进化树，泛基因组分析，全基因组平均核苷酸一致性（ANI）计算，同源蛋白家族聚类，COG注释，SNPs和INDELs calling。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>PGCGAP可以安装于Windows子系统Linux（WSL）、Linux x64系统以及macOS中。由于该管道依赖众多的软件包，因此建议用户通过 <strong><a href="https://bioconda.github.io/index.html" target="_blank" rel="noopener">Bioconda</a></strong> 进行安装。PGCGAP同时依赖 <strong>Gubbins</strong> 和 <strong>Orthofinder</strong>, 二者依赖不同版本的python，因此需要单独安装Gubbins。Orthofinder将于2020年更新至python 3，届时可以通过一条命令完成PGCGAP的安装。</p>
 <p><strong>Step1：安装 Gubbins</strong></p>
@@ -975,59 +903,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 12.823497027407797px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/培训/" style="font-size: 12.838989350728838px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/地图/" style="font-size: 13.490730616405884px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Github/" style="font-size: 10.25433504845121px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Github/" style="font-size: 19.79046448467411px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/Bioconda/" style="font-size: 19.768525057843824px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 17.495560231172117px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/比较基因组学/" style="font-size: 17.653200167616852px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/Linux/" style="font-size: 17.469027505919993px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/地图/" style="font-size: 18.00488282457099px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/WGS/" style="font-size: 14.848840512984967px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/Hexo/" style="font-size: 12.709889832792648px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/同源家族/" style="font-size: 12.8487148910037px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/Linux/" style="font-size: 15.012317125365525px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Hexo/" style="font-size: 13.556649694297903px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/WGS/" style="font-size: 19.795369317347248px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/perl/" style="font-size: 9.131606195134182px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/JAVA/" style="font-size: 12.853499157479288px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/编程/" style="font-size: 15.508109548987637px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/同源家族/" style="font-size: 13.383562823018355px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/R语言/" style="font-size: 18.117439852083194px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 16.937129287227037px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 12.60198602114978px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 14.199048920621166px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 9.526010141880807px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/R语言/" style="font-size: 15.115225530538243px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/SNPs/" style="font-size: 8.277450860944935px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/绘图/" style="font-size: 17.88678730066596px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/进化/" style="font-size: 19.714384008359964px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/音乐/" style="font-size: 12.360012096243372px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/音乐/" style="font-size: 13.373109101886172px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/爬虫/" style="font-size: 10.79804113649234px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/爬虫/" style="font-size: 8.91061821202349px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/下载/" style="font-size: 10.339990828788618px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/下载/" style="font-size: 19.782868796139013px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/SNPs/" style="font-size: 8.127299146788493px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/网盘/" style="font-size: 18.39671559618273px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/进化/" style="font-size: 10.155735919023563px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/系统/" style="font-size: 11.662940266259238px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/网盘/" style="font-size: 9.788973349974942px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 11.221028428189456px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/系统/" style="font-size: 19.607619301491205px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 18.32899392745385px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 13.333595346887101px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/PubMed/" style="font-size: 9.674729116495579px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/PubMed/" style="font-size: 10.68249048749802px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/JAVA/" style="font-size: 16.826335255540783px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 13.844783348317936px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/表型预测/" style="font-size: 18.407896898578272px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 17.056886441911466px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 14.102189095487313px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 15.907610142577937px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/软件/" style="font-size: 13.09885829198831px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 15.344883124797583px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -1220,7 +1148,43 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/05/Hexo博客导航栏menu无法跳转https/">Hexo博客导航栏menu无法跳转https</a>
+                    <a href="/2019/04/15/Wget-技巧/">Wget 技巧</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2018/12/14/kSNP3寻找SNPs并构建进化树/">kSNP3寻找SNPs并构建进化树</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2016/12/15/圈/">圈</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/03/29/奶奶/">奶奶</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/05/30/夏冰/">夏冰</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/02/12/杀尸/">杀尸</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2011/06/05/日记/">日记</a>
                 </span>
             </li>
             
@@ -1232,49 +1196,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/12/05/生物信息学3：微生物基因组学常用软件安装/">生物信息学3：微生物基因组学常用软件安装</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2018/08/23/设置元素加载时间解决D3.js文字被图像覆盖的问题/">设置元素加载时间解决D3.js文字被图像覆盖的问题</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2015/03/02/逃亡/">逃亡</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2010/12/13/葬/">葬</a>
+                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
                     <a href="/2010/10/11/老婆一家“人”/">老婆一家“人”</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2009/11/27/元宵鬼话/">元宵鬼话</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2014/07/19/影子/">影子</a>
                 </span>
             </li>
             
@@ -1308,7 +1236,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共199.4k 字 | </span>
+            <span class="post-count">博客全站共199.3k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>
