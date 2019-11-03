@@ -179,6 +179,10 @@
                         </li>
                         
                         <li>
+                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/Linux/">Linux</a>
                         </li>
                         
@@ -191,11 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/比较基因组学/">比较基因组学</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         <li>
@@ -207,11 +207,11 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/同源家族/">同源家族</a>
+                            <a href="/tags/JAVA/">JAVA</a>
                         </li>
                         
                         <li>
-                            <a href="/tags/R语言/">R语言</a>
+                            <a href="/tags/SNPs/">SNPs</a>
                         </li>
                         
                         
@@ -454,7 +454,7 @@
 <li>23                            Thraustochytrium mitochondrial code</li>
 </ul>
 </li>
-<li><p><strong>[–suffix_len (INT)]</strong>             [Required by “–All”, “–Assemble” and “–VAR”] <strong>(Strongly recommended)</strong> reads后缀的长度。例如 “YBT-1520_L1_I050.R1.clean.fastq.gz” 的 –suffix_len 为 26 (“YBT-1520” 为菌株名) (Default 0)</p>
+<li><p><strong>[–suffix_len (INT)]</strong>             [Required by “–All”, “–Assemble” and “–VAR”] <strong>(强烈建议设置此项)</strong> reads后缀的长度。例如 “YBT-1520_L1_I050.R1.clean.fastq.gz” 的 –suffix_len 为 26 (“YBT-1520” 为菌株名) (Default 0)</p>
 </li>
 <li><p><strong>[–logs (STRING)]</strong>                Log文件的名字 (Default Logs.txt)</p>
 </li>
@@ -470,23 +470,23 @@
 </li>
 <li><p><strong>[–kmmer (INT)]</strong>              [Required] Illumina数据组装时采用的 k-mer 大小 (Default 81)</p>
 </li>
-<li><p><strong>[–genomeSize (FLOAT)]</strong>       [Required] An estimate of the size of the genome. Common suffices are allowed, for example, 3.7m or 2.8g. Needed by PacBio data and Oxford data (Default Unset)</p>
+<li><p><strong>[–genomeSize (FLOAT)]</strong>       [Required] 预估的基因组大小，如 3.7m、2.8g，组装 PacBio data 和 Oxford data 时需要设置此项 (Default Unset)</p>
 </li>
 </ul>
 </li>
 <li><p><strong>–Annotate</strong></p>
 <ul>
-<li><p><strong>[–genus (STRING)]</strong>           Genus name of your strain ( Default “NA” )</p>
+<li><p><strong>[–genus (STRING)]</strong>           菌株的属名 ( Default “NA” )</p>
 </li>
-<li><p><strong>[–species (STRING)]</strong>         Species name of your strain ( Default “NA”)<br><br></p>
+<li><p><strong>[–species (STRING)]</strong>         菌株的种名 ( Default “NA”)<br><br></p>
 </li>
 </ul>
 </li>
 <li><p><strong>–CoreTree</strong></p>
 <ul>
-<li><p><strong>[–CDsPath (PATH)]</strong>           [Required] CDs of all strains as fasta file paths ( Default “./Results/Annotations/CDs” ), if set to “NO”, the SNPs of single-copy core genes will not be called</p>
+<li><p><strong>[–CDsPath (PATH)]</strong>           [Required] 包含所有菌株核苷酸序列文件的路径，如果设置为”NO”，将不会构建核心SNPs进化树 ( Default “./Results/Annotations/CDs” )</p>
 </li>
-<li><p><strong>[-c (FLOAT)]</strong>                 Sequence identity threshold, ( Default 0.5)</p>
+<li><p><strong>[-c (FLOAT)]</strong>                 序列一致性 (identity) 阈值 ( Default 0.5)</p>
 </li>
 <li><p><strong>[-n (INT)]</strong>                   Word_length,  -n 2 for thresholds 0.4-0.5, -n 3 for thresholds 0.5-0.6, -n 4 for thresholds 0.6-0.7, -n 5 for thresholds 0.7-1.0 ( Default 2 )</p>
 </li>
@@ -506,12 +506,12 @@
 </li>
 <li><p><strong>–Pan</strong></p>
 <ul>
-<li><strong>[–GffPath (PATH)]</strong>           [Required] Gff files of all strains as paths ( Default “./Results/Annotations/GFF” )<br><br></li>
+<li><strong>[–GffPath (PATH)]</strong>           [Required] 存放所有菌株GFF3格式文件的路径 ( Default “./Results/Annotations/GFF” )<br><br></li>
 </ul>
 </li>
 <li><p><strong>–OrthoF</strong></p>
 <ul>
-<li><strong>[–Sprogram (STRING)]</strong>        Sequence search program, Options: blast, mmseqs, blast_gz, diamond ( Default blast)<br><br></li>
+<li><strong>[–Sprogram (STRING)]</strong>        序列对比程序，Options: blast, mmseqs, blast_gz, diamond ( Default blast)<br><br></li>
 </ul>
 </li>
 <li><p><strong>–ANI</strong></p>
@@ -603,7 +603,7 @@
 </ul>
 <p><br></p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
-<li><p><strong>Example 1:</strong> 执行所有模块，以 <em>Escherichia coli</em> 的6个Illumina 双端reads为数据集。</p>
+<li><p><strong>Example 1:</strong> 执行所有模块，以 <em>Escherichia coli</em> 的6个 Illumina 双端 reads 为数据集。</p>
 <p><strong>注</strong>：为了提高灵活性，”VAR” 模块需要额外添加。<br></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --All --platform illumina --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --suffix_len 11 --kmmer 81 --genus Escherichia --species “Escherichia coli” --codon 11 --strain_num 6 --threads 4 --VAR --refgbk /mnt/h/PGCGAP_Examples/Reads/MG1655.gbff --qualtype sanger</span><br></pre></td></tr></table></figure>
 </li>
@@ -614,7 +614,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform illumina --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --kmmer 81 --threads 4 --suffix_len 11</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Oxford reads组装</strong></p>
-<p>Oxford nanopore测序仅产生一个reads文件，因此只需要设置 “–reads1” 参数，其值为 “.fasta”。 “–genomeSize” 是预估的基因组大小，用户可以到NCBI数据库中查看同物种基因组的大小作为参考，此处设置为 “4.8m”。Reads文件的后缀名为 “.fasta”，其长度为6，因此将 “–suffix_len” 设置为6。</p>
+<p>Oxford nanopore 测序仅产生一个reads文件，因此只需要设置 “–reads1” 参数，其值为 “.fasta”。 “–genomeSize” 是预估的基因组大小，用户可以到NCBI数据库中查看同物种基因组的大小作为参考，此处设置为 “4.8m”。Reads 文件的后缀名为 “.fasta”，其长度为6，因此将 “–suffix_len” 设置为6。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform oxford --ReadsPath Reads/Oxford --reads1 .fasta --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>PacBio reads组装</strong></p>
@@ -658,12 +658,16 @@
 <h3 id="CoreTree"><a href="#CoreTree" class="headerlink" title="CoreTree"></a>CoreTree</h3><p>将所有菌株的氨基酸文件 (后缀名必须为 “.faa”) 和核苷酸文件 (需以 “.ffn” 为后缀) 分别存放于两个目录中 (default: “./Results/Annotations/AAs/” 和 “./Results/Annotations/CDs/”)。“.faa” 和 “.ffn” 文件需要有相同的前缀名字，且 protein IDs 和 gene IDs 需以菌株名开头。建议用 “Prokka” 软件获取输入文件，若已经运行了 “–Annotate” 模块，则该模块的输入文件会自动生产。若 “–CDsPath” 设置为 “NO”，则不需要提供核苷酸文件，但也不会生产核心SNPs进化树。</p>
 <h3 id="MASH"><a href="#MASH" class="headerlink" title="MASH"></a>MASH</h3><p>基因组文件(完整或不完整)存放于某个目录下 (Default: Results/Assembles/Scaf/Illumina)。</p>
 <h3 id="OrthoF"><a href="#OrthoF" class="headerlink" title="OrthoF"></a>OrthoF</h3><p>所有菌株的fasta格式氨基酸文件(每个菌株一个文件)存放于一个目录中 (default: “./Results/Annotations/AAs/”)。 若先运行了 “–Assemble” 模块，该文件会自动生成。</p>
-<h3 id="Pan"><a href="#Pan" class="headerlink" title="Pan"></a>Pan</h3><p>GFF3 files (With “.gff” as the suffix) of each strain placed into a directory. They must contain the nucleotide sequence at the end of the file. All GFF3 files created by Prokka are valid (default: ./Results/Annotations/GFF/). protein sequence files (one per species) in FASTA format under another directory were also needed (default: “./Results/Annotations/AAs/”). If the “–Annotate” function was run first, the files will be generated automatically.</p>
-<h3 id="pCOG"><a href="#pCOG" class="headerlink" title="pCOG"></a>pCOG</h3><p>Amino acids file (With “.faa” as the suffix) of each strain placed into a directory (default: ./Results/Annotations/AAs/). 若先运行了 “–Assemble” 模块，该文件会自动生成。</p>
+<h3 id="Pan"><a href="#Pan" class="headerlink" title="Pan"></a>Pan</h3><ul>
+<li>包含所有菌株GFF3 文件 (With “.gff” as the suffix) 的目录路径 (default: ./Results/Annotations/GFF/);</li>
+<li>若要构建单拷贝核心蛋白进化树，则需提供所有菌株的fasta格式氨基酸序列文件 (With “.faa” as the suffix)，同样放在另一个目录中 (default: “./Results/Annotations/AAs/”);</li>
+<li>若先运行了 “–Annotate” 模块，上述文件会自动生成。</li>
+</ul>
+<h3 id="pCOG"><a href="#pCOG" class="headerlink" title="pCOG"></a>pCOG</h3><p>存放所有菌株的fasta格式氨基酸序列文件 (With “.faa” as the suffix) 的目录路径 (default: ./Results/Annotations/AAs/)。 若先运行了 “–Assemble” 模块，该文件会自动生成。</p>
 <h3 id="VAR"><a href="#VAR" class="headerlink" title="VAR"></a>VAR</h3><ul>
-<li><p>Pair-end reads of all strains in a directory (default: ./Reads/Over/ under the working directory).<br><br></p>
+<li><p>包含所有菌株的 Pair-end reads 的目录路径 (default: ./Reads/Over/ under the working directory)。<br><br></p>
 </li>
-<li><p>The full path of reference genome in fasta format or GenBank format (<strong>must be provided</strong>).</p>
+<li><p>fasta 格式或 GenBank 格式的参考基因组的绝对路径 (<strong>必需提供</strong>)。</p>
 </li>
 </ul>
 <h2 id="输出文件解读"><a href="#输出文件解读" class="headerlink" title="输出文件解读"></a>输出文件解读</h2><h3 id="Assemble-1"><a href="#Assemble-1" class="headerlink" title="Assemble"></a>Assemble</h3><ul>
@@ -903,59 +907,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 10.62807738834504px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/培训/" style="font-size: 8.644291895148077px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/Linux/" style="font-size: 13.792000597946707px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/比较基因组学/" style="font-size: 9.054994359394986px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/WGS/" style="font-size: 11.22804213276109px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/Linux/" style="font-size: 17.608891864910568px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/Hexo/" style="font-size: 15.01651173218337px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/WGS/" style="font-size: 19.26153031070467px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/JAVA/" style="font-size: 18.643639892355647px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/Hexo/" style="font-size: 19.41573055870808px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 18.92385363744367px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/同源家族/" style="font-size: 17.901070671250856px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/perl/" style="font-size: 14.15074080725119px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/perl/" style="font-size: 14.717771533899104px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/编程/" style="font-size: 18.92658092957735px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/编程/" style="font-size: 16.763892484958117px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/同源家族/" style="font-size: 12.454312292797727px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/JAVA/" style="font-size: 16.578471591888583px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/R语言/" style="font-size: 15.05716534082262px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/SNPs/" style="font-size: 14.447658987732616px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/绘图/" style="font-size: 19.24387201442691px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/进化/" style="font-size: 15.709562486516056px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/Github/" style="font-size: 17.682617797218143px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/音乐/" style="font-size: 8.028187671799877px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/下载/" style="font-size: 16.759023731462044px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/爬虫/" style="font-size: 10.783984344797542px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/网盘/" style="font-size: 19.599948086657484px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/下载/" style="font-size: 19.492516373139193px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/系统/" style="font-size: 16.69450352072338px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/系统/" style="font-size: 17.352193377646316px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/地图/" style="font-size: 18.851257468815643px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/地图/" style="font-size: 18.880455921009343px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/音乐/" style="font-size: 13.73926393464998px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/Github/" style="font-size: 12.131012561874666px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/爬虫/" style="font-size: 10.8163170386417px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/Bioconda/" style="font-size: 17.021209544458312px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 10.267635444015664px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/R语言/" style="font-size: 17.758224823909458px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/PubMed/" style="font-size: 16.307941781472408px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/绘图/" style="font-size: 17.786439744554716px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 14.215052972121892px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 10.936018567976529px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 16.6248242403935px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 9.501805035960547px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/SNPs/" style="font-size: 18.017103864305135px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/表型预测/" style="font-size: 12.392533564469673px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/进化/" style="font-size: 10.418831874064265px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/虚拟机/" style="font-size: 16.69836276262717px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/表型预测/" style="font-size: 14.94657258653345px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/软件/" style="font-size: 12.235648634534392px;" class="tag-cloud-link">软件</a>
     
-    <a href="/tags/软件/" style="font-size: 17.55056768240762px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/PubMed/" style="font-size: 10.093080865971704px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 9.413776112149971px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/网盘/" style="font-size: 16.007346335102685px;" class="tag-cloud-link">网盘</a>
     
 </div>
 		
@@ -1148,19 +1152,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/06/06/人皮/">人皮</a>
+                    <a href="/2018/10/03/JAVA-jre-安装或升级1603-error解决办法/">JAVA jre 安装或升级1603 error解决办法</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/03/29/奶奶/">奶奶</a>
+                    <a href="/2019/03/30/Ubuntu-open-mpi运行错误/">Ubuntu open-mpi运行错误</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/12/15/圈/">圈</a>
+                    <a href="/2019/04/01/github操作/">Github操作</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2017/04/04/双山记/">双山记</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2013/07/02/反锁的门/">反锁的门</a>
                 </span>
             </li>
             
@@ -1172,13 +1188,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/09/13/新课题/">新课题</a>
+                    <a href="/2018/11/20/生物信息学2：VirtualBox及Bio-Linux/">生物信息学2：VirtualBox虚拟机及Bio-Linux安装</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/11/04/神棍节/">神棍节</a>
+                    <a href="/2010/12/13/葬/">葬</a>
                 </span>
             </li>
             
@@ -1190,19 +1206,7 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/07/18/焦尸/">焦尸</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2011/03/11/蛇魇/">蛇魇</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2017/03/17/溪山行旅图/">溪山行旅图</a>
+                    <a href="/2015/03/02/逃亡/">逃亡</a>
                 </span>
             </li>
             
