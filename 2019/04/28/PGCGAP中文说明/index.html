@@ -175,6 +175,10 @@
                         
                         
                         <li>
+                            <a href="/tags/地图/">地图</a>
+                        </li>
+                        
+                        <li>
                             <a href="/tags/培训/">培训</a>
                         </li>
                         
@@ -187,7 +191,15 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/地图/">地图</a>
+                            <a href="/tags/Hexo/">Hexo</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/JAVA/">JAVA</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/比较基因组学/">比较基因组学</a>
                         </li>
                         
                         <li>
@@ -199,19 +211,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/同源家族/">同源家族</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/perl/">perl</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/编程/">编程</a>
                         </li>
                         
                         
@@ -308,7 +308,7 @@
         </center>
     </div>
     <div class="content-article">
-        <p>为了方便广大中文用户学习PGCGAP的使用，特意书写该中文文档，希望对大家有所帮助！<br><a id="more"></a></p>
+        <p><strong>为了方便广大中文用户学习PGCGAP的使用，特意书写该中文文档，但中文文档更新较慢，强烈建议大家阅读英文文档！</strong><br><a id="more"></a></p>
 <center><br><script type="text/javascript" src="//rf.revolvermaps.com/0/0/4.js?i=0ett3z77b0x&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=0" async="async"></script> &nbsp;&nbsp;&nbsp;&nbsp; <script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=0ett3z77b0x&amp;d=3&amp;p=1&amp;b=1&amp;w=293&amp;g=2&amp;f=arial&amp;fs=13&amp;r=0&amp;c0=ff8a00&amp;c1=0006ff&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script><br></center>
 
 <p><br><br><a href="https://liaochenlanruo.github.io/pgcgap" target="_blank" rel="noopener">English Readme</a> | <a href="https://liaochenlanruo.github.io/2019/04/28/PGCGAP%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/" target="_blank" rel="noopener">中文说明</a></p>
@@ -332,11 +332,11 @@
 <li><a href="https://github.com/bbuchfink/diamond" target="_blank" rel="noopener">Diamond</a></li>
 <li><a href="https://github.com/ParBLiSS/FastANI" target="_blank" rel="noopener">FastANI</a></li>
 <li><a href="http://www.atgc-montpellier.fr/fastme/binaries.php" target="_blank" rel="noopener">Fastme</a></li>
-<li><a href="http://www.microbesonline.org/fasttree/" target="_blank" rel="noopener">FastTree</a></li>
 <li><a href="https://github.com/sanger-pathogens/gubbins" target="_blank" rel="noopener">Gubbins</a> &gt;=2.3.4</li>
 <li><a href="https://github.com/samtools/htslib" target="_blank" rel="noopener">Htslib</a></li>
 <li><a href="https://mafft.cbrc.jp/alignment/software/" target="_blank" rel="noopener">Mafft</a></li>
 <li><a href="https://github.com/marbl/Mash" target="_blank" rel="noopener">Mash</a></li>
+<li><a href="https://github.com/ddarriba/modeltest" target="_blank" rel="noopener">ModelTest-NG</a></li>
 <li><a href="https://github.com/soedinglab/mmseqs2" target="_blank" rel="noopener">Mmseqs2</a></li>
 <li><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&amp;PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download" target="_blank" rel="noopener">NCBI-blast+</a></li>
 <li><a href="https://github.com/davidemms/OrthoFinder" target="_blank" rel="noopener">OrthoFinder</a></li>
@@ -368,10 +368,12 @@
 <li><a href="https://cran.r-project.org/web/packages/plotrix/" target="_blank" rel="noopener">plotrix</a></li>
 </ul>
 </li>
+<li><a href="https://github.com/amkozlov/raxml-ng" target="_blank" rel="noopener">RAxML-NG</a></li>
 <li><a href="https://sanger-pathogens.github.io/Roary/" target="_blank" rel="noopener">Roary</a></li>
 <li><a href="https://github.com/najoshi/sickle" target="_blank" rel="noopener">Sickle-trim</a></li>
 <li><a href="https://github.com/tseemann/snippy" target="_blank" rel="noopener">Snippy</a></li>
 <li><a href="https://github.com/sanger-pathogens/snp-sites" target="_blank" rel="noopener">Snp-sites</a></li>
+<li><a href="https://github.com/rrwick/Unicycler" target="_blank" rel="noopener">unicycler</a></li>
 <li><a href="https://www.gnu.org/software/wget/" target="_blank" rel="noopener">wget</a></li>
 </ul>
 <h2 id="PGCGAP用法"><a href="#PGCGAP用法" class="headerlink" title="PGCGAP用法"></a>PGCGAP用法</h2><ul>
@@ -380,7 +382,17 @@
 </ul>
 <p><br></p>
 <ul>
-<li><strong>管道用法：</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap [functions] [options]</span><br></pre></td></tr></table></figure>
+<li><strong>管道用法：</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap [modules] [options]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>展示各模块的参数：</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap [Assemble|Annotate|ANI|AntiRes|CoreTree|MASH|OrthoF|Pan|pCOG|VAR]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>展示各模块的运行示例：</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap Examples</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><br></p>
@@ -470,9 +482,21 @@
 <ul>
 <li><p><strong>[--platform (STRING)]</strong>        [Required] 测序平台，可以选择 “illumina”, “pacbio” 和 “oxford” (Default illumina)</p>
 </li>
+<li><p><strong>[--assembler (STRING)]</strong>       [Required] 用于illumina数据组装的软件，可选”abyss”, “spades” 或”auto” ( Default abyss )</p>
+</li>
 <li><p><strong>[--kmmer (INT)]</strong>              [Required] Illumina数据组装时采用的 k-mer 大小 (Default 81)</p>
 </li>
 <li><p><strong>[--genomeSize (FLOAT)]</strong>       [Required] 预估的基因组大小，如 3.7m、2.8g，组装 PacBio data 和 Oxford data 时需要设置此项 (Default Unset)</p>
+</li>
+<li><p><strong>[--filter_length (INT)]</strong>       [Required]&gt; Sequences shorter than the ‘filter_length’ will be deleted from the assembled genomes. ( Default 200 )</p>
+</li>
+<li><p><strong>[--short1 (STRING)]</strong>           [Required] FASTQ file of first short reads in each pair. Needed by hybrid assembly ( Default Unset )</p>
+</li>
+<li><p><strong>[--short2 (STRING)]</strong>           [Required] FASTQ file of second short reads in each pair. Needed by hybrid assembly ( Default Unset )</p>
+</li>
+<li><p><strong>[--long (STRING)]</strong>             [Required] FASTQ or FASTA file of long reads. Needed by hybrid assembly ( Default Unset )</p>
+</li>
+<li><p><strong>[--hout (STRING)]</strong>             [Required] Output directory for hybrid assembly ( Default ../../Results/Assembles/Hybrid )</p>
 </li>
 </ul>
 </li>
@@ -577,38 +601,44 @@
 </li>
 <li><p><strong>[--canu-bin (PATH)]</strong>              Path to canu binary file. Default tries if canu is in PATH;</p>
 </li>
-<li><p><strong>[--prodigal-bin (PATH)]</strong>          Path to prodigal binary file. Default tries if prodigal is in PATH;</p>
-</li>
-<li><p><strong>[--prokka-bin (PATH)]</strong>            Path to prokka binary file. Default tries if prokka is in PATH;</p>
-</li>
 <li><p><strong>[--cd-hit-bin (PATH)]</strong>            Path to cd-hit binary file. Default tries if cd-hit is in PATH;</p>
-</li>
-<li><p><strong>[--mafft-bin (PATH)]</strong>             Path to mafft binary file. Default tries if mafft is in PATH;</p>
-</li>
-<li><p><strong>[--fasttree-bin (PATH)]</strong>          Path to the fasttree binary file. Default tries if fasttree is in PATH;</p>
-</li>
-<li><p><strong>[--pal2nal-bin (PATH)]</strong>           Path to the pal2nal.pl binary file. Default tries if pal2nal.pl is in PATH;</p>
-</li>
-<li><p><strong>[--snp-sites-bin (PATH)]</strong>         Path to the snp-sites binary file. Default tries if snp-sites is in PATH;</p>
-</li>
-<li><p><strong>[--roary-bin (PATH)]</strong>             Path to the roary binary file. Default tries if roary is in PATH;</p>
-</li>
-<li><p><strong>[--orthofinder-bin (PATH)]</strong>       Path to the orthofinder binary file. Default tries if orthofinder is in PATH;</p>
 </li>
 <li><p><strong>[--fastANI-bin (PATH)]</strong>           Path to the fastANI binary file. Default tries if fastANI is in PATH;</p>
 </li>
 <li><p><strong>[--gubbins-bin (PATH)]</strong>           Path to the run_gubbins.py binary file. Default tries if run_gubbins.py is in PATH;</p>
 </li>
-<li><p><strong>[--snippy-bin (PATH)]</strong>            Path to the snippy binary file. Default tries if snippy is in PATH;</p>
+<li><p><strong>[--mafft-bin (PATH)]</strong>             Path to mafft binary file. Default tries if mafft is in PATH;</p>
+</li>
+<li><p><strong>[--mash-bin (PATH)]</strong>              Path to the mash binary file. Default tries if mash is in PATH.</p>
+</li>
+<li><p><strong>[--modeltest-ng-bin (PATH)]</strong>      Path to the modeltest-ng binary file. Default tries if modeltest-ng is in PATH.</p>
+</li>
+<li><p><strong>[--orthofinder-bin (PATH)]</strong>       Path to the orthofinder binary file. Default tries if orthofinder is in PATH;</p>
+</li>
+<li><p><strong>[--pal2nal-bin (PATH)]</strong>           Path to the pal2nal.pl binary file. Default tries if pal2nal.pl is in PATH;</p>
+</li>
+<li><p><strong>[--prodigal-bin (PATH)]</strong>          Path to prodigal binary file. Default tries if prodigal is in PATH;</p>
+</li>
+<li><p><strong>[--prokka-bin (PATH)]</strong>            Path to prokka binary file. Default tries if prokka is in PATH;</p>
+</li>
+<li><p><strong>[--raxml-ng-bin (PATH)]</strong>          Path to the raxml-ng binary file. Default tries if raxml-ng is in PATH;</p>
+</li>
+<li><p><strong>[--roary-bin (PATH)]</strong>             Path to the roary binary file. Default tries if roary is in PATH;</p>
 </li>
 <li><p><strong>[--sickle-bin (PATH)]</strong>            Path to the sickle-trim binary file. Default tries if sickle is in PATH.</p>
 </li>
-<li><p><strong>[--mash-bin (PATH)]</strong>              Path to the mash binary file. Default tries if mash is in PATH.<br><br></p>
+<li><p><strong>[--snippy-bin (PATH)]</strong>            Path to the snippy binary file. Default tries if snippy is in PATH;</p>
+</li>
+<li><p><strong>[--snp-sites-bin (PATH)]</strong>         Path to the snp-sites binary file. Default tries if snp-sites is in PATH;</p>
+</li>
+<li><p><strong>[--unicycler-bin (PATH)]</strong>         Path to the unicycler binary file. Default tries if unicycler is in PATH;</p>
 </li>
 </ul>
 </li>
-<li><p><strong>配置COG数据库</strong></p>
-</li>
+</ul>
+<p><br></p>
+<ul>
+<li><strong>配置COG数据库</strong></li>
 </ul>
 <ul>
 <li><strong>[--setup-COGdb]</strong>                  首次安装PGCGAP后需要执行此步<br><br></li>
@@ -622,21 +652,21 @@
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
 <li><p><strong>Example 1:</strong> 执行所有模块，以 <em>Escherichia coli</em> 的6个 Illumina 双端 reads 为数据集。</p>
 <p><strong>注</strong>：为了提高灵活性，”VAR” 模块需要额外添加。<br></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --All --platform illumina --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --suffix_len 11 --kmmer 81 --genus Escherichia --species “Escherichia coli” --codon 11 --strain_num 6 --threads 4 --VAR --refgbk /mnt/h/PGCGAP_Examples/Reads/MG1655.gbff --qualtype sanger</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --All --platform illumina --filter_length 200 --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --suffix_len 11 --kmmer 81 --genus Escherichia --species “Escherichia coli” --codon 11 --strain_num 6 --threads 4 --VAR --refgbk /mnt/h/PGCGAP_Examples/Reads/MG1655.gbff --qualtype sanger</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Example 2:</strong> 基因组组装。</p>
 <ul>
 <li><p><strong>Illumina双端reads组装</strong></p>
 <p>该数据集中，reads的命名格式为 “strain_1.fastq.gz” 和 “strain_2.fastq.gz”。 后缀名为 “_1.fastq.gz”，其长度为11，因此 “–suffix_len” 设置为11。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform illumina --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --kmmer 81 --threads 4 --suffix_len 11</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform illumina --assembler abyss --filter_length 200 --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --kmmer 81 --threads 4 --suffix_len 11</span><br><span class="line">$pgcgap --Assemble --platform illumina --assembler spades --filter_length 200 --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --threads 4 --suffix_len 11</span><br><span class="line">$pgcgap --Assemble --platform illumina --assembler auto --filter_length 200 --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --kmmer 81 --threads 4 --suffix_len 11</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Oxford reads组装</strong></p>
 <p>Oxford nanopore 测序仅产生一个reads文件，因此只需要设置 “–reads1” 参数，其值为 “.fasta”。 “–genomeSize” 是预估的基因组大小，用户可以到NCBI数据库中查看同物种基因组的大小作为参考，此处设置为 “4.8m”。Reads 文件的后缀名为 “.fasta”，其长度为6，因此将 “–suffix_len” 设置为6。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform oxford --ReadsPath Reads/Oxford --reads1 .fasta --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform oxford --filter_length 200 --ReadsPath Reads/Oxford --reads1 .fasta --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>PacBio reads组装</strong></p>
 <p>PacBio同样只产生一个文件 “pacbio.fastq”，参数设置与Oxford类似。此处，文件的后缀名为 “.fastq”，其长度为6，因此 “–suffix_len” 设置为6。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform pacbio --ReadsPath Reads/PacBio --reads1 .fastq --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --Assemble --platform pacbio --filter_length 200 --ReadsPath Reads/PacBio --reads1 .fastq --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -698,7 +728,7 @@
 </li>
 <li><p><strong>Results/Assembles/Illumina/Oxford</strong><br><br>Directories contain Oxford nanopore assembly files and information of each strain.<br><br></p>
 </li>
-<li><p><strong>Results/Assembles/Scaf/Illumina</strong><br><br>Directory contains Illumina contigs/scaffolds of all strains.<br><br></p>
+<li><p><strong>Results/Assembles/Scaf/Illumina</strong><br><br>Directory contains Illumina contigs/scaffolds of all strains. “*.filtered.fas” is the genome after excluding short sequences. “*.prefilter.stats” describes the status of the genome before filtering, and “*.filtered.stats” describes the status of the genome after filtering.<br><br></p>
 </li>
 <li><p><strong>Results/Assembles/Scaf/Oxford</strong><br><br>Directory contains Oxford nanopore contigs/scaffolds of all strains.<br><br></p>
 </li>
@@ -793,7 +823,28 @@
 </ul>
 <h2 id="使用许可"><a href="#使用许可" class="headerlink" title="使用许可"></a>使用许可</h2><p>PGCGAP 不可商用，其它情况可使用免费(licensed under GPLv3)。</p>
 <h2 id="反馈与提问"><a href="#反馈与提问" class="headerlink" title="反馈与提问"></a>反馈与提问</h2><p>若有问题，可在 <a href="https://github.com/liaochenlanruo/pgcgap/issues?_blank" target="_blank" rel="noopener">issues page</a> 提出或通过邮件咨询 <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" target="_blank" rel="noopener">liaochenlanruo@webmail.hzau.edu.cn</a>。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>Hualin Liu, Bingyue Xin, Jinshui Zheng <em>et al</em>. Build a Bioinformatics Analysis Platform and Apply it to Routine Analysis of Microbial Genomics and Comparative Genomics, 27 January 2020, PROTOCOL (Version 1) available at Protocol Exchange <a href="https://doi.org/10.21203/rs.2.21224/v1" target="_blank" rel="noopener">[+https://doi.org/10.21203/rs.2.21224/v1+]</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><p>如果您使用了PGCGAP，请引用：Hualin Liu, Bingyue Xin, Jinshui Zheng <em>et al</em>. Build a Bioinformatics Analysis Platform and Apply it to Routine Analysis of Microbial Genomics and Comparative Genomics, 27 January 2020, PROTOCOL (Version 1) available at Protocol Exchange <a href="https://doi.org/10.21203/rs.2.21224/v1" target="_blank" rel="noopener">[+https://doi.org/10.21203/rs.2.21224/v1+]</a></p>
+</li>
+<li><p>If you use “--Assemble”, please also cite one of <a href="https://doi.org/10.1101/gr.214346.116" target="_blank" rel="noopener">ABySS</a>, <a href="http://link.springer.com/chapter/10.1007%2F978-3-642-37195-0_13" target="_blank" rel="noopener">SPAdes</a>, <a href="https://doi.org/10.1101/gr.215087.116" target="_blank" rel="noopener">Canu</a>, or <a href="https://doi.org/10.1371/journal.pcbi.1005595" target="_blank" rel="noopener">Unicycler</a>.</p>
+</li>
+<li><p>If you use “--Annotate”, please also cite <a href="https://www.pixiv.net/member_illust.php?mode=medium&amp;illust_id=24642063" target="_blank" rel="noopener">Prokka</a>.</p>
+</li>
+<li><p>If you use “--CoreTree”, please also cite <a href="https://doi.org/10.1093/bioinformatics/btl158" target="_blank" rel="noopener">CD-HIT</a>, <a href="https://doi.org/10.1093/nar/gkf436" target="_blank" rel="noopener">MAFFT</a>, <a href="https://doi.org/10.1093/nar/gkl315" target="_blank" rel="noopener">PAL2NAL</a>, <a href="https://doi.org/10.1093/molbev/msz189" target="_blank" rel="noopener">ModelTest-NG</a>, <a href="https://doi.org/10.1093/bioinformatics/btz305" target="_blank" rel="noopener">RAxML-NG</a>, and <a href="https://dx.doi.org/10.1099%2Fmgen.0.000056" target="_blank" rel="noopener">SNP-sites</a>.</p>
+</li>
+<li><p>If you use “--Pan”, please also cite <a href="https://dx.doi.org/10.1093%2Fbioinformatics%2Fbtv421" target="_blank" rel="noopener">Roary</a>, <a href="https://doi.org/10.1093/nar/gkf436" target="_blank" rel="noopener">MAFFT</a>, <a href="https://doi.org/10.1093/molbev/msz189" target="_blank" rel="noopener">ModelTest-NG</a>, and <a href="https://doi.org/10.1093/bioinformatics/btz305" target="_blank" rel="noopener">RAxML-NG</a>.</p>
+</li>
+<li><p>If you use “--OrthoF”, please also cite <a href="https://dx.doi.org/10.1186%2Fs13059-019-1832-y" target="_blank" rel="noopener">OrthoFinder</a>.</p>
+</li>
+<li><p>If you use “--ANI”, please also cite <a href="https://dx.doi.org/10.1038%2Fs41467-018-07641-9" target="_blank" rel="noopener">fastANI</a>.</p>
+</li>
+<li><p>If you use “--MASH”, please also cite <a href="https://dx.doi.org/10.1186%2Fs13059-016-0997-x" target="_blank" rel="noopener">Mash</a>.</p>
+</li>
+<li><p>If you use “--VAR”, please also cite <a href="https://github.com/najoshi/sickle" target="_blank" rel="noopener">Sickle</a>, <a href="https://github.com/tseemann/snippy" target="_blank" rel="noopener">Snippy</a>, <a href="https://dx.doi.org/10.1093%2Fnar%2Fgku1196" target="_blank" rel="noopener">Gubbins</a>, <a href="https://doi.org/10.1093/molbev/msz189" target="_blank" rel="noopener">ModelTest-NG</a>, <a href="https://doi.org/10.1093/bioinformatics/btz305" target="_blank" rel="noopener">RAxML-NG</a>, and <a href="https://dx.doi.org/10.4161%2Ffly.19695" target="_blank" rel="noopener">SnpEff</a>.</p>
+</li>
+<li><p>If you use “--AntiRes”, please also cite <a href="https://github.com/tseemann/abricate" target="_blank" rel="noopener">Abricate</a> and the corresponding database you used: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6811410" target="_blank" rel="noopener">NCBI AMRFinderPlus</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/27789705" target="_blank" rel="noopener">CARD</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/22782487" target="_blank" rel="noopener">Resfinder</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/24145532" target="_blank" rel="noopener">ARG-ANNOT</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/26578559" target="_blank" rel="noopener">VFDB</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/24777092" target="_blank" rel="noopener">PlasmidFinder</a>, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5343136/" target="_blank" rel="noopener">EcOH</a>, or <a href="https://academic.oup.com/nar/article/48/D1/D561/5624973" target="_blank" rel="noopener">MEGARES 2.00</a>.</p>
+</li>
+</ul>
 <h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q1-VAR-founction-ran-failed-to-get-annotated-VCFs-and-Core-results"><a href="#Q1-VAR-founction-ran-failed-to-get-annotated-VCFs-and-Core-results" class="headerlink" title="Q1 VAR founction ran failed to get annotated VCFs and Core results"></a>Q1 VAR founction ran failed to get annotated VCFs and Core results</h3><p>Check the log file named in “strain_name.log” under Results/Variants/&lt;strain_name&gt;/ directory. If you find a sentence like “WARNING: All frames are zero! This seems rather odd, please check that ‘frame’ information in your ‘genes’ file is accurate.” This is an snpEff error. Users can install JDK8 to solve this problem.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">$conda install java-jdk=8.0.112</span><br></pre></td></tr></table></figure>
 <p>Click <a href="https://github.com/tseemann/snippy/issues/259?_blank" target="_blank" rel="noopener">here</a> for more solutions.</p>
@@ -852,6 +903,21 @@
 <li><p>V1.0.10</p>
 <ul>
 <li>Add the “AntiRes” function to screening of contigs for antimicrobial and virulence genes.</li>
+</ul>
+</li>
+<li><p>V1.0.11</p>
+<ul>
+<li>Users now can choose “abyss” or “spades” for illumina reads aseembly.</li>
+<li>New support for hybrid assembly of paired-end short reads and long reads.</li>
+<li>Add the selecting of best-fit model of evolution for DNA and protein alignments before constructing a phylogenetic tree.</li>
+<li>Optimized display of help information. Users can check parameters for each modulewith command “pgcgap [Assemble|Annotate|ANI|AntiRes|CoreTree|MASH|OrthoF|Pan|pCOG|VAR]“, and can look up the examples of each module with command “pgcgap Examples”.</li>
+</ul>
+</li>
+<li><p>V1.0.12</p>
+<ul>
+<li>Added automatic mode for illumina genome assembly. First, PGCGAP calls “ABySS” for genome assembly. When the assembled N50 is less than 50,000, it automatically calls “SPAdes” to try multiple parameters for assembly.</li>
+<li>Added ability to filter short sequences of assembled genomes.</li>
+<li>Added function of genome assembly status assessment.</li>
 </ul>
 </li>
 </ul>
@@ -937,59 +1003,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 15.870804689671338px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/地图/" style="font-size: 8.749141449229501px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/Github/" style="font-size: 17.288564924953562px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/培训/" style="font-size: 14.991368665737822px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 14.537376174604585px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Github/" style="font-size: 15.536296198609552px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/地图/" style="font-size: 11.254269845434205px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Bioconda/" style="font-size: 19.91443654044381px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/Linux/" style="font-size: 10.10761055534422px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/Hexo/" style="font-size: 16.821199824686094px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/WGS/" style="font-size: 13.3516770658998px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/JAVA/" style="font-size: 8.684861936101566px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/JAVA/" style="font-size: 15.975325166954216px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/比较基因组学/" style="font-size: 14.095378891076006px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/同源家族/" style="font-size: 19.188476146209155px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/Linux/" style="font-size: 19.55332775327363px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/perl/" style="font-size: 14.51717403234011px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/WGS/" style="font-size: 12.318177926276771px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/编程/" style="font-size: 8.780343560030504px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/同源家族/" style="font-size: 18.787256002161286px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/R语言/" style="font-size: 19.53222369023359px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/perl/" style="font-size: 13.592649090495346px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/绘图/" style="font-size: 19.51864728327962px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/编程/" style="font-size: 14.328518685282972px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/下载/" style="font-size: 16.500259647922974px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/R语言/" style="font-size: 12.096179164211277px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/音乐/" style="font-size: 18.51431381993593px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/绘图/" style="font-size: 19.08896786125093px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/爬虫/" style="font-size: 8.507429430623164px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/下载/" style="font-size: 11.717943173084585px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/网盘/" style="font-size: 19.769737465769385px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/网盘/" style="font-size: 13.616203842289242px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/系统/" style="font-size: 11.645529212657829px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/系统/" style="font-size: 8.865762610448247px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/SNPs/" style="font-size: 13.235519452614913px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/音乐/" style="font-size: 9.601082125543211px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/进化/" style="font-size: 14.364436863022847px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/爬虫/" style="font-size: 13.258821068695987px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 19.23997655389323px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 16.336894406969037px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 19.183695041416957px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/SNPs/" style="font-size: 15.536537576274917px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 14.843148191142252px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/进化/" style="font-size: 19.419508434914903px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/表型预测/" style="font-size: 10.758797378560779px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/PubMed/" style="font-size: 12.98736884922644px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/PubMed/" style="font-size: 18.427273284164986px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 9.312349978195154px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 8.05592429264394px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/表型预测/" style="font-size: 15.585171135142925px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 11.435245779927584px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/虚拟机/" style="font-size: 19.291860093254172px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/Hexo/" style="font-size: 13.129477136030847px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/软件/" style="font-size: 19.646846887759082px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -1182,19 +1248,25 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/01/Linux和基因组测序技术初识/">Linux和基因组测序技术初识</a>
+                    <a href="/2019/03/20/OrthoFinder2—同源蛋白家族聚类/">OrthoFinder2—同源蛋白家族聚类</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/01/github操作/">Github操作</a>
+                    <a href="/2011/03/29/奶奶/">奶奶</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/28/PGCGAP中文说明/">PGCGAP中文说明</a>
+                    <a href="/2011/05/11/拖地的女人/">拖地的女人</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2015/09/13/新课题/">新课题</a>
                 </span>
             </li>
             
@@ -1206,37 +1278,31 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/05/18/枣院剿匪记/">枣院剿匪记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2017/04/04/双山记/">双山记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
                     <a href="/2019/02/01/用wget批量下载含有链接的文件-目录/">用wget批量下载含有链接的文件/目录</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/11/07/科研狗的生信脚本集合/">科研狗的生信脚本集合</a>
+                    <a href="/2010/10/11/老婆一家“人”/">老婆一家“人”</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/02/17/骗你是小狗/">骗你是小狗</a>
+                    <a href="/2011/03/11/蛇魇/">蛇魇</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/03/02/逃亡/">逃亡</a>
+                    <a href="/2013/07/16/肩上的手/">肩上的手</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2013/07/27/苦海或有涯，回头不见岸/">苦海或有涯，回头不见岸</a>
                 </span>
             </li>
             
@@ -1270,7 +1336,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共199.7k 字 | </span>
+            <span class="post-count">博客全站共200.2k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>
