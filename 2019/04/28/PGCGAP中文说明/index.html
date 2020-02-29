@@ -179,14 +179,6 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/JAVA/">JAVA</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/地图/">地图</a>
-                        </li>
-                        
-                        <li>
                             <a href="/tags/Github/">Github</a>
                         </li>
                         
@@ -195,11 +187,19 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Hexo/">Hexo</a>
+                            <a href="/tags/地图/">地图</a>
                         </li>
                         
                         <li>
                             <a href="/tags/比较基因组学/">比较基因组学</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Linux/">Linux</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/WGS/">WGS</a>
                         </li>
                         
                         <li>
@@ -211,7 +211,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Linux/">Linux</a>
+                            <a href="/tags/同源家族/">同源家族</a>
                         </li>
                         
                         
@@ -387,7 +387,7 @@
 </ul>
 <p><br></p>
 <ul>
-<li><strong>展示各模块的参数：</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap [Assemble|Annotate|ANI|AntiRes|CoreTree|MASH|OrthoF|Pan|pCOG|VAR]</span><br></pre></td></tr></table></figure>
+<li><strong>展示各模块的参数：</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap [Assemble|Annotate|ANI|AntiRes|CoreTree|MASH|OrthoF|Pan|pCOG|VAR|ACC]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><br></p>
@@ -426,6 +426,8 @@
 </li>
 <li><p><strong>[--AntiRes]</strong>                      从基因组(contigs/scaffolds)中预测抗生素抗性基因或毒力基因</p>
 </li>
+<li><p><strong>[--ACC]</strong>                          一些实用的附加程序(目前只开发了”Assess”用于对基因组中的短序列进行过滤，并评估过滤前后的基因组状态)</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -437,7 +439,7 @@
 </li>
 <li><p><strong>[--ReadsPath (PATH)]</strong>             [Required by “–All”, “–Assemble” and “–VAR”] 所有菌株测序reads所在的目录路径  Default ./Reads/Illumina)</p>
 </li>
-<li><p><strong>[--scafPath (PATH)]</strong>              [Required by “–All”, “–Annotate” and “–MASH”] contigs/scaffolds的存放路径 (Default “Results/Assembles/Scaf/Illumina”)</p>
+<li><p><strong>[--scafPath (PATH)]</strong>              [Required by “–All”, “–Assess”, “–Annotate” and “–MASH”] contigs/scaffolds的存放路径 (Default “Results/Assembles/Scaf/Illumina”)</p>
 </li>
 <li><p><strong>[--AAsPath (PATH)]</strong>               [Required by “–All”, “–CoreTree”, “–Pan”, “–OrthoF” and “–pCOG”] 所有菌株的氨基酸序列文件的存放路径 (Default “./Results/Annotations/AAs”)</p>
 </li>
@@ -445,7 +447,9 @@
 </li>
 <li><p><strong>[--reads2 (STRING)]</strong>              [Required by “–All”, “–Assemble” and “–VAR”] reads 2的后缀名</p>
 </li>
-<li><p><strong>[--Scaf_suffix (STRING)]</strong>         [Required by “–All”, “–Annotate” “MASH” and “–ANI”] contigs/scaffolds的后缀名 (Default -8.fa)</p>
+<li><p><strong>[--Scaf_suffix (STRING)]</strong>         [Required by “–All”, “–Assess”, “–Annotate” “MASH” and “–ANI”] contigs/scaffolds的后缀名 (Default -8.fa)</p>
+</li>
+<li><p><strong>[--filter_length (INT)]</strong>          [Required by “–All”, “–Assemble” and “–Assess”]&gt; Sequences shorter than the ‘filter_length’ will be deleted from the assembled genomes. ( Default 200 )</p>
 </li>
 <li><p><strong>[--codon (INT)]</strong>                  [Required by “–All”, “–Annotate”, “–CoreTree” and “–Pan”] 翻译密码子表 (Default 11)</p>
 <ul>
@@ -487,8 +491,6 @@
 <li><p><strong>[--kmmer (INT)]</strong>              [Required] Illumina数据组装时采用的 k-mer 大小 (Default 81)</p>
 </li>
 <li><p><strong>[--genomeSize (FLOAT)]</strong>       [Required] 预估的基因组大小，如 3.7m、2.8g，组装 PacBio data 和 Oxford data 时需要设置此项 (Default Unset)</p>
-</li>
-<li><p><strong>[--filter_length (INT)]</strong>       [Required]&gt; Sequences shorter than the ‘filter_length’ will be deleted from the assembled genomes. ( Default 200 )</p>
 </li>
 <li><p><strong>[--short1 (STRING)]</strong>           [Required] FASTQ file of first short reads in each pair. Needed by hybrid assembly ( Default Unset )</p>
 </li>
@@ -699,6 +701,9 @@
 </li>
 <li><p><strong>Example 12:</strong> 从基因组中寻找抗生素抗性基因或毒力基因。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --AntiRes --scafPath Results/Assembles/Scaf/Illumina --Scaf_suffix -8.fa --threads 6 --db ncbi --identity 75 --coverage 50</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 13:</strong> Filter short sequences in the genome and assess the status of the genome</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --ACC --Assess --scafPath Results/Assembles/Scaf/Illumina --Scaf_suffix -8.fa --filter_length 200</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="准备输入文件"><a href="#准备输入文件" class="headerlink" title="准备输入文件"></a>准备输入文件</h2><h3 id="工作目录"><a href="#工作目录" class="headerlink" title="工作目录"></a>工作目录</h3><p>PGCGAP的运行目录。</p>
@@ -1004,59 +1009,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 15.784298485338985px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/培训/" style="font-size: 13.675984875502433px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/JAVA/" style="font-size: 19.264579937542866px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/Github/" style="font-size: 13.325194132039535px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/地图/" style="font-size: 14.367279191203025px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/Bioconda/" style="font-size: 18.54748419154485px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/Github/" style="font-size: 14.88952350982024px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/地图/" style="font-size: 17.712049092212975px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 13.06198305164043px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/比较基因组学/" style="font-size: 15.740490845056673px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/Hexo/" style="font-size: 13.383797934888486px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/Linux/" style="font-size: 8.675492111066816px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 13.546308176645788px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/WGS/" style="font-size: 17.761536327665276px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/perl/" style="font-size: 16.55700877249539px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/perl/" style="font-size: 14.567190462796965px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/编程/" style="font-size: 13.509779746836584px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/编程/" style="font-size: 15.096132814116539px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/Linux/" style="font-size: 8.011600364728968px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/同源家族/" style="font-size: 15.521222578030747px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/R语言/" style="font-size: 18.075954517346872px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/R语言/" style="font-size: 17.66775879649426px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/绘图/" style="font-size: 17.47605342250829px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/绘图/" style="font-size: 15.880951643236267px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/同源家族/" style="font-size: 12.796644616815058px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/JAVA/" style="font-size: 8.7170486094758px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/下载/" style="font-size: 14.796483148279536px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/Hexo/" style="font-size: 8.515311156728869px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/SNPs/" style="font-size: 12.162329476628425px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/下载/" style="font-size: 16.48777922266094px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/进化/" style="font-size: 9.030586862897785px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/系统/" style="font-size: 14.710935735388533px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/系统/" style="font-size: 14.443369006841912px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/SNPs/" style="font-size: 12.025431422099519px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/音乐/" style="font-size: 8.751266908664446px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/进化/" style="font-size: 9.931710085427156px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/爬虫/" style="font-size: 9.719090862578833px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/音乐/" style="font-size: 10.09811522667524px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/网盘/" style="font-size: 15.50258587125685px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/爬虫/" style="font-size: 19.251887493773086px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 15.781613717135198px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/PubMed/" style="font-size: 16.872055059420507px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 15.865537327747731px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 17.852757959432182px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/PubMed/" style="font-size: 10.255746421364176px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 17.5162076183262px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/WGS/" style="font-size: 14.694371651418454px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/网盘/" style="font-size: 15.989046358769341px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/表型预测/" style="font-size: 19.254803028375658px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/表型预测/" style="font-size: 9.372883943257904px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/软件/" style="font-size: 14.79545333016295px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/虚拟机/" style="font-size: 19.266935411587625px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 14.367673047352223px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/软件/" style="font-size: 17.00309559847405px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -1249,13 +1254,19 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/05/Hexo博客导航栏menu无法跳转https/">Hexo博客导航栏menu无法跳转https</a>
+                    <a href="/2017/07/25/2017-peixunban/">微生物基因组学培训活动落幕</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/">Perl捕获外部命令执行异常并继续运行后续代码</a>
+                    <a href="/2018/09/28/ArcMap10.6从世界地图扣取东亚及东南亚国家地图/">ArcMap10.6从世界地图扣取东亚及东南亚国家地图</a>
+                </span>
+            </li>
+            
+            <li class="list-group-item">
+                <span class="post-title">
+                    <a href="/2019/04/28/PGCGAP中文说明/">PGCGAP中文说明</a>
                 </span>
             </li>
             
@@ -1267,43 +1278,37 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2015/08/08/人鬼之战2015/">人鬼之战2015</a>
+                    <a href="/2019/04/15/Wget-技巧/">Wget 技巧</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/05/20/归乡/">归乡</a>
+                    <a href="/2018/09/17/perl循环调用python爬虫批量下载喜马拉雅音频/">perl循环调用python爬虫批量下载喜马拉雅音频</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/05/16/枣院传奇/">枣院传奇</a>
+                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2010/05/17/滴血的笔/">滴血的笔</a>
+                    <a href="/2011/02/12/杀尸/">杀尸</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/11/16/生物信息学1：虚拟机及Bio-linux安装与配置/">生物信息学1：VMware虚拟机及Bio-linux安装与配置</a>
+                    <a href="/2018/12/14/根据基因组预测表型-traitar的安装与使用/">根据基因组预测表型 —— traitar的安装与使用</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/02/18/获取下一个版本的内部预览版windows系统/">获取下一版本的内部预览版windows系统</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2009/11/27/元宵鬼话/">元宵鬼话</a>
+                    <a href="/2013/07/27/苦海或有涯，回头不见岸/">苦海或有涯，回头不见岸</a>
                 </span>
             </li>
             
