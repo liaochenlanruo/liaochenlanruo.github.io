@@ -179,7 +179,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/同源家族/">同源家族</a>
+                            <a href="/tags/地图/">地图</a>
                         </li>
                         
                         <li>
@@ -195,11 +195,7 @@
                         </li>
                         
                         <li>
-                            <a href="/tags/Linux/">Linux</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/WGS/">WGS</a>
+                            <a href="/tags/JAVA/">JAVA</a>
                         </li>
                         
                         <li>
@@ -212,6 +208,10 @@
                         
                         <li>
                             <a href="/tags/编程/">编程</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/tags/Linux/">Linux</a>
                         </li>
                         
                         
@@ -332,12 +332,15 @@
 <li><a href="https://github.com/bbuchfink/diamond" target="_blank" rel="noopener">Diamond</a></li>
 <li><a href="https://github.com/ParBLiSS/FastANI" target="_blank" rel="noopener">FastANI</a></li>
 <li><a href="http://www.atgc-montpellier.fr/fastme/binaries.php" target="_blank" rel="noopener">Fastme</a></li>
+<li><a href="http://molevol.cmima.csic.es/castresana/Gblocks_server.html" target="_blank" rel="noopener">Gblocks</a></li>
 <li><a href="https://github.com/sanger-pathogens/gubbins" target="_blank" rel="noopener">Gubbins</a> &gt;=2.3.4</li>
 <li><a href="https://github.com/samtools/htslib" target="_blank" rel="noopener">Htslib</a></li>
+<li><a href="http://www.iqtree.org/" target="_blank" rel="noopener">IQ-TREE</a></li>
 <li><a href="https://mafft.cbrc.jp/alignment/software/" target="_blank" rel="noopener">Mafft</a></li>
 <li><a href="https://github.com/marbl/Mash" target="_blank" rel="noopener">Mash</a></li>
 <li><a href="https://github.com/ddarriba/modeltest" target="_blank" rel="noopener">ModelTest-NG</a></li>
 <li><a href="https://github.com/soedinglab/mmseqs2" target="_blank" rel="noopener">Mmseqs2</a></li>
+<li><a href="https://www.ebi.ac.uk/Tools/msa/muscle/" target="_blank" rel="noopener">Muscle</a></li>
 <li><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&amp;PAGE_TYPE=BlastDocs&amp;DOC_TYPE=Download" target="_blank" rel="noopener">NCBI-blast+</a></li>
 <li><a href="https://github.com/davidemms/OrthoFinder" target="_blank" rel="noopener">OrthoFinder</a></li>
 <li><a href="https://openjdk.java.net/" target="_blank" rel="noopener">OpenJDK8</a></li>
@@ -387,7 +390,7 @@
 </ul>
 <p><br></p>
 <ul>
-<li><strong>展示各模块的参数：</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap [Assemble|Annotate|ANI|AntiRes|CoreTree|MASH|OrthoF|Pan|pCOG|VAR|ACC]</span><br></pre></td></tr></table></figure>
+<li><strong>展示各模块的参数：</strong>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap [Assemble|Annotate|ANI|AntiRes|CoreTree|MASH|OrthoF|Pan|pCOG|VAR|STREE|ACC]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><br></p>
@@ -425,6 +428,8 @@
 <li><p><strong>[--VAR]</strong>                          变异检测并构建核心基因组进化树</p>
 </li>
 <li><p><strong>[--AntiRes]</strong>                      从基因组(contigs/scaffolds)中预测抗生素抗性基因或毒力基因</p>
+</li>
+<li><p><strong>[--STREE]</strong>                        Construct a phylogenetic tree based on multiple sequences in one file</p>
 </li>
 <li><p><strong>[--ACC]</strong>                          一些实用的附加程序(目前只开发了”Assess”用于对基因组中的短序列进行过滤，并评估过滤前后的基因组状态)</p>
 </li>
@@ -592,6 +597,16 @@
 </code></pre></li>
 </ul>
 </li>
+<li><p><strong>--STREE</strong></p>
+<ul>
+<li><p><strong>[--seqfile (STRING)]</strong>        [Required] Path of the sequence file for analysis.</p>
+</li>
+<li><p><strong>[--seqtype (INT)]</strong>           [Required] Type Of Sequence (p, d, c for Protein, DNA, Codons, respectively). ( Default p )</p>
+</li>
+<li><p><strong>[--bsnum (INT)]</strong>             [Required] Times for bootstrap. ( Default 1000 )</p>
+</li>
+</ul>
+</li>
 <li><p><strong>--ACC</strong></p>
 <ul>
 <li><strong>[--Assess (STRING)]</strong>         Filter short sequences in the genome and assess the status of the genome(详细参数通过”pgcgap ACC”查看)</li>
@@ -612,13 +627,19 @@
 </li>
 <li><p><strong>[--fastANI-bin (PATH)]</strong>           Path to the fastANI binary file. Default tries if fastANI is in PATH;</p>
 </li>
+<li><p><strong>[--Gblocks-bin (PATH)]</strong>           Path to the Gblocks binary file. Default tries if Gblocks is in PATH;</p>
+</li>
 <li><p><strong>[--gubbins-bin (PATH)]</strong>           Path to the run_gubbins.py binary file. Default tries if run_gubbins.py is in PATH;</p>
+</li>
+<li><p><strong>[--iqtree-bin (PATH)]</strong>            Path to the iqtree binary file. Default tries if iqtree is in PATH;</p>
 </li>
 <li><p><strong>[--mafft-bin (PATH)]</strong>             Path to mafft binary file. Default tries if mafft is in PATH;</p>
 </li>
 <li><p><strong>[--mash-bin (PATH)]</strong>              Path to the mash binary file. Default tries if mash is in PATH.</p>
 </li>
 <li><p><strong>[--modeltest-ng-bin (PATH)]</strong>      Path to the modeltest-ng binary file. Default tries if modeltest-ng is in PATH.</p>
+</li>
+<li><p><strong>[--muscle-bin (PATH)]</strong>            Path to the muscle binary file. Default tries if muscle is in PATH.</p>
 </li>
 <li><p><strong>[--orthofinder-bin (PATH)]</strong>       Path to the orthofinder binary file. Default tries if orthofinder is in PATH;</p>
 </li>
@@ -710,6 +731,9 @@
 <li><p><strong>Example 13:</strong> Filter short sequences in the genome and assess the status of the genome</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --ACC --Assess --scafPath Results/Assembles/Scaf/Illumina --Scaf_suffix -8.fa --filter_length 200</span><br></pre></td></tr></table></figure>
 </li>
+<li><p><strong>Example 14:</strong> Construct a phylogenetic tree based on multiple sequences in one file</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pgcgap --STREE --seqfile proteins.fas --seqtype p --bsnum 1000</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="准备输入文件"><a href="#准备输入文件" class="headerlink" title="准备输入文件"></a>准备输入文件</h2><h3 id="工作目录"><a href="#工作目录" class="headerlink" title="工作目录"></a>工作目录</h3><p>PGCGAP的运行目录。</p>
 <h3 id="Assemble"><a href="#Assemble" class="headerlink" title="Assemble"></a>Assemble</h3><p>将所有双端reads、或PacBio reads 或 Oxford nanopore reads存于某个目录下 (Default: ./Reads/Illumina/)。</p>
@@ -731,6 +755,7 @@
 </li>
 </ul>
 <h3 id="AntiRes"><a href="#AntiRes" class="headerlink" title="AntiRes"></a>AntiRes</h3><p>存放基因组(complete or draft)的目录 (Default: Results/Assembles/Scaf/Illumina under the working directory).</p>
+<h3 id="STREE"><a href="#STREE" class="headerlink" title="STREE"></a>STREE</h3><p>Multiple-FASTA sequences in a file, can be Protein, DNA and Codons.</p>
 <h2 id="输出文件解读"><a href="#输出文件解读" class="headerlink" title="输出文件解读"></a>输出文件解读</h2><h3 id="Assemble-1"><a href="#Assemble-1" class="headerlink" title="Assemble"></a>Assemble</h3><ul>
 <li><p><strong>Results/Assembles/Illumina/*_assembly</strong><br><br>Directories contain Illumina assembly files and information of each strain.<br><br></p>
 </li>
@@ -831,6 +856,11 @@
 <li><strong>Results/AntiRes/*.tab</strong> : Screening results of each strain.</li>
 <li><strong>Results/AntiRes/summary.txt</strong> : A matrix of gene presence/absence for all strains.</li>
 </ul>
+<h3 id="STREE-1"><a href="#STREE-1" class="headerlink" title="STREE"></a>STREE</h3><ul>
+<li><strong>Results/STREE/*.aln</strong> : Aligned sequences.</li>
+<li><strong>Results/STREE/*.aln.gb</strong> : Conserved blocks of the sequences.</li>
+<li><strong>Results/STREE/*.aln.gb.treefile</strong> : The final phylogenetic tree.</li>
+</ul>
 <h2 id="使用许可"><a href="#使用许可" class="headerlink" title="使用许可"></a>使用许可</h2><p>PGCGAP 不可商用，其它情况可使用免费(licensed under GPLv3)。</p>
 <h2 id="反馈与提问"><a href="#反馈与提问" class="headerlink" title="反馈与提问"></a>反馈与提问</h2><p>若有问题，可在 <a href="https://github.com/liaochenlanruo/pgcgap/issues?_blank" target="_blank" rel="noopener">issues page</a> 提出或通过邮件咨询 <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" target="_blank" rel="noopener">liaochenlanruo@webmail.hzau.edu.cn</a>。</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
@@ -853,6 +883,8 @@
 <li><p>If you use “--VAR”, please also cite <a href="https://github.com/najoshi/sickle" target="_blank" rel="noopener">Sickle</a>, <a href="https://github.com/tseemann/snippy" target="_blank" rel="noopener">Snippy</a>, <a href="https://dx.doi.org/10.1093%2Fnar%2Fgku1196" target="_blank" rel="noopener">Gubbins</a>, <a href="https://doi.org/10.1093/molbev/msz189" target="_blank" rel="noopener">ModelTest-NG</a>, <a href="https://doi.org/10.1093/bioinformatics/btz305" target="_blank" rel="noopener">RAxML-NG</a>, and <a href="https://dx.doi.org/10.4161%2Ffly.19695" target="_blank" rel="noopener">SnpEff</a>.</p>
 </li>
 <li><p>If you use “--AntiRes”, please also cite <a href="https://github.com/tseemann/abricate" target="_blank" rel="noopener">Abricate</a> and the corresponding database you used: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6811410" target="_blank" rel="noopener">NCBI AMRFinderPlus</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/27789705" target="_blank" rel="noopener">CARD</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/22782487" target="_blank" rel="noopener">Resfinder</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/24145532" target="_blank" rel="noopener">ARG-ANNOT</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/26578559" target="_blank" rel="noopener">VFDB</a>, <a href="https://www.ncbi.nlm.nih.gov/pubmed/24777092" target="_blank" rel="noopener">PlasmidFinder</a>, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5343136/" target="_blank" rel="noopener">EcOH</a>, or <a href="https://academic.oup.com/nar/article/48/D1/D561/5624973" target="_blank" rel="noopener">MEGARES 2.00</a>.</p>
+</li>
+<li><p>If you use “--STREE”, please also cite <a href="http://europepmc.org/abstract/MED/30976793" target="_blank" rel="noopener">Muscle</a>, <a href="https://doi.org/10.1093/oxfordjournals.molbev.a026334" target="_blank" rel="noopener">Gblocks</a>, and <a href="https://doi.org/10.1093/molbev/msaa015" target="_blank" rel="noopener">IQ-TREE</a>.</p>
 </li>
 </ul>
 <h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Q1-VAR-founction-ran-failed-to-get-annotated-VCFs-and-Core-results"><a href="#Q1-VAR-founction-ran-failed-to-get-annotated-VCFs-and-Core-results" class="headerlink" title="Q1 VAR founction ran failed to get annotated VCFs and Core results"></a>Q1 VAR founction ran failed to get annotated VCFs and Core results</h3><p>Check the log file named in “strain_name.log” under Results/Variants/&lt;strain_name&gt;/ directory. If you find a sentence like “WARNING: All frames are zero! This seems rather odd, please check that ‘frame’ information in your ‘genes’ file is accurate.” This is an snpEff error. Users can install JDK8 to solve this problem.</p>
@@ -929,6 +961,12 @@
 <li>Added ability to filter short sequences of assembled genomes.</li>
 <li>Added function of genome assembly status assessment.</li>
 <li>Modified the drawing script of ANI and MASH modules so that it can automatically adjust the font size according to the number of samples.</li>
+</ul>
+</li>
+<li><p>V1.0.13</p>
+<ul>
+<li>Fixed the “running error” bug of function “Assess” in module “ACC”.</li>
+<li>Added module “STREE” for constructing a phylogenetic tree based on multiple sequences in one file.</li>
 </ul>
 </li>
 </ul>
@@ -1014,59 +1052,59 @@
 		
 		<div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/培训/" style="font-size: 15.268002068747531px;" class="tag-cloud-link">培训</a>
+    <a href="/tags/培训/" style="font-size: 9.991228854681246px;" class="tag-cloud-link">培训</a>
     
-    <a href="/tags/同源家族/" style="font-size: 19.123583662515863px;" class="tag-cloud-link">同源家族</a>
+    <a href="/tags/地图/" style="font-size: 12.38223475173832px;" class="tag-cloud-link">地图</a>
     
-    <a href="/tags/Github/" style="font-size: 15.918980219092731px;" class="tag-cloud-link">Github</a>
+    <a href="/tags/Github/" style="font-size: 18.008191730943828px;" class="tag-cloud-link">Github</a>
     
-    <a href="/tags/Bioconda/" style="font-size: 10.357721025282155px;" class="tag-cloud-link">Bioconda</a>
+    <a href="/tags/Bioconda/" style="font-size: 15.790863828796397px;" class="tag-cloud-link">Bioconda</a>
     
-    <a href="/tags/Hexo/" style="font-size: 9.508276450401745px;" class="tag-cloud-link">Hexo</a>
+    <a href="/tags/Hexo/" style="font-size: 16.789035173678162px;" class="tag-cloud-link">Hexo</a>
     
-    <a href="/tags/Linux/" style="font-size: 13.7568652420175px;" class="tag-cloud-link">Linux</a>
+    <a href="/tags/JAVA/" style="font-size: 16.946979221926888px;" class="tag-cloud-link">JAVA</a>
     
-    <a href="/tags/WGS/" style="font-size: 13.450972522095267px;" class="tag-cloud-link">WGS</a>
+    <a href="/tags/比较基因组学/" style="font-size: 14.704757806994994px;" class="tag-cloud-link">比较基因组学</a>
     
-    <a href="/tags/比较基因组学/" style="font-size: 9.216909116337687px;" class="tag-cloud-link">比较基因组学</a>
+    <a href="/tags/perl/" style="font-size: 8.806746603998466px;" class="tag-cloud-link">perl</a>
     
-    <a href="/tags/perl/" style="font-size: 10.23692160806139px;" class="tag-cloud-link">perl</a>
+    <a href="/tags/编程/" style="font-size: 18.719550095864015px;" class="tag-cloud-link">编程</a>
     
-    <a href="/tags/编程/" style="font-size: 12.548185664504658px;" class="tag-cloud-link">编程</a>
+    <a href="/tags/Linux/" style="font-size: 12.073200467453917px;" class="tag-cloud-link">Linux</a>
     
-    <a href="/tags/JAVA/" style="font-size: 13.434548510481019px;" class="tag-cloud-link">JAVA</a>
+    <a href="/tags/下载/" style="font-size: 11.142445052461618px;" class="tag-cloud-link">下载</a>
     
-    <a href="/tags/R语言/" style="font-size: 11.943271783183317px;" class="tag-cloud-link">R语言</a>
+    <a href="/tags/R语言/" style="font-size: 19.851065795554057px;" class="tag-cloud-link">R语言</a>
     
-    <a href="/tags/绘图/" style="font-size: 19.490514867402933px;" class="tag-cloud-link">绘图</a>
+    <a href="/tags/绘图/" style="font-size: 10.97717410757469px;" class="tag-cloud-link">绘图</a>
     
-    <a href="/tags/下载/" style="font-size: 8.242591325449677px;" class="tag-cloud-link">下载</a>
+    <a href="/tags/WGS/" style="font-size: 15.706963734712275px;" class="tag-cloud-link">WGS</a>
     
-    <a href="/tags/系统/" style="font-size: 8.836518765382138px;" class="tag-cloud-link">系统</a>
+    <a href="/tags/SNPs/" style="font-size: 15.405063722843018px;" class="tag-cloud-link">SNPs</a>
     
-    <a href="/tags/SNPs/" style="font-size: 9.495128857812233px;" class="tag-cloud-link">SNPs</a>
+    <a href="/tags/进化/" style="font-size: 14.114352921659151px;" class="tag-cloud-link">进化</a>
     
-    <a href="/tags/进化/" style="font-size: 8.41701955555806px;" class="tag-cloud-link">进化</a>
+    <a href="/tags/音乐/" style="font-size: 9.307760431346356px;" class="tag-cloud-link">音乐</a>
     
-    <a href="/tags/非逻辑小说/" style="font-size: 16.469442188124003px;" class="tag-cloud-link">非逻辑小说</a>
+    <a href="/tags/爬虫/" style="font-size: 17.622158384168248px;" class="tag-cloud-link">爬虫</a>
     
-    <a href="/tags/地图/" style="font-size: 8.831369525212118px;" class="tag-cloud-link">地图</a>
+    <a href="/tags/网盘/" style="font-size: 8.917552063531899px;" class="tag-cloud-link">网盘</a>
     
-    <a href="/tags/音乐/" style="font-size: 8.920343104630946px;" class="tag-cloud-link">音乐</a>
+    <a href="/tags/PubMed/" style="font-size: 16.293872966775425px;" class="tag-cloud-link">PubMed</a>
     
-    <a href="/tags/爬虫/" style="font-size: 8.615941127433459px;" class="tag-cloud-link">爬虫</a>
+    <a href="/tags/系统/" style="font-size: 11.340070790290824px;" class="tag-cloud-link">系统</a>
     
-    <a href="/tags/网盘/" style="font-size: 9.487959173194353px;" class="tag-cloud-link">网盘</a>
+    <a href="/tags/非逻辑小说2/" style="font-size: 18.77349548717882px;" class="tag-cloud-link">非逻辑小说2</a>
     
-    <a href="/tags/非逻辑小说2/" style="font-size: 17.508690650040613px;" class="tag-cloud-link">非逻辑小说2</a>
+    <a href="/tags/非逻辑小说/" style="font-size: 17.128483022661108px;" class="tag-cloud-link">非逻辑小说</a>
     
-    <a href="/tags/表型预测/" style="font-size: 15.590917556205945px;" class="tag-cloud-link">表型预测</a>
+    <a href="/tags/同源家族/" style="font-size: 10.232679623133482px;" class="tag-cloud-link">同源家族</a>
     
-    <a href="/tags/PubMed/" style="font-size: 8.083220873622313px;" class="tag-cloud-link">PubMed</a>
+    <a href="/tags/表型预测/" style="font-size: 11.179667648374181px;" class="tag-cloud-link">表型预测</a>
     
-    <a href="/tags/虚拟机/" style="font-size: 12.516716952089785px;" class="tag-cloud-link">虚拟机</a>
+    <a href="/tags/虚拟机/" style="font-size: 8.35430060915942px;" class="tag-cloud-link">虚拟机</a>
     
-    <a href="/tags/软件/" style="font-size: 17.84588084556206px;" class="tag-cloud-link">软件</a>
+    <a href="/tags/软件/" style="font-size: 8.543853001397245px;" class="tag-cloud-link">软件</a>
     
 </div>
 		
@@ -1259,61 +1297,61 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/01/29/垃圾桶边的空座/">垃圾桶边的空座</a>
+                    <a href="/2017/07/25/2017-peixunban/">微生物基因组学培训活动落幕</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/02/反锁的门/">反锁的门</a>
+                    <a href="/2019/05/20/Bioconda贡献指南/">Bioconda贡献指南</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/03/29/奶奶/">奶奶</a>
+                    <a href="/2019/04/19/Perl捕获外部命令执行异常并继续运行后续代码/">Perl捕获外部命令执行异常并继续运行后续代码</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2016/05/29/新生/">新生</a>
+                    <a href="/2013/06/08/南湖异事/">南湖异事</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2019/03/18/为PubMed添加功能/">为PubMed添加功能</a>
+                    <a href="/2011/05/30/夏冰/">夏冰</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/05/16/枣院传奇/">枣院传奇</a>
+                    <a href="/2015/11/10/屠龙/">屠龙</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2013/07/16/肩上的手/">肩上的手</a>
+                    <a href="/2013/05/20/归乡/">归乡</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2017/04/04/双山记/">双山记</a>
+                    <a href="/2013/05/30/中心迷案/">中心迷案</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2011/03/11/蛇魇/">蛇魇</a>
+                    <a href="/2011/02/17/骗你是小狗/">骗你是小狗</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/2018/08/23/设置元素加载时间解决D3.js文字被图像覆盖的问题/">设置元素加载时间解决D3.js文字被图像覆盖的问题</a>
+                    <a href="/2014/07/19/影子/">影子</a>
                 </span>
             </li>
             
@@ -1347,7 +1385,7 @@
     </div>
 
     <div class="container">
-            <span class="post-count">博客全站共200.4k 字 | </span>
+            <span class="post-count">博客全站共200.6k 字 | </span>
             <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <span id="busuanzi_container_site_pv">本站总访问量：<span id="busuanzi_value_site_pv"></span> 次</span>
             <span class="post-meta-divider">|</span>
