@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>了尘兰若的小坑</title>
+  
+  <subtitle>liaochenlanruo</subtitle>
+  <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
+  
+  <link href="https://www.liaochenlanruo.fun/"/>
+  <updated>2022-01-08T02:16:28.429Z</updated>
+  <id>https://www.liaochenlanruo.fun/</id>
+  
+  <author>
+    <name>Hualin Liu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用DeepARG预测抗生素抗性基因ARGs</title>
+    <link href="https://www.liaochenlanruo.fun/post/92eb.html"/>
+    <id>https://www.liaochenlanruo.fun/post/92eb.html</id>
+    <published>2022-01-07T11:50:33.000Z</published>
+    <updated>2022-01-08T02:16:28.429Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#介绍&quot;&gt;&lt;/a&gt; 介绍&lt;/h1&gt;
+&lt;p&gt;DeepARG 是一种机器学习解决方案，它使用深度学习来表征和注释宏基因组中的抗生素抗性基因。它由两种输入模型组成：短序列 Reads 和</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="ARGs" scheme="https://www.liaochenlanruo.fun/tags/ARGs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算蛋白质等电点并绘制全局pI图</title>
+    <link href="https://www.liaochenlanruo.fun/post/85d7.html"/>
+    <id>https://www.liaochenlanruo.fun/post/85d7.html</id>
+    <published>2022-01-03T02:49:17.000Z</published>
+    <updated>2022-01-08T02:16:28.468Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;蛋白质组的全局-pis&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#蛋白质组的全局-pis&quot;&gt;&lt;/a&gt; 蛋白质组的全局 pIs&lt;/h1&gt;
+&lt;p&gt;细胞全局蛋白质组 pI</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
+    
+    <category term="蛋白质组" scheme="https://www.liaochenlanruo.fun/tags/%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用GTDB-TK对细菌和古菌基因组进行物种分类</title>
+    <link href="https://www.liaochenlanruo.fun/post/8fb3.html"/>
+    <id>https://www.liaochenlanruo.fun/post/8fb3.html</id>
+    <published>2021-12-10T03:14:45.000Z</published>
+    <updated>2022-01-08T02:16:28.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;GTDB-Tk 是一个软件工具包，用于根据&lt;ruby&gt;基因组数据库分类 GTDB&lt;rt&gt;Genome Database Taxonomy GTDB&lt;/rt&gt;&lt;/ruby&gt; 为细菌和古菌基因组&lt;ruby&gt;分配客观分类学分类&lt;rt&gt;assigning objective</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>宏病毒组分析流程1-VirSorter2</title>
+    <link href="https://www.liaochenlanruo.fun/post/1551.html"/>
+    <id>https://www.liaochenlanruo.fun/post/1551.html</id>
+    <published>2021-12-02T01:35:30.000Z</published>
+    <updated>2022-01-08T02:16:28.444Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;安装软件&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#安装软件&quot;&gt;&lt;/a&gt; 安装软件&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装主程序及依赖&lt;/p&gt;
+&lt;div class=&quot;note default&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="ST179" scheme="https://www.liaochenlanruo.fun/tags/ST179/"/>
+    
+    <category term="宏病毒组" scheme="https://www.liaochenlanruo.fun/tags/%E5%AE%8F%E7%97%85%E6%AF%92%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux中使用tar将大文件压缩为多个小的压缩包</title>
+    <link href="https://www.liaochenlanruo.fun/post/ed43.html"/>
+    <id>https://www.liaochenlanruo.fun/post/ed43.html</id>
+    <published>2021-11-26T14:35:35.000Z</published>
+    <updated>2022-01-08T02:16:28.404Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在 GitHub 上传文件时，单个文件不允许超过 100m，超过的话需要使用 Git Large File Storage，操作起来稍有些复杂，而且我记得也有限制。在这里我们可以将大文件压缩并切片，使之被分割为多个小文件，再上传</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Github" scheme="https://www.liaochenlanruo.fun/tags/Github/"/>
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言绘制分组条形图</title>
+    <link href="https://www.liaochenlanruo.fun/post/36cc.html"/>
+    <id>https://www.liaochenlanruo.fun/post/36cc.html</id>
+    <published>2021-11-26T06:37:02.000Z</published>
+    <updated>2022-01-08T02:16:28.413Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;当我们要对一个多行多列的数据进行可视化的时候，分组条形图是一种不错的选择。&lt;/p&gt;
+&lt;h1 id=&quot;输入文件样式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#输入文件样式&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="可视化" scheme="https://www.liaochenlanruo.fun/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+    <category term="SY179" scheme="https://www.liaochenlanruo.fun/tags/SY179/"/>
+    
+    <category term="R语言" scheme="https://www.liaochenlanruo.fun/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="绘图" scheme="https://www.liaochenlanruo.fun/tags/%E7%BB%98%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用NCycDB数据库从宏基因组中预测氮循环基因</title>
+    <link href="https://www.liaochenlanruo.fun/post/18ea.html"/>
+    <id>https://www.liaochenlanruo.fun/post/18ea.html</id>
+    <published>2021-11-25T03:19:20.000Z</published>
+    <updated>2022-01-08T02:16:28.433Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;氮（N）循环是地球生态系统中重要的生物地球化学途径的集合，在生态学和环境研究中得到了广泛的关注。目前，&lt;ruby&gt;鸟枪法宏基因组测序&lt;rt&gt;Shotgun metagenome sequencing&lt;/rt&gt;&lt;/ruby&gt;已被广泛应用于探索负责 N</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="Functional genomics" scheme="https://www.liaochenlanruo.fun/tags/Functional-genomics/"/>
+    
+    <category term="SY179" scheme="https://www.liaochenlanruo.fun/tags/SY179/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="宏基因组" scheme="https://www.liaochenlanruo.fun/tags/%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NCBI上传基因簇之tbl2asn的使用</title>
+    <link href="https://www.liaochenlanruo.fun/post/d444.html"/>
+    <id>https://www.liaochenlanruo.fun/post/d444.html</id>
+    <published>2021-11-12T11:47:28.000Z</published>
+    <updated>2022-01-08T02:16:28.406Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;向&lt;a href=&quot;https://www.ncbi.nlm.nih.gov/&quot;&gt; NCBI&lt;/a&gt; 提交基因簇的时候需要提供 sqn 格式的文件，这个文件需要通过&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI/"/>
+    
+    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言安装依赖包错误集锦</title>
+    <link href="https://www.liaochenlanruo.fun/post/a713.html"/>
+    <id>https://www.liaochenlanruo.fun/post/a713.html</id>
+    <published>2021-11-02T04:56:45.000Z</published>
+    <updated>2022-01-08T02:16:28.412Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;devtools安装错误&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#devtools安装错误&quot;&gt;&lt;/a&gt; devtools 安装错误&lt;/h1&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+    <category term="R语言" scheme="https://www.liaochenlanruo.fun/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="软件" scheme="https://www.liaochenlanruo.fun/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Linux服务器中安装网页版Rstudio</title>
+    <link href="https://www.liaochenlanruo.fun/post/ea71.html"/>
+    <id>https://www.liaochenlanruo.fun/post/ea71.html</id>
+    <published>2021-11-02T01:37:03.000Z</published>
+    <updated>2022-01-08T02:16:28.439Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文演示如何在 CentOS7 服务器上安装 Rstudio server。&lt;/p&gt;
+&lt;h1 id=&quot;安装rstudio&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#安装rstudio&quot;&gt;&lt;/a&gt; 安装</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+    <category term="R语言" scheme="https://www.liaochenlanruo.fun/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="软件" scheme="https://www.liaochenlanruo.fun/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>命令模式下配置Linux网络</title>
+    <link href="https://www.liaochenlanruo.fun/post/893d.html"/>
+    <id>https://www.liaochenlanruo.fun/post/893d.html</id>
+    <published>2021-10-30T00:41:29.000Z</published>
+    <updated>2022-01-08T02:16:28.437Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;配置网卡接口 eth0:&lt;/p&gt;
+&lt;p&gt;进入配置文件所在目录，并在超级用户权限下编辑网络配置对应的文件（不同的机器文件名可能不一样）。&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在FASTA文件中搜索完全匹配的短序列</title>
+    <link href="https://www.liaochenlanruo.fun/post/6a93.html"/>
+    <id>https://www.liaochenlanruo.fun/post/6a93.html</id>
+    <published>2021-10-20T13:12:57.000Z</published>
+    <updated>2022-01-08T02:16:28.438Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;有时候需要在 FASTA 格式的文件中搜索短的保守序列，这个时候采用查找法比使用 blast 等序列比对更加人性化。&lt;u&gt;但是要注意避坑，即 FASTA</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo-theme-sakuraplus表格边框及滚动条调教</title>
+    <link href="https://www.liaochenlanruo.fun/post/e5ab.html"/>
+    <id>https://www.liaochenlanruo.fun/post/e5ab.html</id>
+    <published>2021-10-19T02:51:10.000Z</published>
+    <updated>2022-01-08T02:16:28.421Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;sakuraplus 主题默认是不显示表格边框的，而且对于比较宽的表格容易溢出，使得布局不美观。表格边框可以修改 CSS 来添加，较宽的表格可以通过添加滚动条来控制其不溢出，说起来简单，但是中间有很多坑，特此记录。&lt;/p&gt;
+&lt;h1 id=&quot;添加表格边框&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://www.liaochenlanruo.fun/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="Hexo" scheme="https://www.liaochenlanruo.fun/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SignalP+TMHMM预测微生物分泌蛋白</title>
+    <link href="https://www.liaochenlanruo.fun/post/c886.html"/>
+    <id>https://www.liaochenlanruo.fun/post/c886.html</id>
+    <published>2021-10-14T01:09:45.000Z</published>
+    <updated>2022-01-08T02:16:28.415Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Subtitle: Predict Secretory Protein in microbes with SignalP and TMHMM&lt;/p&gt;
+&lt;p&gt;&lt;ruby&gt;分泌蛋白&lt;rt&gt;Secretory</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="Functional genomics" scheme="https://www.liaochenlanruo.fun/tags/Functional-genomics/"/>
+    
+    <category term="SY179" scheme="https://www.liaochenlanruo.fun/tags/SY179/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用EffectiveT3预测微生物中的III型分泌系统效应蛋白</title>
+    <link href="https://www.liaochenlanruo.fun/post/fb68.html"/>
+    <id>https://www.liaochenlanruo.fun/post/fb68.html</id>
+    <published>2021-10-13T02:01:56.000Z</published>
+    <updated>2022-01-08T02:16:28.430Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;III 型分泌系统 (Type III secretion system，T3SS) 主要是革兰氏阴性菌的分泌蛋白分泌到细胞外的运输途径，T3SS 效应蛋白 (Type III secretion system Effector protein)</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="Functional genomics" scheme="https://www.liaochenlanruo.fun/tags/Functional-genomics/"/>
+    
+    <category term="SY179" scheme="https://www.liaochenlanruo.fun/tags/SY179/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="T3SS" scheme="https://www.liaochenlanruo.fun/tags/T3SS/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>R语言绘制气泡图Bubb_Plot</title>
+    <link href="https://www.liaochenlanruo.fun/post/b68c.html"/>
+    <id>https://www.liaochenlanruo.fun/post/b68c.html</id>
+    <published>2021-10-12T13:12:17.000Z</published>
+    <updated>2022-01-08T02:16:28.413Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;气泡图是经常用到的一种图，可以对比不同样本中某个特征的丰富度差异。以下代码 “bubbleChart_No0.R” 用于气泡图的绘制，零值将不会在图中输出。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="可视化" scheme="https://www.liaochenlanruo.fun/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    
+    <category term="R语言" scheme="https://www.liaochenlanruo.fun/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="绘图" scheme="https://www.liaochenlanruo.fun/tags/%E7%BB%98%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从GenBank文件中提取Features</title>
+    <link href="https://www.liaochenlanruo.fun/post/3a23.html"/>
+    <id>https://www.liaochenlanruo.fun/post/3a23.html</id>
+    <published>2021-10-09T06:15:45.000Z</published>
+    <updated>2022-01-08T02:16:28.429Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;二话不说，上代码，需要安装 BioPerl&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-perl&quot; data-language=&quot;perl&quot;&gt;&lt;code class=&quot;language-perl&quot;&gt;&lt;span class=&quot;token</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
+    
+    <category term="perl" scheme="https://www.liaochenlanruo.fun/tags/perl/"/>
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="BioPerl" scheme="https://www.liaochenlanruo.fun/tags/BioPerl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>按照Contig切割GenBank文件</title>
+    <link href="https://www.liaochenlanruo.fun/post/d9f9.html"/>
+    <id>https://www.liaochenlanruo.fun/post/d9f9.html</id>
+    <published>2021-10-09T02:08:00.000Z</published>
+    <updated>2022-01-08T02:16:28.449Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;当一个基因组含有多个 Contigs/Scaffolds 的时候，在 GenBank 文件中也会产生多个 LOCUS。某些软件会将 GenBank 文件作为输入，但仅支持一个 GenBank 文件中只包含一条 Contig/Scaffold，如基因岛预测软件&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
+    
+    <category term="perl" scheme="https://www.liaochenlanruo.fun/tags/perl/"/>
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>原核生物基因岛预测</title>
+    <link href="https://www.liaochenlanruo.fun/post/5324.html"/>
+    <id>https://www.liaochenlanruo.fun/post/5324.html</id>
+    <published>2021-10-08T11:27:05.000Z</published>
+    <updated>2022-01-08T02:16:28.434Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;软件-software-needed&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#软件-software-needed&quot;&gt;&lt;/a&gt; 软件 (Software needed)&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="Functional genomics" scheme="https://www.liaochenlanruo.fun/tags/Functional-genomics/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
+    
+    <category term="基因岛" scheme="https://www.liaochenlanruo.fun/tags/%E5%9F%BA%E5%9B%A0%E5%B2%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>预测前噬菌体prophages</title>
+    <link href="https://www.liaochenlanruo.fun/post/53f4.html"/>
+    <id>https://www.liaochenlanruo.fun/post/53f4.html</id>
+    <published>2021-10-08T07:54:24.000Z</published>
+    <updated>2022-01-08T02:16:28.472Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文介绍如何从细菌 / 古菌中预测前噬菌体。&lt;/p&gt;
+&lt;h1 id=&quot;软件选择&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#软件选择&quot;&gt;&lt;/a&gt; 软件选择&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>

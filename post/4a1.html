@@ -1,0 +1,603 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport"><script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-139249935-1")</script><title>焦尸 | 了尘兰若的小坑</title><link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico"><link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css"><link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet"><link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet"><script>var themeModelId="";themeModelId&&localStorage.setItem("modelId",themeModelId)</script><script src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script><script>var live2dOpen=eval("true")||!1;live2dOpen||localStorage.setItem("waifu-display",1609323474481)</script><link rel="stylesheet" href="/css/animate.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><link rel="stylesheet" href="/js/shareJs/share.min.css"><style>@media (max-width:992px){#waifu{display:none}}</style><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml"></head><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script><body><div id="loader"><link rel="stylesheet" href="/js/loaded/index.css"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>var endLoading=function(){document.body.style.overflow="auto",document.getElementById("loader").classList.add("loading")};window.addEventListener("DOMContentLoaded",endLoading)</script><script>let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }</script><script>function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };</script><script src="/js/swiper/swiper.min.js"></script><script src="/js/swiper/vue-awesome-swiper.js"></script><script src="/js/swiper/swiper.animate1.0.3.min.js"></script><script type="text/javascript">Vue.use(window.VueAwesomeSwiper)</script><script src="/js/vue-typed-js/index.js"></script><script src="/js/vue-seamless-scroll/index.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script><div id="safearea"><main class="main" id="pjax-container"><header class="header" id="navHeader" style="position:fixed;left:0;top:0;z-index:10;width:100%"><div class="header-content"><div class="bars"><div id="appDrawer" class="sidebar-image"><div class="drawer-box-icon"><i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i></div><transition name="fade"><div class="drawer-box_mask" v-cloak style="display:none" v-show="visible" @click.self="cancelDialogDrawer"></div></transition><div class="drawer-box" :class="{'active': visible}"><div class="drawer-box-head bg-color"><img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo"><h3 class="drawer-box-head_title">了尘兰若的小坑</h3><h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5></div><div class="drawer-box-content"><ul class="drawer-box-content_menu"><li class="drawer-box-content_item" style="position:relative"><a href="/" class="drawer-menu-item-link"><i class="fas fa-home" aria-hidden="true"></i> <span class="name">首页</span></a></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)"><span><i class="fas fa-archive"></i> <span class="name">归档</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(1)"><li><a href="/archives"><i class="fas fa-archive" style="margin-top:-20px"></i> <span>Archives</span></a></li><li><a href="/categories"><i class="fas fa-bookmark" style="margin-top:-20px"></i> <span>Categories</span></a></li><li><a href="/tags"><i class="fas fa-tags" style="margin-top:-20px"></i> <span>Tags</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)"><span><i class="fas fa-user"></i> <span class="name">关于</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(2)"><li><a href="/about"><i class="fas fa-user-secret" style="margin-top:-20px"></i> <span>About</span></a></li><li><a href="/me"><i class="fas fa-user-md" style="margin-top:-20px"></i> <span>我</span></a></li><li><a href="/skip/box"><i class="fas fa-box-open" style="margin-top:-20px"></i> <span>魔盒</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)"><span><i class="fas fa-link"></i> <span class="name">更多</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(3)"><li><a href="/gallery"><i class="fas fa-camera-retro" style="margin-top:-20px"></i> <span>图库</span></a></li><li><a href="/friends"><i class="fas fa-link" style="margin-top:-20px"></i> <span>友情连接</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link"><i class="fas fa-external-link" aria-hidden="true"></i> <span class="name">English</span></a></li><li class="drawer-box-content_item" style="position:relative"><a target="_blank" rel="noopener" href="https://travellings.link/" class="drawer-menu-item-link"><i class="fas fa-subway" aria-hidden="true"></i> <span class="name">开往</span></a></li><li class="drawer-box-content_item"><a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo"><i class="fas fa-github" aria-hidden="true"></i> <span>Github</span></a></li></ul></div></div></div><script>var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })</script></div><div class="blog-title" id="author-avatar"><div class="avatar"><img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo"></div><a href="/" class="logo">了尘兰若的小坑</a></div><nav class="navbar"><ul class="menu"><li class="menu-item" style="position:relative"><a href="/" class="menu-item-link" title="首页"><i class="fas fa-home" aria-hidden="true"></i> <span class="name">首页</span></a></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="归档"><i class="fas fa-archive"></i> <span class="name">归档</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/archives"><i class="fas fa-archive" style="margin-top:-20px"></i> <span>Archives</span></a></li><li><a href="/categories"><i class="fas fa-bookmark" style="margin-top:-20px"></i> <span>Categories</span></a></li><li><a href="/tags"><i class="fas fa-tags" style="margin-top:-20px"></i> <span>Tags</span></a></li></ul></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="关于"><i class="fas fa-user"></i> <span class="name">关于</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/about"><i class="fas fa-user-secret" style="margin-top:-20px"></i> <span>About</span></a></li><li><a href="/me"><i class="fas fa-user-md" style="margin-top:-20px"></i> <span>我</span></a></li><li><a href="/skip/box"><i class="fas fa-box-open" style="margin-top:-20px"></i> <span>魔盒</span></a></li></ul></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="更多"><i class="fas fa-link"></i> <span class="name">更多</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/gallery"><i class="fas fa-camera-retro" style="margin-top:-20px"></i> <span>图库</span></a></li><li><a href="/friends"><i class="fas fa-link" style="margin-top:-20px"></i> <span>友情连接</span></a></li></ul></li><li class="menu-item" style="position:relative"><a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English"><i class="fas fa-external-link" aria-hidden="true"></i> <span class="name">English</span></a></li><li class="menu-item" style="position:relative"><a target="_blank" rel="noopener" href="https://travellings.link/" class="menu-item-link" title="开往"><i class="fas fa-subway" aria-hidden="true"></i> <span class="name">开往</span></a></li></ul><div id="appSearch"><div class="search" @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div><transition name="fade"><div class="message-box_wrapper" style="display:none" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()"><div class="message-box animated bounceInDown"><h2><span><i class="fas fa-search" aria-hidden="true"></i> <span class="title">本地搜索</span> </span><i class="fas fa-times close" pointer style="float:right" aria-hidden="true" @click.self="cancelDialogVisible()"></i></h2><form class="site-search-form"><input type="text" placeholder="请输入关键字" id="local-search-input" @click="getSearchFile()" class="st-search-input" v-model="searchInput"></form><div class="result-wrapper"><div id="local-search-result" class="local-search-result-cls"></div></div></div></div></transition></div><script src="/js/local_search.js"></script><script>var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })</script></nav></div><a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff;position:absolute;top:0;border:0;right:0" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style><div id="he-plugin-simple"></div><script>WIDGET={CONFIG:{modules:"012",background:5,tmpColor:"4A4A4A",tmpSize:16,cityColor:"4A4A4A",citySize:16,aqiSize:16,weatherIconSize:24,alertIconSize:18,padding:"10px 10px 10px 10px",shadow:"1",language:"auto",borderRadius:5,fixed:"false",vertical:"middle",horizontal:"center",key:"2784dd3fcb1e4f0f9a9b579bf69641f2"}}</script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script></header><link href="/js/prism/prism-line-numbers.css" rel="stylesheet"><link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet"><style>pre[class*=language-]{overflow-y:hidden}.line-numbers .line-numbers-rows{border:none}</style><div class="bg-dark-floor" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:-1"></div><div class="post-detail-header" id="thumbnail_canvas" style="background-repeat:no-repeat;background-size:cover;background-position:center center;position:relative;background-image:url(https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_42.webp)"><div class="post-detail-header-mask"></div><canvas id="header_canvas" style="position:absolute;bottom:0;pointer-events:none"></canvas><div class="post-detail-header_info-box"><div class="title-box"><span class="title">焦尸</span></div><span class="post-detail-header_date"><i class="fas fa-calendar"></i> 发表于：2017-07-18 | </span><span class="post-detail-header_categories"><i class="iconfont iconbookmark1"></i> 分类： <a href="/categories/%E5%B0%8F%E8%AF%B4/" class="post-detail-header_category">小说</a></span><div class="post-detail-header_wordcount"><span class="totalcount"><i class="fas fa-file-text-o"></i> 字数统计: 18.7k | </span><span class="min2read"><i class="fas fa-clock"></i> 阅读时长: 62分钟 | </span><span class="reading"><i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span></span></div></div><script src="/js/bubble/bubble.js"></script></div><div class="row justify-position" style="padding-top:0"><div class="main-content"><article class="post post-detail"><div class="post-content"><p>（一）游行<br><br>教室外突然传来一片嘈杂之声，从窗口向外望去，一群学生正沿着教室前的道路走来。男男女女的学生穿着各种花花绿绿的奇装异服，看起来颇为诡异，让我心中产生一种莫名的不适感。队伍的最前头是一辆黄色推土机，一个男生坐在驾驶室中，操纵着机器向前行驶。学生们嘴里喊着口号跟随着推土机前行，情绪颇为高涨。这是一只游行队伍，只是不知道他们为何要选择在开学的第一天游行，又是为何游行。<br></p><span id="more"></span><p>游行的队伍由远及近，推土机缓缓地开到了教学楼前，教室里的学生忍不住好奇，纷纷的跑到门口观望，部分人甚至显得比游行队伍还要亢奋。没花多少时间，推土机已经行至我们跟前，然而它并没有停止前进，而是挥舞起它的机械臂径直朝教学楼的墙壁砸来。一下、两下、三下，十下，几十下，哪怕是钢筋混凝土构筑的墙体也经不起铮铮铁骨的机械臂永无休止的撞击，墙壁开始碎裂，楼房开始坍塌。围观的我们终于从震惊中苏醒过来，撒腿便逃，不能向前跑，因为前方早已被游行队伍围的水泄不通，看他们脸上愤怒的表情让人不由得生出恐惧之意，于是大家心照不宣的朝教学楼内跑去，想要从后门溜之大吉。<br><br>我仓皇地逃着，脚上的鞋子跑掉了被掩埋在废墟中，鞋子是被后面的同学踩掉的，两只都掉了，这可是我最最心爱的鞋子，因为那是开学前刚刚买的新鞋子，很贵重。然而此时顾不得跑掉的鞋子，不管是什么样的鞋子，总要有命才有机会穿。我光着脚在地面跑着，脚踩在石子之上疼的很，我便用并不熟练的轻功跳行。哪怕再怎么不熟练，也要比普通人快很多，所以不一会儿的功夫，游行队伍便被我远远地落在了身后。<br><br>我跑到一个安静的地方，一屁股坐在地上，口中喘着粗气，心中想着刚才的突发状况。那些学生不知道因何产生了怨气，每个人的脸上深深地刻满了愤懑，游行变成了暴动。那台推土机一定是校园施工队的，被游行的学生抢了过来搞破坏，也不单单的是要摧毁楼房，因为每个学生的手中都拿着器械，不论是刀具、木棒还是钝器，在某些情况下都将会是凶器。<br><br>教室里的学生读懂了游行学生脸上的表情，所以大家四散而逃，逃的是命。面对这种突发状况，学校保卫处人手远远不够，因为游行的学生太多，少部分人总是会被人潮淹没，所以保卫处选择等待警察的到来。<br><br>学校并不偏僻，所以警察来的很快，全副武装的警察涌入校园，常人看到这种场面怕是要腿抖，然而游行的学生似乎并不惧怕，挥舞着手中的器械与警察干了起来。到处在飙血，面对着这种局面，劝说早已无用，因为没人听劝，学生们也没有给警察劝说的时间，在警察到来的一瞬间，学生们就冲上去了。于是警察就只能被迫迎战，战斗必然要流血，双方激战很酣，打的很投入，似乎都是为了心中的信仰而变成亡命之徒。开始的时候，警察还手下留情，可是后来他们发现游行的学生如猛兽般地砍杀，于是警察便产生了杀心，双方都在往死里打。<br><br>近距离战斗无法用枪，只能用警棍敲，敲打比枪击更让人兴奋，每个人都杀的眼红了。一个学生的脑袋被敲扁了，一个警察的脸被削掉了一块；一个学生的脸塌陷了，一个警察的脖子被砍断了；一个学生的胳膊被折断了，一个警察的双腿被砍断了；这儿躺了一个伤员，那里卧着一具尸体；有的伤员在地上爬行躲避砍杀，有的人在追逐爬行的人奋力地砍杀；有的正在奋力砍杀的人被地上躺着的尸体绊倒，还没等爬起来，便被有的人一棒子敲晕或者被一刀削掉半个脑袋。<br><br>空气中弥漫着血腥的味道，路面上、草地上，到处可以看到鲜血和脑浆，随处可以看到残臂断肢，肉酱和着血水在泥土中翻滚着混到一起，散发着血腥与土腥交织的味道。我躲在一棵树后远远地观望着，我脸色煞白，不停地呕吐着，眼前的地是红的，天也是红的，整个世界都充斥着无边际的红，那是血红，血腥的红。我晕血，不管是自己的还是他人的，只要是人的血我就会晕，所以，我不出意料的晕死过去。<br><br>（二）警察<br><br>晕死或许是人类的一种自我保护与修复，如果你太累了，晕一会儿会是疲劳得以缓解；如果很累很累了，死透了便不会再累了；如果你不想看到血腥的场面，那便晕死过去，不看便罢；如果你厌恶这个世界，那便可以选择永远的离去，眼不见，心不烦。<br><br>醒来，太阳已经西斜，这一次晕的太久了，或许是因为平生第一次见到这么多的人流这么多的血，所以就多晕了一会儿。眼前已经没有了砍杀的场面，只有忙碌的工作者正在搬运尸体，洒水车不断清洗着路面的血迹与脑浆，夕阳洒下的光辉映在地表的水面上显得更加的红。<br><br>我实在是看不下去了，便扶着树干站了起来，跌跌撞撞的朝着宿舍楼的方向走去。没走多远，前方来了两个个警察，他们截住了我，说我偷了东西，要搜身。我心想不做亏心事，不怕鬼敲门。可当我的书包被打开的时候，发现里面躺着一个看起来很昂贵的白色不知名电子设备。我努力地解释着，可警察们根本不会听我将话讲完，而是不断地斥责和辱骂我。最后他们在我的嘴里塞满了东西，我连张嘴说话的机会都没有，心中充满着怨恨，明明是有人栽赃陷害于我，可我却没有办法证明自己的清白，这两位警察是如此的蛮不讲理，身为人民公仆，办事好不讲理，一怒之下我抬脚踹了过去。<br><br>人的肉体是脆弱的，人的愤怒之力是可怕的，这一脚下去，一个警察竟然被我踹出几米远，脑袋磕在路边的石头上，凹进去一大块，血流不止。另一个警察见状便要掏枪，趁他双手还放在腰间之时，我一记上勾拳狠狠地砸在他的下巴之上，只听咔嚓一声，他的颈椎已经断了。只是那么短短的几分钟，我由一个好学生变成了打死两位警察的杀人犯。在我心目中，警察叔叔是可爱的，可是这两位警察实在是蛮不讲理，还暴力执法，想象与现实的巨大让我愤怒无比，愤怒使我失去了理智，也给了我爆发力，最终让我失去了平静地生活。杀人偿命，更何况是两名警察，我大概是要随那些暴乱的学生一起被枪决了吧。<br><br>校园里到处都是学生与警察的尸体，所以我没有处理面前的两具尸体，因为没有必要处理，总是会有人来收尸的。我走上前，确认他俩已经死翘翘了，没有办法指证我。幸好没有人看到这一幕，这里也并没有监控，警察的执法记录仪被我砸的粉碎，只要我不说，应该没人知道我杀过警察，他俩是被暴乱的学生杀的，与我无关。残阳如血，我头也不回的一路小跑离开了杀人现场。<br><br>（三）女人<br><br>回到寝室，疲惫的我没去洗漱，直接爬到床上倒头便睡。睡梦中我梦到下午发生的暴乱，梦到那场厮杀和那些血腥的场面，然而那些都与我无关。我只关心我在乎的人，其他的人在我面前死再多，最多也只是眨一下眼睛而已，我在乎我的那双新鞋子，我要把它找回来。我痛恨那些游行的学生，游行便好好地游行，为何要变成暴乱，且不说死多少人，重要的是我的鞋子因他们而丢，所以我不喜欢他们，他们都该死。我来到教学楼前，楼房已经坍塌了一半，我的鞋子应该没有被埋在废墟中，因为倒下的是楼的正面，而我的鞋子是在楼后面被踩掉的。即便如此，还是不好找，谁知道那些逃命的同学在慌乱间会把我的鞋子踢到什么地方呢。<br><br>我找遍了楼的后面，一寸寸的找寻，终究是没有找到，我累了，便来到草地上躺了下来。我仰望着天空，星星眨着眼，月亮尽情的撒着自己的光辉。月光洒在身上，照在脸上，一股清凉之意由头顶缓慢地流淌到脚底，身体瞬间轻松了许多。我闭上眼，昏昏沉沉的睡去，发丝在微风的吹动下撩动着睫毛，我眨动着眼睛想赶走那一丝痒。睁眼的一刻，一张脸凑到了我的面前，那张脸苍白，毫无血色，却也生的俊俏，那是一张女人的脸。一股胭脂味扑鼻而来，让我清醒了很多，胭脂的香味渐渐淡去，随之而来的是一股臭味，那种臭我未曾闻过，臭味愈发的浓烈，风吹之不去，这味道来自于面前的女人，每一个毛孔都在散发难闻的气味。女人的脸不再俊俏，不再光滑，脂粉脱落，皮肤破裂，浓水挂满了整张脸，她已经腐烂了，这臭味是死尸的味道。尸液从她的脸上滴下落在了我的脸上、唇边，滑入我的鼻孔和嘴中。<br><br>忍不住恶心，我开始呕吐起来，食物夹杂在胃液和口水之中从我的嘴里向外喷射着，不是吐，是喷射状，如同高压水枪一般。我不知道胃中为何会有如此多的东西可以用来吐，总之我就不停的喷射着，呕吐物不偏不倚全部喷到了女人的身上。此时我才发现她全身赤裸，一丝不挂，呕吐物覆盖率她的整个身体，不断地滑落，甚为恶心。终于，我吐干净了，于是我疲惫的躺倒在地，而她却笑了，笑的很真很开心。<br><br>呕吐物被她的体表吸收，慢慢地渗入肌肤之内，同时她的皮肤在自我修复，最终又变成了活生生的一个美人儿，甚至连臭味也不存在了。看着眼前的一幕，我有些发愣，心想这场面只应该出现在梦中，于是我便认为自己是在做梦，一个有美女的梦，不是春梦，而是一个奇奇怪怪的梦。我太相信这是一个梦了，所以我没有傻傻的去掐自己一下试试疼不疼。<br><br>女人也在我身旁躺了下来，依旧是一丝不挂，如果是一个正常人躺在我身边，我肯定会偷窥几眼，然而她却不是，她刚刚变成了一具腐尸，就算是她此刻美如天仙，我也不敢有非分之想，所以我想逃，再也不要见到她才好。屁股刚离地，就被她一把拽倒在地，我心中充满了恐惧，生怕她一口吃了我，于是我开始求饶，急的差点哭出来。她笑了，依旧笑的那么开心，我哭了，真真的被吓哭了，她可能在笑逮到了一只猎物，我哭是因为我没有她力气大，想逃逃不掉，不知道下一刻我的脑袋还会不会在脖子上继续思考下一步该怎么办。<br><br>“你怕我？” 女人笑着问道。<br><br>“我不是故意吐你身上的，我帮你洗衣服，求你饶了我吧。” 说完我才记起她没有穿衣服，那便不用洗了。<br><br>“我以人的呕吐物为生，所以你不但无错，反而有功。” 女人说道。<br><br>我有点蒙圈，竟然有人以别人的呕吐物为生，那么这人得有多恶心啊，她要么是变态狂，要么是神经病，总归不是正常人。我没有心情去问她她属于哪一种情况，我只想早点摆脱她。<br><br>“什么功不功的，您放我走吧。” 我赔笑道。<br><br>“你有什么愿望，我可以帮你实现。” 女人道。<br><br>我打量了一下她曼妙的身姿，咽了一下口水说道：“能帮我找鞋子吗？”<br><br>是的，我之前被她吓到了，哪怕她生的美若天仙，我也不会多想，此时我最在意的是找到我的鞋子赶紧跑路，有鞋子总是要跑的快一些。女人脸上露出有些不解的表情，或许是她感觉自己看错人了，或许是她不明白为何我会让她帮我找鞋子，只是一双鞋子而已，何必呢？<br><br>“什么鞋子那么重要？比我还重要？” 女人疑惑的问道。<br><br>“新鞋子，很贵重，我必须要找到它。” 我答道。<br><br>听了我的话，女人的脸开始扭曲变形起来，她原本是想要引诱我上钩，可不料我一心想着我的鞋子，那么不管她的最终目的是什么，只要我不配合，她办起事情来总会有些麻烦。她还未曾遇到过不乖乖上钩的男人，所以面对着我，她有些恼怒，于是她变的狰狞，歇斯底里地喊道：“你去死吧！”<br><br>这句话大概是她的诅咒，或者只是她的一句气话，但是这句话说出口我便真的要去死了。<br><br>（四）鬼影<br><br>教学楼不见了，草地不见了，女人也不见了，我依旧躺着，躺在软绵绵的床上，我还在宿舍里。窗帘挡住了路灯散发的光芒，房间内漆黑一片，我微眯着眼睛盯着天花板，想着刚才发生的那一幕，难道是梦？应该是梦吧，否则怎么会那么离奇，否则我为何此时躺在宿舍的床上。<br><br>正思索着，双脚被一双大手抓住，狠狠地拉了我一把，未及反应过来，我已经被扯到了地上，身体摔得生疼，所幸没有伤到脑袋。睁开眼望向脚的方向，我看到了扯我的那个东西。黑暗中矗立着一个更加黑暗的人影，影子有些魁梧，在伸手不见五指的黑夜中，影子的轮廓却显得那么清晰可辨。人是可以很好地隐藏在黑暗之中，那么眼前的东西便不是人影，是鬼吗？！我额头渗出豆大的汗珠，它的力气太过强大，双手死死地抓住我的双脚，我根本无法挣脱。来不及反抗，它双手再次发力，我又被扯回到了床上，只是这次没有摔疼。<br><br>影子不见了，凭空出现，又凭空消失了，留给我无限的遐想与无边的恐惧。灯，我还有灯，灯光可以赶走黑暗，带来光明，于是我伸手摸向头顶台灯的开关。一圈、两圈，我转动着调光旋钮，然而台灯并没有散发出光亮，房间依旧一片黑暗。睡前我还开过的台灯，怎么说坏就坏了？我目光在房间中扫视着，不放过任何一个角落，确信黑暗之中没有更加黑暗的东西之后，我深吸一口气，然后迅速的爬下床，两步跳到门口，按下了日光灯的开光，并没有耀眼的灯光出现。然后是阳台的灯，厕所的灯，洗漱台的灯，统统都不亮，难不成停电了？<br><br>我有些绝望，黑暗总是会带给人无限的遐想，不是美好的事情，往往是内心最恐惧的事情会被黑夜无限的放大。我害怕黑暗，所以我需要开灯，床头的台灯没有亮的那一刻，我内心便充满了恐惧，全身的头发及汗毛都在瞬间竖立了起来。虽然床上也不安全，但是我还是不想下床，因为房间有很多角落，不知道那个鬼影子什么时候会突然从某个角落冒出来。但就算我一直蜷缩在床上，危险并没有降低或消除，只有光亮才会给我带来安全感，与其一直躲在床上发抖，不如硬着头皮下床开了灯，于是我便下了床，然而随着一盏盏灯点亮失败之后，我一点点的失望直至绝望。<br><br>不知道是绝望多一些，还是恐惧多一些，黑夜不只是剩我一个人，还有一个鬼影子。我警惕的看向房间的每个角落，慢慢地摸回阳台，伸手拉开窗帘，微弱的灯光透过窗户照射进来，然而这几束光没有照亮房间，却让我心凉，外面是有电的，这栋楼的另一个区域也有灯光散发出来。如此看来是我宿舍停电了，或许是欠电费了吧。<br><br>人在极度恐惧的情况下有可能会犯傻，我竟然忘记了自己还有手机，稍微冷静了一些才想起可以用手机照亮，虽然不能照亮整个房间，至少可以照亮眼前的一片区域。想到此，我又爬回床上，在床头摸到了手机，按下开机键，没有光亮。怎么可能？睡前明明还有百分之八十几的电量，为何此时也开不了机？我反复长按着开机键，终于，我听到了开机的声音，我蒙圈了。手机还有电，只是屏幕不亮而已，我又想到了窗外透进来的光，那些光束没有照亮我的房间，而是消失在我的房间之内，是有东西吸收了所有的光束，包括手机与灯发出的一切光亮都被吸收了。<br><br>光的速度那么快，竟然也无法逃逸，那么吸收光的这个东西得有多大的质量，多快的速度？光都无法逃脱，那我呢？我要试一下，这个房间诡异的很，不能再待下去，随手扯了球服便要夺门而出。门死死地关着，打不开的门还不如一堵墙，墙不会给人带来希望，也不会有后来的绝望，而门确实让我绝望了，看来这个房间内的一切物事都无法逃脱那个东西的引力。<br><br>当一个人失去了所有的希望，彻底绝望的时候，便不再恐惧，因为结局已经注定，不论是恐怖恐惧，挣扎与否，不论是有多少条路都是死路，一千零一种死法的结局也只有一个，那就是死。<br><br>（五）穿越<br><br>大自然的光明可以被吸收与吞噬，然而心中的光明只有自己可以抹杀，既然睁眼是一片黑暗，不如就闭上眼寻找心中的一丝光亮。我开始盘膝冥想，心静了，远处出现了一个光点，一支箭从点中射了出来，然后是两支，三支，千万只。箭至眼前化作万道光束，世界被照亮了，眼前白茫茫的一片，除了白没有任何东西。黑暗会吞噬掉一切，同样的光明也可以掩盖一切，同样的都是看不见。<br><br>除了时间没有尽头之外，没有什么是永恒的，黑暗是暂时的，光明也是暂时的，只是这个 “暂时” 有长有短罢了。眼前的强光便是一闪而过，我缓缓地睁开眼睛，自己已不在寝室内，这里是另一个世界。我不知道眼前的世界是我冥想出来的，还是我穿越过来的，但至少这里没有无边际的黑，这里有光明，那便有希望。<br><br>大堂正中央坐了一位白发人，身边站着两名侍卫。我一脸懵逼地与其他几位身着黑衣，脸上都是鲜血的人跪在白发人面前。<br><br>“任务完成的怎么样？” 白发人开口问道。<br><br>跪着的人显得很惶恐，战战兢兢的不敢作声。一刀疤脸回答到：“禀报大巫祝，我们埋伏于小路之上，本来就要得手，却不料在厮杀之时出现几百人的卫队救驾，我们折损了几名兄弟，好不容易才逃脱回来。”<br><br>大巫祝大怒，骂道：“一群废物！” 随后刀疤脸便被叫道大巫祝面前，只见大巫祝一掌便将其拍死于面前。<br><br>我们都很惶恐，生怕自己也惨遭不测，生活在这样的时代里，命运任由他人摆布，说不定哪天便会命丧黄泉。大巫祝并没有对我们赶尽杀绝，杀了甲只是为了威慑我们，以便让我们更加卖力的为他干活。<br><br>晚上，大家各自回屋子里歇了，我躺在床上辗转难眠，看来我是穿越了，可我搞不清楚穿越的原因，而且我穿越到了一个杀人如同踩死蚂蚁的时代里，要提心吊胆的过日子，说不定什么时候就被灭了。正在苦思冥想，房间的门被轻轻地推开了。<br><br>门外走来一高一矮两个人影，身影竟然是那么熟悉，这身形怎么会忘记呢？正是扯我的那个鬼影和那个赤裸的女人。果真是阴魂不散啊，我在新时代，他们也在新时代，我到了旧社会，他们也到了旧社会，他们的出现肯定不是偶然，那么他们必定有什么目的。<br><br>“你们究竟是什么人？为何总是缠着我？” 我问道。<br><br>女人急忙上前捂住我的嘴，示意我小点声，随即说道：“别惊动了大巫祝的眼线，你会得到你想知道的答案。”<br><br>经过二人的一番解释，我方才知道，那个白发人是部落里的大巫祝，此人心狠手辣，杀人不眨眼，早有不臣之心，欲谋权篡位。那些黑衣人都是大巫祝训练的杀手，而他口中所谓的任务便是让我们刺杀部落首领。鬼影是部落里的小巫祝，女人是他的徒弟，二人奉首领密令诛杀大巫祝，然而其道行远不及大巫祝，斗法失败落荒而逃。机缘巧合小巫祝习得时空穿越之法，希望到未来世界寻求更加高深的功法。只是他们阴差阳错的穿越到了我的寝室，然后又稀里糊涂的把我带回了他们的时代。我白天之所以会跪在大殿之中是因为小巫祝通过巫术将我的灵魂注入到大巫祝杀手队伍中的一人体内。<br><br>我听后有些恼怒，咬牙切齿的说道：“感谢二位，带我来了一场说走就走的时空旅行，只是麻烦你们赶紧把我送回到法治世界，这个地方太恐怖了，脑袋一直握在别人手里，只要大巫祝手一抖，这颗项上人头可就瓜熟蒂落了。”<br><br>小巫祝有些愧疚的说道：“十分抱歉，我虽习得穿越之法，然而并未参透精髓，一来穿越是随机的，可能往前穿，也可能往后穿；第二，此功法极耗元气，之前一来一回使我功力耗损殆尽，没个一年半载无法恢复。不如你且安心待在这里，待我继续研究功法并恢复元气，时机成熟自会把你送回自己的时代。”<br><br>我知道他们当前并没有送我回去的意思，多说无益，于是我便说道：“留在这里也不是不可以，但是你们需要给我找一个安全的地方，等你修炼好了再把我送回去，如何？”<br><br>“这里并没有安全的地方，你现在是杀手团里的一员，每日要向大巫祝复命，若见你失踪，哪怕是天涯海角也会被揪出来，今日杀手甲的下场你不是没见到。要想得到绝对的安全保障，那就要想办法除掉大巫祝。” 女人说道。<br><br>“那你们赶紧除啊！”<br><br>女人像看白痴一样看着我说道：“杀人岂是说一句话那么简单的事情？”<br><br>“那该怎么办？” 我问道。<br><br>“你做内应”，小巫祝说道。<br><br>“能告诉我我自己的身体在哪吗？” 我问道。<br><br>“不能”，一个干脆利落的回答从女人嘴里冒出来。<br><br>“方案呢？” 我继续问道。<br><br>“见机行事！” 女人说道。<br><br>“就这些？” 我问道。<br><br>女人：“就这些。”<br><br>我：“搞鬼啊！”<br><br>小巫祝：“不是搞鬼，要设坛做法，先剪除大巫祝的羽翼，使其孤立无援，然后再干掉他。”<br><br>我有些猴急，问道：“照你这般，要到猴年马月才能干掉他，你不着急，我还着急回去毕业呢。”<br><br>女人：“心急吃不了热豆腐，操之过急的话不但杀不了大巫祝，反而会受其所害。”<br><br>我：“那你俩负责剪除羽翼，我负责干掉大巫祝，我可以潜藏在他身边，寻机动手。”<br><br>依旧是看神经病的眼神，女人说道：“大言不惭，你可知道大巫祝的功力多么深厚，前段时间，合我二人之力都没能成功，你区区一个凡人竟出此狂言。”<br><br>我不愠不火地答道：“哪怕他境界再高，终究是肉体凡胎，总是会受伤，只要方案合理，大家配合好，我杀掉他不是没有可能，而且可能性还很大，前提是我要找到我的肉体。”<br><br>小巫祝：“如何配合？”<br><br>我：“第一步，向世人昭告大巫祝的罪行，使其在道德与法理上孤立无援；第二步，请求首领调用部队包围大巫祝府造势，如此可以让其一部分党羽吓破胆而背叛大巫祝；第三步，你们二位负责杀死大巫祝的左右二护法，断其左膀右臂，便于我靠近他；第四步，便是你们与大巫祝斗法，吸引他的大部分注意力，使其无暇应对我，握借机上前结果了他。”<br><br>二人先是点点头，紧接着又投来了怀疑的眼光。女人说道：“你凭什么能杀死他？”<br><br>我：“武器，强杀伤性武器，就在我的背包里，所以你们要带我找到我的肉体。”<br><br>见我说的很坚定，于是他俩便连夜将我带到了一座密室之中，大石台上躺着一个在当时看来穿着奇装异服的人，那便是我的真身。我走上前，从包包中摸出一个黑色物事，那是一把手枪，是从被我杀死的一名警察的尸体上摸到的，一直藏在包包里。不论走到哪里，我都是包不离身，所以穿越之时，这把枪便随着一起过来了。我打开枪梭子，里面有六发子弹，应该可以杀死大巫祝，如果有一把狙击枪就好了，可以远距离射杀，不过手枪也还可以，再怎么说也比箭快，而且这个时代的人没见过这玩意儿，我给他来个猝不及防，胜算又大了一些。我耐心地给二人讲解了手枪的威力，但并没有演示给他们看，因为本来子弹就少，而且枪声太大，容易惊动大巫祝。最终他们二人决定赌一把，只是这赌注下的有点大，因为按照我的计划，首领和大巫祝的战斗由暗地里搬到了明面上，那么大巫祝势必会拼尽全力，倘若失败，首领极有可能会被杀死。但不论是明争还是暗斗，两个人的矛盾就在那里摆着，两个人的刺杀行动从未停过，既然如此，不如轰轰烈烈的干一场，不论哪一个人先死了，另一个人都好过些。至于说服首领的任务自然由小巫祝去完成，我只等待最终开战的消息。<br><br>（六）首战<br><br>人只要不被逼到绝路上就不知道要拼一把，首领自然是不愿意冒险开战，他想的是暗杀。但是如果不出动军队，单凭我们几个人根本就没办法靠近大巫祝，因为他的党羽太多，身边又有左右二位护法，可以说首领交给小护法的是一个没办法完成的甚至是去送死的任务。脱离实际生产太久的领导终究会犯瞎指挥风，绝对是害人害己，不论下属们怎么解释，都没有用。如此便不需解释，让我来促成这一战。<br><br>这一日，我将首领要派军队围剿大巫祝的消息放了出去。人们都小心谨慎的活在这个世上，通常都是宁可信其有，不可信其无，更何况大巫祝与首领背地里的战斗从未停歇，所以消息传到大巫祝的耳朵里，他便信了。于是，大巫祝先行动了，潜藏在各地的杀手及其党羽开始暴乱，一路向部落首都杀来。<br><br>事情走到了这一步，首领无暇揪出是谁放出的假消息，他只能被迫应战，于是忠于首领的将士们也开始行动了，双方在各地展开厮杀，部落的山川河流尽情的吮吸着人类的鲜血，空气愈发的血腥起来。将士们在厮杀，百姓们早就受够了邪恶势力的荼毒，农户们抡起了农具冲了上去，猎人们拿起了弓箭冲了上去。反动派再怎么强大，终将要淹没在茫茫人海之中，首领与大巫祝两个势力之间的战斗最终演化成了全民战争。<br><br>战争永远都是惨烈的，世界的人口波动不是与流行病的爆发有关就是与战争有关，冷兵器时代主要还是拼人数，古时候的国力除了粮草之外就是成年男丁的数目，有的国家卷入战争之后，拼掉了全国的青壮年，十几年才能有所恢复。此时此刻，除了人与人之间的战斗之外，还有狗与人的战斗。大巫祝驯化了许多狗，并非寻常人家养的看门口或者是猎狗，而是极其凶残的食人狗。<br><br>只见街巷中、山坡上、草地上、田野里，到处黑压压的一片，全都是大巫祝的狗，它们红着眼睛，如饥似渴的注视着人群，如脱缰的野马般在人群之中穿梭。一只狗张开了血盆大口咬掉了一个舞着锄头的农户的脑袋，另一只狗张开了血盆大口吞掉了还未拉满弓的一位猎户的脑袋，一位挥刀的士兵的脑袋落入了一只狗的血盆大口之中，一位正在发号施令的将军的脑袋落入了另一只张着血盆大口的狗的腹中。这些狗有着极强的消化能力，它们不需要咀嚼，可以将整个头颅吞入腹中，在眨眼之间便可将其消化殆尽。它们只吃脑袋，每吃掉一个脑袋，它们便长大一分，于是人类的脑袋在不断地减少，而狗的身体在不断地增大。<br><br>一只狗突然停下了追杀人类的步伐，它在趴在地上翻滚着，似乎是有些疼痛难忍，几分钟过后，它产下了一只幼崽。然后是另一只狗产下了另一只幼崽，几百条狗陆陆续续地开始产崽。这些狗是孤雌生殖，不需要交配，而且其产崽的过程相当短暂，不超过五分钟，它们的数量在不断的增多。幼崽啃食着躺在地上的无头尸体，它们的身体以惊人的速度在不断的增长。<br><br>一位正在指挥的将军似乎发现了什么，于是他下达了命令，尽量躲开那些奔跑的猛兽，专门砍杀正在产崽的狗。是的，无论多么强大的生物，只要是在产崽的时候便是最虚弱的时候，只能任人宰杀。这些狗虽然有着惊人的繁殖能力，然而只要在其生产的时候砍上一刀，便也是一刀两命。于是狗的数量在不断地减少，终究敌不过千千万万人的砍杀，狗被消灭殆尽，人类获得了初步的胜利，接下来便是人与人的战斗。<br><br>（七）护法<br><br>前面的战斗只不过是小打小闹而已，真正的战斗应该从诛杀左右两位护法开始。从来没有人见识过二人的武功，正所谓知己知彼，百战不殆，然而两位护法一直隐藏自己的功力，从未在人们面前展露过实力，更确切的说，见过两人出手的人都已经下去陪马克思了老人家了，只是那个时候他老人家还未出生。<br><br>杀护法的任务未修行者显然是无法完成的，我是卧底，更不能动手，就算是动手，我还不如一个猎户，于是只能交给小巫祝和女人来完成。这也是完成计划极其关键的一步，若不能砍掉大巫祝的左膀右臂，我便没办法靠近大巫祝，更没有机会开枪。我只能在心中把认识的鬼神都祈祷了一遍，保佑小巫祝成功，我也好早日返回那个有电脑和手机的时代。那个时代虽然压力有些大，但不至于像现在这般水深火热，每天将脑袋挂载裤腰带上过日子，说没就没了。更何况我在这里举目无亲，还要卑躬屈膝的伺候他人，活的没有尊严，还是回去的好，争取早日毕业，找份好工作，娶妻生子，开枝散叶，也对得起二老。<br><br>打架最好的地方似乎永远是山顶，下面便是万丈悬崖，万一打不赢还可以跳崖，就算是死也要死得有英雄气概，于是战斗便在悬崖的山顶上开始了。小巫祝和女人站在西面，左右护法站在东面，夕阳挂在另一座山头之上，斜照在四人身上，将小巫祝和女人的影子投到地上一直延伸到两位护法脚尖上，将左右护法充满杀气的脸蛋儿映的红扑扑的。四人一动不动，仿佛相亲般的先要把对方好好打量一番。然而对决早已经不知不觉的开始了，小巫祝修炼的是吸功之法，并非隔空吸功，但也不需要肢体接触。只要他的影子投到了对方身上，哪怕是一点点，他便可以以影子为介质来吸取对方的功力。这套功法是他修炼的秘法，外人并不知道有此功法。女人作为他唯一的弟子，当然也修得此法，于是二人借着夕阳不断地吮吸着两位护法的功力。<br><br>左右护法不知道世间有此邪功，根本没有防备，小巫祝的吸功之法的绝妙之处就是可以麻醉对方，如同蚊子般，在吸食人类血液的时候人类毫无察觉，等到感觉痒的时候蚊子早已经飞到九霄云外了。同样的，起初二位护法并不知道对面的两人正在偷取自己的功力，只是觉得对方傻傻地站着不说话，说好了是来打架的，就那样呆呆的站着不说话，大概是畏惧了想要退缩了吧。<br><br>等了许久，二位护法开始感觉身体被掏空，方才得知上当了，于是二人同时向后飞掠几米，远远地躲开了小巫祝师徒二人。运功发现体内功力虽有所损失，但并不严重，而且此时功力不再外泄。护法有些恼怒，觉得小巫祝行为举止是小人所为，令人不齿。而在我看来，关系到生死的战斗，不论采用多么无耻下流的手段，只要能活下来，干什么都不过分，毕竟人不为己天诛地灭，我相信小巫祝也是这么想的。英国人很绅士，就连打仗都那么绅士，自己的队伍整整齐齐的列好，等待美洲人也列好队，说上几句话，然后喊个一二三一起开打。然而美洲人不绅士，一股脑的冲上来便是厮杀，于是英国人大骂美洲人野蛮，不讲道理，然而骂不了多久就溃散了。<br><br>先前只是小巫祝师徒略施小计，让左右护法损失了一部分功力，并没有真正的交手。此时的护法有些恼怒，于是他们便动手了。所谓君子动口不动手，所以二人真正意义上动的不是手，这二位一定是葫芦娃转世，神通了得。只见左护法深吸一口气，然后用力一喷，一坨粘液从其口中飞出直袭女人面门而来，速度之快连敏捷的猴子都无法躲避，可女人躲得开，因为她嫌恶心，所以她必须要躲开。那坨粘液朝女人身后飞去，落在悬崖边的一棵前年古树之上，只见那棵树茂密的绿叶迅速变黄最终脱落。难不成这厮吐的是脱落酸？接着，那棵树的树干开始腐烂，一阵风吹来，大树化作灰尘随风而去。女人额头上渗出豆大的汗珠，心里后怕，若是刚才没有躲过去，那此时化作灰烬的就是自己了。随后空气中便不停地传来 “呵～吐” 的声音，左护法如机关枪般的对女人进行无情地扫射，女人辛苦的躲闪着，显得有些狼狈。<br><br>右护法也小巫祝也没有闲着，古时候以右为尊，所以虽然同为护法，右护法的地位要比左护法高，其功力自然也要高出一筹，因此由左护法对战女人，而右护法对战小巫祝。右护法是个水桶，水桶不是饭桶，是个厉害角色。只见右护法双眼凝视着小巫祝，双手解开了裤带，掏出了自己的老二，稍微调整了一下角度，一道水柱向小巫祝射出。小巫祝心中有些骇然，大巫祝都养了些什么人，竟然修炼的都是这些下流龌龊的功法。虽然鄙视，但他也不敢掉以轻心，越是变态的功法越不能小觑，毕竟和左右护法交过手的人都没能活下来，这说明两套功法的确是厉害，刚才那棵千年古树的死便是见证。<br><br>眼看着一股尿朝自己飞来，小巫祝双脚蹬地飞向天空，右护法自然是穷追不舍，他还真如一个大水桶一般，不停地尿着，空气中弥漫着痰臭与尿臊味，幸亏这里是山顶，风大，否则小巫祝师徒不被腐蚀也要被熏死。小巫祝离开地面的一刹那便后悔了，面对着机关枪般的尿注扫射，他在空中无以借力，难以躲闪，于是他掏出了背在身后的大黑伞撑开以抵挡面前的液体。尿不是好尿，伞是把好伞，尿柱携带者巨大的威力击向伞面，小巫祝被作用力击出几米远落在地面。被大黑伞挡住的尿液反弹回来洒落到地面，地上烟雾翻滚，蚯蚓死了，蚂蚁死了，朽木上的几朵蘑菇也死掉了。师徒二人不明白为何左右护法没有被自己的痰和尿毒死呢，这么剧毒的东西竟然是从人体内分泌的，实在是不可思议。<br><br>交手几个回合，小巫祝便明白了左右护法的套路，想要打败他们，便要堵住左护法的嘴，戳破右护法的大膀胱。小护法不是君子，自然不会行君子之道，那么他便有更加邪恶的套路。<br><br>“脱衣服！” 小巫祝对女人喊道。<br><br>女人心领神会，一边躲闪着左护法的攻击，一边往下扯衣服，不一会儿她便赤裸裸的站在众人面前。雪白的肌肤在夕阳的照耀下显得晶莹剔透，配上绝佳的身材当真是美的不要不要的。这让我想起了教学楼前女人也赤身裸体的站在我面前，只不过那会儿她如一具腐尸般皮肤脱落，肌肉腐烂，散发着恶臭。此时的她却是香艳动人，更何况是赤身裸体。<br><br>战斗中的右护法听到小巫祝的喊声之后便朝女人看去，只见她身上的衣服被一件一件的脱去，直到赤裸裸的站在他的面前。作为一个正常的男人，哪怕他功力再怎么深厚，毕竟不是太监，于是他的老二便起了反应，扫射的尿柱便理所当然的停了下来。小巫祝见状飞掠到他身前，手起刀落，部落里便又多了一个太监。疼痛从根部传来，右护法方才知道上当了，都说英雄难过没人关，这无耻的师徒二人竟然在战斗中出此损招，当真是卑鄙小人。右护法一边在心中骂着，一边想这辈子算是完蛋了，没办法开枝散叶。他想将把自己变成太监的小巫祝杀死，但是他现在武功尽废，甚至连个农户都不如，于是他便寄希望与左护法身上。<br><br>小巫祝没有理会地上翻滚的废人，毕竟左护法是靠嘴而不是老二在战斗，哪怕有成千上万个赤身裸体的女人站在他面前，也不会影响他吐痰。于是他依旧在不停地 “突突突”，只是此刻他 “突突突” 的对象由一人变成了两人，这两人一前一后围攻他。他心中埋怨着，为何当初老妈不给他生两张嘴，脸上一张，后脑勺一张，他恨不得自己全身上下都张满嘴，那样以一敌十肯定不成问题。他可以站着吐，蹲着吐，坐着吐，甚至是躺着，一张嘴啃鸡腿，一张嘴吃水果，剩下的嘴来 “突突突”。可是他只要一张嘴，但他有两个敌人，他有些应接不暇。<br><br>战斗了许久，虽然左护法有些招架不住，恨不得吃上几颗金嗓子，但小巫祝师徒也累的够呛，于是小巫祝大喊一声：“你先顶一会儿，我去去就来。”<br><br>女人心中大骂老娘都快累虚脱了，太阳挂在山边只剩下一个头露在外面，山风越发大了起来，之前脱的衣服一直没来得及穿上，这会儿被风吹得冷，她一边哆嗦着一边躲闪左护法的臭痰。心中虽然不悦，但师命难违，于是便应了一声。<br><br>小巫祝从战斗中脱身，直奔右护法而来。只见他从靴子中掏出一把匕首，划开右护法的肚皮，一刀刺穿了里面的膀胱，尿液混着血液流到了小巫祝事先打开的大黑伞中。小巫祝端着伞中的尿液向战斗中的二人跑去，然后大喊一声躲开。女人早就习惯了师傅的命令，每一个指令发出，她都会像一台超级电脑般神速的执行，于是她飞跃到小巫祝的身后。<br><br>见徒弟脱身，小巫祝顺势将大黑伞中的尿液泼向对面的左护法，只听 “刺啦刺啦” 的声音从左护法的身上传来，伴随着的是他身上冒出的白色烟雾。左护法这是升华了，不，是被尿液腐蚀了，最终连骨头都不剩。<br><br>右护法的膀胱实在是大，尿液还在不停地向外流着，地上的石头冒着白烟，不断地被腐蚀，不一会儿功夫竟然被镂空了。<br><br>“快走！” 小巫祝喊道。<br><br>于是二人向山下飞奔而去，山脚下师徒二人抬头仰望，一道新生的瀑布从崖顶飞泻而下。负责接应得我不尽叹道：“飞流直下三千尺，疑似银河落九天。”<br><br>女人一边系着衣服的扣子一边赞赏的说道：“好诗！”<br><br>小巫祝看了我一眼说道：“好诗是好诗，但我们没有时间赏景，必须抓紧时间干掉大巫祝。”<br><br>我有些扫兴地说道：“好吧，大家按计划分头行动吧！”<br><br>再回首，只见崖壁已经被尿液腐蚀出一道峡谷，于是此地便多了一处景点，名曰 “一线天”。<br><br>（八）死神来了<br><br>虾兵蟹将被消灭了，左膀右臂被砍掉了，如今的大巫祝俨然成为了孤家寡人，然而我们并没有感到轻松，因为大巫祝拥有难以想象的功力，前面的厮杀对于他来讲只不过是小打小闹而已，但是我们却消耗极大。<br><br>小巫祝师徒二人肩负着正面战场的主要任务，因为此时派甲士刺杀大巫祝毫无意义，只不过是白白送死而已。对于大巫祝而言，这些人只不过像蝼蚁一般，一口气可以将他们吹到九霄云外，一脚踩下去死一大片。对付大巫祝这样的高手便要派出部落里的最强者，最佳人选便是小巫祝。<br><br>小巫祝虽小，但毕竟也是巫术界的二号人物，功力不及大巫祝，却也是一顶一的高手。上次与大巫祝斗法失败也是奉了首领之命未及准备，失败是必然的。所以此次与大巫祝还是有得一拼，再加上我在背后放冷枪，赢的把握又大了一些。<br><br>太阳似乎是预感到接下来的一场恶战，所以它早早的就躲到了地平线下，就连月亮和星星也躲到云后，生怕被高手对决散发的杀意伤到自己，哪怕是笼罩在天空中的乌云也充满惧意，搭着远方吹来的风儿飘向远方，只是乌云太多，所以这一片乌云逃走了，马上便会有下一片乌云飘来，感受到杀意之后也不做停留的迅速逃离。<br><br>小巫祝师徒二人趁着夜色来到了大巫祝府，刚刚与左右护法的战斗虽使得二人有些疲惫，却也使他们的状态达到了巅峰，这便是一鼓作气，今夜他们必须与大巫祝决斗，因为就算他们不去找大巫祝，大巫祝也会杀上门，谁生谁死都将在今夜揭晓。<br><br>浓浓的夜色之中，大巫祝盘膝坐于府前空地中央的祭台上，面前一张供桌，摆满了牺牲贡品。小巫祝师徒也布置好相关物事，他们是巫祝，决战便是斗法，一场没有刀枪剑戟的战斗。战斗开始后，我悄悄的藏在广场的一角，暗中观察，以便寻找最佳时机出手。我放缓自己的呼吸频率，降低心率，生怕被大巫祝发现，我相信以他的修为境界，发现一个藏匿在手枪射程范围之内的人并不困难，所以我只能趁他与小巫祝战斗而无暇感觉周遭环境气息变化之时才敢潜伏过来。<br><br>两位巫祝之间的战斗并不精彩，之所以这么说是因为外人根本看不到二人的动作，他们抖的不是武功而是法。正因为如此，我才有机会趁大巫祝入定之时，在他背后放冷枪。风起云涌，杀气在空气中来来往往，扰乱了天地气息，就连没有修行过的我也能感受的到这种杀气，幸亏我躲得远，不然怕是要被撕成碎片。来自敌对双方的两股杀气碰撞、交织，最终形成了一股气流旋涡，旋涡的直径随着三人功力的注入在不断地增大。地上的枯枝烂叶甚至是石子都顺着旋涡向高空爬去，最终被甩到远方，不知道会落在哪家的屋顶上砸出大大小小的洞来。<br><br>本来要准备入睡的人们此时犹如受惊的老鼠般到处穿梭，躲避着天上坠落的重物，时不时地有人被砸伤或者砸死，他们无处可躲，在没有钢筋混凝土也没有砖瓦的时代，人们只能用茅草搭建屋顶，所以躲在屋子里并不安全，高速坠落的重物很容易将屋顶击穿。逃也是死，不逃也是死，然而人们在面对危险的时候总是会不加考虑的逃跑，这是人类的本能，也是动物的本能。<br><br>一个石子击中了空中飞翔的鸟儿，正好落在一位坐在院中乘凉的娃娃的面前，娃娃捡起鸟儿正欲开心的大叫，却被天空落下的其他石子砸中，一下子晕死过去。娃娃的妈妈看到躺在地上的孩子嚎啕大哭，大骂天地不仁以万物为刍狗，然而没等她骂的痛快，一块石头从天而降恰巧砸在仰面望天的她的嘴上，牙齿掉落未及落入腹中，她便就此死去。<br><br>一对年轻情侣正坐在河边等待天上划过流星时许下愿望，一生一世的幸福是每对恋人所期望的，然而他们没有看到流星，也没有盼到幸福。天上飞来一把不知道是谁家的斧头，不偏不倚的正好砍在男子的脑袋上，脑花儿四溅，落在女子的脸上。女子刚反应过来是怎么回事情，正欲嚎啕大哭，一把菜刀从天而降，结束了她的痛苦，于是两个人虽然未来得及看到流星而许下愿望，但他们却可以永永远远的在一起了，不吵不闹，静静地厮守，这又是多少人羡慕却得不到的结果呢？<br><br>男子乙看到了眼前的一幕，仰天长啸，大骂老天不公。他是女子的爱慕者，奈何女子早就心有所属。今夜，他尾随着二人来到了河边，在树后看着二人恩爱有加，黯然神伤又有一丝愤怒和无奈。当看到男子甲被从天而降的斧头劈死时，他心中充满着欢喜，心想老天终于开眼了，自己日夜念叨的诅咒今天终于实现了。他认为只要男子甲死了，女子便会喜欢上他，他与她之间就隔了一个男子甲的距离。所以他在心中赞美着老天爷，赞美着那把斧头，世间的一切事物似乎都变得美好起来，今夜他找到了久违的快乐。然而，还没等他高兴多久，一把从天而降的菜刀将女子劈死了。大喜大悲之间的转变快的让他有些不知所措，脸上还未完全绽放的笑容渐渐地化作悲伤，进而是愤怒。悲伤是因为他朝思暮想的女子死了，自己的希望彻底变成了绝望，爱的人死了便不再有任何机会，自己追逐了那么久的爱情以对方的死而草草结束，虽然是单相思，但心中能够装着一个人也是快乐的，虽然更多的是对方给自己带来的伤害，但总有那么一刻是幸福的，这便好，默默地守候也不失是一种简单的幸福。不久，悲伤被他的愤怒所替代，即便是死，他们都死在一起，虽然他们都死了，但却是相伴而终，在阳间待腻了，便相约去阴间继续厮守，或许他们所要许的愿望便是不求同年同月同日生，但求同年同月同日死。如今，他们得偿所愿，虽然是死了，却比活着的人更加幸福，怎能不让他心生怨恨。<br><br>男子乙从树后走出来，一直来到情侣尸体面前，他厌恶的看着地上的两个人，狠狠地踹了男尸一脚，一股疼痛从脚尖一直传到了心窝。他蹲下身，拿起斧头挥舞着，将男尸大卸八块仍不解气，他想把他剁成肉酱，但发现自己并没有充足的体力，于是他将尸体碎块全部踢到了河中喂鱼。一只王八闻到了血腥味，从水中探出脑袋，它已经很久没有吃肉了，当它看到河水中飘过来的尸块时它欢快的在水中翻滚着，心想终于可以打打牙祭了。于是它奋力地向尸块游去，就在它张口准备咬下去的那一刻，飞石从天而降，不偏不倚的砸在它的脑袋之上，本就不大的脑袋瞬间开了花。这只王八死都没想到自己会这么倒霉，自己的龟壳那么大，脑袋那么小，为何石头偏偏砸在脑袋上，可惜它没有机会想这些问题，因为它死的很干脆。<br><br>男子乙看到了水中的一幕，愈发的恼怒，心想难不成男子甲成仙了？地上和水里的俗物竟然不能伤他一毫，只有老天才能收他，那么他便是飞天做神仙了，而且是和女子双双成仙。他不再喜欢女子了，就是从这一刻开始的，自卑战胜了爱恋，她给他的自卑便应该由她来承担，于是他将她碎尸万段，即便如此，他还是无法平复愤怒的心情，没了，一切都没了。他想到了死，因为他生无可恋，死了便一了百了，于是他走到河边，一头扎了进去。<br><br>黑暗的夜空中飞来一个更加黑暗的巨石，巨石径直落入河水之中激起巨大的水花，男子乙被水花冲到岸上狠狠地摔落，然而他没有被淹死，也没有被摔死。河伯不收他，阎王爷也不收他，老天爷更是想看着他在人间活受罪。有的人怕死，小心翼翼的活着却一不小心就死了；有的人想死，千方百计的去死却活的好好地。貌似很多事情总是事与愿违，生活就是这般的充满着不可知与戏剧性。<br><br>战斗总会有牺牲，只是这一场战斗不一样，没有参加战斗的人们无故遭殃，正规作战时怕死还可以当逃兵，然而这次的战斗是一场灾难，谁都无法躲避，最安全的地方是大巫祝府前的广场，也就是旋涡产生的地方。然而在广场上的人并不安全，因为战斗便是发生在这些人的身上，不是你死，就是我亡。巨大的漩涡消耗了三人极大的内力，他们拼的不单单是内力的强弱，更是耐力与毅力。<br><br>天长地久有时尽，没有吃不完的米和油盐，没有砍不完的材，没有开采不完的资源，同样也没有耗不尽的内力。广场上对战的三人已经开始力竭，尤其是小巫祝师徒二人，道行本就不如大巫祝，而且日落前对战左右护法已经是疲惫至极，今夜对战大巫祝这么久实属巅峰状态下的爆发，然而这种爆发极损内力，所以他与女徒弟额上汗珠滴落，已经是强弩之末，下一刻怕是就要崩溃。可是我还没有寻到最佳的出手时机，因为我依旧能感受到大巫祝身上源源不断传来的强烈的杀气，虽然我很替小巫祝师徒担忧，但我此刻绝对不能出手。我取胜的关键在于出其不意，必须趁大巫祝虚弱的时候开上一枪，否则子弹再快，也很可能被大巫祝躲过去，修行界的高手总会给人各种意外与惊喜，一旦我第一枪没有击中，后面的子弹怕是也没有机会打出去了。<br><br>正在我干着急的时候，夜色中的广场角落走来一个显得有些失魂落魄的身影，影子越走越近，走至我身前却没有多看我一眼，而是径直向广场中央的大巫祝走去。他不畏惧大巫祝身上散发出来的强烈杀气，他不怕死，他是来寻死的，他刚刚失去了多年来积攒在心中某个角落的爱，他感受不到活着的意义，他是来寻死的，他是男子乙。乙永远排在甲的后面，虽然二人都没有名字，但是甲与乙早已经注定了主角与配角，所有的光环与幸运都盘旋在甲的头顶，而霉运总是与乙相伴，甚至是连死都死不痛快。河水淹不死他，陨石砸不死他，上吊的绳子承受不住他身体的重量，斧头与菜刀似乎也不愿意侵入他肌肤一分，他尝遍了一千零一种死法却总是不能如愿。<br><br>男子乙是无畏的，因为他死不了。男子乙内心是恐惧的，他怕下一种死法还是杀不死自己。他如木头人一般漫无目的的走着，不知道翻越了几座山，跨过了几条河，他鬼使神差的走到了大小巫祝对战的广场之上。生命总有归宿，他相信自己也有归宿，老天为人们安排好了一切，该五更死，阎王就不敢三更收。男子乙嗅到了死亡的味道，是他自己身体上散发出来的气息。都说乌鸦喜欢围着将死之人盘旋，因为将死之人身体散发着死亡的气息，乌鸦嗅得到，于是便一路追随，只能人们人死肉腐之时，它们飞上前来啄几口，填饱饥肠辘辘的胃。<br><br>夜色很浓，没有乌鸦，甚至连虫鸣都听不到，广场上杀气太重，一切生命体不是逃了就是没来得及逃便被杀死了，我在地上刨了一个坑，将自己藏在里面，以减少杀气对我的伤害，然而背部长时间暴露在杀气之中还是受了不轻的伤。男子乙可以无视杀气的伤害，他已经很多年没有洗澡了，皮肤表面覆盖着厚厚的泥垢，刀枪不入，刚刚斧头和菜刀都砍不透，何况这些杀气呢。他一直很想死，然而在死了一千次都没有死成以后，他依旧想死，却不想平平淡淡的死。<br><br>大巫祝被公认为部落里乃至整个世界上最强大的人，他想拥护谁做首领，谁就会坐在那把椅子之上，只是做到了首领的位置上并不代表真正的拥有至高无上的权利，因为首领只不过是一个傀儡而已，真正的掌权者和决策者是大巫祝。前面的三位首领都是大巫祝立的，也是他假天之名而杀的，现任首领知道自己的命有一天会葬送在大巫祝之手，所以他暗地里派小巫祝刺杀大巫祝。迫于舆论压力，大巫祝不好明火执仗的杀死首领，也是安排杀手背地里刺杀。其实大家都清楚二人之间的矛盾，只是迫于大巫祝的淫威，无人敢反抗，因为反抗必死。<br><br>男子乙不再惧怕大巫祝，因为他就是来寻死的，他尝试了一千零一种死法都没有死成，大巫祝是他最后的希望。只要大巫祝还活着，他便有希望死去，所以他从河边一路死过来，终于活着到达了广场之上。他没有迟疑，径直朝大巫祝走去，因为他死了一千零一次，他确信自己是要死的，不需要再考虑，所以哪里有死的希望，他便毫不犹豫地走上前。<br><br>正在对抗师徒二人的大巫祝感到背后传来了一股死亡的气息，气息慢慢地靠近，渐渐浓烈起来。这是他生来第一次感受到这么浓郁的死亡之气，这气息如同刚开封的烈酒一般刺激着他身上的每一个毛孔，他终于感受到了什么叫做危险。大巫祝双手自胸前向上一推，一股强大的气流直逼小巫祝师徒二人而去，二人早已经是苦苦支撑，受不住气流的冲击，纷纷倒地吐血。<br><br>我没有动，只是静静地看着眼前的一切，因为我有预感，眼前的男子乙会给人带来意想不到的惊喜。他看似很普通，普通的身材，普通的相貌，普通的气质或者说没有气质，普通的装扮。可他越是普通，便越让人觉得不普通，因为普通人无法承受住大巫祝的暴击，而他依旧慢慢地向前走着。死亡在一步一步地靠近，大巫祝转回身，警惕的看着眼前的年轻人，心中竟有些不安。<br><br>“你是谁？” 大巫祝难得开口说话。<br><br>“我没有名字，大家都喊我乙，因为我永远不可能成为甲，就算是死他都死在我前头，他活的比我容易，死的比我简单，而我生不如死的时候却怎么都死不掉，所以我是来送死的，我不死，你死！” 男子乙面无表情的说道。<br><br>大巫祝不明白眼前的男子在说什么，但他明白二人之间只能活一个，既然明白一切问题就变得简单起来了。他不需要关系男子乙究竟是谁，在他的身上发生了什么苦情戏，他只要杀死他，消除死亡的威胁便好。于是大巫祝出手了，他用的是自己的绝杀技，因为他感觉眼前的男子不简单，值得他奋力一击，他怕自己一招没打死他，便会死于他之手。<br><br>飞沙走石，风云涌动，天地气息在大巫祝的带动之下凝结成一道气剑直袭男子乙的面门。乙没有反抗，也无法反抗，因为大巫祝出手实在是太快了，所以他被击中了，巨大的力量将他击倒在地，又弹了几下。男子乙慢慢地从地上爬了起来，没有伸手弹去身上的泥土，而是径直朝大巫祝走去。<br><br>大巫祝呆立在原地，似乎不相信眼前发生的一切，刚刚他使出了自己十成的功力，那是他的必杀技，哪怕是一头牛也经不起他这样近距离的一击，然而，男子乙只不过是摔倒了而已，没有外伤，也不见内伤。大巫祝感受到了死亡的气息一步步的逼近自己，于是他在接下来的几分钟内使出了所有的招数，招招毙命，却终究没有将男子乙打死，于是他死了。<br><br>对于男子乙来说，打不死自己的人就没有存在于这个世上的价值，于是他出手了，简简单单的一拳砸在大巫祝的脑袋瓜上。咯吱一声，大巫祝的脑门碎裂，脑浆崩了出来，溅到男子乙的脸上。男子乙没有擦去脸上的脏物，一个满脑子想着死的人不会在乎太多，他只在乎怎么才能死掉，谁能让他死掉。<br><br>（九）回归<br><br>・ 不可一世的大巫祝有些乌龙的死去了，他自己不明白，在场的人也不明白，这件事情传了出去，世人也不理解。仅仅是一拳头而已，他便死了，平日里不可近身的大巫祝被一个怎么看都是个失败者的连普通人都不如的男子乙轻轻地一拳打死了。这是老天在开玩笑吧，大自然是奇妙的，万物相生相克，这样想便也不觉得奇怪了。<br><br>小巫祝师徒二人有些惊骇，随之而来的是欢喜，若不是男子乙出手，他二人的性命怕是要交代在这广场之上了。于是二人相互搀扶着来到了男子乙的面前，抱拳深揖一礼说道：“多谢壮士出手相救，日后用得到我师徒二人的地方，万死不辞！”<br><br>男子乙平静地看着二人说道：“现在就用得到你们。”<br><br>小巫祝抬头说道：“但凭吩咐！”<br><br>男子乙：“你们俩杀了我，否则就让你们万死。”<br><br>二人有些惊愕，又有些怀疑的问道：“杀了你？！”<br><br>男子乙依旧面无表情的说道：“再问我就杀了你！”<br><br>躲在角落的我猜得到男子乙的企图，因为就在刚才我听到了他与大巫祝的对话，知道他是在求死，若死不成他便要杀人。大巫祝可以死，但是小巫祝不可以，毕竟我要返回自己的世界还要靠小巫祝，所以我得让他活，至少在我离开之前他不能死。<br><br>“且慢！”，我一边喊，一边从角落中冲了出来，继续说道：“我可以杀死你！”<br><br>男子乙回头看向我，没有任何表情，眼神中也看不出任何的情绪，只是淡淡地说了一句：“我不死，你死！”<br><br>于是，原本为大巫祝准备的子弹被射入男子乙的脑袋，男子乙应声倒地，没有抽搐，没有呼吸。有志者，事竟成，历经几番挫折，他终于如愿以偿，他就静静地躺在地上，或许到了阴间，他会继续追杀男子甲吧。<br><br>小巫祝师徒二人见男子乙死去，长吁一口气，瞪着不可思议的眼睛看着我，举世无敌的大巫祝被男子乙轻轻一拳打死，屌炸天的男子乙被我手中握着的小小手枪一枪毙命，而我仅仅是用食指轻轻地扣动了扳机。这么恐怖的武器流传于世，必会引来一场腥风血雨，所幸知道这把枪的只有广场上的这三人。<br><br>“送我回去”，我轻声说道。<br><br>二人先是一愣，随即明白过来，我心中所想正是小巫祝心中所念，只要我走了，他便是天下无敌，于是他很痛快的答应送我回到自己的时代。<br><br>师徒二人摆好了祭坛，寻了些木材，将大巫祝与男子乙的尸体放于材火之上，火焰摇曳，一股烧焦的肉味随风飘来。小巫祝挥舞着木剑，口中不知道念叨着什么咒语，只见两个焦黑的人影从烈焰中站起，缓缓的向我走来，正是死去的大巫祝与男子乙。<br><br>我正欲逃跑，女人说道：“莫怕，想要回去就需要两具焦尸相助。”<br><br>还没等我搞明白女人的话是什么意思，焦尸早已行至身前将我架起。看着二位的尊荣，我忍不住一阵恶心，开始呕吐起来，事物吐干了就吐胃液，然后是胆汁，似乎内脏也被吐了出来，感觉身体被掏空。最后我开始精神恍惚起来，飘飘然似羽化而登仙，失去了知觉。<br><br>夜，很黑，却黑不过影子，空气中弥漫着焦肉特殊的香味，闻之让人感到饥肠辘辘，寻着香味到最浓烈的地方，便是其散发的源头。黑暗中矗立着两个更加黑暗的影子，气氛显得十分诡异，我不在广场之上，而是在我熟悉的宿舍，我躺在床上，影子踩在椅子之上，趴在我的床边静静地看着我。<br><br>“卧槽！” 伴随着惊恐地叫声，我一拳头挥出去，两个影子应声倒地，骨头碎裂的声音由地面传来。我伸手将床头台灯调至最亮，偷偷地向地面瞄去，只见两具焦尸躺在地面之上，胳膊腿碎了一地。<br><br>没想到小巫祝的法术如此不同寻常，竟然用两具焦尸带我穿越时空，他也许不知道在法治社会，这两具尸体会给我带来多大的麻烦。思来想去，既然无法毁尸灭迹，那便报警好了。<br><br>外面一片吵杂，我小心翼翼地下了床从焦尸身旁走过，打开了宿舍门向外看去。楼道上站满了学生及警察，每个宿舍都敞着门，空气中到处弥漫着肉香。我顺着楼道前行，只见阳面的每个宿舍都空空如也，而阴面的所有宿舍均躺有两具焦尸，场面极其恶心。<br><br>第二日，警方发布微博称 “昨夜，本市 X 大学某栋学生寝室发生离奇群体死亡事件，阳面寝室所有人均被烧焦，尸体在相应的阴面宿舍找到，具体原因警方正在进一步调查，将会给公众一份满意的报告。”<br><br>恐慌蔓延于整个校园，住在阳面的学生纷纷要求调换寝室，非阴面不住，胆子小的学生直接请假回家，一来怕自己被烧焦，二来怕自己的寝室中出现几具面目狰狞的焦尸被吓死。<br><br>或许根本就没有什么大小巫祝，也没有男子乙，因为我宿舍的那两具焦尸根本就是对面寝室的两位同学，我不清楚这些人是怎么死掉的，是否跟我有什么关系，我没有杀人，也没有放火，或许是这栋楼的地理位置与风水触发了某种自然反应，导致阳面产生了强烈的电磁反应，房间如同一个大大的电磁炉，整个人被烤焦。或许我的穿越只是在强烈的电磁干扰之下产生的意识错乱，那么眼前的景象也可能是假象。<br><br>有没有游行，有没有穿越，有没有死人，有没有活着？或有一日大彻大悟之后，又该魂归何处？<br></p></div><div class="post-tags-categories"><div class="tags"><a href="/tags/%E9%9D%9E%E9%80%BB%E8%BE%91%E5%B0%8F%E8%AF%B4/">非逻辑小说</a></div></div><div class="copyright"><ul class="post-copyright"><li class="post-copyright-author"><strong>作者: </strong>Hualin Liu</li><li class="post-copyright-link"><strong>文章链接: </strong><a href="/post/4a1.html" target="_blank" title="焦尸">https://www.liaochenlanruo.fun/post/4a1.html</a></li><li class="post-copyright-license"><strong>版权声明: </strong>本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a> 许可协议。转载请注明出处!</li></ul><div></div></div></article><div class="post-nav"><div class="post-nav-prev post-nav-item"><div class="post-nav-img" style="background-size:cover;background-position:center center"><img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/62466_1.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/62466_1.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt=""></div><a href="/post/62466.html" class="post-nav-link"><div class="title"><i class="fas fa-angle-left"></i> 上一篇:<div class="title-text">微生物基因组学培训活动落幕</div></div></a></div><div class="post-nav-next post-nav-item"><div class="post-nav-img" style="background-size:cover;background-position:center center"><img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_77.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_77.webp" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt=""></div><a href="/post/8f43.html" class="post-nav-link"><div class="title">下一篇: <i class="fas fa-angle-right"></i><div class="title-text">双山记</div></div></a></div></div><div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div><script src="/js/shareJs/social-share.min.js"></script><style>.social-share{margin:20px 0}</style><div id="myComment"><div id="gitment-container"></div></div></div><div class="toc-aside"><div class="toc-main"><div class="toc-aside-title"><i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span><div class="toc-open-close">本文目录</div></div><div class="toc-content"><div class="toc"></div></div></div></div><div id="toc-mobile-btn"><i class="fas fa-list-ul" aria-hidden="true"></i></div><script>function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })</script><script src="/js/wrapImage.js"></script></div><div id="appBgSwiper" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:-2" :style="{'background-color': bgColor ? bgColor : 'transparent'}"><transition-group tag="ul" :name="names"><li v-for="(image,index) in img" :key="index" v-show="index === mark" class="bg-swiper-box"><img :src="image" class="bg-swiper-img no-lazy"></li></transition-group></div><script>var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})</script><style>.bg-swiper-box{position:absolute;display:block;width:100%;height:100%}.bg-swiper-img{object-fit:cover;width:100%;height:100%}</style><script>function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })</script></main></div><div class="footer bg-color"><div class="footer-main"><div class="link"><a href="/atom.xml" class="social"><i class="fas fa-rss" aria-hidden="true"></i> </a><a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social"><i class="fas fa-envelope" aria-hidden="true"></i> </a><a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social"><i class="fab fa-github" aria-hidden="true"></i> </a><a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social"><i class="fab fa-qq" aria-hidden="true"></i></a></div><div class="footer-copyright"><p>Copyright © 2018 - 2022 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a></p></div><span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次 </span><span class="post-meta-divider">|</span> <span id="busuanzi_container_site_uv" style="display:none"><i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人</span><div class="footer-custom"><div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn">鄂 ICP 备 2021021941 号</a> <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725 号</a></p></div></div></div></div><div class="dark"><div class="dark-content"><i class="fas fa-moon" aria-hidden="true"></i></div></div><script>$(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })</script><div class="goTop top-btn-color" pointer><i class="fas fa-arrow-up" aria-hidden="true"></i></div><script src="/js/goTop.js"></script><link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css"><style>.aplayer .aplayer-lrc p{display:none;font-size:12px;font-weight:700;line-height:16px!important}.aplayer .aplayer-lrc p.aplayer-lrc-current{display:none;font-size:15px;color:#42b983}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><meting-js server="tencent" type="playlist" id="8062553743" fixed="true" autoplay theme="#42b983" loop order="random" preload="auto" volume="0.7" list-folded="true"></meting-js><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script>!function(){var t=document.createElement("script"),s=window.location.protocol.split(":")[0];"https"===s?t.src="https://zz.bdstatic.com/linksubmit/push.js":t.src="http://push.zhanzhang.baidu.com/push.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}()</script><script type="text/javascript" size="100" alpha="0.4" zindex="-1" src="/js/ribbon.min.js"></script><script src="/js/utils/index.js"></script><script src="/js/app.js"></script><link href="/js/tocbot/tocbot.css" rel="stylesheet"><script src="/js/tocbot/tocbot.min.js"></script><script>var headerEl = 'h1, h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }</script><style>.is-position-fixed{position:sticky!important;top:74px}.toc-main ul{counter-reset:show-list}.toc-main ul li::before{content:counter(item)".";display:block;position:absolute;left:12px;top:0}</style><script>let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })</script><script>function loadIssuesJS(){0!=$(".post-detail").find(".issues-api").length&&loadScript("/js/issues/index.js")}$(function(){loadIssuesJS()}),document.addEventListener("pjax:complete",function(){"undefined"==typeof IssuesAPI&&loadIssuesJS()})</script><script src="/js/activate-power-mode.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,document.body.addEventListener("input",POWERMODE)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css"><script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script><script src="/js/clipboard/clipboard.min.js"></script><div id="appCopy"></div><script data-pjax>var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })</script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script><script>window.lazyLoadOptions={elements_selector:".lazyload",threshold:0},window.addEventListener("LazyLoad::Initialized",function(n){window.lazyLoadInstance=n.detail.instance},!1),document.addEventListener("DOMContentLoaded",function(){lazyLoadInstance.update()}),document.addEventListener("pjax:complete",function(){lazyLoadInstance.update()})</script><script type="text/javascript">var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })</script><style>.utterances{max-width:inherit!important}</style><script src="/js/cursor/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script><script src="/js/pjax@0.2.8/index.js"></script><div class="pjax-animate"><div class="loading-circle"><div id="loader-circle"></div></div><script>window.ShowLoading=function(){$(".loading-circle").css("display","block")},window.HideLoading=function(){$(".loading-circle").css("display","none")}</script><script>document.addEventListener("pjax:complete",function(){window.HideLoading()}),document.addEventListener("pjax:send",function(){window.ShowLoading()}),document.addEventListener("pjax:error",function(){window.HideLoading()})</script></div><script>var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })</script></body></html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport"><script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-139249935-1")</script><title>宏基因组分析流程及代码 | 了尘兰若的小坑</title><link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico"><link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css"><link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet"><link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet"><script>var themeModelId="";themeModelId&&localStorage.setItem("modelId",themeModelId)</script><script src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script><script>var live2dOpen=eval("true")||!1;live2dOpen||localStorage.setItem("waifu-display",1609323474481)</script><link rel="stylesheet" href="/css/animate.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><link rel="stylesheet" href="/js/shareJs/share.min.css"><style>@media (max-width:992px){#waifu{display:none}}</style><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml"></head><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script><body><div id="loader"><link rel="stylesheet" href="/js/loaded/index.css"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>var endLoading=function(){document.body.style.overflow="auto",document.getElementById("loader").classList.add("loading")};window.addEventListener("DOMContentLoaded",endLoading)</script><script>let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }</script><script>function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };</script><script src="/js/swiper/swiper.min.js"></script><script src="/js/swiper/vue-awesome-swiper.js"></script><script src="/js/swiper/swiper.animate1.0.3.min.js"></script><script type="text/javascript">Vue.use(window.VueAwesomeSwiper)</script><script src="/js/vue-typed-js/index.js"></script><script src="/js/vue-seamless-scroll/index.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script><div id="safearea"><main class="main" id="pjax-container"><header class="header" id="navHeader" style="position:fixed;left:0;top:0;z-index:10;width:100%"><div class="header-content"><div class="bars"><div id="appDrawer" class="sidebar-image"><div class="drawer-box-icon"><i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i></div><transition name="fade"><div class="drawer-box_mask" v-cloak style="display:none" v-show="visible" @click.self="cancelDialogDrawer"></div></transition><div class="drawer-box" :class="{'active': visible}"><div class="drawer-box-head bg-color"><img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo"><h3 class="drawer-box-head_title">了尘兰若的小坑</h3><h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5></div><div class="drawer-box-content"><ul class="drawer-box-content_menu"><li class="drawer-box-content_item" style="position:relative"><a href="/" class="drawer-menu-item-link"><i class="fas fa-home" aria-hidden="true"></i> <span class="name">首页</span></a></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)"><span><i class="fas fa-archive"></i> <span class="name">归档</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(1)"><li><a href="/archives"><i class="fas fa-archive" style="margin-top:-20px"></i> <span>Archives</span></a></li><li><a href="/categories"><i class="fas fa-bookmark" style="margin-top:-20px"></i> <span>Categories</span></a></li><li><a href="/tags"><i class="fas fa-tags" style="margin-top:-20px"></i> <span>Tags</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)"><span><i class="fas fa-user"></i> <span class="name">关于</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(2)"><li><a href="/about"><i class="fas fa-user-secret" style="margin-top:-20px"></i> <span>About</span></a></li><li><a href="/me"><i class="fas fa-user-md" style="margin-top:-20px"></i> <span>我</span></a></li><li><a href="/skip/box"><i class="fas fa-box-open" style="margin-top:-20px"></i> <span>魔盒</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)"><span><i class="fas fa-link"></i> <span class="name">更多</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(3)"><li><a href="/gallery"><i class="fas fa-camera-retro" style="margin-top:-20px"></i> <span>图库</span></a></li><li><a href="/friends"><i class="fas fa-link" style="margin-top:-20px"></i> <span>友情连接</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link"><i class="fas fa-external-link" aria-hidden="true"></i> <span class="name">English</span></a></li><li class="drawer-box-content_item" style="position:relative"><a target="_blank" rel="noopener" href="https://travellings.link/" class="drawer-menu-item-link"><i class="fas fa-subway" aria-hidden="true"></i> <span class="name">开往</span></a></li><li class="drawer-box-content_item"><a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo"><i class="fas fa-github" aria-hidden="true"></i> <span>Github</span></a></li></ul></div></div></div><script>var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })</script></div><div class="blog-title" id="author-avatar"><div class="avatar"><img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo"></div><a href="/" class="logo">了尘兰若的小坑</a></div><nav class="navbar"><ul class="menu"><li class="menu-item" style="position:relative"><a href="/" class="menu-item-link" title="首页"><i class="fas fa-home" aria-hidden="true"></i> <span class="name">首页</span></a></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="归档"><i class="fas fa-archive"></i> <span class="name">归档</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/archives"><i class="fas fa-archive" style="margin-top:-20px"></i> <span>Archives</span></a></li><li><a href="/categories"><i class="fas fa-bookmark" style="margin-top:-20px"></i> <span>Categories</span></a></li><li><a href="/tags"><i class="fas fa-tags" style="margin-top:-20px"></i> <span>Tags</span></a></li></ul></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="关于"><i class="fas fa-user"></i> <span class="name">关于</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/about"><i class="fas fa-user-secret" style="margin-top:-20px"></i> <span>About</span></a></li><li><a href="/me"><i class="fas fa-user-md" style="margin-top:-20px"></i> <span>我</span></a></li><li><a href="/skip/box"><i class="fas fa-box-open" style="margin-top:-20px"></i> <span>魔盒</span></a></li></ul></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="更多"><i class="fas fa-link"></i> <span class="name">更多</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/gallery"><i class="fas fa-camera-retro" style="margin-top:-20px"></i> <span>图库</span></a></li><li><a href="/friends"><i class="fas fa-link" style="margin-top:-20px"></i> <span>友情连接</span></a></li></ul></li><li class="menu-item" style="position:relative"><a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English"><i class="fas fa-external-link" aria-hidden="true"></i> <span class="name">English</span></a></li><li class="menu-item" style="position:relative"><a target="_blank" rel="noopener" href="https://travellings.link/" class="menu-item-link" title="开往"><i class="fas fa-subway" aria-hidden="true"></i> <span class="name">开往</span></a></li></ul><div id="appSearch"><div class="search" @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div><transition name="fade"><div class="message-box_wrapper" style="display:none" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()"><div class="message-box animated bounceInDown"><h2><span><i class="fas fa-search" aria-hidden="true"></i> <span class="title">本地搜索</span> </span><i class="fas fa-times close" pointer style="float:right" aria-hidden="true" @click.self="cancelDialogVisible()"></i></h2><form class="site-search-form"><input type="text" placeholder="请输入关键字" id="local-search-input" @click="getSearchFile()" class="st-search-input" v-model="searchInput"></form><div class="result-wrapper"><div id="local-search-result" class="local-search-result-cls"></div></div></div></div></transition></div><script src="/js/local_search.js"></script><script>var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })</script></nav></div><a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff;position:absolute;top:0;border:0;right:0" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style><div id="he-plugin-simple"></div><script>WIDGET={CONFIG:{modules:"012",background:5,tmpColor:"4A4A4A",tmpSize:16,cityColor:"4A4A4A",citySize:16,aqiSize:16,weatherIconSize:24,alertIconSize:18,padding:"10px 10px 10px 10px",shadow:"1",language:"auto",borderRadius:5,fixed:"false",vertical:"middle",horizontal:"center",key:"2784dd3fcb1e4f0f9a9b579bf69641f2"}}</script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script></header><link href="/js/prism/prism-line-numbers.css" rel="stylesheet"><link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet"><style>pre[class*=language-]{overflow-y:hidden}.line-numbers .line-numbers-rows{border:none}</style><div class="bg-dark-floor" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:-1"></div><div class="post-detail-header" id="thumbnail_canvas" style="background-repeat:no-repeat;background-size:cover;background-position:center center;position:relative;background-image:url(https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_41.webp)"><div class="post-detail-header-mask"></div><canvas id="header_canvas" style="position:absolute;bottom:0;pointer-events:none"></canvas><div class="post-detail-header_info-box"><div class="title-box"><span class="title">宏基因组分析流程及代码</span></div><span class="post-detail-header_date"><i class="fas fa-calendar"></i> 发表于：2021-01-19 | </span><span class="post-detail-header_categories"><i class="iconfont iconbookmark1"></i> 分类： <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/" class="post-detail-header_category">生物信息</a></span><div class="post-detail-header_wordcount"><span class="totalcount"><i class="fas fa-file-text-o"></i> 字数统计: 6.3k | </span><span class="min2read"><i class="fas fa-clock"></i> 阅读时长: 35分钟 | </span><span class="reading"><i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span></span></div></div><script src="/js/bubble/bubble.js"></script></div><div class="row justify-position" style="padding-top:0"><div class="main-content"><article class="post post-detail"><div class="post-content"><p>本文阐述宏基因组物种分类、组装、bining、基因预测及注释……</p><span id="more"></span><h1 id="a-软件列表及安装"><a class="markdownIt-Anchor" href="#a-软件列表及安装"></a> A、软件列表及安装</h1><h2 id="a1-分类相关"><a class="markdownIt-Anchor" href="#a1-分类相关"></a> A.1 分类相关</h2><h3 id="a11-metaphlan-30"><a class="markdownIt-Anchor" href="#a11-metaphlan-30"></a> A.1.1 metaphlan 3.0</h3><p>MetaPhlAn is a tool for profiling the composition of microbial communities from metagenomic shotgun sequencing data.</p><h4 id="a-安装主文件"><a class="markdownIt-Anchor" href="#a-安装主文件"></a> a. 安装主文件</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda create -n metaphlan <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.7</span> metaphlan
+$ conda activate metaphlan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h4 id="b-安装数据库"><a class="markdownIt-Anchor" href="#b-安装数据库"></a> b. 安装数据库</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ metaphlan --install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="c-安装依赖包"><a class="markdownIt-Anchor" href="#c-安装依赖包"></a> c. 安装依赖包</h4><ul><li>hclust<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda <span class="token function">install</span> -c bioconda hclust2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>R, vegan, ape<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda <span class="token function">install</span> r-base r-vegan r-ape<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>rbiom<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ R
+$ install.packages<span class="token punctuation">(</span><span class="token string">"rbiom"</span><span class="token punctuation">)</span>
+$ quit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ul><h3 id="a12-gtdbtk"><a class="markdownIt-Anchor" href="#a12-gtdbtk"></a> A.1.2 <a target="_blank" rel="noopener" href="https://ecogenomics.github.io/GTDBTk/">gtdbtk</a></h3><h4 id="a-hardware-requirements"><a class="markdownIt-Anchor" href="#a-hardware-requirements"></a> a. Hardware requirements</h4><table><thead><tr><th>Domain</th><th>Memory</th><th>Storage</th><th>Time</th></tr></thead><tbody><tr><td>Archaea</td><td>~8 GB</td><td>~27 GB</td><td>~1 hour / 1,000 genomes @ 64 CPUs</td></tr><tr><td>Bacteria</td><td>~150 GB</td><td>~27 GB</td><td>~1 hour / 1,000 genomes @ 64 CPUs</td></tr></tbody></table><h4 id="b-install-gtdb-tk-with-conda"><a class="markdownIt-Anchor" href="#b-install-gtdb-tk-with-conda"></a> b. Install GTDB-Tk with conda</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda create -n gtdbtk -c conda-forge -c bioconda gtdbtk<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="c-gtdb-tk-reference-data"><a class="markdownIt-Anchor" href="#c-gtdb-tk-reference-data"></a> c. GTDB-Tk reference data</h4><ul><li><strong>Note that different versions of the GTDB release data may not run on all versions of GTDB-Tk, below are all supported versions:</strong></li></ul><table><thead><tr><th>GTDB Release</th><th>Minimum version</th><th>Maximum version</th></tr></thead><tbody><tr><td>R95</td><td>1.3.0</td><td>N/A</td></tr><tr><td>R89</td><td>0.3.0</td><td>0.1.2</td></tr><tr><td>R86.2</td><td>0.2.1</td><td>0.2.2</td></tr><tr><td>R86</td><td>0.1.0</td><td>0.1.6</td></tr><tr><td>R83</td><td>0.0.6</td><td>0.0.7</td></tr></tbody></table><ul><li>Download the reference data</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">wget</span> https://data.ace.uq.edu.au/public/gtdb/data/releases/release95/95.0/auxillary_files/gtdbtk_r95_data.tar.gz
+  
+$ <span class="token function">tar</span> xvzf gtdbtk_r95_data.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><strong>注意</strong>：GTDB-Tk requires an environment variable named GTDBTK_DATA_PATH to be set to the directory containing the unarchived GTDB-Tk reference data.</p><ul><li>You can automatically alias GTDBTK_DATA_PATH whenever the environment is activated by editing {gtdbtk environment path}/etc/conda/activate.d/gtdbtk.sh, e.g.:</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Determine the GTDB-Tk environment path</span>
+$ conda activate gtdbtk
+$ <span class="token function">which</span> gtdbtk
+<span class="token comment"># /miniconda3/envs/gtdbtk-1.3.0/bin/gtdbtk</span>
+
+<span class="token comment"># Edit the activate file</span>
+$ <span class="token builtin class-name">echo</span> <span class="token string">"export GTDBTK_DATA_PATH=/path/to/release/package/"</span> <span class="token operator">></span> /miniconda3/envs/gtdbtk-1.3.0/etc/conda/activate.d/gtdbtk.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="a13-kraken2"><a class="markdownIt-Anchor" href="#a13-kraken2"></a> A.1.3 <a target="_blank" rel="noopener" href="https://github.com/DerrickWood/kraken2">Kraken2</a></h3><h4 id="a-hardware-requirements-2"><a class="markdownIt-Anchor" href="#a-hardware-requirements-2"></a> a. Hardware requirements</h4><ul><li>Disk space: Construction of a Kraken 2 standard database requires approximately 100 GB of disk space. A test on 01 Jan 2018 of the default installation showed 42 GB of disk space was used to store the genomic library files, 26 GB was used to store the taxonomy information from NCBI, and 29 GB was used to store the Kraken 2 compact hash table.</li><li>Memory: To run efficiently, Kraken 2 requires enough free memory to hold the database (primarily the hash table) in RAM. While this can be accomplished with a ramdisk, Kraken 2 will by default load the database into process-local RAM; the --memory-mapping switch to kraken2 will avoid doing so. The default database size is 29 GB (as of Jan. 2018), and you will need slightly more than that in RAM if you want to build the default database.</li></ul><h4 id="b-install-kraken2-with-conda"><a class="markdownIt-Anchor" href="#b-install-kraken2-with-conda"></a> b. Install Kraken2 with conda</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda create -n kraken2 kraken2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="c-build-the-database"><a class="markdownIt-Anchor" href="#c-build-the-database"></a> c. Build the database</h4><ul><li>下载数据库。找到一个存储空间比较大的目录并进入，运行如下命令，这里下载的数据库包括 archaea，bacteria，plasmid，viral，fungi，protozoa，UniVec 和 UniVec_Core：<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> <span class="token function">bash</span> -c <span class="token string">'for i in archaea bacteria plasmid viral fungi protozoa UniVec UniVec_Core; do kraken2-build --download-library $i --threads 24 --db db_name; done'</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>下载分类信息<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> kraken2-build --download-taxonomy --threads <span class="token number">24</span> --db db_name <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>建立索引<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> kraken2-build --build --threads <span class="token number">24</span> --db db_name <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="d-序列分类"><a class="markdownIt-Anchor" href="#d-序列分类"></a> d. 序列分类</h4></li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kraken2 --paired --threads <span class="token number">24</span> --unclassified-out unclassified<span class="token comment">#.fq --classified-out classified#.fq --output outfile --confidence 0.5 --memory-mapping --use-names --report reportname --report-zero-counts --db $DBNAME reads1 read2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="a2-组装-bining-质量评估"><a class="markdownIt-Anchor" href="#a2-组装-bining-质量评估"></a> A.2 组装、Bining、质量评估</h2><h3 id="a21-metawrap"><a class="markdownIt-Anchor" href="#a21-metawrap"></a> A.2.1 metawrap</h3><p>MetaWRAP is a pipeline for genome-resolved metagenomic data analysis.</p><h4 id="a-安装主文件-2"><a class="markdownIt-Anchor" href="#a-安装主文件-2"></a> a. 安装主文件</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda create -n metawrap <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">2.7</span> metaphlan<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="b-安装其他分析工具到metawrap环境中"><a class="markdownIt-Anchor" href="#b-安装其他分析工具到metawrap环境中"></a> b. 安装其他分析工具到 metawrap 环境中</h4><ul><li><strong>cd-hit</strong></li><li><strong>coverm</strong> DNA read coverage and relative abundance calculator focused on metagenomics applications</li><li><strong>bamm</strong> Metagenomics-focused BAM file manipulation</li><li><strong>unitem</strong> Ensemble binning strategies for combining the output of multiple binning methods</li><li><strong>humann2</strong> The HMP Unified Metabolic Analysis Network 2</li><li><strong><a target="_blank" rel="noopener" href="https://github.com/biobakery/biobakery/wiki/GraPhlAn">graphlan</a></strong></li><li><strong><a target="_blank" rel="noopener" href="https://pypi.org/project/export2graphlan/">export2graphlan</a></strong></li><li><strong><a target="_blank" rel="noopener" href="https://data.ace.uq.edu.au/public/CheckM_databases/">checkm database</a></strong></li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda activeta metawrap
+$ conda <span class="token function">install</span> cd-hit coverm bamm unitem humann2 graphlan export2graphlan
+
+<span class="token comment"># 找到一个合适的目录并cd进入以便存储checkm数据库</span>
+$ <span class="token function">wget</span> https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
+$ <span class="token function">tar</span> zxvf checkm_data_2015_01_16.tar.gz
+$ checkm data setRoot
+<span class="token comment"># 随后输入数据库所在的full path</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="a3-非冗余基因功能注释"><a class="markdownIt-Anchor" href="#a3-非冗余基因功能注释"></a> A.3 非冗余基因功能注释</h2><h3 id="a31-eggnog-mapper"><a class="markdownIt-Anchor" href="#a31-eggnog-mapper"></a> A.3.1 eggNOG-mapper</h3><p>功能注释，uniref, eggNOG, KEGG, GO; CAZy; VFDB; CARD; TCDB; PHI。</p><h3 id="a32-enrichm"><a class="markdownIt-Anchor" href="#a32-enrichm"></a> A.3.2 EnrichM</h3><p><a target="_blank" rel="noopener" href="https://github.com/geronimp/enrichM">EnrichM</a> is a set of comparative genomics tools for large sets of metagenome assembled genomes (MAGs). The current functionality includes:</p><ul><li>A basic annotation pipeline for MAGs.</li><li>A pipeline to determine the metabolic pathways that are encoded by MAGs, using KEGG modules as a reference (although custom pathways can be specified)</li><li>A pipeline to identify genes or metabolic pathways that are enriched within and between user-defined groups of genomes (groups can be genomes that are related functionally, phylogenetically, recovered from different environments, etc).</li><li>To construct metabolic networks from annotated population genomes.</li><li>Construct random forest machine learning models from the functional composition of either MAGs, metagenomes or transcriptomes.</li><li>Apply these random forest machine learning models to classify new MAGs metagenomes.</li></ul><h4 id="a-安装主文件-3"><a class="markdownIt-Anchor" href="#a-安装主文件-3"></a> a. 安装主文件</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda create -n enrichm <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3</span>
+$ conda <span class="token function">install</span> enrichm<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h4 id="b-安装数据库-2"><a class="markdownIt-Anchor" href="#b-安装数据库-2"></a> b. 安装数据库</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 约5.7 G</span>
+$ enrichm data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p><strong>报错</strong> ：</p><blockquote><p>Traceback (most recent call last):<br>File &quot;/home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/data.py&quot;, line 114, in do<br>version_remote = urllib.request.urlopen(self.ftp + self.VERSION).readline().strip().decode(&quot;utf-8&quot;)<br>AttributeError: module 'urllib' has no attribute 'request'</p><p>During handling of the above exception, another exception occurred:</p><p>Traceback (most recent call last):<br>File &quot;/home/hualin/miniconda3/envs/enrichm/bin/enrichm&quot;, line 342, in &lt;module&gt;<br>run.run_enrichm(args, sys.argv)<br>File &quot;/home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/run.py&quot;, line 288, in run_enrichm<br><a target="_blank" rel="noopener" href="http://d.do">d.do</a>(args.uninstall, args.dry)<br>File &quot;/home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/data.py&quot;, line 117, in do<br>&quot;Unable to find most current EnrichM database VERSION in ftp. Please complain at <a target="_blank" rel="noopener" href="https://github.com/geronimp/enrichM">https://github.com/geronimp/enrichM</a>&quot;)<br>Exception: Unable to find most current EnrichM database VERSION in ftp. Please complain at <a target="_blank" rel="noopener" href="https://github.com/geronimp/enrichM">https://github.com/geronimp/enrichM</a></p></blockquote><p><strong>解决方案：将 data.py 中的 'import urllib' 替换为 'import urllib.request'</strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">vim</span> /home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/data.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="c-sepcifying-the-location-of-the-enrichm-database"><a class="markdownIt-Anchor" href="#c-sepcifying-the-location-of-the-enrichm-database"></a> c. Sepcifying the location of the EnrichM database</h4><p>If you would like to store the EnrichM database outside of your home directory, move you need to tell EnrichM where to look. To do this, export a BASH variable named &quot;ENRICHM_DB&quot;:</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">ENRICHM_DB</span><span class="token operator">=</span>/path/to/database/ <span class="token operator">>></span>~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>注意</strong> ：/path/to/database/ 根据实际情况而定！<br><strong>报错</strong>：</p><blockquote><p>$ enrichm<br>Traceback (most recent call last):<br>File &quot;/home/hualin/miniconda3/envs/enrichm/bin/enrichm&quot;, line 38, in &lt;module&gt;<br>from enrichm.run import Run<br>File &quot;/home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/run.py&quot;, line 24, in &lt;module&gt;<br>from enrichm.network_analyzer import NetworkAnalyser<br>File &quot;/home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/network_analyzer.py&quot;, line 22, in &lt;module&gt;<br>from enrichm.network_builder import NetworkBuilder<br>File &quot;/home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/network_builder.py&quot;, line 24, in &lt;module&gt;<br>from enrichm.databases import Databases<br>File &quot;/home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/databases.py&quot;, line 28, in &lt;module&gt;<br>class Databases:<br>File &quot;/home/hualin/miniconda3/envs/enrichm/lib/python3.6/site-packages/enrichm/databases.py&quot;, line 36, in Databases<br>PICKLE_VERSION = open(os.path.join(CUR_DATABASE_DIR, 'VERSION')).readline().strip()<br>FileNotFoundError: [Errno 2] No such file or directory: '/new_data/hualin/db/enrichm_database_v10/26-11-2018/VERSION'</p></blockquote><p><strong>Solve</strong>: 将下载的数据库文件全部复制一份到 “<strong>26-11-2018</strong>” 目录中，否则后续运行 annotaton 时会提示找不到数据库文件。</p><h1 id="b-数据分析"><a class="markdownIt-Anchor" href="#b-数据分析"></a> B、数据分析</h1><h2 id="b1-使用metaphlan从reads中获取物种分类信息"><a class="markdownIt-Anchor" href="#b1-使用metaphlan从reads中获取物种分类信息"></a> B.1 使用 metaphlan 从 Reads 中获取物种分类信息</h2><h3 id="step-1-激活环境"><a class="markdownIt-Anchor" href="#step-1-激活环境"></a> Step 1. 激活环境</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda activate metaphlan<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="step-2-对paired-end-reads进行注释"><a class="markdownIt-Anchor" href="#step-2-对paired-end-reads进行注释"></a> Step 2. 对 paired-end Reads 进行注释</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ metaphlan Reads1,Reads2 --input_type fastq --bowtie2out Str1.bowtie2.bz2 --nproc <span class="token number">10</span> -o Str1_profiled.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>Reads1 和 Reads2 分别代表双端测序得到的正向和反向数据；--input_type 指定文件格式，我们拿到的下机数据一般为 fastq 格式；--bowtie2out 参数将会保存运行产生的中间文件以便后续重新运行程序时作为输入文件；--nproc 指定使用的线程数量；-o 指定输出文件名。</p><h3 id="step-3-汇总所有的结果文件"><a class="markdownIt-Anchor" href="#step-3-汇总所有的结果文件"></a> Step 3. 汇总所有的结果文件</h3><p>对所有的文件均运行 Step 2 ，产生了多个输出文件（*_profiled.txt），可以将它们汇总到一个文件中（merged_abundance_table.txt），便于后续对多个样品进行相互比较。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ merge_metaphlan_tables.py *_profiled.txt <span class="token operator">></span> merged_abundance_table.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="step-4-从合并的文件中提取种水平的分类"><a class="markdownIt-Anchor" href="#step-4-从合并的文件中提取种水平的分类"></a> Step 4. 从合并的文件中提取种水平的分类</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">grep</span> -E <span class="token string">"s__|clade"</span> merged_abundance_table.txt <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/^.*s__//g'</span> <span class="token operator">|</span> <span class="token function">cut</span> -f1,3-8 <span class="token operator">|</span> <span class="token function">sed</span> -e <span class="token string">'s/clade_name/body_site/g'</span> <span class="token operator">></span> merged_abundance_table_species.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="step-5-绘制样本间种水平的热图"><a class="markdownIt-Anchor" href="#step-5-绘制样本间种水平的热图"></a> Step 5. 绘制样本间种水平的热图</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hclust2.py -i merged_abundance_table_species.txt -o abundance_heatmap_species.png --ftop <span class="token number">50</span> --f_dist_f braycurtis --s_dist_f braycurtis --cell_aspect_ratio <span class="token number">0.5</span> -l --flabel_size <span class="token number">10</span> --slabel_size <span class="token number">10</span> --max_flabel_len <span class="token number">100</span> --max_slabel_len <span class="token number">100</span> --minv <span class="token number">0.1</span> --dpi <span class="token number">300</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="step-6-计算样本间的unifrac距离"><a class="markdownIt-Anchor" href="#step-6-计算样本间的unifrac距离"></a> Step 6. 计算样本间的 unifrac 距离</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 下载依赖的tree文件和脚本,与要分析的文件放于同一目录下</span>
+$ <span class="token function">wget</span> https://github.com/biobakery/MetaPhlAn/blob/master/metaphlan/utils/mpa_v30_CHOCOPhlAn_201901_species_tree.nwk
+$ <span class="token function">wget</span> https://github.com/biobakery/MetaPhlAn/blob/master/metaphlan/utils/calculate_unifrac.R
+
+<span class="token comment"># 开始计算距离</span>
+$ Rscript plot_unifrac.R merged_abundance_table.txt mpa_v30_CHOCOPhlAn_201901_species_tree.nwk unifrac_merged_abundance_table.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="step-7-绘制cladogram图"><a class="markdownIt-Anchor" href="#step-7-绘制cladogram图"></a> Step 7. 绘制 cladogram 图</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 激活依赖软件所在的环境</span>
+$ conda activate metawrap
+
+<span class="token comment"># 生成绘图所需的文件</span>
+$ <span class="token function">tail</span> -n +2 merged_abundance_table.txt <span class="token operator">|</span> <span class="token function">cut</span> -f1,3- <span class="token operator">></span> merged_abundance_table_reformatted.txt
+
+$ export2graphlan.py --skip_rows <span class="token number">1</span> -i merged_abundance_table_reformatted.txt --tree merged_abundance.tree.txt --annotation merged_abundance.annot.txt --most_abundant <span class="token number">100</span> --abundance_threshold <span class="token number">1</span> --least_biomarkers <span class="token number">10</span> --annotations <span class="token number">5,6</span> --external_annotations <span class="token number">7</span> --min_clade_size <span class="token number">1</span>
+
+<span class="token comment"># 绘图</span>
+$ graphlan_annotate.py --annot merged_abundance.annot.txt merged_abundance.tree.txt merged_abundance.xml
+
+$ graphlan.py --dpi <span class="token number">300</span> merged_abundance.xml merged_abundance.pdf --external_legends<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="b2-使用metawrap对reads进行组装"><a class="markdownIt-Anchor" href="#b2-使用metawrap对reads进行组装"></a> B.2 使用 metawrap 对 Reads 进行组装</h2><h3 id="step-1-激活环境-2"><a class="markdownIt-Anchor" href="#step-1-激活环境-2"></a> Step 1. 激活环境</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda activate metawrap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="step-2-组装"><a class="markdownIt-Anchor" href="#step-2-组装"></a> Step 2. 组装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ metawrap assembly -1 Reads1 -2 Reads2 -o Assemble1 -m <span class="token number">300</span> -t <span class="token number">15</span> --metaspades<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>Usage: metaWRAP assembly [options] -1 reads_1.fastq -2 reads_2.fastq -o output_dir<ul><li>Options:<ul><li><p>-1 STR forward fastq reads</p></li><li><p>-2 STR reverse fastq reads</p></li><li><p>-o STR output directory</p></li><li><p>-m INT memory in GB (default=24)</p></li><li><p>-t INT number of threads (defualt=1)</p></li><li><p>-l INT minimum length of assembled contigs (default=1000)</p></li><li><p>--megahit	assemble with megahit (default)</p></li><li><p>--metaspades	assemble with metaspades instead of megahit (better results but slower and higher memory requirement)</p></li></ul></li></ul></details><p>Reads1 和 Reads2 分别代表双端测序得到的正向和反向数据；-o 指定输出目录，-m 指定最大可用内存大小，超过设定值后程序会自动退出，建议设大一点，我 10G 的数据大概需要 180G 内存；-t 指定线程数；--metaspades 表示用 metaspades 进行组装，特别慢，但是组装结果相对好一些。</p><h2 id="b3-使用metawrap对contigs进行bining"><a class="markdownIt-Anchor" href="#b3-使用metawrap对contigs进行bining"></a> B.3 使用 metawrap 对 Contigs 进行 Bining</h2><h3 id="step-1-激活环境-3"><a class="markdownIt-Anchor" href="#step-1-激活环境-3"></a> Step 1. 激活环境</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda activate metawrap<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="step-2-bining"><a class="markdownIt-Anchor" href="#step-2-bining"></a> Step 2. Bining</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ metawrap binning -o Str1.INITIAL_BINNING -t <span class="token number">20</span> -m <span class="token number">200</span> --universal --run-checkm -a <span class="token operator">&lt;</span>path of contigs<span class="token operator">></span> --metabat2 --maxbin2 --concoct 解压的Reads1 解压的Reads2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>Usage: metaWRAP binning [options] -a assembly.fa -o output_dir readsA_1.fastq readsA_2.fastq ... [readsX_1.fastq readsX_2.fastq]<ul><li><p>Note1: Make sure to provide all your separately replicate read files, not the joined file.</p></li><li><p>Note2: You may provide single end or interleaved reads as well with the use of the correct option</p></li><li><p>Note3: If the output already has the .bam alignments files from previous runs, the module will skip re-aligning the reads</p></li><li><p>Options:</p><ul><li>-a STR metagenomic assembly file</li><li>-o STR output directory</li><li>-t INT number of threads (default=1)</li><li>-m INT amount of RAM available (default=4)</li><li>-l INT minimum contig length to bin (default=1000bp). Note: metaBAT will default to 1500bp minimum</li><li>--metabat2 bin contigs with metaBAT2</li><li>--metabat1	bin contigs with the original metaBAT</li><li>--maxbin2	bin contigs with MaxBin2</li><li>--concoct	bin contigs with CONCOCT</li><li>--universal	use universal marker genes instead of bacterial markers in MaxBin2 (improves Archaea binning)</li><li>--run-checkm	immediately run CheckM on the bin results (requires 40GB+ of memory)</li><li>--single-end	non-paired reads mode (provide *.fastq files)</li><li>--interleaved	the input read files contain interleaved paired-end reads</li></ul></li></ul></details>**注意避坑：** 这里的Reads1和Reads2需要提供解压缩后的Reads文件，不但要解压缩，还需要重命名，即后缀名必须为“\_clean\_1.fastq” 和 “\_clean\_2.fastq”，否则软件无法运行。-o指定输出目录；-t指定线程数；-m指定最大内存限制；--run-checkm表明即时检查Bining的质量；--metabat2 --maxbin2 --concoct 指定同时采用这三个分箱工具进行Bining；--universal指定MaxBin2采用universal marker 基因代替 bacterial markers (improves Archaea binning)。<h3 id="step-3-整合三种方法的bins-metabat2-maxbin2-concoct-结果"><a class="markdownIt-Anchor" href="#step-3-整合三种方法的bins-metabat2-maxbin2-concoct-结果"></a> Step 3. 整合三种方法的 bins (metabat2, maxbin2, concoct) 结果</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ metawrap bin_refinement -o F01_BIN_REFINEMENT<span class="token punctuation">(</span>输出目录<span class="token punctuation">)</span> -t <span class="token number">20</span> -A str1.INITIAL_BINNING/metabat2_bins/ -B str1.INITIAL_BINNING/maxbin2_bins/ -C str1.INITIAL_BINNING/concoct_bins/ -c <span class="token number">70</span> -x <span class="token number">5</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>Usage: metaWRAP bin_refinement [options] -o output_dir -A bin_folderA [-B bin_folderB -C bin_folderC]<ul><li><p>Note: the contig names in different bin folders must be consistant (must come from the same assembly).</p></li><li><p>Options:</p><ul><li>-o STR output directory</li><li>-t INT number of threads (default=1)</li><li>-m INT memory available (default=40)</li><li>-c INT 完整度 minimum % completion of bins [should be&gt;50%] (default=70)</li><li>-x INT 污染度 maximum % contamination of bins that is acceptable (default=10)</li><li>-A STR folder with metagenomic bins (files must have .fa or .fasta extension)</li><li>-B STR another folder with metagenomic bins</li><li>-C STR another folder with metagenomic bins</li><li>--skip-refinement	dont use binning_refiner to come up with refined bins based on combinations of binner outputs</li><li>--skip-checkm dont run CheckM to assess bins</li><li>--skip-consolidation	choose the best version of each bin from all bin refinement iteration</li><li>--keep-ambiguous	for contigs that end up in more than one bin, keep them in all bins (default: keeps them only in the best bin)</li><li>--remove-ambiguous	for contigs that end up in more than one bin, remove them in all bins (default: keeps them only in the best bin)</li><li>--quick adds --reduced_tree option to checkm, reducing runtime, especially with low memory</li></ul></li></ul></details><h3 id="step-4-blobology可视化bin"><a class="markdownIt-Anchor" href="#step-4-blobology可视化bin"></a> Step 4. Blobology 可视化 bin</h3><p><strong>一个坑：</strong> metawrap 安装的 blast 为 2.6 版本，只能用 Version 4 的 nt 库。而最新的 nt 库为 Version 5，v4 已经不再维护了。因此需要更新 metawrap 安装环境中的 blast 至 2.8.0 及以上版本，这里无法通过‘conda updata blast’实现更新，而是需要下载新版本的 blast 可执行程序，覆盖 metawrap 环境中的 blast 程度们。 如果你采用的是默认版本的 blast 和 V5 的 nt 库，会得到报错：“BLAST Database error: Error: Not a valid version 4 database”.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ metawrap blobology -a Result/Assemble/F01/final_assembly.fasta -t <span class="token number">20</span> -o F01.BLOBOLOGY --bins F01_BIN_REFINEMENT/metawrap_70_5_bins reads/F01_clean_1.fastq reads/F01_clean_2.fastq<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>Usage: metaWRAP blobology [options] -a assembly.fasta -o output_dir readsA_1.fastq readsA_2.fastq [readsB_1.fastq readsB_2.fastq ... ]<ul><li><p>Options:</p><ul><li>-a STR assembly fasta file</li><li>-o STR output directory</li><li>-t INT number of threads</li><li>--subsamble INT	Number of contigs to run blobology on. Subsampling is randomized. (default=ALL)</li><li>--bins STR	Folder containing bins. Contig names must match those of the assembly file. (default=None)</li></ul></li></ul></details><h3 id="step-5-bins-定量"><a class="markdownIt-Anchor" href="#step-5-bins-定量"></a> Step 5. Bins 定量</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ metawrap quant_bins -b F01_BIN_REFINEMENT/metawrap_70_5_bins -t <span class="token number">8</span> -o F01.QUANT_BINS -a Result/Assemble/F01/final_assembly.fasta reads/F01_clean_1.fastq reads/F01_clean_2.fastq<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>Usage: metaWRAP quant_bins [options] -b bins_folder -o output_dir -a assembly.fa readsA_1.fastq readsA_2.fastq ... [readsX_1.fastq readsX_2.fastq]<ul><li><p>Options:</p><ul><li>-b STR folder containing draft genomes (bins) in fasta format</li><li>-o STR output directory</li><li>-a STR fasta file with entire metagenomic assembly (strongly recommended!)</li><li>-t INT number of threads</li></ul></li></ul></details><h3 id="step-6-重组装"><a class="markdownIt-Anchor" href="#step-6-重组装"></a> Step 6. 重组装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">metawrap reassemble_bins -o F01.BIN_REASSEMBLY -1 reads/F01_clean_1.fastq -2 reads/F01_clean_2.fastq -t <span class="token number">20</span> -m <span class="token number">400</span> -c <span class="token number">70</span> -x <span class="token number">10</span> -b F01_BIN_REFINEMENT/metawrap_70_5_bins<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>Usage: metaWRAP reassemble_bins [options] -o output_dir -b bin_folder -1 reads_1.fastq -2 reads_2.fastq<ul><li><p>Options:</p><ul><li>-b STR folder with metagenomic bins</li><li>-o STR output directory</li><li>-1 STR forward reads to use for reassembly</li><li>-2 STR reverse reads to use for reassembly</li><li>-t INT number of threads (default=1)</li><li>-m INT memory in GB (default=40)</li><li>-c INT minimum desired bin completion % (default=70)</li><li>-x INT maximum desired bin contamination % (default=10)</li><li>-l INT minimum contig length to be included in reassembly (default=500)</li><li>--strict-cut-off	maximum allowed SNPs for strict read mapping (default=2)</li><li>--permissive-cut-off	maximum allowed SNPs for permissive read mapping (default=5)</li><li>--skip-checkm dont run CheckM to assess bins</li><li>--parallel run spades reassembly in parallel, but only using 1 thread per bin</li></ul></li></ul></details><h2 id="b4-mags注释"><a class="markdownIt-Anchor" href="#b4-mags注释"></a> B.4 MAGs 注释</h2><h3 id="b41-gtdb-tk-进行物种分类和注释构建系统发育树"><a class="markdownIt-Anchor" href="#b41-gtdb-tk-进行物种分类和注释构建系统发育树"></a> B.4.1 GTDB-TK 进行物种分类和注释，构建系统发育树</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ conda activate gtdbtk<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="classify_wfclassify-workflow-包括了step-1-3"><a class="markdownIt-Anchor" href="#classify_wfclassify-workflow-包括了step-1-3"></a> classify_wf——Classify workflow (包括了 Step 1-3)</h4><p>The classify workflow consists of three steps: identify, align, and classify.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">time</span> gtdbtk classify_wf --genome_dir metawrap_70_5_bins/ --out_dir classify_wf_output -x .fa --prefix F --cpus <span class="token number">6</span> -r --debug<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>usage: gtdbtk classify_wf (--genome_dir GENOME_DIR | --batchfile BATCHFILE) --out_dir OUT_DIR [-x EXTENSION] [--min_perc_aa MIN_PERC_AA] [--prefix PREFIX] [--cpus CPUS] [--pplacer_cpus PPLACER_CPUS] [--force] [--scratch_dir SCRATCH_DIR] [-r] [--min_af MIN_AF] [--debug] [-h]<ul><li><p>mutually exclusive required arguments:</p><ul><li>--genome_dir GENOME_DIR<br>directory containing genome files in FASTA format</li><li>--batchfile BATCHFILE<br>path to file describing genomes - tab separated in 2 or 3 columns (FASTA file, genome ID, translation table [optional])</li></ul></li><li><p>required named arguments:</p><ul><li>--out_dir OUT_DIR directory to output files</li></ul></li><li><p>optional arguments:</p><ul><li>-x, --extension EXTENSION<br>extension of files to process, gz = gzipped (default: fna)</li><li>--min_perc_aa MIN_PERC_AA<br>exclude genomes that do not have at least this percentage of AA in the MSA (inclusive bound) (default: 10)</li><li>--prefix PREFIX prefix for all output files (default: gtdbtk)</li><li>--cpus CPUS number of CPUs to use (default: 1)</li><li>--pplacer_cpus PPLACER_CPUS<br>use pplacer_cpus during placement (default: cpus)</li><li>--force continue processing if an error occurs on a single genome (default: False)</li><li>--scratch_dir SCRATCH_DIR<br>Reduce pplacer memory usage by writing to disk (slower).</li><li>-r, --recalculate_red<br>recalculate RED values based on the reference tree and all added user genomes (default: False)</li><li>--min_af MIN_AF minimum alignment fraction to consider closest genome (default: 0.65)</li><li>--debug create intermediate files for debugging purposes (default: False)</li><li>-h, --help show help message</li></ul></li></ul></details><h4 id="step-1-identify在基因组中寻找marker-genes"><a class="markdownIt-Anchor" href="#step-1-identify在基因组中寻找marker-genes"></a> Step 1: identify—— 在基因组中寻找 marker genes</h4><p>Translation table 选择：use table 11 unless the coding density using table 4 is 5% higher than when using table 11 and the coding density under table 4 is &gt;70%. GTDB-Tk 不会区分 tables 4 和 tables 5. 若用户清楚使用哪一个 table，可以通过 --batchfile 指定。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">time</span> gtdbtk identify --genome_dir metawrap_70_5_bins/ --out_dir identify_output --cpus <span class="token number">6</span> --prefix F --debug -x .fa --write_single_copy_genes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="step-2-align"><a class="markdownIt-Anchor" href="#step-2-align"></a> Step 2: align</h4><p>Create a multiple sequence alignment based on the AR122/BAC120 marker set.<br>Time 3m50.019s</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">time</span> gtdbtk align --identify_dir identify_output/ --out_dir align_output --cpus <span class="token number">3</span> --prefix F --debug<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="step-3-classify"><a class="markdownIt-Anchor" href="#step-3-classify"></a> Step 3: classify</h4><p>Determine taxonomic classification of genomes.<br>Time 118m9.386s</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">time</span> gtdbtk classify --genome_dir metawrap_70_5_bins/ --align_dir align_output/ --out_dir classify_output --cpus <span class="token number">3</span> --prefix F --debug -x .fa -r<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><strong>注意</strong>：如果内存较小，则加上 “--scratch_dir” 参数。</p><hr><h4 id="step-4-export_msa-这一步不运行"><a class="markdownIt-Anchor" href="#step-4-export_msa-这一步不运行"></a> Step 4: export_msa (这一步不运行)</h4><p>The export_msa will export the untrimmed archaeal or bacterial MSA used in the reference data.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 古菌 0m1.503s</span>
+$ <span class="token function">time</span> gtdbtk export_msa --domain arc --output msa_arc.faa --debug
+
+<span class="token comment"># 细菌 0m16.679s</span>
+$ <span class="token function">time</span> gtdbtk export_msa --domain bac --output msa_bac.faa --debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="step-5-trim_msa-这一步不运行"><a class="markdownIt-Anchor" href="#step-5-trim_msa-这一步不运行"></a> Step 5: trim_msa (这一步不运行)</h4><p>The trim_msa command will trim a MSA given a user-specified mask file, or the archaeal/bacterial mask present in the reference data.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 古菌 0m10.675s</span>
+$ <span class="token function">time</span> gtdbtk trim_msa --untrimmed_msa msa_arc.faa --output msa_arc_trim.faa --reference_mask arc --debug
+
+<span class="token comment"># 细菌 3m28.793s</span>
+$ <span class="token function">time</span> gtdbtk trim_msa --untrimmed_msa msa_bac.faa --output msa_bac_trim.faa --reference_mask bac --debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="step-6-infer"><a class="markdownIt-Anchor" href="#step-6-infer"></a> Step 6: infer</h4><p>Infer tree from multiple sequence alignment.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#古菌 44m54.884s</span>
+$ <span class="token function">time</span> gtdbtk infer --msa_file align_output/F.ar122.msa.fasta --out_dir infer_out_arc_F --prefix F --cpus <span class="token number">12</span> --debug
+
+<span class="token comment">#细菌</span>
+$ <span class="token function">time</span> gtdbtk infer --msa_file align_output/F.bac120.msa.fasta --out_dir infer_out_bac_F --prefix F --cpus <span class="token number">12</span> --debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><details><summary>点击此处查看参数</summary>usage: gtdbtk infer --msa_file MSA_FILE --out_dir OUT_DIR [--prot_model {JTT,WAG,LG}] [--no_support] [--gamma] [--prefix PREFIX] [--cpus CPUS] [--debug] [-h]<ul><li><p>required named arguments:</p><ul><li>--msa_file MSA_FILE multiple sequence alignment in FASTA format</li><li>--out_dir OUT_DIR directory to output files</li></ul></li><li><p>optional arguments:</p><ul><li>--prot_model {JTT,WAG,LG}<br>protein substitution model for tree inference (default: WAG)</li><li>--no_support do not compute local support values using the Shimodaira-Hasegawa test (default: False)</li><li>--gamma rescale branch lengths to optimize the Gamma20 likelihood (default: False)</li><li>--prefix PREFIX prefix for all output files (default: gtdbtk)</li><li>--cpus CPUS number of CPUs to use (default: 1)</li><li>--debug create intermediate files for debugging purposes (default: False)</li><li>-h, --help show help message</li></ul></li></ul></details><h4 id="step-7-decorate"><a class="markdownIt-Anchor" href="#step-7-decorate"></a> Step 7: decorate</h4><p>Decorate a tree with the GTDB-Tk taxonomy.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 古菌</span>
+$ <span class="token function">time</span> gtdbtk decorate --input_tree infer_out_arc_F/F.unrooted.tree --output_tree F.decorate_unrooted_arc.tree --gtdbtk_classification_file classify_output/classify/F.ar122.summary.tsv --debug
+
+<span class="token comment"># 细菌</span>
+$ <span class="token function">time</span> gtdbtk decorate --input_tree infer_out_bac_F/F.unrooted.tree --output_tree F.decorate_unrooted_brc.tree --gtdbtk_classification_file classify_output/classify/F.bac120.summary.tsv --debug<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><details><summary>点击此处查看参数</summary>usage: gtdbtk decorate --input_tree INPUT_TREE --output_tree OUTPUT_TREE [--gtdbtk_classification_file GTDBTK_CLASSIFICATION_FILE] [--custom_taxonomy_file CUSTOM_TAXONOMY_FILE] [--debug] [-h]<ul><li><p>required named arguments:</p><ul><li>--input_tree INPUT_TREE<br>path to the unrooted tree in Newick format</li><li>--output_tree OUTPUT_TREE<br>path to output the tree</li></ul></li><li><p>optional arguments:</p><ul><li>--gtdbtk_classification_file GTDBTK_CLASSIFICATION_FILE<br>file with GTDB-Tk classifications produced by the <code>classify</code> command</li><li>--custom_taxonomy_file CUSTOM_TAXONOMY_FILE<br>file indicating custom taxonomy strings for user genomes, that should contain any genomes belonging to the outgroup</li><li>--debug create intermediate files for debugging purposes (default: False)</li><li>-h, --help show help message</li></ul></li></ul></details><h4 id="step-8-root"><a class="markdownIt-Anchor" href="#step-8-root"></a> Step 8: root</h4><p>Root a tree using an outgroup.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">time</span> gtdbtk root --input_tree input.tree --outgroup_taxon p__Nanoarchaeota --output_tree output.tree --gtdbtk_classification_file <span class="token operator">&lt;</span>file with GTDB-Tk classifications produced by the classify command<span class="token operator">></span> --debug<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>usage: gtdbtk root --input_tree INPUT_TREE --outgroup_taxon OUTGROUP_TAXON --output_tree OUTPUT_TREE [--gtdbtk_classification_file GTDBTK_CLASSIFICATION_FILE] [--custom_taxonomy_file CUSTOM_TAXONOMY_FILE] [--debug] [-h]<ul><li><p>required named arguments:</p><ul><li>--input_tree INPUT_TREE<br>path to the unrooted tree in Newick format</li><li>--outgroup_taxon OUTGROUP_TAXON<br>taxon to use as outgroup (e.g., p__Patescibacteria or p__Altarchaeota)</li><li>--output_tree OUTPUT_TREE<br>path to output the tree</li></ul></li><li><p>optional arguments:</p><ul><li>--gtdbtk_classification_file GTDBTK_CLASSIFICATION_FILE<br>file with GTDB-Tk classifications produced by the <code>classify</code> command</li><li>--custom_taxonomy_file CUSTOM_TAXONOMY_FILE<br>file indicating custom taxonomy strings for user genomes, that should contain any genomes belonging to the outgroup</li><li>--debug create intermediate files for debugging purposes (default: False)</li><li>-h, --help show help message</li></ul></li></ul></details><hr><h4 id="step-9-ani_rep计算ani值"><a class="markdownIt-Anchor" href="#step-9-ani_rep计算ani值"></a> Step 9: ani_rep—— 计算 ANI 值</h4><p>Compute the ANI of input genomes to all GTDB-Tk representative genomes.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">time</span> gtdbtk ani_rep --genome_dir metawrap_70_5_bins/ --out_dir ani_rep/ --cpus <span class="token number">6</span> -x .fa --prefix F --debug<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-none"><code class="language-none">$ gtdbtk de_novo_wf --genome_dir metawrap_70_5_bins&#x2F; --out_dir de_novo_wf --extension .fa --bacteria --outgroup_taxon p__Patescibacteria --prefix F --cpus 6 --debug<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary>usage: gtdbtk ani_rep (--genome_dir GENOME_DIR | --batchfile BATCHFILE) --out_dir OUT_DIR [--no_mash] [--mash_k MASH_K] [--mash_s MASH_S] [--mash_d MASH_D] [--mash_v MASH_V] [--mash_db MASH_DB] [--min_af MIN_AF] [-x EXTENSION] [--prefix PREFIX] [--cpus CPUS] [--debug] [-h]<ul><li><p>mutually exclusive required arguments:</p><ul><li><p>--genome_dir GENOME_DIR<br>directory containing genome files in FASTA format</p></li><li><p>--batchfile BATCHFILE<br>path to file describing genomes - tab separated in 2 or 3 columns (FASTA file, genome ID, translation table [optional])</p></li><li><p>- required named arguments:</p></li><li><p>--out_dir OUT_DIR directory to output files</p></li></ul></li><li><p>optional Mash arguments:</p><ul><li>--no_mash skip pre-filtering of genomes using Mash (default: False)</li><li>--mash_k MASH_K k-mer size [1-32] (default: 16)</li><li>--mash_s MASH_S maximum number of non-redundant hashes (default: 5000)</li><li>--mash_d MASH_D maximum distance to keep [0-1] (default: 0.1)</li><li>--mash_v MASH_V maximum p-value to keep [0-1] (default: 1.0)</li><li>--mash_db MASH_DB path to save/read (if exists) the Mash reference sketch database (.msh)</li></ul></li><li><p>optional FastANI arguments:</p><ul><li>--min_af MIN_AF minimum alignment fraction to consider closest genome (default: 0.65)</li></ul></li><li><p>optional arguments:</p><ul><li>-x, --extension EXTENSION<br>extension of files to process, gz = gzipped (default: fna)</li><li>--prefix PREFIX prefix for all output files (default: gtdbtk)</li><li>--cpus CPUS number of CPUs to use (default: 1)</li><li>--debug create intermediate files for debugging purposes (default: False)</li><li>-h, --help show help message</li></ul></li></ul></details><h3 id="b42-enrichm-注释"><a class="markdownIt-Anchor" href="#b42-enrichm-注释"></a> B.4.2 EnrichM 注释</h3><h4 id="step-1-annotate"><a class="markdownIt-Anchor" href="#step-1-annotate"></a> Step 1. annotate</h4><p>基因组注释管道，可以使用 dbCAN 将基因组与 KO, PFAM, TIGRFAM 和 CAZY 数据库进行比对。结果将为每个基因组产生一个.gff 文件，并生成每个注释类型的频率矩阵（frequency matrix），其中行是注释 IDs，列是基因组。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ enrichm annotate --genome_directory metawrap_70_5_bins --output EnrichM_annotate --force --ko --ko_hmm --pfam --tigrfam --clusters --orthologs --cazy --ec --threads <span class="token number">30</span> --parallel <span class="token number">8</span> --suffix .fa --count_domains --chunk_number <span class="token number">8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary><ul><li><p>Output options:</p><ul><li>--output OUTPUT Output directory</li><li>--force Overwrite previous run</li></ul></li><li><p>Input options (Use one):</p><ul><li>--genome_files GENOME_FILES [GENOME_FILES ...]<br>Space separated list of genomes to annotate</li><li>--genome_directory GENOME_DIRECTORY<br>Directory containing genomes to annotate</li><li>--protein_files PROTEIN_FILES [PROTEIN_FILES ...]<br>Space separated list of .faa files of genomes to annotate. Protein files need to be generated by prodigal.</li><li>--protein_directory PROTEIN_DIRECTORY<br>Directory containing .faa files of genomes to annotate. Protein files need to be generated by prodigal.</li></ul></li><li><p>Annotations options:</p><ul><li>--ko Annotate with KO ids</li><li>--ko_hmm Annotate with KO ids</li><li>--pfam Annotate with Pfam HMMs</li><li>--tigrfam Annotate with TIGRFAM HMMs</li><li>--clusters Annotate with cluster ids</li><li>--orthologs Annotate with ortholog ids</li><li>--cazy Annotate with dbCAN HMMs</li><li>--ec Annotate with EC ids</li></ul></li><li><p>Cutoff options:</p><ul><li>--cut_ga For PFAM and TIGRfam searches: use profiles GA gathering cutoffs to set all thresholding</li><li>--cut_nc For PFAM and TIGRfam searches: use profiles NC noise cutoffs to set all thresholding</li><li>--cut_tc For PFAM and TIGRfam searches: use profiles TC trusted cutoffs to set all thresholding</li><li>--cut_ko For KO HMM annotation searches: use cutoffs defined by KEGG to maximise F-score.</li><li>--evalue EVALUE Use this evalue cutoff to filter false positives (default: 1e-05)</li><li>--bit BIT Use this bit score cutoff to filter false positives (default: 0)</li><li>--id ID Use this percent identity cutoff to filter false positives (default: 0.3)</li><li>--aln_query ALN_QUERY<br>This fraction of the query must align to the reference (default: 0.7)</li><li>--aln_reference ALN_REFERENCE<br>This fraction of the reference must align to the query (default: 0.7)</li><li>--c C When clustering, use matches above this fraction of aligned (covered) query and target residues (default: 0.7)</li></ul></li><li><p>Runtime options:</p><ul><li>--threads THREADS Use this number of threads when annotating with BLAST and HMMsearch (default: 1)</li><li>--parallel PARALLEL Run this number of jobs in parallel when annotating with HMMsearch (default: 5)</li><li>--inflation INFLATION<br>Inflation factor to use when calling clusters in ortholog (default = 5.0)</li><li>--suffix SUFFIX Treat files ending with this suffix within the --genome_directory as genomes (default: .fna for --genome_directory and .faa for )</li><li>--light Don't store metadata for genome files (can't use enrichM compare downstream, default=False)</li><li>--count_domains Fill the frequency matrix with the total number of times an annotation was detected (for example, when one domain more than once within a protein), rather than the count of proteins with with that annotation</li><li>--chunk_number CHUNK_NUMBER<br>Split loading of genomes into this many chunks (default = 4)</li><li>--chunk_max CHUNK_MAX<br>Maximum number of genomes to load per chunk (default = 2500)</li></ul></li></ul></details><h4 id="step-2-classify"><a class="markdownIt-Anchor" href="#step-2-classify"></a> Step 2. classify</h4><p>Determine what pathways a genome encodes. Classify quickly reads in KO annotations in the form of a matrix (KO IDs as rows, genomes as columns) and determines which KEGG modules are complete. Annotation matrices can be generated using the annotate function.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ enrichm classify --output EnrichM_classify/ko_hmm_frequency_table --aggregate --genome_and_annotation_matrix EnrichM_annotate/ko_hmm_frequency_table.tsv --cutoff <span class="token number">0</span>
+
+$ enrichm classify --output EnrichM_classify/ko_frequency_table --aggregate --genome_and_annotation_matrix EnrichM_annotate/ko_frequency_table.tsv --cutoff <span class="token number">0</span>
+
+<span class="token comment"># 以下6个命令可不必运行</span>
+$ enrichm classify --output EnrichM_classify/cazy_frequency_table --aggregate --genome_and_annotation_matrix EnrichM_annotate/cazy_frequency_table.tsv --cutoff <span class="token number">0</span>
+
+$ enrichm classify --output EnrichM_classify/cluster_frequency_table --aggregate --genome_and_annotation_matrix EnrichM_annotate/cluster_frequency_table.tsv --cutoff <span class="token number">0</span>
+
+$ enrichm classify --output EnrichM_classify/ec_frequency_table --aggregate --genome_and_annotation_matrix EnrichM_annotate/ec_frequency_table.tsv --cutoff <span class="token number">0</span>
+
+$ enrichm classify --output EnrichM_classify/ortholog_frequency_table --aggregate --genome_and_annotation_matrix EnrichM_annotate/ortholog_frequency_table.tsv --cutoff <span class="token number">0</span>
+
+$ enrichm classify --output EnrichM_classify/pfam_frequency_table --aggregate --genome_and_annotation_matrix EnrichM_annotate/pfam_frequency_table.tsv --cutoff <span class="token number">0</span>
+
+$ enrichm classify --output EnrichM_classify/tigrfam_frequency_table --aggregate --genome_and_annotation_matrix EnrichM_annotate/tigrfam_frequency_table.tsv --cutoff <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><details><summary>点击此处查看参数</summary><ul><li><p>Output options:</p><ul><li>--output OUTPUT Output directory</li><li>--force Overwrite previous run</li></ul></li><li><p>Input options:</p><ul><li>--genome_and_annotation_matrix GENOME_AND_ANNOTATION_MATRIX<br>Path to file containing a genome annotation matrix</li><li>--custom_modules CUSTOM_MODULES<br>Tab separated file containing module name, definition as the columns</li><li>--module_rules_json MODULE_RULES_JSON<br>json file specifying rules to interpret the annotation and guide module annotation</li><li>--gff_files GFF_FILES<br>GFF files for the genomes being classified.</li></ul></li><li><p>Cutoff options:</p><ul><li>--cutoff CUTOFF Output only modules with greater than this percent of the requied KO groups (default = print all modules)</li></ul></li><li><p>Runtime options:</p><ul><li>--aggregate Calculate the abundance of each pathway within each genome/sample (column)</li></ul></li></ul></details><h4 id="step-3-enrichment"><a class="markdownIt-Anchor" href="#step-3-enrichment"></a> Step 3. enrichment</h4><p>Enrichment will read in KO or PFAM annotations in the form of a matrix (IDs as rows, genomes as columns) and a metadata file that separates genomes into groups to compare, and will run some basic stats to determine the enrichment of modules or pfam clans between and within the groups.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ enrichm enrichment --output EnrichM_enrichment/ --metadata genome.list --annotation_matrix EnrichM_annotate/ko_frequency_table.tsv --force<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary><ul><li><p>- Output options:</p><ul><li>--output OUTPUT Output directory</li><li>--force Overwrite previous run</li></ul></li><li><p>Input options:</p><ul><li>--annotate_output ANNOTATE_OUTPUT<br>Output directory provided by enrichm annotate</li><li>--metadata METADATA Metadata file with two columns, the first with the genome name, the second with the groupings to compare.</li><li>--annotation_matrix ANNOTATION_MATRIX<br>Annotation matrix to compare.</li><li>--gff_files GFF_FILES [GFF_FILES ...]<br>Gff files for genomes to compare.</li><li>--abundance 基因组丰度矩阵</li><li>--abundance_metadata ABUNDANCE_METADATA<br>Metadata grouping abundance samples.</li><li>--transcriptome TRANSCRIPTOME 基因组丰度矩阵</li><li>--transcriptome_metadata TRANSCRIPTOME_METADATA<br>Metadata grouping abundance samples.</li></ul></li><li><p>Genome Taxonomy DataBase (GTDB) options:</p><ul><li>--batchfile BATCHFILE<br>metadata file to compare with.</li></ul></li><li><p>Runtime options:</p><ul><li>--pval_cutoff PVAL_CUTOFF<br>Only output results with a p-value below a this cutoff (default=0.05).</li><li>--proportions_cutoff PROPORTIONS_CUTOFF<br>Proportion enrichment cutoff.</li><li>--threshold THRESHOLD<br>The threshold to control for in false discovery rate of familywise error rate.</li><li>--multi_test_correction MULTI_TEST_CORRECTION<br>The form of mutiple test correction to use. Uses the statsmodel module and consequently has all of its options.<br>Default: Benjamini-Hochberg FDR (fdr_bh)<br>Options: Bonferroni (b)<br>Sidak (s)<br>Holm (h)<br>Holm-Sidak (hs)<br>Simes-Hochberg (sh)<br>Hommel (ho)<br>FDR Benjamini-Yekutieli (fdr_by)<br>FDR 2-stage Benjamini-Hochberg (fdr_tsbh)<br>FDR 2-stage Benjamini-Krieger-Yekutieli (fdr_tsbky)<br>FDR adaptive Gavrilov-Benjamini-Sarkar (fdr_gbs))</li><li>--processes PROCESSES 采用多少个进程进行富集分析</li><li>--allow_negative_values 允许输入的矩阵中有负值</li><li>--ko Compare KO ids (annotated with DIAMOND)</li><li>--ko_hmm Compare KO ids (annotated with HMMs)</li><li>--pfam Compare Pfam ids</li><li>--tigrfam Compare TIGRFAM ids</li><li>--cluster Compare cluster ids</li><li>--ortholog Compare ortholog ids</li><li>--cazy Compare dbCAN ids</li><li>--ec Compare EC ids</li><li>--range RANGE Base pair range to search for synteny within. Default = 2500.</li><li>--subblock_size SUBBLOCK_SIZE<br>Number of genes clustered in a row to be reported. Default = 2.</li><li>--operon_mismatch_cutoff OPERON_MISMATCH_CUTOFF<br>Number of allowed mismatches when searching for operons across genomes. Defaul</li><li>--operon_match_score_cutoff OPERON_MATCH_SCORE_CUTOFF<br>Score cutoff for operon matches</li></ul></li></ul></details><h4 id="step-4-pathway"><a class="markdownIt-Anchor" href="#step-4-pathway"></a> Step 4. pathway</h4><p>Pathway reads in a KO matrix and generates a Cytoscape-readable metabolic network and metadata file. Only reactions that are possible given the KOs present in the input matrix are shown, and the modules and reactions that are included in the output can be customized（<strong>报错</strong>）.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ enrichm pathway --matrix EnrichM_annotate/ko_frequency_table.tsv --genome_metadata genome.list --output EnrichM_pathway --abundance EnrichM_enrichment/F01_vs_F02_ivg_results.cdf.tsv --abundance_metadata genome.list --force<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary><ul><li><p>Input options:</p><ul><li>--matrix KO 矩阵。必须提供</li><li>--genome_metadata GENOME_METADATA<br>Metadata 文件包含两列，第一列为基因组名字，第二列 with the groupings to compare.</li><li>--abundance 丰度矩阵</li><li>--abundance_metadata ABUNDANCE_METADATA<br>Metadata 文件包含两列，第一列为基因组名字，第二列 with the groupings to compare.</li><li>--tpm_values TPM_VALUES<br>DetectM 产生的 TPM values</li><li>--tpm_metadata TPM_METADATA<br>Metadata 文件包含两列，第一列为基因组名字，第二列 with the groupings to compare.</li><li>--metabolome METABOLOME<br>Metabolome CID matrix.</li></ul></li><li><p>Logging options:</p><ul><li>--log LOG Output logging information to this file.</li><li>--verbosity VERBOSITY<br>Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent</li></ul></li><li><p>Output options:</p><ul><li>--output 输出路径</li><li>--force 覆盖之前输出的结果</li></ul></li><li><p>Pathway options:</p><ul><li>--limit LIMIT [LIMIT ...]<br>USE ONLY these reactions, or reactions within this pathway or module (space separated list).</li><li>--filter FILTER [FILTER ...]<br>Do not use these reactions, or reactions within this pathway or module (space separated list).</li><li>--enrichment_output ENRICHMENT_OUTPUT<br>Supply an enrichment output to integrate the results into the output network.</li></ul></li></ul></details><h4 id="step-5-explore"><a class="markdownIt-Anchor" href="#step-5-explore"></a> Step 5. explore</h4><p>Explore is similar to pathway, but rather than generating a specified pathway it will start from a given query compound ID, and explore the possible reactions that use that compound given the enzymes present in the input KO matrix.</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><details><summary>点击此处查看参数</summary><ul><li><p>Input options:</p><ul><li>--matrix MATRIX KO 矩阵。必须提供</li><li>--genome_metadata GENOME_METADATA<br>Metadata 文件包含两列，第一列为基因组名字，第二列 with the groupings to compare.</li><li>--abundance 丰度矩阵</li><li>--abundance_metadata ABUNDANCE_METADATA<br>Metadata 文件包含两列，第一列为基因组名字，第二列 with the groupings to compare..</li><li>--tpm_values TPM_VALUES<br>DetectM 产生的 TPM values</li><li>--tpm_metadata TPM_METADATA<br>Metadata 文件包含两列，第一列为基因组名字，第二列 with the groupings to compare..</li><li>--metabolome METABOLOME<br>Metabolome CID matrix.</li></ul></li><li><p>Logging options:</p><ul><li>--log LOG Output logging information to this file.</li><li>--verbosity VERBOSITY<br>Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent</li></ul></li><li><p>Output options:</p><ul><li>--output 输出路径</li><li>--force 覆盖之前输出的结果</li></ul></li><li><p>Query options:</p><ul><li>--queries QUERIES A file containing the KEGG ids of the compounds from which to start in the metabolic network</li><li>--depth DEPTH Number of steps to take into the metabolic network</li></ul></li></ul></details><h1 id="c-metagenome-functional-profiling"><a class="markdownIt-Anchor" href="#c-metagenome-functional-profiling"></a> C Metagenome functional profiling</h1><ul><li>从宏基因组组装的 contigs 中预测基因 ——prodigal -p meta 模式</li><li>Metagenome-assembled genes which were not included in the MAGs were subjected to taxonomic classification using <a target="_blank" rel="noopener" href="https://github.com/bioinformatics-centre/kaiju">Kaiju</a></li><li>eggNOG-mapper 比对<a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/gkv1248"> eggnog</a> 数据库</li><li>HMMER 比对<a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/gky995"> Pfam</a></li><li><a target="_blank" rel="noopener" href="https://www.kegg.jp/blastkoala/">GhostKOALA </a>和<a target="_blank" rel="noopener" href="https://www.genome.jp/tools/kofamkoala/"> KofamKOALA (v1.0.0)</a> 比对<a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/28.1.27"> KEGG</a></li><li>BLASTP 比对<a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/gkv1103"> TCDB</a></li><li><a target="_blank" rel="noopener" href="http://bcb.unl.edu/dbCAN2/">dbCAN2 (v2.0.1)</a> 比对<a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/gkn663"> CAZy</a></li><li>BLASTP 比对<a target="_blank" rel="noopener" href="https://www.ebi.ac.uk/merops/submit_searches.shtml"> MEROPS</a></li><li><a target="_blank" rel="noopener" href="https://github.com/Arkadiy-Garber/FeGenie">FeGenie</a> 检测 Iron-related genes</li><li>Fe-containing domains were characterized using <a target="_blank" rel="noopener" href="https://doi.org/10.1073/pnas.0605798103">Superfamily (v1.75)</a>.</li><li>砷呼吸和抗性基因挖掘<a target="_blank" rel="noopener" href="https://github.com/ShadeLab/PAPER_Dunivin_meta_arsenic/tree/master/HMM_search"> https://github.com/ShadeLab/PAPER_Dunivin_meta_arsenic/tree/master/HMM_search</a>，模型下载 https://github.com/ShadeLab/PAPER_Dunivin_meta_arsenic/tree/master/gene_targeted_assembly/gene_resource</li></ul><h1 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料：</h1><ul><li><a target="_blank" rel="noopener" href="https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-3.0">MetaPhlAn 3.0 tutorial</a></li><li><a target="_blank" rel="noopener" href="https://zouhua.top/archives/9d8099c8.html">MetaPhlAn 3.0: 宏基因组物种组成分析软件</a></li><li><a target="_blank" rel="noopener" href="https://github.com/biobakery/biobakery/wiki/GraPhlAn">GraPhlAn Tutorial</a></li><li></li></ul></div><div class="post-tags-categories"><div class="tags"><a href="/tags/%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84/">宏基因组</a></div></div><div class="copyright"><ul class="post-copyright"><li class="post-copyright-author"><strong>作者: </strong>Hualin Liu</li><li class="post-copyright-link"><strong>文章链接: </strong><a href="/post/ab1b.html" target="_blank" title="宏基因组分析流程及代码">https://www.liaochenlanruo.fun/post/ab1b.html</a></li><li class="post-copyright-license"><strong>版权声明: </strong>本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a> 许可协议。转载请注明出处!</li></ul><div></div></div></article><div class="post-nav"><div class="post-nav-prev post-nav-item"><div class="post-nav-img" style="background-size:cover;background-position:center center"><img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_68.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_68.webp" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt=""></div><a href="/post/4cf4.html" class="post-nav-link"><div class="title"><i class="fas fa-angle-left"></i> 上一篇:<div class="title-text">Use microeco分析扩增子数据</div></div></a></div><div class="post-nav-next post-nav-item"><div class="post-nav-img" style="background-size:cover;background-position:center center"><img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_80.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_80.webp" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt=""></div><a href="/post/9d1b.html" class="post-nav-link"><div class="title">下一篇: <i class="fas fa-angle-right"></i><div class="title-text">Linux骚操作</div></div></a></div></div><div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div><script src="/js/shareJs/social-share.min.js"></script><style>.social-share{margin:20px 0}</style><div id="myComment"><div id="gitment-container"></div></div></div><div class="toc-aside"><div class="toc-main"><div class="toc-aside-title"><i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span><div class="toc-open-close">本文目录</div></div><div class="toc-content"><div class="toc"></div></div></div></div><div id="toc-mobile-btn"><i class="fas fa-list-ul" aria-hidden="true"></i></div><script>function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })</script><script src="/js/wrapImage.js"></script></div><div id="appBgSwiper" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:-2" :style="{'background-color': bgColor ? bgColor : 'transparent'}"><transition-group tag="ul" :name="names"><li v-for="(image,index) in img" :key="index" v-show="index === mark" class="bg-swiper-box"><img :src="image" class="bg-swiper-img no-lazy"></li></transition-group></div><script>var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})</script><style>.bg-swiper-box{position:absolute;display:block;width:100%;height:100%}.bg-swiper-img{object-fit:cover;width:100%;height:100%}</style><script>function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })</script></main></div><div class="footer bg-color"><div class="footer-main"><div class="link"><a href="/atom.xml" class="social"><i class="fas fa-rss" aria-hidden="true"></i> </a><a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social"><i class="fas fa-envelope" aria-hidden="true"></i> </a><a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social"><i class="fab fa-github" aria-hidden="true"></i> </a><a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social"><i class="fab fa-qq" aria-hidden="true"></i></a></div><div class="footer-copyright"><p>Copyright © 2018 - 2022 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a></p></div><span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次 </span><span class="post-meta-divider">|</span> <span id="busuanzi_container_site_uv" style="display:none"><i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人</span><div class="footer-custom"><div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn">鄂 ICP 备 2021021941 号</a> <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725 号</a></p></div></div></div></div><div class="dark"><div class="dark-content"><i class="fas fa-moon" aria-hidden="true"></i></div></div><script>$(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })</script><div class="goTop top-btn-color" pointer><i class="fas fa-arrow-up" aria-hidden="true"></i></div><script src="/js/goTop.js"></script><link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css"><style>.aplayer .aplayer-lrc p{display:none;font-size:12px;font-weight:700;line-height:16px!important}.aplayer .aplayer-lrc p.aplayer-lrc-current{display:none;font-size:15px;color:#42b983}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><meting-js server="tencent" type="playlist" id="8062553743" fixed="true" autoplay theme="#42b983" loop order="random" preload="auto" volume="0.7" list-folded="true"></meting-js><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script>!function(){var t=document.createElement("script"),s=window.location.protocol.split(":")[0];"https"===s?t.src="https://zz.bdstatic.com/linksubmit/push.js":t.src="http://push.zhanzhang.baidu.com/push.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}()</script><script type="text/javascript" size="100" alpha="0.4" zindex="-1" src="/js/ribbon.min.js"></script><script src="/js/utils/index.js"></script><script src="/js/app.js"></script><link href="/js/tocbot/tocbot.css" rel="stylesheet"><script src="/js/tocbot/tocbot.min.js"></script><script>var headerEl = 'h1, h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }</script><style>.is-position-fixed{position:sticky!important;top:74px}.toc-main ul{counter-reset:show-list}.toc-main ul li::before{content:counter(item)".";display:block;position:absolute;left:12px;top:0}</style><script>let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })</script><script>function loadIssuesJS(){0!=$(".post-detail").find(".issues-api").length&&loadScript("/js/issues/index.js")}$(function(){loadIssuesJS()}),document.addEventListener("pjax:complete",function(){"undefined"==typeof IssuesAPI&&loadIssuesJS()})</script><script src="/js/activate-power-mode.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,document.body.addEventListener("input",POWERMODE)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css"><script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script><script src="/js/clipboard/clipboard.min.js"></script><div id="appCopy"></div><script data-pjax>var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })</script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script><script>window.lazyLoadOptions={elements_selector:".lazyload",threshold:0},window.addEventListener("LazyLoad::Initialized",function(n){window.lazyLoadInstance=n.detail.instance},!1),document.addEventListener("DOMContentLoaded",function(){lazyLoadInstance.update()}),document.addEventListener("pjax:complete",function(){lazyLoadInstance.update()})</script><script type="text/javascript">var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })</script><style>.utterances{max-width:inherit!important}</style><script src="/js/cursor/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script><script src="/js/pjax@0.2.8/index.js"></script><div class="pjax-animate"><div class="loading-circle"><div id="loader-circle"></div></div><script>window.ShowLoading=function(){$(".loading-circle").css("display","block")},window.HideLoading=function(){$(".loading-circle").css("display","none")}</script><script>document.addEventListener("pjax:complete",function(){window.HideLoading()}),document.addEventListener("pjax:send",function(){window.ShowLoading()}),document.addEventListener("pjax:error",function(){window.HideLoading()})</script></div><script>var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })</script></body></html>

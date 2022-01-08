@@ -1,0 +1,603 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport"><script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-139249935-1")</script><title>苦海或有涯，回头不见岸 | 了尘兰若的小坑</title><link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico"><link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css"><link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet"><link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet"><script>var themeModelId="";themeModelId&&localStorage.setItem("modelId",themeModelId)</script><script src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script><script>var live2dOpen=eval("true")||!1;live2dOpen||localStorage.setItem("waifu-display",1609323474481)</script><link rel="stylesheet" href="/css/animate.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css"><link rel="stylesheet" href="/js/shareJs/share.min.css"><style>@media (max-width:992px){#waifu{display:none}}</style><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml"></head><script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script><body><div id="loader"><link rel="stylesheet" href="/js/loaded/index.css"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>var endLoading=function(){document.body.style.overflow="auto",document.getElementById("loader").classList.add("loading")};window.addEventListener("DOMContentLoaded",endLoading)</script><script>let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }</script><script>function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };</script><script src="/js/swiper/swiper.min.js"></script><script src="/js/swiper/vue-awesome-swiper.js"></script><script src="/js/swiper/swiper.animate1.0.3.min.js"></script><script type="text/javascript">Vue.use(window.VueAwesomeSwiper)</script><script src="/js/vue-typed-js/index.js"></script><script src="/js/vue-seamless-scroll/index.js"></script><script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script><div id="safearea"><main class="main" id="pjax-container"><header class="header" id="navHeader" style="position:fixed;left:0;top:0;z-index:10;width:100%"><div class="header-content"><div class="bars"><div id="appDrawer" class="sidebar-image"><div class="drawer-box-icon"><i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i></div><transition name="fade"><div class="drawer-box_mask" v-cloak style="display:none" v-show="visible" @click.self="cancelDialogDrawer"></div></transition><div class="drawer-box" :class="{'active': visible}"><div class="drawer-box-head bg-color"><img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo"><h3 class="drawer-box-head_title">了尘兰若的小坑</h3><h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5></div><div class="drawer-box-content"><ul class="drawer-box-content_menu"><li class="drawer-box-content_item" style="position:relative"><a href="/" class="drawer-menu-item-link"><i class="fas fa-home" aria-hidden="true"></i> <span class="name">首页</span></a></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)"><span><i class="fas fa-archive"></i> <span class="name">归档</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(1)"><li><a href="/archives"><i class="fas fa-archive" style="margin-top:-20px"></i> <span>Archives</span></a></li><li><a href="/categories"><i class="fas fa-bookmark" style="margin-top:-20px"></i> <span>Categories</span></a></li><li><a href="/tags"><i class="fas fa-tags" style="margin-top:-20px"></i> <span>Tags</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)"><span><i class="fas fa-user"></i> <span class="name">关于</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(2)"><li><a href="/about"><i class="fas fa-user-secret" style="margin-top:-20px"></i> <span>About</span></a></li><li><a href="/me"><i class="fas fa-user-md" style="margin-top:-20px"></i> <span>我</span></a></li><li><a href="/skip/box"><i class="fas fa-box-open" style="margin-top:-20px"></i> <span>魔盒</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)"><span><i class="fas fa-link"></i> <span class="name">更多</span> </span><i class="fas fa-chevron-left arrow" :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i></a><ul class="drawer-sub-menu" v-if="isOpen(3)"><li><a href="/gallery"><i class="fas fa-camera-retro" style="margin-top:-20px"></i> <span>图库</span></a></li><li><a href="/friends"><i class="fas fa-link" style="margin-top:-20px"></i> <span>友情连接</span></a></li></ul></li><li class="drawer-box-content_item" style="position:relative"><a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link"><i class="fas fa-external-link" aria-hidden="true"></i> <span class="name">English</span></a></li><li class="drawer-box-content_item" style="position:relative"><a target="_blank" rel="noopener" href="https://travellings.link/" class="drawer-menu-item-link"><i class="fas fa-subway" aria-hidden="true"></i> <span class="name">开往</span></a></li><li class="drawer-box-content_item"><a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo"><i class="fas fa-github" aria-hidden="true"></i> <span>Github</span></a></li></ul></div></div></div><script>var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })</script></div><div class="blog-title" id="author-avatar"><div class="avatar"><img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo"></div><a href="/" class="logo">了尘兰若的小坑</a></div><nav class="navbar"><ul class="menu"><li class="menu-item" style="position:relative"><a href="/" class="menu-item-link" title="首页"><i class="fas fa-home" aria-hidden="true"></i> <span class="name">首页</span></a></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="归档"><i class="fas fa-archive"></i> <span class="name">归档</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/archives"><i class="fas fa-archive" style="margin-top:-20px"></i> <span>Archives</span></a></li><li><a href="/categories"><i class="fas fa-bookmark" style="margin-top:-20px"></i> <span>Categories</span></a></li><li><a href="/tags"><i class="fas fa-tags" style="margin-top:-20px"></i> <span>Tags</span></a></li></ul></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="关于"><i class="fas fa-user"></i> <span class="name">关于</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/about"><i class="fas fa-user-secret" style="margin-top:-20px"></i> <span>About</span></a></li><li><a href="/me"><i class="fas fa-user-md" style="margin-top:-20px"></i> <span>我</span></a></li><li><a href="/skip/box"><i class="fas fa-box-open" style="margin-top:-20px"></i> <span>魔盒</span></a></li></ul></li><li class="menu-item" style="position:relative"><a href="javascript:;" class="menu-item-link" title="更多"><i class="fas fa-link"></i> <span class="name">更多</span> <i class="fas fa-chevron-down arrow" aria-hidden="true"></i></a><ul class="sub-menu"><li><a href="/gallery"><i class="fas fa-camera-retro" style="margin-top:-20px"></i> <span>图库</span></a></li><li><a href="/friends"><i class="fas fa-link" style="margin-top:-20px"></i> <span>友情连接</span></a></li></ul></li><li class="menu-item" style="position:relative"><a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English"><i class="fas fa-external-link" aria-hidden="true"></i> <span class="name">English</span></a></li><li class="menu-item" style="position:relative"><a target="_blank" rel="noopener" href="https://travellings.link/" class="menu-item-link" title="开往"><i class="fas fa-subway" aria-hidden="true"></i> <span class="name">开往</span></a></li></ul><div id="appSearch"><div class="search" @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div><transition name="fade"><div class="message-box_wrapper" style="display:none" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()"><div class="message-box animated bounceInDown"><h2><span><i class="fas fa-search" aria-hidden="true"></i> <span class="title">本地搜索</span> </span><i class="fas fa-times close" pointer style="float:right" aria-hidden="true" @click.self="cancelDialogVisible()"></i></h2><form class="site-search-form"><input type="text" placeholder="请输入关键字" id="local-search-input" @click="getSearchFile()" class="st-search-input" v-model="searchInput"></form><div class="result-wrapper"><div id="local-search-result" class="local-search-result-cls"></div></div></div></div></transition></div><script src="/js/local_search.js"></script><script>var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })</script></nav></div><a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff;position:absolute;top:0;border:0;right:0" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style><div id="he-plugin-simple"></div><script>WIDGET={CONFIG:{modules:"012",background:5,tmpColor:"4A4A4A",tmpSize:16,cityColor:"4A4A4A",citySize:16,aqiSize:16,weatherIconSize:24,alertIconSize:18,padding:"10px 10px 10px 10px",shadow:"1",language:"auto",borderRadius:5,fixed:"false",vertical:"middle",horizontal:"center",key:"2784dd3fcb1e4f0f9a9b579bf69641f2"}}</script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script></header><link href="/js/prism/prism-line-numbers.css" rel="stylesheet"><link href="/js/prism/prism-tomorrow.min.css" rel="stylesheet"><style>pre[class*=language-]{overflow-y:hidden}.line-numbers .line-numbers-rows{border:none}</style><div class="bg-dark-floor" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:-1"></div><div class="post-detail-header" id="thumbnail_canvas" style="background-repeat:no-repeat;background-size:cover;background-position:center center;position:relative;background-image:url(https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_26.webp)"><div class="post-detail-header-mask"></div><canvas id="header_canvas" style="position:absolute;bottom:0;pointer-events:none"></canvas><div class="post-detail-header_info-box"><div class="title-box"><span class="title">苦海或有涯，回头不见岸</span></div><span class="post-detail-header_date"><i class="fas fa-calendar"></i> 发表于：2013-07-26 | </span><span class="post-detail-header_categories"><i class="iconfont iconbookmark1"></i> 分类： <a href="/categories/%E5%B0%8F%E8%AF%B4/" class="post-detail-header_category">小说</a></span><div class="post-detail-header_wordcount"><span class="totalcount"><i class="fas fa-file-text-o"></i> 字数统计: 10.9k | </span><span class="min2read"><i class="fas fa-clock"></i> 阅读时长: 36分钟 | </span><span class="reading"><i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span></span></div></div><script src="/js/bubble/bubble.js"></script></div><div class="row justify-position" style="padding-top:0"><div class="main-content"><article class="post post-detail"><div class="post-content"><p>近来精神有些恍惚，眼皮子总是抬不起来，刚刚晚上十点半就有困意了。或许是因为连续抽提了将近 4 个月的 DNA，中毒颇深，现如今，已经闻不到苯酚氯仿异戊醇那刺鼻的味道了。有些事情看多了便不觉得稀奇，有些珍馐吃的多了便味同爵蜡，有些味道闻的多了便不觉其臭。但是精神绷得劲了总有一天会感到身心俱疲，现在的我便懒言少语，无精打采。</p><span id="more"></span><p>结束了一天的实验，意料之中的结果却又出乎意料之外。人生路多坎坷，通往实验成功之峰的道路也多崎岖，重复、失败、改进、再重复，如此循环往复，有的时候是盘旋上升，而大多数时候是看不到一点点成功的曙光。实验，看似简单的两个字，耗尽了多少人的青春，流干了多少人的血汗，成功的喜悦与失败的泪水交织，谱写出科研人平凡的科研乐章，时而高昂，时而低沉。然而大部分人的乐章是不完整或不完美的，因为没有完成的事情便是缺陷。面对着忙碌一整天而收获的失败，我只能长叹息，算了吧，实验的事情留待明日解决吧，或许明天运气会好一些。突然好想回宿舍玩会儿葫芦丝，让音乐冲刷掉一身的疲惫，匆忙的收拾了一下东西便离开了实验室。<br><br>走出实验室大楼，天空一轮朦胧的月，躲在薄薄的云之后。云之薄可遮天却无法蔽月，如同薄纱遮不住少女曼妙的身体一般。若是乌云密布那就另当别论了，哪怕身材再好的少女，穿着厚厚的羽绒服，也会显得臃肿。月光穿过薄云洒下，给树冠镶上一道银边，给空气增加几分神秘感，为大地铺上一层银毯。<br><br>疲惫不堪，再无心赏月，踩着单车一路飞驰，五六分钟光景便到了寝室楼下。习惯性的抬头望向寝室，灯没有亮，老五该是又去打球了。锁好车子，直奔楼上。到了二楼，放眼望去，发现大部分寝室都没有亮灯，长长的走廊一片黑暗，一片死寂。<br><br>心里感觉有些不对劲，此时还不到十一点，怎么会如此安静。往常这时候正是热闹之时，二楼有吹笛子的，一楼有弹吉他的，楼上有引吭高歌的，而今日整栋楼却是一片死寂。<br><br>回到自己的寝室，打开灯，看到老五的车子和钥匙都在，方才确定他一定在打球，只是我刚才经过运动场的时候并没有停下来找他。整个宿舍里只有我一个人，显得有些无聊。本想吹吹葫芦丝，可又怕隔壁有人睡觉，便作罢。<br><br>不知为何，感觉身体特别沉重，眼睛干涩而疼痛，几乎睁不开了。还是早点休息吧，炎热的一天，出了一身臭汗，到厕所冲个凉先。<br><br>洗澡之时，听见有人开门的声音，心想是老五或小泉回来了，便没有理会。但当我洗完澡出来时却发现宿舍仍空无一人，门依旧是关着的。难道我刚才幻听了，或许自己有些神经质了。正打算上床，转身之时见一人站在面前。我大吃一惊，几乎被吓晕。<br><br>站在我面前的正是阿段，他家中有事，上午已经请假回去了，中午还是我送他去的车站，怎么这时候突然又杀个回马枪？<br><br>“你不是已经走了吗，怎么又回来了？” 我声音颤抖的问道。<br><br>“本来我已经走了，可是路上我发现了一个神秘的地方，所以我回来喊你一起去看看。” 阿段面无表情的说道，眼睛里看不到一点神气。<br><br>我有些摸不着头脑，试探地问道：“你没事吧？这么晚了还要去哪？什么地方那么神秘？”<br><br>阿段将嘴凑到我的耳旁悄声说道：“我发现了一片大海，好大的风浪，浪花中有无数的鱼，我们去捉些回来怎样？”<br><br>“开玩笑吧你”，我拍了一下阿段的脑袋继续说道 “武汉这地方有海？你脑袋被鱼尾巴给抽了吧，还去海里捉鱼呢！”<br><br>“是真的，不信你随我去，若是没有的话我请你喝酒，怎样？” 阿段一副似笑非笑的表情，空洞的眼睛看着我。<br><br>“好，你可别后悔，就白云边，十九年的！” 我一副得意的表情，心想这次赚大了，那一瓶可要一百多块啊，对于学生党来说，这是很奢侈的东西。<br><br>见阿段点头点了，这事就算成交了，我背起挎包便随他出发了。阿段拿了一条毛巾给我，让我蒙上眼睛，说是路上有些耀眼的东西看不得。<br><br>我哈哈大笑，随口蹦出一句话：“老子信了你的邪！”<br><br>见他仍一本正经的看着我，再想想老子的白云边，便把心一横，蒙就蒙吧，眼不见为净，反正他又不会害我，最多是个恶作剧，陪他玩一下也无妨。<br><br>一切搞定，便随着他走出宿舍，下了楼。路上我多次与他说话，他却并不怎么搭理我，只说到了就知道了。校园里都是柏油马路，所以就算是蒙着眼睛也并不难走，可走了大约半个小时之后，便开始深一脚浅一脚的了。我问阿段这是走到哪里了，难不成是到了试验田里，这小子不会是骗我到田里偷土的吧。可是我问了好几遍，却得不到他的任何回答，之前他虽然不怎么大话，却也会嗯几声，此时他完全不理我了。<br><br>“你再不理我我就把毛巾摘下来啦！” 我说道。<br><br>依旧没有回答。四周没有任何声音，安静的离奇，若不是因为我可以听得到自己喊话的声音，我会怀疑自己是不是失聪了。我再也受不了了，这恶作剧玩的有些过了，大晚上的会吓死人的。我一把拽掉蒙在眼睛上的毛巾，慢慢地睁开眼睛，却发现眼前一片漆黑。伸开手指看了一下，还好，能够看得见是五根。又过了一会儿，眼睛慢慢地适应了，可以隐约看的到周围的状况。<br><br>环顾四周，并未见到阿段的身影，喊破了嗓子也听不到回答。细想一下，他应该是在半路就把我丢下了，剩我一个人傻傻的走了这么久。然而这里并没有他所说的海，更没有鱼，甚至连一个湖或者小水湾都看不到。呈现在眼前的是昏暗月光照耀下的一片阴气森森的坟地。之前便听说过华农校园里有一片坟地，只是我一直没有机会来参观，颇为遗憾。眼前的这片坟地让我想起了我在枣院时，宿舍后面山坡上的那一片坟地，每每在月圆之夜，那些林立的石碑反射着月光散发着寒气，简直就是夏日解暑之良药。<br><br>此时，正值七月，这个时节的武汉又潮又热。坟地本是阴寒之地，尤其是午夜十二点，应该是阴气最重的时候。然而站在坟地中央的我，心中发寒，后背和手心却不停地在冒汗。看方位，这片坟地应该在学校的一角，极为偏僻。整片墓地大的出奇，一米八身高的我踮起脚尖竟看不到墓地的边际。碑石林立参差不齐，坟堆也是高低肥瘦不一，整片墓地如同背上插满了雪糕棍的大蟾蜍一般。墓地没有小路，一座坟连着另一座坟，此起彼伏，本没有密集恐惧症的我看着眼前的景象也开始起了一身鸡皮疙瘩。<br><br>月光没有照耀莱茵河，而是洒在墓地之上，所以这里没有月光曲，有的只是阴风划破空气的呜呜声，如泣如诉。其中似乎夹杂着孩童的哭闹声、妇人的哀怨声、老人的咳嗽声，自然还有鸟叫虫鸣。月光照在坟堆间、射在石碑上，洒在皮肤的每一个毛孔，一股阴寒之气从毛孔钻入，汇集到体液与血液之中，然后流变全身，侵入脏腑，毛发随之矗立，如同遭受电机一般，只是没有烧焦而已。<br><br>是谁在唱歌，寂寞没有被温暖，这歌声尖锐刺耳，是一个女人的声音，哼着我所没有听过的旋律。声音在远方，夹杂在风中飘来，时而近，时而远，总是飘忽不定。风从东方来，声音便也是从东方来，东方依然是望不尽的坟堆。<br><br>声音的主人是人还是鬼？是的，作为一个研究生，学了二十多年的马克思主义与唯物主义，此时此地，我竟然想到了鬼。科学改变了人们的生活，科学宣扬无神论，科学讲究科学，然而科学并不能使现在的我冷静下来。无助的人求神，胆小的人怕鬼，我胆子并不小，但我从来没见过这么大的墓地，还是在晚上。这里没有照明灯，没有墓地管理员，没有活人，只有风中的哭泣声与歌声，处在这样的氛围之中，我不由的还怕恐惧起来。<br><br>双手在裤子上蹭了蹭，试图擦去手心中的汗，心想，不如朝东方去，万一歌声的主人是一个人，那她应该可以带我走出这片墓地。可万一是鬼的话，那也应该是一只女鬼，或许还生的貌美如花，看起来不会太过恐怖。转念一想，脑海中又浮现出另一番景象，那女人一身红袍，长长的头发散落在肩膀，青面獠牙，口中耷拉着长而红的舌头，双眼空洞深不见底。她或许蹲在地上，亦或挂在东南枝，也可能坐在墓碑上……<br><br>思绪越飘越远，想得越多，越不寒而栗，腿脚如同灌了铅一样有些沉重，竟迈不出一步。我蹲下来，靠在一块墓碑之上，双手拍打着小腿，试图将紧绷的肌肉拍的舒缓开来。经过几次深呼吸和心理暗示之后，心脏的跳动总算恢复了常速，双腿也恢复了些力气，嘴角勉强的挤出一丝微笑，蹦出一句话：“真实活见鬼，什么时候开始这么怕鬼了！”<br><br>调整了十分钟左右，重新又站起来，在坟堆间穿梭，向着东方缓慢走去。歌声依旧缥缈，渐行渐近，一路上并没有什么恐怖的事情发生，一百多米的路程我竟走了二十分钟的样子。<br><br>前方没有坟堆，也没有墓碑，前方有女人，有男人，有老人，也有孩童，前方是一片海。原来武汉真的有海，海就在墓地的尽头，之所以认定那是海而不是湖，是因为风中夹杂着海水的腥味，那股我在烟台海边闻到的熟悉的腥味。<br><br>海比湖壮阔，海有可以淹没一个成年人的海浪。“春江潮水连海平，海上明月共潮生”，潮起潮落中浮动着月洒下的光辉，浮动着各色衣着的男女老少。是的，闷热的武汉七月的夜，形形色色的人投身于大海之中，冲着浪，洗着澡，唱着歌。海风拂面，欢笑声入耳，看着此情此景，我竟也开始兴奋起来，脱了上衣便朝大海中奔去。<br><br>面朝大海，春暖花开，泡在海水之中，享受着一波又一波浪花的拍打，所有的烦恼与不快仿佛也随着退回的浪而流入大海。“海纳百川，有容乃大”，若有如此胸怀，人生倒也过得坦荡潇洒。我慢慢地从岸边走入深处的人群之中，目光从每一个人的脸上扫过，搜寻者阿段的身影。然而这里有大约四五百人，又是晚上，只能借着月的光辉观人，必须要走到身前方才看的清楚。人有腿，有脚，有胳膊，人可以走来走去，也可以游来游去，如同开水锅里翻滚的饺子一般，增加了我的搜索难度。<br><br>半个小时过去了，我一无所获，游会岸边，坐在沙滩上，回忆着阿段说过的话。他说带我到海里捉鱼，虽然这里有海，却并未见到有鱼，海水之中的人群似乎只是在游泳，没见有人捉鱼。那么阿段应该不在这里，哪儿有鱼，哪儿有阿段。<br><br>极目远眺，海阔无边际，远方海天一线，不知通往何处。向左向右都是海，不知该往那边走。就在我纠结于朝哪个方向走的时候，一片云飘了过来，挡住了天空的月，大地一片黑暗，海面也不再波光嶙峋，就连海风也停了，海浪消失了，人们的欢声笑语不见了。静，绝对的静，比静谧还要静，整个世界仿佛入眠了一般。人们不喜欢噪声，但也不适应极度的安静，绝对的静会引发心中的不安，甚至导致身体的不适。<br><br>地面没有风，但是高空有风，风带走了遮住月的云，所以月光重新又洒了下来，没有洒在墓地，也没有洒在海面或者沙滩之上。月光洒在博二楼栋前的水泥地面之上，洒在阳台之上，照在我的脸上。此刻我就站在宿舍楼的阳台之上，看着浩瀚天空中的那轮残月，刚才的一切是幻觉？墓地与大海是梦境？用力摇了几下头，拍了拍脑袋，径直回到屋内，宿舍里仍旧是我一个人。出门望去整层楼都黑着灯，楼下望去，整栋楼都黑着灯，甚至宿管值班室也黑着灯，只有月光洒在楼上，显得鬼气森森。<br><br>楼无人，心不安，不如离去。离开宿舍楼，朝着实验室的方向走去，心想总会碰见几个人吧。路灯昏黄，透过婆娑的树叶洒下斑驳的光亮，马路悠长，逐渐由宽变窄，好一番静谧的风景画。只是此刻的我无心赏景，因为路上行人只我一个，仿佛所有的人在一夜之间从这个世界上消失了一般。孤独、恐惧、无助、惘然充斥着我的内心，我只能加快脚步，想尽快走到实验室，哪怕找到一个活人也好。<br><br>路很长，很漫长，漫长的走不到尽头，眼前只有树和路灯，还有脚底的沥青路，两侧看不到任何的建筑。灯光只限于马路两侧的树木，并找不到外侧的光景，仿佛所有的灯光都被树反射回来了一般，光线无法逃逸到马路之外。路是笔直的，没有侧路，没有出口，我别无选择，只能顺着马路走。回头，身后一片黑暗，看不到路，探脚出去却只踩到一片虚无，如同踩空一般差点摔倒，甚至是跌落。<br><br>走过的路全部被黑暗吞噬，每向前走一步，后面的路便消失一步的距离。或许不是被黑暗吞噬，因为黑暗不可能把路真正的吃掉，身后的路是真的消失不见，因为脚下空空，回头无路。世界本无路，走的人多了便踩出一条路，世人修了一条路，我走过，路便消失不见，没有了退路。我只能往前走，往前走，不回头，脚步匆匆只是为了尽早走到路的尽头，看清前方的风景，亦或是想摆脱身后未知的恐惧。未知与黑暗总会使人浮想联翩，想象力是好东西，也是坏东西，此刻，想象力带给我的是恐惧，是心慌。<br><br>我一直向前走着，时间对我已经失去了意义，因为不管走多久，前方依旧是无尽的路，我所能看到的最远方便是马路汇集成的那一个点，然后便是笼罩着那个点的黑暗。人们最害怕的往往不是路途艰险，也不是蜀道难，怕的是看不到尽头，看不到希望，最终化作绝望。“天要亡我，非战之罪”，天意弄人，我便逆天，此时的我已经走红了眼，愤怒战胜了恐惧，战胜了绝望，我不服，我不相信会困死在一条马路之上。<br><br>路便是路，是路便会有尽头，乡间小路有尽头，城市交通有尽头，人生路也有尽头，哪怕是电路也总会在终端达到其尽头。路的区别只在于铺路的材料是什么，路的宽度是多少，长度是多少。那么，我脚下的这条路只不过是比平常的马路笔直了很多，长了很多而已，它终归是有尽头的。人生没有走不完的路，脚下的路也是如此，只要我坚持走下去，不论是平坦，还是崎岖坎坷，尽头总是在尽头等着我。没有退路，也不想走退路，那还想什么，就这般向前走下去吧。<br><br>我闭上眼睛，不再看向前方，反正路是平坦而笔直的，不需要眼睛去观察障碍物，也不会走错方向。不知走了多久，脚下终于踩到了石子，这一刻，我走到了沥青路的尽头，踏入了另一条路，一条人踩出来的小路。<br><br>睁开眼，马路消失了，树木消失了，路灯也不见了，前方是一条羊肠小道，回头依旧是漆黑一片。月光洒在小路上，路很白，很干净，路边荒草丛生。一阵风袭来，吹乱了我的发丝，吹倒了路边的杂草，也将我吹得清醒了一些。小路毕竟是小路，蜿蜒曲折却不陡峭，不管怎么难走，总也比无尽的沥青路走得舒坦。人生亦是如此，太过顺利的人生终究是索然无味的，活着只是活着而已，只有艰苦奋斗的人生才能激发我们的激情。“与天斗，与地斗，其乐无穷”，这才是真正的活着。所以，站在这条陌生的小路上，我内心充满着好奇，甚至有些兴奋，人总是想着探索未知的东西，那么这条路有多长，路上又会遭遇什么，路的尽头是另一条路，还是一处场所？“路漫漫其修远兮，吾将上下而求索”。<br><br>只是想了那么一瞬，我便迈出了向前的脚步，是的，多想无益，想知道前方是什么，那么便大踏步向前去吧。这条路并不长，路上也无奇遇，只是一条普通的小路而已，转过了几道弯，路便消失了，前方是那个熟悉的地方。<br><br>风萧萧兮月光寒，人至墓地兮难归还。眼前便是刚才来到过的那片墓地，本以为之前只是自己在宿舍中产生了幻觉而已，谁知我又转回到了这片墓地。墓地是埋葬死人的地方，那么黑夜中一个活人站在墓地之中便极不和谐。七月的武汉，夜里应该是闷热的，人们在冒热汗，七月武汉的墓地，夜是阴寒的，我全身在冒冷汗。有什么比经历两次同样恐怖的事情更恐怖的事情？之前的魂被吓丢了一半，如今的魄怕是要吓的脱壳而去了吧。<br><br>墓地，除了添新坟和逢年过节有几分人气之外，其他的时间总是死气沉沉的。天黑了，鸟歇了，猫头鹰睡了，月隐了。鬼歇够了，睡饱了，怕是要出来散心了。鬼真的出来散心了，墓地热闹起来了，鬼气很火，人气很弱。<br><br>摇摆摇摆，所有的墓碑仿佛踏着节奏般晃动着，一座座坟包开始鼓胀起来，泥土如同煮沸的开水般翻滚着，千百座坟均是如此，好不壮观。<br><br>一只鬼爬出来了，两只鬼钻上来了，三只鬼冒出来了，千百只鬼都从地下来到了地表，此情此景如同植物大战僵尸游戏中的场面。只是这些鬼并不像游戏中那般死气沉沉，它们很活跃，活跃的如同活人一般。它们生前活在同一片天空下，互不相识，各自为生计而奔波。死后它们被葬在同一片坟地中，便成了邻居，如今它们不再需要奋斗，只是享受着死后的安逸时光。它们的脸上找不到一丝哀愁、没有忧伤、愤怒或者不安，一切不好的情绪都不再环绕着它们，仿佛它们并没有死，或者说它们由充满苦难的人间来到了幸福的天堂。<br><br>这些鬼相处的很和睦，这里似乎早已经步入了共产主义社会，按需分配，没有利益，便没有纠纷。它们如同一家人一般，你到我坟前打个招呼，我来你墓碑上坐一下，三五成堆，八九成群，熙熙攘攘，吵吵闹闹，每只鬼的脸上洋溢着满足而幸福的表情。它们似乎在庆祝着什么，有鬼在唱歌、有鬼在跳舞、还有鬼在划拳做游戏，这景象比人间的春节还要热闹。春节热闹却需要忙碌，鬼不需要忙碌，只有热闹。<br><br>此时的墓地氛围很融洽，不再阴森，不再恐怖，我似乎已经忘记了自己站在一片墓地之上。终于，我忍不住朝墓地中央走去，想要去感受它们的快乐，埋葬自己的烦恼。回头率这个词不单单存在于人间，墓地中也有，所有鬼的目光都聚焦在我的身上，深邃的目光散发着一丝丝凉气，凉而不寒。墓地瞬间安静下来，歌声停了，笑声停了，说话声也停了。那些鬼一会儿看看我，一会儿相互对视，似乎在通过目光传达着什么消息。本已经消逝的恐惧重新笼罩心头，手心、额头、背部全都是冷汗，如同被破了一盆冷水般。不去看，不再想，因为不敢看，更不敢想，那便什么也不想，撒腿跑路吧。<br><br>依旧没有退路，无论是笔直的马路，还是蜿蜒的小路，只要走过的路便会消失在黑暗中，我只能往前跑。墓地和我前一次来的时候是一样的，那么墓地的东方一定是那片海，海的那边有回寝室的路，那便向东方飞奔吧。<br><br>墓地终于不再安静，我的奔跑活跃了这里的气氛，鬼笑了，开怀大笑，坏坏地笑，笑的阴森，笑的冷血。我没有回头，继续前行，只是身后传来了万马奔腾之声，不是马奔，是鬼跑。一只鬼从身后超越了我，它回眸一笑，没有百媚生，因为那笑容很邪恶，充满着戏谑，还带着几分鄙夷，似乎在嘲笑我跑的很慢一般。它有资格嘲笑我，因为那只鬼是位老者，看样子是年过八十的老太太。我加快了步频，加大了步伐，想要超越它，然而另一只鬼又超越了我，然后是第三只、第四只……<br><br>回头，身后已经空无一鬼，所有的鬼都跑到了我的前方，身后只剩下几百座墓碑与坟堆，安静而荒凉。鬼在前面跑，我在后面追，看起来像是一位青年科研工作者在追杀牛鬼蛇神一般，怎么看都牛逼。可事实并非如此，我只是在奔向大海，寻找那条回家的路，哪怕前方有千百只鬼挡路，那也要硬着头皮向前冲。是非之地不宜久留，虽然到目前为止，还看不出那些鬼有什么恶意，看起来它们只是想戏耍我而已。可养过猫的人都知道，猫捉到老鼠的时候并不急于吃掉它，而是先戏耍一番，直到玩的尽兴了，玩的累了才舍得咬死它，然后美餐一顿，补充刚刚戏耍老鼠所浪费的体力。此时此地，我便是那只老鼠，而我的前方是一群猫，它们暂时没有伤害我或许是它们还没有玩够，这便是我的机会，只是我不清楚该如何在众目睽睽之下金蝉脱壳，想不清楚便不去想，由于跑得太快，我大脑有些缺氧，但脚步不能够放缓，只希望早些跑出墓地，见到大海才有希望。<br><br>听，海浪的声音。海风、海腥、海浪，大海就在前方，大海在月光下。海边依旧热闹，身前的鬼径直跑入大海之中，享受着海浪的冲击与拍打。海面上鬼山鬼海，不禁让我想起华农的游泳馆，七月份正是游泳的好时节，每年此时，游泳馆门前的路上会停满形形色色的车，人们拖家带口到泳池中乘凉，场面如同沸水锅里翻滚的饺子。只是这些 “饺子” 会游来游去，会吐口水，“小饺子” 可能还会憋不住而撒尿，再加上汗液、发丝以及不可描述的东西，饺子便不再是饺子，而是一锅混沌。<br><br>海毕竟是海，自我净化能力远远超出泳池，哪怕是再多的脏东西流入，你所能尝到的也只是苦和咸。那么海里的饺子永远也不会变成混沌，而海里的鬼也变不成人。鬼嬉戏打闹着，就如同在过泼水节一般，没有一丝死气沉沉的意味。死人本不该有生气，鬼也不该有活力，所以眼前的景象看似热闹，实则诡异不可理解。<br><br>在海边矗立了许久，四顾不见路，没有出路，坟地已然引入无边的黑暗之中，海水已经漫过我的小腿，沙滩也消失不见，除了黑暗，便只有无边的海水。本来想到海边会找到之前那条回寝室的路，然而现实总会让人从希望满满的山峰坠入绝望的谷底。无路可走，海之阔，任凭鸟飞鱼跃，人比鱼聪明，比鸟高级，但赤手空拳的人最终只能溺死在茫茫大海中。<br><br>那些鬼似乎不再眷恋自己的坟地，可劲的向大海深处游去，鬼影越来越小，最终化作一片点。黑暗越发的猖狂，从我身后慢慢的向前蔓延而来，万般无奈，我只能也学那些鬼，拼命地游向大海，往前走或许会溺死，也可能被大鱼吃掉，然而原地不动的话，那我一定会融入黑暗，化作黑暗的一部分，不得再见光明。<br><br>游泳是最容易累的一项运动，之前我走了很多路，本已经精疲力竭，此时强打精神，游了几十米便没了力气，全身的每一块肌肉都在颤抖。海水有些凉，不知是否溶解了鬼的阴气，凉的有些彻骨，我的意识开始模糊起来，感觉将要晕死过去。<br><br>迷迷糊糊中，远方有一物慢慢靠近，走至前方几十米的时候，方才看清那是一艘船，一艘大船。泪水从眼眶中滑落，那是激动的泪水，是绝望中得到一线生机的幸福之泪。心中默默地感谢了所有的神灵，谢上苍不杀之恩。大船行至身前，一道绳梯垂落，我顺着梯子往上爬，船很高，直入云霄般，我足足爬了半个小时方才到达甲板。甲板上空无一人，到处一片死寂，我才发现船上没有灯光，我只能靠着天空洒下的月光视物。<br><br>天空云消雾散，一轮圆月高悬头上，竟有几分美感。或许是船有些高，站在甲板上望月，月很大，很肥，仿佛伸手可及。月为相互依偎的年轻情侣而美，为失意诗人而殇，为天涯游子寄乡愁。此时的我却无心赏月，这艘船虽然救了我的命，然而它却散发着一股诡异的气息。<br><br>大船，是一艘木船，规模不亚于甚至远远超出杰克船长的黑珍珠号。我花了足足一个多小时才将甲板粗略的探索完，确实无人。我把希望寄托于船舱之内，那边去寻找希望，求证希望，总得找个人问一下这艘船的航向及目的地是哪里。<br><br>在甲板上又走了一会儿，终于找到了一个船舱的入口，顺着楼梯往下走，转过几道弯，便来到一处走廊之上，前方有一道门，隐约有灯光逸出。脱了鞋轻手轻脚的向那边走去，从门缝中望去，屋子内灯光昏黄，有些摇曳，原来是点的油灯。就在我聚精会神的想要观察屋内的细节之时，一只手从身后拍来落在我的饿右肩之上，被冷不丁的一吓，我整个人瘫坐在地，差点失禁。抬头望去，却是一位年轻的女人，穿着服务员样式的制服，我尴尬的一笑，表示打招呼。女人微笑的将我扶起并带入屋内，给我安排了一个座位。<br><br>四处打量一番，才发现这个屋子除了那个门之外并没有其他的门窗，几乎是密封的。屋子里有几千个座位，密密麻麻坐满了人，奇怪的是这里面并不闷热，反而有些凉爽，或许是船舱的木料导热性能比较好，否则这么多人坐在一个密闭的空间中，肯定会被闷死。<br><br>正欲向坐在旁边的大叔询问大船航向的事情，刚刚那位女服务员便已走到近前，只见她在我前面几排的地方和人们说着什么，接着那些人便掏出了纸条给女人看。原来是在查票，我心里有些慌张，我是从海里爬到船上的，并没有买票，万一被查到，会很尴尬。正抓耳挠腮不知所措的时候，女人已来到了我的面前。<br><br>“先生，请出示一下您的船票，谢谢！” 女人脸上依旧挂着甜美的微笑，本该让人感到心旷神怡，然而此时，她越是笑得甜美，我越是感到羞愧。<br><br>我假装在身上找来找去，最终勉强挤出一丝微笑说道：“不好意思，我的票可能不小心搞丢了。”<br><br>女人收了微笑，不再理我，向我身后走去。我心中纳闷，按照常理的话，我会被带去补票才对，可是看她的表现并没有难为我的意思。难不成是被我的容颜和气质征服了？不应该，一个学生就是一身屌丝气，容颜也是相貌平平。那就是看我可怜兮兮的，不忍伤害我？应该如此。想到此，我心怀感激的向身后望去，感觉女人就是一位微笑天使。只见她查票的时候，在每个人的耳边悄悄地说了一句话，然后那些人便齐刷刷的向我看来。顿时，我觉得面红耳赤，如同被扒光了衣服站在人群中央，却找不到一个地缝可以藏身。<br><br>女人回过头，望着我，脸上挂满了笑容，只是这笑容不再甜美，而是有些鄙夷，有些嘲讽。人群开始沸腾了，一句话不停地从不同的人口中冒出：“他没买票！”。<br><br>是的，是那个女人，她告诉大家我没有买票。我的确没有买票，而且我对女人撒谎说票丢了。我搞不清楚，我是因为逃票而不安，还是因为说谎而羞愧。就在此刻，我在人群中看到了老板，他静静地看着我，并没有说话，但他的眼神中充满了失望，我更加的无地自容。人群中还有很多熟悉的人，都是我的亲人、朋友和同学们，他们都注视着我，有人吐口水，有人斜眼睛，有人嘴角上扬轻哼一声，有人大骂出口。我知道，他们都在鄙视我，满头大汗的我有些恼怒，我是没有票，刚刚也说谎了，可是为什么全世界的人都站在道德的制高点来惩罚我。尤其是那个女人，为什么不是让我补票，而是要让整个屋子里的人来鄙视我、唾骂我，这不道德，不人性。<br><br>我站起身，顶住几千人目光注视的万斤压力和灼伤感，朝女人走去，我要抓住她，要问清楚她为何要这般的羞辱我。女人感受到了危险的气息，有意的躲着我，然而女人毕竟是女人，永远也抵不上一头愤怒的公牛，任凭房间再大，终究是无处可躲。<br><br>群众仿佛永远是用来围观和议论纷纷的，他们如同一具具行尸走肉般静静地看着女人被我追逐，没有一个人挺身而出说句话或者拦住我，或许是船上太过无聊，他们需要看热闹，而女人和我上演的正是热闹。女人终究还是落到了我的手上，然而我没有一拳头砸下去，或者是一脚踹倒她，因为她是个女人。<br><br>女人喘着粗气，刚才跑的有些累了，然而她脸上依旧挂着微笑，可恶的微笑。我举起右手，很想把她上扬的嘴角一巴掌排成下厥，然而不论如何，打女人总是不对的。<br><br>长舒一口气，尽可能平静的问道：“你为何要羞辱我？”<br><br>女人终于敛了笑容，脸却变得狰狞起来，最终失去了人的模样，奇丑无比，那是一张鬼脸。她是鬼，所有的人都是鬼，因为一瞬间，他们全变了脸，这是他们的船，是一艘鬼船。这些鬼便是墓地里的那些，它们离开家乡，登上大船，驶向大海的深处，也许是在寻找彼岸。<br><br>待我醒过神来，撒腿便跑，我夺门而逃，慌乱之间跑到了另一个房间，房门上写着 “售票处”。推门而进，里面有几个售票窗口，我走到最右边的窗口向里看去，里面坐着一位中年妇女。未等我开口，她便问道：“去哪儿？”。<br><br>“请问我们现在在哪儿？” 我试图搞清楚自己到底在哪里。<br><br>“当然是在苦海，还能在哪里？” 中年妇女说道。<br><br>“苦海？！” 我一脸懵逼的重复着，“苦海是哪里，怎么没听过？”<br><br>“新来的？”<br><br>我想了一下，然后点了点头。<br><br>“拿去看一下”，中年妇女递给我一张写满字的纸。<br><br>找了个座位坐下，借着油灯的光线阅读纸上的内容。标题赫然四个大字 “购票指南”，下面便是正文，我越看脸色越发的苍白，揉疼了自己的眼睛，反复看了好几遍还是不敢相信。<br><br>按照《指南》所述，我所乘坐的是一艘转世船，是专门送死去的人们或者应该称之为魂魄去投胎的。而所谓的苦海便是投胎必经之路，这片海可以通往世界各地，而我们所需的就是一张船票。船票有不同的价位，分别对应着转世后的高低贵贱，想去发达国家的发达地区的富贵家庭，便要花费最高的金额购买超级 VIP 票，如果想在国内投胎，价格相对便宜，但也分三六九等，分别对应发达、一般及贫困地区，钱少的话可以选择来世做牛做马或其他禽畜，若是没钱买票，那就只能魂飞魄散。<br><br>我的头嗡嗡作响，心想搞什么鬼，老子活生生一个大活人，上了载满鬼的转世船？这不像是恶作剧，船舱里的真的是鬼，没有人会长那样的脸，而且今晚所发生的一切都那么诡异，那就只有两种可能。第一，我的肉身通过了空间缝隙来到了鬼生存的空间；第二，我已经死了，现在只剩下魂魄，需要投胎转世了。<br><br>想到此，有点不能接受，想了想措辞，便又回到窗口问道：“阿姨，您说我是人还是鬼？”<br><br>中年妇女像看神经病一样看着我，冷笑一声说道：“你说呢？”<br><br>我一头雾水，苦笑一声，失魂落魄的转身离开。<br><br>“你可以去楼下档案管理处查一下自己的资料”，一个男人的声音传来，是坐在隔壁窗口的男人。<br><br>道过谢，我便出门朝楼下走去，不久便找到了档案室。经过一番请求，档案管理员同意帮忙查询我的资料。一会儿工夫，一个档案袋便摆在了我的面前。<br><br>“自己看吧，小心别搞乱了”，管理员说道。<br><br>我颤抖着双手，打开档案袋，里面有几页纸，其中有一页记录的是我的死亡原因及时间。<br><br>“了尘兰若，男，华农微生物学研究生，卒于 2013 年 8 月 2 日晚。死亡原因：药物中毒。状态：未投胎。”<br><br>看着纸上简短的几行字，先是震惊，然后慌乱，最后不知所措。<br><br>“今天几号？” 我问道。<br><br>“中元节”，管理员答道。<br><br>我猛然记起了什么，记得我离开寝室的时候，月亮刚好半圆，刚刚在甲板上，月已经全圆了，难道已经过了半个月了？按阴历算的话，我的死亡时间是六月二十六，今天是七月十五，已经 20 天了。如此说来，我现在是 20 天的中阴身，而一个中阴身的存活时间最多是七七四十九天，29 天之后要么投胎，要么魂飞魄散。<br><br>瘫坐于地，仔细回想着半月前所发生的事情。记得那晚我在抽 DNA，后来失败了便回了宿舍。然后便遇见从回家路上折返的阿段，再然后我便走到了墓地，来到了苦海。档案中说我是药物中毒，难道是中了苯酚氯仿异戊醇的毒？毕竟连续抽提了四个月的 DNA，对药品的味道已经麻木了，后来做实验便没有带口罩，应该是吸入毒气过多导致的死亡。<br><br>另一件浮上心头的事情是前段时间，实验室晚上没有一个人做实验，这种情况在过去几年是见所未见的，现在想来那段时间便是我死后的几日，我应该是 8 月七号左右离开的寝室到达了墓地，那么从 2 号晚上到 7 号晚上我依然还在实验室抽 DNA，这让我想起了 3 号晚上几位同学惊恐的眼神看着我，4 号以后，实验室晚上便不再有人了。这表明他们知道我死于 2 号，却在 3 号晚上看到了我的鬼魂在做实验，最终被吓跑了。<br><br>想到此有些悲伤，任凭生前玩的再怎么好，一旦死后化作鬼，便不再有人喜欢你，以往的喜欢全部化作恐惧。因为鬼应该去鬼该去的地方，而不应该在人间徘徊。<br><br>那一晚在寝室遇见阿段应该是幻觉，因为中阴身七天一个周期，时而迷糊，时而清醒。而那一晚正好是我犯迷糊的时候，以为他回来了，其实并没有。<br><br>所有的一切都已经梳理清楚了，很符合逻辑，我此时相信自己已经 over 了。没想到自己的人生路如此短暂，还未来得及绽放便已枯萎。想起那没日没夜抽 DNA 的四个月，生活过的很踏实，没有浪费时间看起来像是在珍惜生命，然而这种珍惜却最终让我付出了生命的代价。后悔自己没有抽出时间锻炼身体，没有出去走走，好好欣赏一下实验室外面的世界。总会有做不完的工作，来自老板的催促与压力也从未停止过，然而人总要为自己想一想。此时的我最想说的一句话就是 “去他妈的工作，身体才是最重要的！”<br><br>太多太多后悔的事情，后悔没做过很多事情，后悔做过的某些事情，若老天能给我再来一次的机会的话，我要活的健康，活的精彩。然而生命已逝，没有如果。<br><br>我走回售票处，找到了中间窗口的那位男子说道：“来张票”。<br><br>“去哪儿？” 男子微笑的回答道。<br><br>“回家！”<br><br>落叶归根，生我养我的地方永远是我最眷恋的地方，哪怕她是穷山恶水，也会给予我无穷的能量，更何况那里还有我最牵挂的人儿。生前追名逐利求富贵，死后返璞归真得逍遥，不再那么累……<br></p></div><div class="post-tags-categories"><div class="tags"><a href="/tags/%E9%9D%9E%E9%80%BB%E8%BE%91%E5%B0%8F%E8%AF%B4/">非逻辑小说</a></div></div><div class="copyright"><ul class="post-copyright"><li class="post-copyright-author"><strong>作者: </strong>Hualin Liu</li><li class="post-copyright-link"><strong>文章链接: </strong><a href="/post/740e.html" target="_blank" title="苦海或有涯，回头不见岸">https://www.liaochenlanruo.fun/post/740e.html</a></li><li class="post-copyright-license"><strong>版权声明: </strong>本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a> 许可协议。转载请注明出处!</li></ul><div></div></div></article><div class="post-nav"><div class="post-nav-prev post-nav-item"><div class="post-nav-img" style="background-size:cover;background-position:center center"><img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_70.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_70.webp" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt=""></div><a href="/post/1930.html" class="post-nav-link"><div class="title"><i class="fas fa-angle-left"></i> 上一篇:<div class="title-text">影子</div></div></a></div><div class="post-nav-next post-nav-item"><div class="post-nav-img" style="background-size:cover;background-position:center center"><img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_48.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_48.webp" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt=""></div><a href="/post/d36c.html" class="post-nav-link"><div class="title">下一篇: <i class="fas fa-angle-right"></i><div class="title-text">肩上的手</div></div></a></div></div><div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div><script src="/js/shareJs/social-share.min.js"></script><style>.social-share{margin:20px 0}</style><div id="myComment"><div id="gitment-container"></div></div></div><div class="toc-aside"><div class="toc-main"><div class="toc-aside-title"><i class="fas fa-list-ul" aria-hidden="true"></i><span>本文目录</span><div class="toc-open-close">本文目录</div></div><div class="toc-content"><div class="toc"></div></div></div></div><div id="toc-mobile-btn"><i class="fas fa-list-ul" aria-hidden="true"></i></div><script>function closeToc(init) {
+    $(".toc-aside").css({'width': 0, 'padding': 0, 'transition': init ?  'noe' : 'width 0.3s' });
+    $(".toc-content").css({'width': 0});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+    $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+  };
+  function openToc() {
+    $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+    $(".toc-aside").css({'width': '300px', 'padding': '0 10px', 'transition': 'width 0.3s'});
+    $(".toc-content").css({'width': '300px'});
+    $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+  }
+  function openBtnClickFn () {
+    let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+    let open = eval('' || 'true');
+    openOrCloseBtn.click(function() {
+      if (open) {
+        closeToc();
+        open = false;
+      } else {
+        openToc();
+        open = true;
+      }
+    });
+  };
+  openBtnClickFn();
+  initCloseTocWidth(true);
+
+  function initCloseTocWidth(init) {
+    if (window.innerWidth >= 992) {
+      let isClose = false;
+      isClose && closeToc(init)
+    }
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    $(".toc-aside").css({'transition': 'no'});
+  })
+  document.addEventListener('pjax:complete', function () {
+    openBtnClickFn();
+  })</script><script src="/js/wrapImage.js"></script></div><div id="appBgSwiper" style="position:fixed;left:0;top:0;width:100%;height:100%;z-index:-2" :style="{'background-color': bgColor ? bgColor : 'transparent'}"><transition-group tag="ul" :name="names"><li v-for="(image,index) in img" :key="index" v-show="index === mark" class="bg-swiper-box"><img :src="image" class="bg-swiper-img no-lazy"></li></transition-group></div><script>var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})</script><style>.bg-swiper-box{position:absolute;display:block;width:100%;height:100%}.bg-swiper-img{object-fit:cover;width:100%;height:100%}</style><script>function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })</script></main></div><div class="footer bg-color"><div class="footer-main"><div class="link"><a href="/atom.xml" class="social"><i class="fas fa-rss" aria-hidden="true"></i> </a><a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social"><i class="fas fa-envelope" aria-hidden="true"></i> </a><a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social"><i class="fab fa-github" aria-hidden="true"></i> </a><a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social"><i class="fab fa-qq" aria-hidden="true"></i></a></div><div class="footer-copyright"><p>Copyright © 2018 - 2022 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a></p></div><span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次 </span><span class="post-meta-divider">|</span> <span id="busuanzi_container_site_uv" style="display:none"><i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人</span><div class="footer-custom"><div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn">鄂 ICP 备 2021021941 号</a> <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725 号</a></p></div></div></div></div><div class="dark"><div class="dark-content"><i class="fas fa-moon" aria-hidden="true"></i></div></div><script>$(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })</script><div class="goTop top-btn-color" pointer><i class="fas fa-arrow-up" aria-hidden="true"></i></div><script src="/js/goTop.js"></script><link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css"><style>.aplayer .aplayer-lrc p{display:none;font-size:12px;font-weight:700;line-height:16px!important}.aplayer .aplayer-lrc p.aplayer-lrc-current{display:none;font-size:15px;color:#42b983}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><meting-js server="tencent" type="playlist" id="8062553743" fixed="true" autoplay theme="#42b983" loop order="random" preload="auto" volume="0.7" list-folded="true"></meting-js><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><script src="/js/fancybox/jquery.fancybox.min.js"></script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><script>!function(){var t=document.createElement("script"),s=window.location.protocol.split(":")[0];"https"===s?t.src="https://zz.bdstatic.com/linksubmit/push.js":t.src="http://push.zhanzhang.baidu.com/push.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}()</script><script type="text/javascript" size="100" alpha="0.4" zindex="-1" src="/js/ribbon.min.js"></script><script src="/js/utils/index.js"></script><script src="/js/app.js"></script><link href="/js/tocbot/tocbot.css" rel="stylesheet"><script src="/js/tocbot/tocbot.min.js"></script><script>var headerEl = 'h1, h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }</script><style>.is-position-fixed{position:sticky!important;top:74px}.toc-main ul{counter-reset:show-list}.toc-main ul li::before{content:counter(item)".";display:block;position:absolute;left:12px;top:0}</style><script>let setHeaderClass = () => {
+    const headerMenuTransparent = true;
+    if (!headerMenuTransparent) { return; }
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })</script><script>function loadIssuesJS(){0!=$(".post-detail").find(".issues-api").length&&loadScript("/js/issues/index.js")}$(function(){loadIssuesJS()}),document.addEventListener("pjax:complete",function(){"undefined"==typeof IssuesAPI&&loadIssuesJS()})</script><script src="/js/activate-power-mode.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,document.body.addEventListener("input",POWERMODE)</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css"><script src="https://cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script><script src="/js/clipboard/clipboard.min.js"></script><div id="appCopy"></div><script data-pjax>var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })</script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script><script>window.lazyLoadOptions={elements_selector:".lazyload",threshold:0},window.addEventListener("LazyLoad::Initialized",function(n){window.lazyLoadInstance=n.detail.instance},!1),document.addEventListener("DOMContentLoaded",function(){lazyLoadInstance.update()}),document.addEventListener("pjax:complete",function(){lazyLoadInstance.update()})</script><script type="text/javascript">var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })</script><style>.utterances{max-width:inherit!important}</style><script src="/js/cursor/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script><script src="/js/pjax@0.2.8/index.js"></script><div class="pjax-animate"><div class="loading-circle"><div id="loader-circle"></div></div><script>window.ShowLoading=function(){$(".loading-circle").css("display","block")},window.HideLoading=function(){$(".loading-circle").css("display","none")}</script><script>document.addEventListener("pjax:complete",function(){window.HideLoading()}),document.addEventListener("pjax:send",function(){window.ShowLoading()}),document.addEventListener("pjax:error",function(){window.HideLoading()})</script></div><script>var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })</script></body></html>
