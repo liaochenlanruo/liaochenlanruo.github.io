@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2022-01-09T04:30:54.969Z</updated>
+  <updated>2022-01-19T06:33:09.156Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Microbial Ecology投稿经验</title>
+    <link href="https://www.liaochenlanruo.fun/post/8e76.html"/>
+    <id>https://www.liaochenlanruo.fun/post/8e76.html</id>
+    <published>2022-01-19T03:06:36.000Z</published>
+    <updated>2022-01-19T06:33:09.156Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="投稿" scheme="https://www.liaochenlanruo.fun/categories/%E6%8A%95%E7%A8%BF/"/>
+    
+    
+    <category term="投稿经验" scheme="https://www.liaochenlanruo.fun/tags/%E6%8A%95%E7%A8%BF%E7%BB%8F%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用DeepARG预测抗生素抗性基因ARGs</title>
     <link href="https://www.liaochenlanruo.fun/post/92eb.html"/>
     <id>https://www.liaochenlanruo.fun/post/92eb.html</id>
     <published>2022-01-07T11:50:33.000Z</published>
-    <updated>2022-01-09T04:30:54.969Z</updated>
+    <updated>2022-01-19T02:55:11.331Z</updated>
     
     
       
@@ -106,7 +131,7 @@
     <link href="https://www.liaochenlanruo.fun/post/1551.html"/>
     <id>https://www.liaochenlanruo.fun/post/1551.html</id>
     <published>2021-12-02T01:35:30.000Z</published>
-    <updated>2022-01-09T14:10:51.664Z</updated>
+    <updated>2022-01-19T02:55:11.332Z</updated>
     
     
       
@@ -450,9 +475,9 @@
     
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
     
-    <category term="T3SS" scheme="https://www.liaochenlanruo.fun/tags/T3SS/"/>
-    
     <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
+    
+    <category term="T3SS" scheme="https://www.liaochenlanruo.fun/tags/T3SS/"/>
     
   </entry>
   
@@ -575,30 +600,6 @@
     <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
     <category term="基因岛" scheme="https://www.liaochenlanruo.fun/tags/%E5%9F%BA%E5%9B%A0%E5%B2%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>预测前噬菌体prophages</title>
-    <link href="https://www.liaochenlanruo.fun/post/53f4.html"/>
-    <id>https://www.liaochenlanruo.fun/post/53f4.html</id>
-    <published>2021-10-08T07:54:24.000Z</published>
-    <updated>2022-01-08T02:16:28.472Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本文介绍如何从细菌 / 古菌中预测前噬菌体。&lt;/p&gt;
-&lt;h1 id=&quot;软件选择&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#软件选择&quot;&gt;&lt;/a&gt; 软件选择&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
