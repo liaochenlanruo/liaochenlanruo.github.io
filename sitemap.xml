@@ -2,34 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/conda/pgcgap_v1.0.31_env.json</loc>
-    
-    <lastmod>2022-03-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.liaochenlanruo.fun/conda/pgcgap_latest_env.json</loc>
-    
-    <lastmod>2022-03-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.liaochenlanruo.fun/conda/pgcgap_v1.0.29_env.json</loc>
-    
-    <lastmod>2022-03-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.liaochenlanruo.fun/conda/pgcgap_v1.0.32_env.json</loc>
+    <loc>https://www.liaochenlanruo.fun/post/2581.html</loc>
     
     <lastmod>2022-03-01</lastmod>
     
@@ -41,15 +14,6 @@
     <loc>https://www.liaochenlanruo.fun/post/9092.html</loc>
     
     <lastmod>2022-02-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.liaochenlanruo.fun/post/2581.html</loc>
-    
-    <lastmod>2022-02-26</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -263,7 +227,7 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/post/3cc4.html</loc>
+    <loc>https://www.liaochenlanruo.fun/post/6e6b.html</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -272,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/post/6e6b.html</loc>
+    <loc>https://www.liaochenlanruo.fun/post/3cc4.html</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -605,7 +569,7 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/post/5324.html</loc>
+    <loc>https://www.liaochenlanruo.fun/post/ee68.html</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -614,7 +578,7 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/post/ee68.html</loc>
+    <loc>https://www.liaochenlanruo.fun/post/5324.html</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -893,7 +857,7 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/post/7ceb.html</loc>
+    <loc>https://www.liaochenlanruo.fun/post/d444.html</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -902,7 +866,7 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/post/d444.html</loc>
+    <loc>https://www.liaochenlanruo.fun/post/7ceb.html</loc>
     
     <lastmod>2022-01-08</lastmod>
     
@@ -1056,13 +1020,6 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/tags/Hexo/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.liaochenlanruo.fun/tags/Functional-genomics/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -1084,7 +1041,7 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/tags/JAVA/</loc>
+    <loc>https://www.liaochenlanruo.fun/tags/Hexo/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1092,6 +1049,13 @@
   
   <url>
     <loc>https://www.liaochenlanruo.fun/tags/Linux/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.liaochenlanruo.fun/tags/JAVA/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1245,13 +1209,6 @@
   </url>
   
   <url>
-    <loc>https://www.liaochenlanruo.fun/tags/T3SS/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.liaochenlanruo.fun/tags/WGS/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -1260,6 +1217,13 @@
   
   <url>
     <loc>https://www.liaochenlanruo.fun/tags/%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.liaochenlanruo.fun/tags/T3SS/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
