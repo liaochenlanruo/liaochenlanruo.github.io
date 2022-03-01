@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2022-01-19T07:08:52.008Z</updated>
+  <updated>2022-02-26T02:37:14.159Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用eggNOG-mapper注释基因组</title>
+    <link href="https://www.liaochenlanruo.fun/post/2581.html"/>
+    <id>https://www.liaochenlanruo.fun/post/2581.html</id>
+    <published>2022-02-26T02:37:14.000Z</published>
+    <updated>2022-02-26T02:37:14.159Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;eggnog-mapper简介&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#eggnog-mapper简介&quot;&gt;&lt;/a&gt; EggNOG-mapper 简介&lt;/h1&gt;
+&lt;p&gt;EggNOG-mapper (a.k.a. &lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Microbial Ecology投稿经验</title>
@@ -475,9 +497,9 @@
     
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
     
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
     <category term="T3SS" scheme="https://www.liaochenlanruo.fun/tags/T3SS/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
   </entry>
   
@@ -567,39 +589,6 @@
     <category term="perl" scheme="https://www.liaochenlanruo.fun/tags/perl/"/>
     
     <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>原核生物基因岛预测</title>
-    <link href="https://www.liaochenlanruo.fun/post/5324.html"/>
-    <id>https://www.liaochenlanruo.fun/post/5324.html</id>
-    <published>2021-10-08T11:27:05.000Z</published>
-    <updated>2022-01-08T02:16:28.434Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;软件-software-needed&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#软件-software-needed&quot;&gt;&lt;/a&gt; 软件 (Software needed)&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="Functional genomics" scheme="https://www.liaochenlanruo.fun/tags/Functional-genomics/"/>
-    
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
-    
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
-    <category term="基因岛" scheme="https://www.liaochenlanruo.fun/tags/%E5%9F%BA%E5%9B%A0%E5%B2%9B/"/>
     
   </entry>
   
