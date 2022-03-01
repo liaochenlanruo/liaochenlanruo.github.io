@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2022-03-01T02:26:56.257Z</updated>
+  <updated>2022-03-01T03:14:27.250Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nonopore基因组组装</title>
+    <link href="https://www.liaochenlanruo.fun/post/74ad.html"/>
+    <id>https://www.liaochenlanruo.fun/post/74ad.html</id>
+    <published>2022-02-26T02:37:14.000Z</published>
+    <updated>2022-03-01T03:14:27.250Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;安装软件&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#安装软件&quot;&gt;&lt;/a&gt; 安装软件&lt;/h1&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
+    
+  </entry>
   
   <entry>
     <title>使用eggNOG-mapper注释基因组</title>
@@ -35,6 +63,14 @@
     
     
     
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="Functional genomics" scheme="https://www.liaochenlanruo.fun/tags/Functional-genomics/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
   </entry>
   
@@ -560,35 +596,6 @@
     <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
     
     <category term="BioPerl" scheme="https://www.liaochenlanruo.fun/tags/BioPerl/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>按照Contig切割GenBank文件</title>
-    <link href="https://www.liaochenlanruo.fun/post/d9f9.html"/>
-    <id>https://www.liaochenlanruo.fun/post/d9f9.html</id>
-    <published>2021-10-09T02:08:00.000Z</published>
-    <updated>2022-01-08T02:16:28.449Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;当一个基因组含有多个 Contigs/Scaffolds 的时候，在 GenBank 文件中也会产生多个 LOCUS。某些软件会将 GenBank 文件作为输入，但仅支持一个 GenBank 文件中只包含一条 Contig/Scaffold，如基因岛预测软件&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
-    
-    <category term="perl" scheme="https://www.liaochenlanruo.fun/tags/perl/"/>
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
