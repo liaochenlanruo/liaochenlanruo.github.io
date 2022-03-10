@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2022-03-03T02:47:11.016Z</updated>
+  <updated>2022-03-10T03:14:47.936Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -17,11 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>WSL安装Docker避坑指北</title>
+    <link href="https://www.liaochenlanruo.fun/post/54a0.html"/>
+    <id>https://www.liaochenlanruo.fun/post/54a0.html</id>
+    <published>2022-03-10T02:43:42.000Z</published>
+    <updated>2022-03-10T03:14:47.936Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;升级wsl&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#升级wsl&quot;&gt;&lt;/a&gt; 升级 WSL&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;查看已安装的 WSL 版本 (Windows PowerShell 中运行)&lt;/p&gt;
+  &lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+    <category term="系统" scheme="https://www.liaochenlanruo.fun/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="虚拟机" scheme="https://www.liaochenlanruo.fun/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Nanopore基因组组装</title>
     <link href="https://www.liaochenlanruo.fun/post/74ad.html"/>
     <id>https://www.liaochenlanruo.fun/post/74ad.html</id>
     <published>2022-02-26T02:37:14.000Z</published>
-    <updated>2022-03-03T02:47:11.016Z</updated>
+    <updated>2022-03-03T03:12:52.137Z</updated>
     
     
       
@@ -38,9 +71,9 @@
     <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
     
     
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
   </entry>
   
@@ -67,9 +100,9 @@
     
     <category term="Functional genomics" scheme="https://www.liaochenlanruo.fun/tags/Functional-genomics/"/>
     
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
   </entry>
   
@@ -148,9 +181,9 @@
     <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
     
     
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
     <category term="蛋白质组" scheme="https://www.liaochenlanruo.fun/tags/%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%BB%84/"/>
     
@@ -177,9 +210,9 @@
     <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
     
     
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
   </entry>
   
@@ -327,11 +360,11 @@
     <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
     
     
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
-    
     <category term="NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI/"/>
     
     <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
@@ -499,9 +532,9 @@
     
     <category term="SY179" scheme="https://www.liaochenlanruo.fun/tags/SY179/"/>
     
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
   </entry>
   
@@ -530,9 +563,9 @@
     
     <category term="SY179" scheme="https://www.liaochenlanruo.fun/tags/SY179/"/>
     
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
     
     <category term="T3SS" scheme="https://www.liaochenlanruo.fun/tags/T3SS/"/>
     
@@ -563,38 +596,6 @@
     <category term="R语言" scheme="https://www.liaochenlanruo.fun/tags/R%E8%AF%AD%E8%A8%80/"/>
     
     <category term="绘图" scheme="https://www.liaochenlanruo.fun/tags/%E7%BB%98%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从GenBank文件中提取Features</title>
-    <link href="https://www.liaochenlanruo.fun/post/3a23.html"/>
-    <id>https://www.liaochenlanruo.fun/post/3a23.html</id>
-    <published>2021-10-09T06:15:45.000Z</published>
-    <updated>2022-01-08T02:16:28.429Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;二话不说，上代码，需要安装 BioPerl&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-perl&quot; data-language=&quot;perl&quot;&gt;&lt;code class=&quot;language-perl&quot;&gt;&lt;span class=&quot;token</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
-    
-    <category term="perl" scheme="https://www.liaochenlanruo.fun/tags/perl/"/>
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="BioPerl" scheme="https://www.liaochenlanruo.fun/tags/BioPerl/"/>
     
   </entry>
   

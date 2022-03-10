@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>WSL安装Docker避坑指北</title>
+      <link href="/post/54a0.html"/>
+      <url>/post/54a0.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="升级wsl"><a class="markdownIt-Anchor" href="#升级wsl"></a> 升级 WSL</h1><ul><li><p>查看已安装的 WSL 版本 (Windows PowerShell 中运行)</p>  <pre class="line-numbers language-none"><code class="language-none">wsl.exe -l -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>显示如下：</p>  <pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">  NAME                   STATE           VERSION* Ubuntu-20.04           Running         1  docker-desktop-data    Stopped         2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>看到安装的为 WSL1，据说 WSL1 不支持 Docker，所以换成 WSL2，至于 WSL1 和 WSL2 的异同可参考<a href="https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions">比较 WSL 1 和 WSL 2</a>。</p></li><li><p>安装 WSL2 (Windows PowerShell 中运行)</p>  <pre class="line-numbers language-none"><code class="language-none">wsl.exe --set-version ubuntu-20.04 2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>显示如下：</p>  <pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">正在进行转换，这可能需要几分钟时间...有关与 WSL 2 的主要区别的信息，请访问 https:&#x2F;&#x2F;aka.ms&#x2F;wsl2转换完成。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ul><h1 id="安装docker"><a class="markdownIt-Anchor" href="#安装docker"></a> 安装 Docker</h1><p>在 WSL 中运行如下命令：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> remove docker docker-engine docker.io<span class="token function">sudo</span> <span class="token function">apt</span> update<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> apt-transport-https ca-certificates <span class="token function">curl</span> software-properties-common<span class="token function">curl</span> -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="token operator">|</span> <span class="token function">sudo</span> apt-key <span class="token function">add</span> -<span class="token function">sudo</span> apt-key fingerprint 0EBFCD88<span class="token function">sudo</span> add-apt-repository <span class="token string">"deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="token variable"><span class="token variable">$(</span>lsb_release -cs<span class="token variable">)</span></span> stable"</span><span class="token function">sudo</span> <span class="token function">apt</span> update<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> docker-ce<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="root用户启动docker"><a class="markdownIt-Anchor" href="#root用户启动docker"></a> Root 用户启动 Docker</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">su</span><span class="token builtin class-name">export</span> <span class="token assign-left variable">DOCKER_HOST</span><span class="token operator">=</span>tcp://localhost:2375<span class="token function">service</span> docker start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>显示如下：</p><pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">* Starting Docker: docker<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="测试还是在root用户"><a class="markdownIt-Anchor" href="#测试还是在root用户"></a> 测试 (还是在 root 用户)</h1><pre class="line-numbers language-none"><code class="language-none">docker version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="报错"><a class="markdownIt-Anchor" href="#报错"></a> 报错</h1><p>以下是报错信息：</p><pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">Client: Docker Engine - Community Version:           20.10.12 API version:       1.41 Go version:        go1.16.12 Git commit:        e91ed57 Built:             Mon Dec 13 11:45:33 2021 OS&#x2F;Arch:           linux&#x2F;amd64 Context:           default Experimental:      trueCannot connect to the Docker daemon at tcp:&#x2F;&#x2F;localhost:2375. Is the docker daemon running?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="修复"><a class="markdownIt-Anchor" href="#修复"></a> 修复</h1><p><strong>回到普通用户运行</strong></p><ul><li><p>编辑环境变量</p>  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vi</span> ~/.bashrc<span class="token comment"># 在最下面添加一行：</span><span class="token builtin class-name">export</span> <span class="token assign-left variable">DOCKER_HOST</span><span class="token operator">=</span><span class="token string">'unix:///var/run/docker.sock'</span><span class="token builtin class-name">source</span> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>再次测试</p>  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> docker version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>显示如下表明成功：</p>  <pre class="line-numbers language-tex" data-language="tex"><code class="language-tex">Client: Docker Engine - Community Version:           20.10.12 API version:       1.41 Go version:        go1.16.12 Git commit:        e91ed57 Built:             Mon Dec 13 11:45:33 2021 OS&#x2F;Arch:           linux&#x2F;amd64 Context:           default Experimental:      trueServer: Docker Engine - Community Engine:  Version:          20.10.12  API version:      1.41 (minimum version 1.12)  Go version:       go1.16.12  Git commit:       459d0df  Built:            Mon Dec 13 11:43:42 2021  OS&#x2F;Arch:          linux&#x2F;amd64  Experimental:     false containerd:  Version:          1.4.13  GitCommit:        9cc61520f4cd876b86e77edfeb88fbcd536d1f9d runc:  Version:          1.0.3  GitCommit:        v1.0.3-0-gf46b6ba docker-init:  Version:          0.19.0  GitCommit:        de40ad0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><h1 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h1><ul><li><a href="https://blog.csdn.net/qq_44701736/article/details/119411485">WSL 安装 docker</a></li><li><a href="https://www.jianshu.com/p/7c0084fd9003">Cannot connect to the Docker daemon at tcp://localhost:2375. Is the docker daemon running?</a></li></ul><h1 id="代码获取"><a class="markdownIt-Anchor" href="#代码获取"></a> 代码获取</h1><p>关注公众号 “生信之巅”，聊天窗口回复 “” 获取下载链接。</p><table align="center"><tr>  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="生信之巅微信公众号" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-right: 0px;margin-bottom: 5px;align: center;"></td>  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="生信之巅小程序码" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-left: 0px;margin-bottom: 5px;align: center"></td></tr></table><p><font color="#FF0000"><ruby><b>敬告</b>：使用文中脚本请引用本文网址，请尊重本人的劳动成果，谢谢！<rt><b>Notice</b>: When you use the scripts in this article, please cite the link of this webpage. Thank you!</rt></ruby></font></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> IT </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 系统 </tag>
+            
+            <tag> 虚拟机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Nanopore基因组组装</title>
       <link href="/post/74ad.html"/>
       <url>/post/74ad.html</url>
@@ -20,9 +49,9 @@
       
         <tags>
             
-            <tag> WGS </tag>
-            
             <tag> 生信软件 </tag>
+            
+            <tag> WGS </tag>
             
         </tags>
       
@@ -49,9 +78,9 @@
             
             <tag> Functional genomics </tag>
             
-            <tag> WGS </tag>
-            
             <tag> 生信软件 </tag>
+            
+            <tag> WGS </tag>
             
         </tags>
       
@@ -128,9 +157,9 @@
       
         <tags>
             
-            <tag> WGS </tag>
-            
             <tag> 生信软件 </tag>
+            
+            <tag> WGS </tag>
             
             <tag> 蛋白质组 </tag>
             
@@ -157,9 +186,9 @@
       
         <tags>
             
-            <tag> WGS </tag>
-            
             <tag> 生信软件 </tag>
+            
+            <tag> WGS </tag>
             
         </tags>
       
@@ -300,11 +329,11 @@
       
         <tags>
             
-            <tag> 生信软件 </tag>
-            
             <tag> NCBI </tag>
             
             <tag> 序列处理 </tag>
+            
+            <tag> 生信软件 </tag>
             
         </tags>
       
@@ -466,9 +495,9 @@
             
             <tag> SY179 </tag>
             
-            <tag> WGS </tag>
-            
             <tag> 生信软件 </tag>
+            
+            <tag> WGS </tag>
             
         </tags>
       
@@ -497,9 +526,9 @@
             
             <tag> SY179 </tag>
             
-            <tag> WGS </tag>
-            
             <tag> 生信软件 </tag>
+            
+            <tag> WGS </tag>
             
             <tag> T3SS </tag>
             
@@ -615,9 +644,9 @@
             
             <tag> Functional genomics </tag>
             
-            <tag> WGS </tag>
-            
             <tag> 生信软件 </tag>
+            
+            <tag> WGS </tag>
             
             <tag> 基因岛 </tag>
             
