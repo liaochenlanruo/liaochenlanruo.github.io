@@ -1,0 +1,2590 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-139249935-1');
+</script>
+
+
+  <title>Shiny从入门到入定——3-在特别大的花园里面挖呀挖呀挖 | 了尘兰若的小坑</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script async src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">了尘兰若的小坑</h3>
+      <h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)">
+                  <span>
+                    
+                      <i class="fas fa-archive"></i>
+                    
+                    <span class="name">归档</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(1)">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)">
+                  <span>
+                    
+                      <i class="fas fa-user"></i>
+                    
+                    <span class="name">关于</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(2)">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(3)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">了尘兰若的小坑</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive"></i>
+                  
+                  <span class="name">归档</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user"></i>
+                  
+                  <span class="name">关于</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="menu-item-link" title="开往">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script defer>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_203.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        Shiny从入门到入定——3-在特别大的花园里面挖呀挖呀挖
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2024-01-20 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/IT/" class="post-detail-header_category">
+              IT
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 8.8k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 34分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="3-基础反应性"><a href="#3-基础反应性" class="headerlink" title="3 基础反应性"></a>3 基础反应性</h1><h2 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h2><p>在Shiny中，您使用反应式编程来表达服务器逻辑。反应式编程是一种优雅而强大的编程范式，但起初可能会让人感到迷失，因为它与编写脚本的范式非常不同。反应式编程的关键思想是定义一个依赖图，这样当输入变化时，所有相关的输出都会自动更新。这使得应用程序的流程大大简化，但需要一段时间才能理解如何将所有内容整合在一起。</p>
+<p>本章将为您提供对反应式编程的简单介绍，教授您Shiny应用中最常见的反应式结构的基本知识。我们将从服务器函数概览开始，更详细地讨论输入和输出参数的工作方式。接下来，我们将回顾最简单的反应形式（将输入直接连接到输出），然后讨论反应式表达式如何帮助您消除重复的工作。最后，我们将回顾一些新用户常见的障碍。</p>
+<h2 id="3-2-server函数"><a href="#3-2-server函数" class="headerlink" title="3.2 server函数"></a>3.2 server函数</h2><p>正如您所见，每个Shiny应用程序的内部如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">library(shiny)</span><br><span class="line"></span><br><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  # front end interface</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  # back end logic</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">shinyApp(ui, server)</span><br></pre></td></tr></table></figure>
+
+<p>上一章介绍了前端的基础知识，ui对象包含向应用程序的每个用户呈现的HTML。ui很简单，因为每个用户都获得相同的HTML。server更复杂，因为每个用户都需要获得应用程序的独立版本；当用户A移动滑块时，用户B不应该看到他们的输出变化。</p>
+<p>为了实现这种独立性，Shiny 在每次启动新会话时都会调用你的 server() 函数。就像其他任何 R 函数一样，当server函数被调用时，它会创建一个新的本地环境，该环境独立于该函数的每次其他调用。这使得每个会话都有一个唯一的状态，并隔离函数内创建的变量。这就是为什么你在 Shiny 中进行的几乎所有反应式编程都将在server函数内进行的原因。</p>
+<p>server函数有三个参数：<code>input</code>、<code>output</code>和<code>session</code>。因为你永远不会自己调用服务器函数，所以你永远不会自己创建这些对象。相反，它们是由Shiny在会话开始时创建的，会话会返回到特定的会话。目前，我们将重点放在input和output参数上，而将session留到后面的章节。</p>
+<h3 id="3-2-1-输入"><a href="#3-2-1-输入" class="headerlink" title="3.2.1 输入"></a>3.2.1 输入</h3><p>输入参数是一个类似列表的对象，其中包含从浏览器发送的所有输入数据，并根据输入ID命名。例如，如果您的UI包含一个输入ID为count的数字输入控件，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  numericInput(&quot;count&quot;, label = &quot;Number of values&quot;, value = 100)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>然后，您可以使用<code>input$count</code>访问该输入的值。它最初将包含值100，并随着用户在浏览器中更改值而自动更新。</p>
+<p>与典型的列表不同，输入对象是只读的。如果您尝试在server函数内修改输入，将会出现错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  input$count &lt;- 10  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">shinyApp(ui, server)</span><br><span class="line">#&gt; Error: Can&#x27;t modify read-only reactive value &#x27;count&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>发生此错误是因为输入反映了浏览器中正在发生的事情，而浏览器是 Shiny 的“单一事实来源”。如果你能修改 R 中的值，你可能会引入不一致，其中输入滑块在浏览器中说了一件事，而 <code>input$count</code> 在 R 中说了不同的事情。这将使编程变得具有挑战性！稍后，在第 8 章中，您将学习如何使用 <code>updateNumericInput()</code> 之类的函数来修改浏览器中的值，然后 input$count 将相应地更新。</p>
+<p>关于输入还有一件更重要的事情：它可以选择允许谁来读取它。要从输入中读取，你必须处于由 <code>renderText()</code> 或 <code>reactive()</code> 等函数创建的响应式环境中。我们很快就会回到这个想法，但这是一个重要的约束，它允许输出在输入更改时自动更新。这段代码说明了如果你犯了这个错误，你会看到的错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  message(&quot;The value of input$count is &quot;, input$count)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">shinyApp(ui, server)</span><br><span class="line">#&gt; Error: Can&#x27;t access reactive value &#x27;count&#x27; outside of reactive consumer.</span><br><span class="line">#&gt; ℹ Do you need to wrap inside reactive() or observer()?</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-2-输出"><a href="#3-2-2-输出" class="headerlink" title="3.2.2 输出"></a>3.2.2 输出</h3><p>输出与输入非常相似：它也是一个根据输出ID命名的类似列表的对象。主要区别在于，您使用它来发送输出而不是接收输入。您总是将输出对象与渲染函数一起使用，如下面的简单示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  textOutput(&quot;greeting&quot;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  output$greeting &lt;- renderText(&quot;Hello human!&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（请注意，ID在用户界面中被引用，但在服务器中没有引用——不加引号。）</p>
+<p>渲染函数做了两件事：</p>
+<ul>
+<li><p>它建立了一个特殊的反应式上下文，该上下文会自动跟踪输出所使用的输入。</p>
+</li>
+<li><p>它将您的R代码的输出转换为适合在网页上显示的HTML。</p>
+</li>
+</ul>
+<p>与输入一样，输出在使用上也是非常挑剔的。将会出现错误如果：</p>
+<ul>
+<li><p>您忘记使用渲染函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">    output$greeting &lt;- &quot;Hello human&quot;</span><br><span class="line">&#125;</span><br><span class="line">shinyApp(ui, server)</span><br><span class="line">#&gt; Error: Unexpected character object for output$greeting</span><br><span class="line">#&gt; ℹ Did you forget to use a render function?</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>试图从输出中读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">    message(&quot;The greeting is &quot;, output$greeting)</span><br><span class="line">&#125;</span><br><span class="line">shinyApp(ui, server)</span><br><span class="line">#&gt; Error: Reading from shinyoutput object is not allowed.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="3-3-响应式编程"><a href="#3-3-响应式编程" class="headerlink" title="3.3 响应式编程"></a>3.3 响应式编程</h2><p>如果应用程序只有输入或只有输出，那么它将非常无聊。Shiny的真正魔力在于当您拥有同时具有两者的应用程序时。让我们看一个简单的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  textInput(&quot;name&quot;, &quot;What&#x27;s your name?&quot;),</span><br><span class="line">  textOutput(&quot;greeting&quot;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  output$greeting &lt;- renderText(&#123;</span><br><span class="line">    paste0(&quot;Hello &quot;, input$name, &quot;!&quot;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>很难在书中展示这是如何工作的，但我在图3.1中尽力了。如果您运行应用程序并输入名称框，您会看到问候语会自动更新，就像您输入一样<sup>7</sup>。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/25d7fea6d0b5dc9d5eabb7805b9fa9ffeb44f924/c426a/demos/basic-reactivity/connection-1.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/25d7fea6d0b5dc9d5eabb7805b9fa9ffeb44f924/c426a/demos/basic-reactivity/connection-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.1：响应性意味着输出会随着输入的变化而自动更新，就像我在这个应用程序中输入“J”，“o”，“e”一样。请访问https://hadley.shinyapps.io/ms-connection查看实时更新。"></p>
+<p>这是Shiny的一个核心概念：您不需要告诉输出何时更新，因为Shiny会自动为您解决。它是如何工作的呢？函数体中到底发生了什么？让我们更准确地思考服务器函数内部的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">output$greeting &lt;- renderText(&#123;</span><br><span class="line">  paste0(&quot;Hello &quot;, input$name, &quot;!&quot;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>很容易将此理解为“将<code>hello</code>和用户名拼接在一起，然后将其发送到<code>output$greeting</code>”。但是这种思维模式在细微但重要的方面是错误的。仔细考虑一下：根据这种模型，您只发布一次指令。但是Shiny会在我们每次更新input$name时执行该操作，因此一定有更多的事情发生。</p>
+<p>应用程序之所以能够工作，是因为代码并没有告诉Shiny创建字符串并将其发送到浏览器，而是告诉Shiny如果需要的话如何创建字符串。至于代码何时（甚至是否！）运行，这取决于Shiny。它可能早在应用程序启动时就开始运行，也可能稍后运行；可能多次运行，也可能永远不运行！这并不是说Shiny反复无常，只是说决定何时执行代码是Shiny的责任，而不是您的责任。将您的应用程序视为提供食谱给Shiny，而不是给它下命令。</p>
+<h3 id="3-3-1-命令式编程与声明式编程的区别"><a href="#3-3-1-命令式编程与声明式编程的区别" class="headerlink" title="3.3.1 命令式编程与声明式编程的区别"></a>3.3.1 命令式编程与声明式编程的区别</h3><p>命令式编程和声明式编程是两种重要的编程风格，它们之间的区别在于：</p>
+<ul>
+<li><p>在命令式编程中，您发出特定的命令并立即执行。这是您在分析脚本中习惯的编程方式：您命令R加载数据、转换数据、可视化数据并将结果保存到磁盘。</p>
+</li>
+<li><p>在声明式编程中，您表达了较高的目标或描述了重要的约束，并依靠其他人来决定如何以及&#x2F;或何时将其转化为行动。这是您在Shiny中使用的编程风格。</p>
+</li>
+</ul>
+<p>使用命令式代码，您可以说“给我做个三明治”<sup>8</sup>。使用声明式代码，您可以表达“无论何时我打开冰箱，都要确保里面有一个三明治”。命令式代码是断言的；声明式代码是被动的。</p>
+<p>大部分时间，声明式编程是非常自由的：您只需要描述您的整体目标，软件就会想出如何实现它们而无需进一步的干预。不利的一面是，偶尔您会确切地知道您想要什么，但您无法弄清楚如何以声明式系统理解的方式对其进行构架<sup>9</sup>。本书的目标是帮助您发展对底层理论的理解，以尽可能减少这种情况的发生。</p>
+<h3 id="3-3-2-懒惰"><a href="#3-3-2-懒惰" class="headerlink" title="3.3.2 懒惰"></a>3.3.2 懒惰</h3><p>Shiny中声明式编程的优势之一是应用程序可以非常懒惰。Shiny应用程序只会做最少量工作来更新您当前可见的输出控件<sup>10</sup>。然而，这种懒惰有一个重要的缺点，您应该注意。你能找出下面server函数的问题吗？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  output$greting &lt;- renderText(&#123;</span><br><span class="line">    paste0(&quot;Hello &quot;, input$name, &quot;!&quot;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您仔细观察，您可能会注意到我写的是<code>greting</code>而不是<code>greeting</code>。在Shiny中，这不会产生错误，但不会实现您的期望。greting输出不存在，因此renderText()内部的代码永远不会被执行。</p>
+<p>如果您正在开发Shiny应用程序，并且您就是无法理解为什么您的代码从未运行过，请仔细检查您的UI和服务器函数是否使用相同的标识符。</p>
+<h3 id="3-3-3-响应式图"><a href="#3-3-3-响应式图" class="headerlink" title="3.3.3 响应式图"></a>3.3.3 响应式图</h3><p>Shiny的懒惰性具有另一个重要属性。在大多数R代码中，您可以通过从上到下阅读代码来理解执行顺序。这在Shiny中不起作用，因为代码只在需要时才运行。要了解执行顺序，您需要查看响应式图，它描述了输入和输出之间的连接方式。上述应用程序的响应式图非常简单，如图3.2所示。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/056990a803a41501e2dbe05df351f8b8f7b493ab/f773a/diagrams/basic-reactivity/graph-1b.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/056990a803a41501e2dbe05df351f8b8f7b493ab/f773a/diagrams/basic-reactivity/graph-1b.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.2 响应式图显示了输入和输出之间的连接方式"></p>
+<p>响应式图包含每个输入和输出的一个符号，并且我们将输入连接到输出，每当输出访问输入时。这个图告诉您greeting将需要重新计算，每当name被更改时。我们通常将这种关系描述为greeting对name具有反应依赖性。</p>
+<p>注意我们为输入和输出使用的图形约定：name输入自然适合greeting输出。我们可以将它们紧密地排列在一起，如图3.3所示，以强调它们如何组合在一起；通常我们不会这样做，因为这只适用于最简单的应用程序。</p>
+<p>响应式图中组件的形状表达了它们连接的方式。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/3140d17a6b8df9e07c37b368124b56aaa34ab348/99398/diagrams/basic-reactivity/graph-1a.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/3140d17a6b8df9e07c37b368124b56aaa34ab348/99398/diagrams/basic-reactivity/graph-1a.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.3 响应式图中组件的形状表达了它们连接的方式">。</p>
+<p>响应式图是一个强大的工具，用于理解您的应用程序如何工作。随着应用程序变得越来越复杂，快速高层次概述响应式图通常很有用，以提醒您所有组件如何组合在一起。在本书中，我们将通过显示响应式图来帮助您理解示例的工作原理，稍后在第14章中，您将学习如何使用reactlog，它将为您绘制图形。</p>
+<h3 id="3-3-4-反应式表达式"><a href="#3-3-4-反应式表达式" class="headerlink" title="3.3.4 反应式表达式"></a>3.3.4 反应式表达式</h3><p>您将在响应式图中看到的另一个重要组件是反应式表达式。现在，您可以将其视为减少响应式代码重复的工具，通过在响应式图中引入额外的节点。</p>
+<p>在我们的简单应用程序中，我们不需要反应式表达式，但我还是会添加一个，以便您可以了解它如何影响响应式图，如图3.4所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  string &lt;- reactive(paste0(&quot;Hello &quot;, input$name, &quot;!&quot;))</span><br><span class="line">  output$greeting &lt;- renderText(string())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/6966978d8dc9ac65a0dfc6ec46ff05cfeef541e2/fdc7f/diagrams/basic-reactivity/graph-2b.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/6966978d8dc9ac65a0dfc6ec46ff05cfeef541e2/fdc7f/diagrams/basic-reactivity/graph-2b.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.4：由于反应式表达式连接输入和输出，因此在其两侧绘制角度。"></p>
+<p>反应式表达式接受输入并产生输出，因此它们具有结合输入和输出特征的形状。希望这些形状可以帮助您记住组件如何组合在一起。</p>
+<h3 id="3-3-5-执行顺序"><a href="#3-3-5-执行顺序" class="headerlink" title="3.3.5 执行顺序"></a>3.3.5 执行顺序</h3><p>了解代码的执行顺序是很重要的，因为执行顺序完全由响应式图决定。这与大多数R代码不同，在大多数R代码中，执行顺序由代码行的顺序决定。例如，我们可以翻转简单server函数中的两行代码的顺序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  output$greeting &lt;- renderText(string())</span><br><span class="line">  string &lt;- reactive(paste0(&quot;Hello &quot;, input$name, &quot;!&quot;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>您可能会认为这会产生错误，因为output$greeting引用了尚未创建的响应式表达式string。但是请记住，Shiny是惰性的，因此只有在会话开始后，在string被创建后，才会运行该代码。</p>
+<p>相反，此代码产生与上述相同的响应式图，因此代码运行的顺序完全相同。像这样组织代码对于人类来说很混乱，最好避免。相反，请确保响应式表达式和输出仅引用上面定义的内容，而不是下面。这将使您的代码更易于理解。</p>
+<p>这个概念非常重要，与大多数其他R代码不同，因此我要再说一遍：响应式代码运行的顺序仅由响应图确定，而不是由其在服务器函数中的布局决定。</p>
+<h3 id="3-3-6-练习题"><a href="#3-3-6-练习题" class="headerlink" title="3.3.6 练习题"></a>3.3.6 练习题</h3><p><strong>3.3.6.1 给定如下UI：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  textInput(&quot;name&quot;, &quot;What&#x27;s your name?&quot;),</span><br><span class="line">  textOutput(&quot;greeting&quot;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>修复下面三个服务器函数中的简单错误。首先尝试通过阅读代码发现问题；然后运行代码以确保你已修复它。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server1 &lt;- function(input, output, server) &#123;</span><br><span class="line">  input$greeting &lt;- renderText(paste0(&quot;Hello &quot;, name))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server2 &lt;- function(input, output, server) &#123;</span><br><span class="line">  greeting &lt;- paste0(&quot;Hello &quot;, input$name)</span><br><span class="line">  output$greeting &lt;- renderText(greeting)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server3 &lt;- function(input, output, server) &#123;</span><br><span class="line">  output$greting &lt;- paste0(&quot;Hello&quot;, input$name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.3.6.2 绘制以下server函数的反应图：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server1 &lt;- function(input, output, session) &#123;</span><br><span class="line">  c &lt;- reactive(input$a + input$b)</span><br><span class="line">  e &lt;- reactive(c() + input$d)</span><br><span class="line">  output$f &lt;- renderText(e())</span><br><span class="line">&#125;</span><br><span class="line">server2 &lt;- function(input, output, session) &#123;</span><br><span class="line">  x &lt;- reactive(input$x1 + input$x2 + input$x3)</span><br><span class="line">  y &lt;- reactive(input$y1 + input$y2)</span><br><span class="line">  output$z &lt;- renderText(x() / y())</span><br><span class="line">&#125;</span><br><span class="line">server3 &lt;- function(input, output, session) &#123;</span><br><span class="line">  d &lt;- reactive(c() ^ input$d)</span><br><span class="line">  a &lt;- reactive(input$a * 10)</span><br><span class="line">  c &lt;- reactive(b() / input$c) </span><br><span class="line">  b &lt;- reactive(a() + input$b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.3.6.3 为何下述代码会失败？</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var &lt;- reactive(df[[input$var]])</span><br><span class="line">range &lt;- reactive(range(var(), na.rm = TRUE))</span><br></pre></td></tr></table></figure>
+
+<p>为什么 range() 和 var() 不是好的反应式命名？</p>
+<h2 id="3-4-反应表达式"><a href="#3-4-反应表达式" class="headerlink" title="3.4 反应表达式"></a>3.4 反应表达式</h2><p>我们已经在几个地方快速浏览了反应表达式，所以希望您已经了解了它们的作用。现在，我们将深入了解更多的细节，并说明为什么在构建真实应用程序时它们如此重要。</p>
+<p>反应表达式之所以重要，是因为它们为Shiny提供了更多信息，以便在输入发生变化时减少重新计算，使应用程序更高效，并通过简化反应图来让人类更容易理解应用程序。反应表达式具有输入和输出的味道：</p>
+<p>与输入类似，您可以在输出中使用反应表达式的计算结果。</p>
+<p>与输出类似，反应表达式依赖于输入，并自动知道何时需要更新。</p>
+<p>这种双重性意味着我们需要一些新的词汇：我将使用<code>生产者</code>来指代反应输入和表达式，而<code>消费者</code>则指代反应表达式和输出。图3.5用维恩图展示了这种关系。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/8dcc3f2cbc55486a76b33a5acd30e379cd05d8ab/27c40/diagrams/basic-reactivity/producers-consumers.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/8dcc3f2cbc55486a76b33a5acd30e379cd05d8ab/27c40/diagrams/basic-reactivity/producers-consumers.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.5 输入和表达式是反应性的生产者；表达式和输出是反应性的消费者"></p>
+<p>我们需要一个更复杂的应用程序来查看使用响应式表达式的优点。首先，我们将通过定义一些常规的R函数来为我们的应用程序提供支持，从而为我们的应用程序搭建舞台。</p>
+<h3 id="3-4-1-动机"><a href="#3-4-1-动机" class="headerlink" title="3.4.1 动机"></a>3.4.1 动机</h3><p>假设我想用绘图和假设检验来比较两个模拟数据集。我做了一些实验，并提出了以下函数：<code>freqpoly()</code>用频率多边形<sup>12</sup>可视化两个分布，<code>t_test()</code>使用t检验来比较均值，并用字符串总结结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">library(ggplot2)</span><br><span class="line"></span><br><span class="line">freqpoly &lt;- function(x1, x2, binwidth = 0.1, xlim = c(-3, 3)) &#123;</span><br><span class="line">  df &lt;- data.frame(</span><br><span class="line">    x = c(x1, x2),</span><br><span class="line">    g = c(rep(&quot;x1&quot;, length(x1)), rep(&quot;x2&quot;, length(x2)))</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  ggplot(df, aes(x, colour = g)) +</span><br><span class="line">    geom_freqpoly(binwidth = binwidth, size = 1) +</span><br><span class="line">    coord_cartesian(xlim = xlim)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">t_test &lt;- function(x1, x2) &#123;</span><br><span class="line">  test &lt;- t.test(x1, x2)</span><br><span class="line">  </span><br><span class="line">  # use sprintf() to format t.test() results compactly</span><br><span class="line">  sprintf(</span><br><span class="line">    &quot;p value: %0.3f\n[%0.2f, %0.2f]&quot;,</span><br><span class="line">    test$p.value, test$conf.int[1], test$conf.int[2]</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>:::primary 译者注<br><strong>译者注：</strong></p>
+<p>这段代码中定义了两个函数，freqpoly和t_test。以下是它们的简单解释：</p>
+<ol>
+<li><p><code>freqpoly</code>函数：<br>这个函数是为了对比两个数据集x1和x2的分布。它首先将这两个数据集合并到一个数据框中，并为每个数据集分配一个组别”x1”和”x2”。然后，它使用ggplot2包的<code>geom_freqpoly</code>函数绘制频数多边形图，这个图能够展示数据的分布情况。<code>binwidth</code>参数决定了分箱的宽度，而<code>xlim</code>参数则设定了x轴的显示范围。</p>
+</li>
+<li><p><code>t_test</code>函数：<br>这个函数执行t检验，这是一种用于比较两组平均值是否有显著差异的统计检验方法。函数接受两个向量x1和x2作为输入，然后使用R的内置<code>t.test</code>函数执行t检验。然后，它使用<code>sprintf</code>函数以一种格式化的方式返回结果，包括p值以及95%置信区间。</p>
+<p> <strong>注意</strong>：在这段代码中，<code>sprintf</code>函数用于格式化输出字符串。”%0.3f”表示浮点数，保留3位小数；”[%0.2f, %0.2f]”表示浮点数，保留2位小数，用于显示置信区间。</p>
+</li>
+</ol>
+<p>:::</p>
+<p>如果我有一些模拟数据，我可以使用这些函数来比较两个变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x1 &lt;- rnorm(100, mean = 0, sd = 0.5)</span><br><span class="line">x2 &lt;- rnorm(200, mean = 0.15, sd = 0.9)</span><br><span class="line"></span><br><span class="line">freqpoly(x1, x2)</span><br><span class="line">cat(t_test(x1, x2))</span><br><span class="line">#&gt; p value: 0.005</span><br><span class="line">#&gt; [-0.39, -0.07]</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/28bdfb538762e0db56567d98e6b847723161da73/a520e/basic-reactivity_files/figure-html/unnamed-chunk-19-1.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/28bdfb538762e0db56567d98e6b847723161da73/a520e/basic-reactivity_files/figure-html/unnamed-chunk-19-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p>在真正的分析中，你可能在完成这些函数之前已经做了一堆探索。我在这里跳过了这个探索，这样我们就可以尽快地进入应用程序。但是将命令式代码提取到常规函数中是所有Shiny应用程序的一项重要技术：你从应用程序中提取的代码越多，就越容易理解。这是很好的软件工程，因为它有助于隔离问题：应用程序外的函数专注于计算，这样应用程序内的代码就可以专注于响应用户操作。我们将在第18章再次回到这个想法。</p>
+<h3 id="3-4-2-应用程序"><a href="#3-4-2-应用程序" class="headerlink" title="3.4.2 应用程序"></a>3.4.2 应用程序</h3><p>我想使用这两个工具快速探索一系列模拟。Shiny应用程序是一种很好的方法，因为它可以让你避免繁琐地修改和重新运行R代码。下面我将这些部分打包成一个Shiny应用程序，在这里我可以交互式地调整输入。</p>
+<p>让我们从UI开始。我们将在第6.2.3节中详细介绍<code>fluidRow()</code>和<code>column()</code>的作用；但是你可以从它们的名字中猜出它们的目的。第一行有三个用于输入控件的列（distribution 1、distribution 2和绘图控件）。第二行有一个宽列用于绘图，一个窄列用于假设检验。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  fluidRow(</span><br><span class="line">    column(4, </span><br><span class="line">      &quot;Distribution 1&quot;,</span><br><span class="line">      numericInput(&quot;n1&quot;, label = &quot;n&quot;, value = 1000, min = 1),</span><br><span class="line">      numericInput(&quot;mean1&quot;, label = &quot;µ&quot;, value = 0, step = 0.1),</span><br><span class="line">      numericInput(&quot;sd1&quot;, label = &quot;σ&quot;, value = 0.5, min = 0.1, step = 0.1)</span><br><span class="line">    ),</span><br><span class="line">    column(4, </span><br><span class="line">      &quot;Distribution 2&quot;,</span><br><span class="line">      numericInput(&quot;n2&quot;, label = &quot;n&quot;, value = 1000, min = 1),</span><br><span class="line">      numericInput(&quot;mean2&quot;, label = &quot;µ&quot;, value = 0, step = 0.1),</span><br><span class="line">      numericInput(&quot;sd2&quot;, label = &quot;σ&quot;, value = 0.5, min = 0.1, step = 0.1)</span><br><span class="line">    ),</span><br><span class="line">    column(4,</span><br><span class="line">      &quot;Frequency polygon&quot;,</span><br><span class="line">      numericInput(&quot;binwidth&quot;, label = &quot;Bin width&quot;, value = 0.1, step = 0.1),</span><br><span class="line">      sliderInput(&quot;range&quot;, label = &quot;range&quot;, value = c(-3, 3), min = -5, max = 5)</span><br><span class="line">    )</span><br><span class="line">  ),</span><br><span class="line">  fluidRow(</span><br><span class="line">    column(9, plotOutput(&quot;hist&quot;)),</span><br><span class="line">    column(3, verbatimTextOutput(&quot;ttest&quot;))</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>server函数从指定的分布中抽取后，结合了freqpoly()和t_test()函数的调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  output$hist &lt;- renderPlot(&#123;</span><br><span class="line">    x1 &lt;- rnorm(input$n1, input$mean1, input$sd1)</span><br><span class="line">    x2 &lt;- rnorm(input$n2, input$mean2, input$sd2)</span><br><span class="line">    </span><br><span class="line">    freqpoly(x1, x2, binwidth = input$binwidth, xlim = input$range)</span><br><span class="line">  &#125;, res = 96)</span><br><span class="line"></span><br><span class="line">  output$ttest &lt;- renderText(&#123;</span><br><span class="line">    x1 &lt;- rnorm(input$n1, input$mean1, input$sd1)</span><br><span class="line">    x2 &lt;- rnorm(input$n2, input$mean2, input$sd2)</span><br><span class="line">    </span><br><span class="line">    t_test(x1, x2)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/c4b42aa78ca4fa1794c7f29a3b43e42610502212/32dcf/demos/basic-reactivity/case-study-1.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/c4b42aa78ca4fa1794c7f29a3b43e42610502212/32dcf/demos/basic-reactivity/case-study-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.6：一个Shiny应用程序，可让您使用t检验和频数多边形比较两个模拟分布。请访问https://hadley.shinyapps.io/ms-case-study-1以查看实时效果。"></p>
+<p>这段定义服务器和用户界面的内容产生了图3.6。你可以在<a target="_blank" rel="noopener" href="https://hadley.shinyapps.io/ms-case-study-1">https://hadley.shinyapps.io/ms-case-study-1</a>找到它的活跃版。我推荐你打开应用程序并进行快速操作，以确保在继续阅读之前理解其基本操作。</p>
+<h3 id="3-4-3-反应式图表"><a href="#3-4-3-反应式图表" class="headerlink" title="3.4.3 反应式图表"></a>3.4.3 反应式图表</h3><p>让我们开始绘制这个应用程序的反应式图表。Shiny足够智能，仅在引用的输入发生更改时更新输出；它不够智能，不能仅选择性地运行输出内部的代码片段。换句话说，输出是原子的：它们要么整体执行，要么不执行。</p>
+<p>例如，以下是从server中获取的代码片段：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x1 &lt;- rnorm(input$n1, input$mean1, input$sd1)</span><br><span class="line">x2 &lt;- rnorm(input$n2, input$mean2, input$sd2)</span><br><span class="line">t_test(x1, x2)</span><br></pre></td></tr></table></figure>
+
+<p>作为阅读此代码的人，你可以看出我们只需要在n1、mean1或sd1发生变化时更新x1，在n2、mean2或sd2发生变化时更新x2。然而，Shiny只将输出视为一个整体，因此每当n1、mean1、sd1、n2、mean2或sd2中的一个发生变化时，它都会更新x1和x2。这导致了图3.7所示的反应图。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/840574f96b31b47295cc1ec44d359c0493a6e1bb/4d300/diagrams/basic-reactivity/case-study-1.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/840574f96b31b47295cc1ec44d359c0493a6e1bb/4d300/diagrams/basic-reactivity/case-study-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.7 反应图显示，每一个输出都取决于每一个输入"></p>
+<p>你会注意到，图中非常密集：几乎每个输入都直接连接到每个输出。这造成了两个问题：</p>
+<ul>
+<li><p>应用程序难以理解，因为有太多的连接。您无法将应用程序的任何部分单独拉出来进行分析。</p>
+</li>
+<li><p>应用程序效率低下，因为它做了很多不必要的工作。例如，如果您更改了图的断点，将重新计算数据；如果您更改了n1的值，将更新x2（在两个地方！）。</p>
+</li>
+</ul>
+<p>应用程序还有一个其他主要缺陷：频率多边形和t检验使用单独的随机抽样。这可能会误导，因为您期望它们在同一基础数据上工作。</p>
+<p>幸运的是，我们可以通过使用反应式表达式来提取重复的计算，从而解决所有这些问题。</p>
+<h3 id="3-4-4-简化图表"><a href="#3-4-4-简化图表" class="headerlink" title="3.4.4 简化图表"></a>3.4.4 简化图表</h3><p>在server函数中，我们将现有代码重构为两个新的反应式表达式x1和x2，它们模拟来自两个分布的数据。要创建反应式表达式，我们调用<code>reactive()</code>并将结果分配给一个变量。要稍后使用该表达式，我们将变量称为函数进行调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  x1 &lt;- reactive(rnorm(input$n1, input$mean1, input$sd1))</span><br><span class="line">  x2 &lt;- reactive(rnorm(input$n2, input$mean2, input$sd2))</span><br><span class="line"></span><br><span class="line">  output$hist &lt;- renderPlot(&#123;</span><br><span class="line">    freqpoly(x1(), x2(), binwidth = input$binwidth, xlim = input$range)</span><br><span class="line">  &#125;, res = 96)</span><br><span class="line"></span><br><span class="line">  output$ttest &lt;- renderText(&#123;</span><br><span class="line">    t_test(x1(), x2())</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种转换产生了图3.8所示的实质上更简单的图表。这个更简单的图表使得应用程序更容易理解，因为您可以将连接组件分开理解；分布参数的值只会通过x1和x2影响输出。这种重写还使应用程序更高效，因为它减少了大量的计算。现在，当您更改binwidth或range时，只有图表发生变化，而不是基础数据。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/7037f40071103105203cef484ca816fa0f72555f/97d14/diagrams/basic-reactivity/case-study-2.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/7037f40071103105203cef484ca816fa0f72555f/97d14/diagrams/basic-reactivity/case-study-2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.8 使用反应式表达式大大简化了图表，使其更容易理解"></p>
+<p>为了强调这种模块化，图3.9在独立组件周围画了框。我们将在第19章讨论模块时回到这个想法。模块允许您提取重复的代码以进行重用，同时保证其与应用程序中的其他所有内容隔离。对于更复杂的app，模块是一种非常有用且强大的技术。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/9eda867da502862eae05b9b574ebcc5828858bd8/b75dd/diagrams/basic-reactivity/case-study-3.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/9eda867da502862eae05b9b574ebcc5828858bd8/b75dd/diagrams/basic-reactivity/case-study-3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.9 模块强制隔离应用程序的各个部分"></p>
+<p>您可能熟悉编程中的“三次规则”：无论何时您复制和粘贴某些内容三次，您应该想办法减少重复（通常通过编写函数）。这是很重要的，因为它减少了代码中的重复量，使代码更容易理解，并且随着您的需求变化而更容易更新。</p>
+<p>然而，我认为在Shiny中，您应该考虑“一次规则”：无论何时您复制和粘贴某些内容一次，您应该考虑将重复的代码提取到反应式表达式中。对于Shiny来说，这个规则更加严格，因为反应式表达式不仅使人类更容易理解代码，而且也提高了Shiny有效地重新运行代码的能力。</p>
+<h3 id="3-4-5-我们为什么需要反应式表达式？"><a href="#3-4-5-我们为什么需要反应式表达式？" class="headerlink" title="3.4.5 我们为什么需要反应式表达式？"></a>3.4.5 我们为什么需要反应式表达式？</h3><p>当您刚开始使用反应式代码时，您可能会想知道为什么我们需要反应式表达式。您为什么不使用现有的工具来减少代码中的重复：创建新变量和编写函数？不幸的是，这两种技术在反应式环境中都不起作用。</p>
+<p>如果您尝试使用变量来减少重复，您可能会编写类似这样的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  x1 &lt;- rnorm(input$n1, input$mean1, input$sd1)</span><br><span class="line">  x2 &lt;- rnorm(input$n2, input$mean2, input$sd2)</span><br><span class="line"></span><br><span class="line">  output$hist &lt;- renderPlot(&#123;</span><br><span class="line">    freqpoly(x1, x2, binwidth = input$binwidth, xlim = input$range)</span><br><span class="line">  &#125;, res = 96)</span><br><span class="line"></span><br><span class="line">  output$ttest &lt;- renderText(&#123;</span><br><span class="line">    t_test(x1, x2)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您运行此代码，则会收到错误，因为您尝试在反应式上下文之外访问输入值。即使您没有收到该错误，您仍然会遇到问题：x1和x2只会在会话开始时计算一次，而不是每次输入之一更新时都会计算。</p>
+<p>如果您尝试使用函数，则应用程序将工作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123; </span><br><span class="line">  x1 &lt;- function() rnorm(input$n1, input$mean1, input$sd1)</span><br><span class="line">  x2 &lt;- function() rnorm(input$n2, input$mean2, input$sd2)</span><br><span class="line"></span><br><span class="line">  output$hist &lt;- renderPlot(&#123;</span><br><span class="line">    freqpoly(x1(), x2(), binwidth = input$binwidth, xlim = input$range)</span><br><span class="line">  &#125;, res = 96)</span><br><span class="line"></span><br><span class="line">  output$ttest &lt;- renderText(&#123;</span><br><span class="line">    t_test(x1(), x2())</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但它与原始代码有同样的问题：任何输入都会导致所有输出被重新计算，并且t检验和频率多边形将在单独的样本上运行。响应式表达式会自动缓存其结果，并且仅在输入更改时才进行更新<sup>13</sup>。</p>
+<p>变量只计算一次值（粥太凉了），函数在每次调用时计算值（粥太烫了），而响应式表达式只在值可能发生变化时计算值（粥刚刚好！）。</p>
+<h2 id="3-5-控制评估时间"><a href="#3-5-控制评估时间" class="headerlink" title="3.5 控制评估时间"></a>3.5 控制评估时间</h2><p>现在你已经熟悉了反应性的基本概念，我们将讨论两种更高级的技术，它们可以让你增加或减少反应性表达式的执行频率。在这里，我将展示如何使用基本技术；在第15章中，我们将回到它们的底层实现。</p>
+<p>为了探索基本思想，我将简化我的模拟应用程序。我将使用只有一个参数的分布，并强制两个样本共享相同的n。我还将删除绘图控件。这将产生更小的UI对象和server功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  fluidRow(</span><br><span class="line">    column(3, </span><br><span class="line">      numericInput(&quot;lambda1&quot;, label = &quot;lambda1&quot;, value = 3),</span><br><span class="line">      numericInput(&quot;lambda2&quot;, label = &quot;lambda2&quot;, value = 5),</span><br><span class="line">      numericInput(&quot;n&quot;, label = &quot;n&quot;, value = 1e4, min = 0)</span><br><span class="line">    ),</span><br><span class="line">    column(9, plotOutput(&quot;hist&quot;))</span><br><span class="line">  )</span><br><span class="line">)</span><br><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  x1 &lt;- reactive(rpois(input$n, input$lambda1))</span><br><span class="line">  x2 &lt;- reactive(rpois(input$n, input$lambda2))</span><br><span class="line">  output$hist &lt;- renderPlot(&#123;</span><br><span class="line">    freqpoly(x1(), x2(), binwidth = 1, xlim = c(0, 40))</span><br><span class="line">  &#125;, res = 96)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这生成了如图3.10所示的应用程序和如图3.11所示的反应图。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/ceed7209822edad11d811e6ad501f2e1cea7fb0d/b35bb/demos/basic-reactivity/simulation-2.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/ceed7209822edad11d811e6ad501f2e1cea7fb0d/b35bb/demos/basic-reactivity/simulation-2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.10 一个更简单的应用程序，显示从两个泊松分布中抽取的随机数的频率多边形。参见 live 在线在https://hadley.shinyapps.io/ms-simulation-2。"></p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/233a16963b00b9e879f225bc17a918afbad91e15/32c89/diagrams/basic-reactivity/timing.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/233a16963b00b9e879f225bc17a918afbad91e15/32c89/diagrams/basic-reactivity/timing.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.11 反应图"></p>
+<h3 id="3-5-1-定时失效"><a href="#3-5-1-定时失效" class="headerlink" title="3.5.1 定时失效"></a>3.5.1 定时失效</h3><p>想象一下，如果你想通过不断重新模拟数据来强调这是模拟数据的事实，以便你看到动画而不是静态图<sup>14</sup>。我们可以使用新的函数：<code>reactiveTimer()</code>来增加更新的频率。</p>
+<p><code>reactiveTimer()</code>是一个反应式表达式，它依赖于一个隐藏的输入：当前时间。当您想要一个反应式表达式比其他方式更频繁地使自己无效时，您可以使用<code>reactiveTimer()</code>。例如，以下代码使用500毫秒的间隔，这样图将每两秒钟更新一次。这足够快，以提醒你正在查看模拟，而不会因快速变化而使你眼花缭乱。这一变化产生了如图3.12所示的反应图。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  timer &lt;- reactiveTimer(500)</span><br><span class="line">  </span><br><span class="line">  x1 &lt;- reactive(&#123;</span><br><span class="line">    timer()</span><br><span class="line">    rpois(input$n, input$lambda1)</span><br><span class="line">  &#125;)</span><br><span class="line">  x2 &lt;- reactive(&#123;</span><br><span class="line">    timer()</span><br><span class="line">    rpois(input$n, input$lambda2)</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  output$hist &lt;- renderPlot(&#123;</span><br><span class="line">    freqpoly(x1(), x2(), binwidth = 1, xlim = c(0, 40))</span><br><span class="line">  &#125;, res = 96)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/82776537eeb3726235dd27f53df0f38880965a60/dfd59/diagrams/basic-reactivity/timing-timer.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/82776537eeb3726235dd27f53df0f38880965a60/dfd59/diagrams/basic-reactivity/timing-timer.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.12 reactiveTimer(500)引入了一个新的反应式输入，该输入每半秒自动使自己无效一次"></p>
+<p>注意我们在计算x1()和x2()的反应式表达式中使用timer()的情况：我们调用它，但不使用它的值。这使得x1和x2可以对timer产生反应式依赖，而不必担心它返回的确切值。</p>
+<h3 id="3-5-2-点击事件"><a href="#3-5-2-点击事件" class="headerlink" title="3.5.2 点击事件"></a>3.5.2 点击事件</h3><p>在上述场景中，想象一下如果模拟代码需要1秒钟才能运行完会发生什么情况。我们每0.5秒执行一次模拟，所以Shiny会有越来越多的工作要做，而且永远无法追赶上来。同样的问题也可能发生在如果有人在您的应用程序中快速点击按钮，而您正在进行的计算相对昂贵的情况下。这可能会给Shiny创建大量的后台工作，当Shiny忙于处理这些后台工作时，它无法响应任何新的事件，从而导致用户体验不佳。</p>
+<p>如果这种情况发生在您的应用程序中，您可能希望要求用户选择执行昂贵的计算，要求他们点击一个按钮。这是<code>actionButton()</code>的一个很好的用例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  fluidRow(</span><br><span class="line">    column(3, </span><br><span class="line">      numericInput(&quot;lambda1&quot;, label = &quot;lambda1&quot;, value = 3),</span><br><span class="line">      numericInput(&quot;lambda2&quot;, label = &quot;lambda2&quot;, value = 5),</span><br><span class="line">      numericInput(&quot;n&quot;, label = &quot;n&quot;, value = 1e4, min = 0),</span><br><span class="line">      actionButton(&quot;simulate&quot;, &quot;Simulate!&quot;)</span><br><span class="line">    ),</span><br><span class="line">    column(9, plotOutput(&quot;hist&quot;))</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>要使用操作按钮，我们需要学习一种新工具。为了理解原因，让我们首先使用与上述相同的方法来解决这个问题。与上面一样，我们提到simulate但不使用它的值来对其产生反应式依赖。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  x1 &lt;- reactive(&#123;</span><br><span class="line">    input$simulate</span><br><span class="line">    rpois(input$n, input$lambda1)</span><br><span class="line">  &#125;)</span><br><span class="line">  x2 &lt;- reactive(&#123;</span><br><span class="line">    input$simulate</span><br><span class="line">    rpois(input$n, input$lambda2)</span><br><span class="line">  &#125;)</span><br><span class="line">  output$hist &lt;- renderPlot(&#123;</span><br><span class="line">    freqpoly(x1(), x2(), binwidth = 1, xlim = c(0, 40))</span><br><span class="line">  &#125;, res = 96)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/d65eff11607572a166ddc400a771e5e72fb32b99/362e4/demos/basic-reactivity/action-button.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/d65eff11607572a166ddc400a771e5e72fb32b99/362e4/demos/basic-reactivity/action-button.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.13 具有操作按钮的应用程序。参见 live 在线在https://hadley.shinyapps.io/ms-action-button。"></p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/ffefc8f9300348bb4c29492c4ebfa04235c78eec/94ace/diagrams/basic-reactivity/timing-button.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/ffefc8f9300348bb4c29492c4ebfa04235c78eec/94ace/diagrams/basic-reactivity/timing-button.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.14 这个反应图没有实现我们的目标；我们添加了一个依赖项，而不是取代了现有的依赖项。"></p>
+<p>这产生了图3.13的应用程序和图3.14的反应图。这没有达到我们的目标，因为它只是引入了一个新的依赖项：当我们点击simulate按钮时，<code>x1()</code>和<code>x2()</code>将更新，但它们将继续在<code>lambda1</code>、<code>lambda2</code>或<code>n</code>改变时更新。我们希望取代现有的依赖项，而不是增加新的依赖项。</p>
+<p>为了解决这个问题，我们需要一个新的工具：一种使用输入值而不产生反应式依赖的方法。我们需要<code>eventReactive()</code>，它有两个参数：第一个参数指定要对其产生依赖的参数，第二个参数指定要计算的内容。这让应用程序只有在<code>simulate</code>被点击时才计算<code>x1()</code>和<code>x2()</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  x1 &lt;- eventReactive(input$simulate, &#123;</span><br><span class="line">    rpois(input$n, input$lambda1)</span><br><span class="line">  &#125;)</span><br><span class="line">  x2 &lt;- eventReactive(input$simulate, &#123;</span><br><span class="line">    rpois(input$n, input$lambda2)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  output$hist &lt;- renderPlot(&#123;</span><br><span class="line">    freqpoly(x1(), x2(), binwidth = 1, xlim = c(0, 40))</span><br><span class="line">  &#125;, res = 96)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>图3.15显示了新的反应图。请注意，如所期望的那样，<code>x1</code>和<code>x2</code>不再对<code>lambda1</code>、<code>lambda2</code>和<code>n</code>产生反应式依赖：改变它们的值不会触发计算。我保留了浅灰色的箭头，只是为了提醒您x1和x2继续使用这些值，但不再对其产生反应式依赖。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/85daccd0739423ca7b9463531a23e66d280c5724/eb459/diagrams/basic-reactivity/timing-button-2.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/85daccd0739423ca7b9463531a23e66d280c5724/eb459/diagrams/basic-reactivity/timing-button-2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.15 eventReactive()使分离依赖项（黑色箭头）和使用来计算结果的值（浅灰色箭头）成为可能。"></p>
+<h2 id="3-6-观察者"><a href="#3-6-观察者" class="headerlink" title="3.6 观察者"></a>3.6 观察者</h2><p>到目前为止，我们一直关注应用程序内部发生的事情。但有时，您需要将应用程序外部的某些操作与应用程序内部的操作关联起来，以在其他地方产生副作用。这可能是将文件保存到共享网络驱动器、向Web API发送数据、更新数据库，或者（最常见）是在控制台上打印调试消息。这些操作不会影响应用程序的外观，因此您不应该使用输出和渲染函数。相反，您需要使用观察者（observer）。</p>
+<p>有多种创建观察者的方法，我们将在第15.3节中讨论它们。现在，我想向您展示如何使用<code>observeEvent()</code>，因为它在您学习Shiny时为您提供了一个重要的调试工具。</p>
+<p><code>observeEvent()</code>与<code>eventReactive()</code>非常相似。它有两个重要的参数：<code>eventExpr</code>和<code>handlerExpr</code>。第一个参数是输入或表达式，对其产生依赖；第二个参数是执行的代码。例如，对<code>server()</code>进行以下修改意味着每当<code>name</code>被更新时，都会向控制台发送一条消息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ui &lt;- fluidPage(</span><br><span class="line">  textInput(&quot;name&quot;, &quot;What&#x27;s your name?&quot;),</span><br><span class="line">  textOutput(&quot;greeting&quot;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">server &lt;- function(input, output, session) &#123;</span><br><span class="line">  string &lt;- reactive(paste0(&quot;Hello &quot;, input$name, &quot;!&quot;))</span><br><span class="line">  </span><br><span class="line">  output$greeting &lt;- renderText(string())</span><br><span class="line">  observeEvent(input$name, &#123;</span><br><span class="line">    message(&quot;Greeting performed&quot;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>observeEvent()</code>和<code>eventReactive()</code>之间有两个重要的区别：</p>
+<ul>
+<li><p>您不需要将<code>observeEvent()</code>的结果分配给一个变量，因此</p>
+</li>
+<li><p>您不能从其他反应式消费者中引用它。</p>
+</li>
+</ul>
+<p> 观察者和输出密切相关。您可以将输出视为具有特殊副作用：更新用户浏览器中的HTML。为了强调这种紧密关系，我们将在反应图上以相同的方式绘制它们。这产生了如图3.16所示的反应图。</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/c34c3dfb6205be6ff2c2d3e8fca18f16d34d9f3a/9d229/diagrams/basic-reactivity/graph-3.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/c34c3dfb6205be6ff2c2d3e8fca18f16d34d9f3a/9d229/diagrams/basic-reactivity/graph-3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3.16 在反应图中，观察者看起来与输出相同"></p>
+<h2 id="3-7-总结"><a href="#3-7-总结" class="headerlink" title="3.7 总结"></a>3.7 总结</h2><p>本章应有助于您更好地了解Shiny应用程序的后端，即响应用户操作的<code>server()</code>代码。您还初步掌握了支撑Shiny的响应式编程范式。在这里您所学到的东西将会对您大有帮助；我们将在第13章中回到底层理论。响应式编程非常强大，但它与您最习惯的R编程命令式风格截然不同。如果需要一段时间才能理解所有后果，请不要感到惊讶。</p>
+<p>本章结束了我们对Shiny基础的概述。下一章将通过创建一个更大的Shiny应用程序来帮助您练习迄今为止所学的材料，该应用程序旨在支持数据分析。</p>
+<h1 id="关注"><a href="#关注" class="headerlink" title="关注"></a>关注</h1><p>关注公众号“生信之巅”。</p>
+<table align="center"><tr>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅微信公众号" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-right: 0px;margin-bottom: 5px;align: center;"></td>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅小程序码" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-left: 0px;margin-bottom: 5px;align: center"></td>
+</tr></table>
+
+
+<p><font color="#FF0000"><ruby><b>敬告</b>：使用文中脚本请引用本文网址，请尊重本人的劳动成果，谢谢！<rt><b>Notice</b>: When you use the scripts in this article, please cite the link of this webpage. Thank you!</rt></ruby></font></p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E7%BC%96%E7%A8%8B/" class="">
+              编程
+            </a>
+          
+            <a href="/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/" class="">
+              Shiny入门系列
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>Hualin Liu</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/post/41c3.html" target="_blank" title="Shiny从入门到入定——3-在特别大的花园里面挖呀挖呀挖">https://www.liaochenlanruo.fun/post/41c3.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/post/377b.html" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">Shiny从入门到入定——4-挖坑完毕之案例研究</div>
+      </div>
+      
+      <!-- <div class="content">
+        4 案例研究：ER损伤4.1 简介在过去的三个章节中，我向您介绍了一系列新概念。为了帮助理解他们，我们现在将浏览一个更丰
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_202.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_202.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/post/5369.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Shiny从入门到入定——2-在大大的花园里面挖呀挖呀挖</div>
+      </div>
+      <!-- <div class="content">
+        基础UI引言现在，您已经具备了基本的Shiny应用程序，我们可以开始详细探索使Shiny起作用的内容。正如您在上一章所看
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/AliPay.jpg" class="lazyload placeholder" data-srcset="/medias/AliPay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/reward-wepay.jpg" class="lazyload placeholder" data-srcset="/medias/reward-wepay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/head.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>了尘兰若</h2>
+        
+        
+          <p>Research Go</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">了尘兰若的小坑</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="http://github.com/liaochenlanruo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%9F%BA%E7%A1%80%E5%8F%8D%E5%BA%94%E6%80%A7"><span class="toc-text">3 基础反应性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">3.1 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-server%E5%87%BD%E6%95%B0"><span class="toc-text">3.2 server函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E8%BE%93%E5%85%A5"><span class="toc-text">3.2.1 输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E8%BE%93%E5%87%BA"><span class="toc-text">3.2.2 输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-text">3.3 响应式编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-%E5%91%BD%E4%BB%A4%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8E%E5%A3%B0%E6%98%8E%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">3.3.1 命令式编程与声明式编程的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E6%87%92%E6%83%B0"><span class="toc-text">3.3.2 懒惰</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-3-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE"><span class="toc-text">3.3.3 响应式图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-4-%E5%8F%8D%E5%BA%94%E5%BC%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">3.3.4 反应式表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-5-%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-text">3.3.5 执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-6-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">3.3.6 练习题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E5%8F%8D%E5%BA%94%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">3.4 反应表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-%E5%8A%A8%E6%9C%BA"><span class="toc-text">3.4.1 动机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-text">3.4.2 应用程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-3-%E5%8F%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E8%A1%A8"><span class="toc-text">3.4.3 反应式图表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-4-%E7%AE%80%E5%8C%96%E5%9B%BE%E8%A1%A8"><span class="toc-text">3.4.4 简化图表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-5-%E6%88%91%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%8F%8D%E5%BA%94%E5%BC%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%9F"><span class="toc-text">3.4.5 我们为什么需要反应式表达式？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E6%8E%A7%E5%88%B6%E8%AF%84%E4%BC%B0%E6%97%B6%E9%97%B4"><span class="toc-text">3.5 控制评估时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-1-%E5%AE%9A%E6%97%B6%E5%A4%B1%E6%95%88"><span class="toc-text">3.5.1 定时失效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-2-%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6"><span class="toc-text">3.5.2 点击事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-%E8%A7%82%E5%AF%9F%E8%80%85"><span class="toc-text">3.6 观察者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-%E6%80%BB%E7%BB%93"><span class="toc-text">3.7 总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E6%B3%A8"><span class="toc-text">关注</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6685.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-26</span>
+                
+              </div>
+              <a class="post-title" href="/post/6685.html">Shiny从入门到入定——7-图形</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6718.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_206.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_206.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-25</span>
+                
+              </div>
+              <a class="post-title" href="/post/6718.html">Shiny从入门到入定——6-布局、主题、HTML</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/83c3.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_205.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_205.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-24</span>
+                
+              </div>
+              <a class="post-title" href="/post/83c3.html">Shiny从入门到入定——5-工作流</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/377b.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-24</span>
+                
+              </div>
+              <a class="post-title" href="/post/377b.html">Shiny从入门到入定——4-挖坑完毕之案例研究</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/41c3.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_203.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_203.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-20</span>
+                
+              </div>
+              <a class="post-title" href="/post/41c3.html">Shiny从入门到入定——3-在特别大的花园里面挖呀挖呀挖</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social">
+                  
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social">
+                  
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2018 - 2024 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">鄂ICP备2021021941号</a>    <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725号</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script async>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script async src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,2893 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-139249935-1');
+</script>
+
+
+  <title>宏病毒组分析流程1-VirSorter2 | 了尘兰若的小坑</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script async src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">了尘兰若的小坑</h3>
+      <h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)">
+                  <span>
+                    
+                      <i class="fas fa-archive"></i>
+                    
+                    <span class="name">归档</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(1)">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)">
+                  <span>
+                    
+                      <i class="fas fa-user"></i>
+                    
+                    <span class="name">关于</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(2)">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(3)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">了尘兰若的小坑</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive"></i>
+                  
+                  <span class="name">归档</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user"></i>
+                  
+                  <span class="name">关于</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="menu-item-link" title="开往">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script defer>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_96.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        宏病毒组分析流程1-VirSorter2
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2021-12-02 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/" class="post-detail-header_category">
+              生物信息
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 4.2k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 19分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h1><ul>
+<li><p>安装主程序及依赖</p>
+<p>:::default</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://bitbucket.org/MAVERICLab/virsorter2/src/master">VirSorter2</a> (version &gt;&#x3D;2.2.3)</li>
+<li><a target="_blank" rel="noopener" href="https://bitbucket.org/berkeleylab/checkv/src/master">CheckV</a> (version &gt;&#x3D;0.7.0)</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shafferm/DRAM">DRAMv</a> (version &gt;&#x3D;1.2.0)<br>:::</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n virome virsorter=2 checkv dram</span><br><span class="line">conda activate virome</span><br></pre></td></tr></table></figure></li>
+<li><p>下载数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vs2 db: db-vs2 ~ 10 min</span></span><br><span class="line">virsorter setup -d /new_data/hualin/db/db-vs2 -j 50</span><br><span class="line"></span><br><span class="line"><span class="comment"># checkv db: checkv-db-v1.0  &lt; 5 mins</span></span><br><span class="line">checkv download_database /new_data/hualin/db/checkv</span><br><span class="line"></span><br><span class="line"><span class="comment"># DRAMv: db-dramv ~5h and ~60GB of memory</span></span><br><span class="line">DRAM-setup.py prepare_databases --skip_uniref --output_dir db-dramv</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h1><ul>
+<li><p>获取测试数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O test.fa https://bitbucket.org/MAVERICLab/virsorter2/raw/15a21fa9c1ee1d2af52b0148b167292e549d356e/test/test-for-sop.fa</span><br></pre></td></tr></table></figure></li>
+<li><p>运行VirSorter2</p>
+<p>  +++info 命令解析</p>
+<ul>
+<li>首先以0.5 的score阈值运行VirSorter2 以保证最大的灵敏度。</li>
+<li>只关注噬菌体 (dsDNA and ssDNA phage)，可选dsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae。</li>
+<li>序列最小长度为5000 bp，后续病毒分类的最低要求如此。 </li>
+<li>可根据自己的CPU核心数自行调整 “-j”。</li>
+<li>“–keep-original-seq” 保留了环状和接近完整的病毒contigs (score &gt;0.8 as a whole sequence)，后续将通过checkV修剪其尾端的潜在宿主基因并处理重复的环状contigs片段。<br>  +++</li>
+</ul>
+<p>  :::default<br>  Time: 31m7.310s with a real dataset of 90.52 MB and 207,544 sequences<br>  :::</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virsorter run --keep-original-seq -w vs2-pass1 -i test.fa --include-groups dsDNAphage,ssDNA --min-length 5000  --min-score 0.5 -j 50 all</span><br></pre></td></tr></table></figure>
+
+<p>  +++primary 参数解析<br>  -w 指定输出目录<br>  -i 指定输入序列<br>  --min-length 过滤短序列<br>  --min-score 分数阈值<br>  --keep-original-seq 保留环状和接近完整的病毒contigs<br>  --include-groups 指定包含的病毒类型，用“,”分隔。可选：dsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae<br>  -j 线程数<br>  all 直接写上就可以<br>  +++</p>
+<p>  +++success 结果解析</p>
+<ul>
+<li><p>final-viral-combined.fa: 病毒序列</p>
+<ul>
+<li>鉴定为病毒的完整序列（标识为后缀 ||full）；</li>
+<li>鉴定为病毒的部分序列（用后缀 ||{i}_partial 标识）； {i} 可以是从 0 到该Contig中发现的最大病毒片段数的数字；</li>
+<li>带有<ruby>标志基因<rt>hallmark gene</rt></ruby>的短序列（少于两个基因）被鉴定为病毒（用后缀 ||lt2gene 标识）；</li>
+</ul>
+</li>
+<li><p>final-viral-score.tsv: 每个病毒序列的评分跨组和一些关键特征，这可以用于进一步过滤</p>
+<ul>
+<li>sequence name</li>
+<li>score of each viral sequences across groups (多列)</li>
+<li>max score across groups</li>
+<li>max score group</li>
+<li>contig length</li>
+<li>hallmark gene count</li>
+<li>viral gene %</li>
+<li>nonviral gene %</li>
+</ul>
+</li>
+</ul>
+  <div style="width:100%;overflow:scroll;">
+      <table border="1" rules="all" style="width:2000px; height:100px; text-align:center">
+          <tr>
+          <td>seqname</td>
+          <td>dsDNAphage</td>
+          <td>NCLDV</td>
+          <td>RNA</td>
+          <td>ssDNA</td>
+          <td>lavidaviridae</td>
+          <td>max_score</td>
+          <td>max_score_group</td>
+          <td>length</td>
+          <td>hallmark</td>
+          <td>viral</td>
+          <td>cellular</td>
+          </tr>
+          <tr>
+          <td>NODE_5_length_17317_cov_8.385876&#124;&#124;full</td>
+          <td>0.993</td>
+          <td>0.847</td>
+          <td>0.005</td>
+          <td>0.060</td>
+          <td>0.467</td>
+          <td>0.993</td>
+          <td>dsDNAphage</td>
+          <td>17315</td>
+          <td>2</td>
+          <td>64.700</td>
+          <td>5.900</td>
+          </tr>
+          <tr>
+          <td>NODE_6_length_16611_cov_115.615064&#124;&#124;full</td>
+          <td>0.920</td>
+          <td>0.207</td>
+          <td>0.035</td>
+          <td>0.087</td>
+          <td>0.053</td>
+          <td>0.920</td>
+          <td>dsDNAphage</td>
+          <td>16610</td>
+          <td>0</td>
+          <td>3.200</td>
+          <td>0.000</td>
+          </tr>
+          <tr>
+          <td>NODE_8_length_14848_cov_778.417157&#124;&#124;full</td>
+          <td>1.000</td>
+          <td>0.220</td>
+          <td>0.105</td>
+          <td>0.380</td>
+          <td>0.627</td>
+          <td>1.000</td>
+          <td>dsDNAphage</td>
+          <td>14848</td>
+          <td>15</td>
+          <td>100.000</td>
+          <td>0.000</td>
+          </tr>
+          <tr>
+          <td>NODE_16_length_12563_cov_14.331948&#124;&#124;full</td>
+          <td>0.973</td>
+          <td>0.200</td>
+          <td>0.165</td>
+          <td>0.273</td>
+          <td>0.227</td>
+          <td>0.973</td>
+          <td>dsDNAphage</td>
+          <td>12083</td>
+          <td>0</td>
+          <td>8.000</td>
+          <td>0.000</td>
+          </tr>
+          <tr>
+          <td>NODE_17_length_11885_cov_350.043956&#124;&#124;full</td>
+          <td>0.653</td>
+          <td>0.513</td>
+          <td>0.050</td>
+          <td>0.080</td>
+          <td>0.047</td>
+          <td>0.653</td>
+          <td>dsDNAphage</td>
+          <td>11885</td>
+          <td>0</td>
+          <td>9.100</td>
+          <td>0.000</td>
+          </tr>
+          <tr>
+          <td>NODE_21_length_11527_cov_216.405073&#124;&#124;full</td>
+          <td>0.620</td>
+          <td>0.407</td>
+          <td>0.000</td>
+          <td>0.013</td>
+          <td>0.060</td>
+          <td>0.620</td>
+          <td>dsDNAphage</td>
+          <td>11526</td>
+          <td>0</td>
+          <td>10.500</td>
+          <td>5.300</td>
+          </tr>
+          <tr>
+          <td>NODE_23_length_11316_cov_8.144303&#124;&#124;full</td>
+          <td>0.367</td>
+          <td>0.540</td>
+          <td>0.010</td>
+          <td>0.000</td>
+          <td>0.400</td>
+          <td>0.540</td>
+          <td>NCLDV</td>
+          <td>11313</td>
+          <td>1</td>
+          <td>23.100</td>
+          <td>7.700</td>
+          </tr>
+      </table>
+  </div>
+  
+<p>  :::warning<br>  不同病毒类群的分类器并非相互排斥，它们的<ruby>目标病毒序列空间<rt>target viral sequence space</rt></ruby>可能存在重叠，这意味着该信息不应被使用或当作<ruby>可靠的分类<rt>reliable taxonomic classification</rt></ruby>。VirSorter2的用途仅限于病毒鉴定。<br>  :::</p>
+<ul>
+<li><p>final-viral-boundary.tsv: 带有边界信息的表 (与其他两个文件相比，可能有额外的记录，应该忽略)。</p>
+<p>only some of the columns in this file might be useful:</p>
+<ul>
+<li>seqname: original sequence name</li>
+<li>trim_orf_index_start, trim_orf_index_end: start and end ORF index on orignal sequence of identified viral sequence</li>
+<li>trim_bp_start, trim_bp_end: start and end position on orignal sequence of identified viral sequence</li>
+<li>trim_pr: score of final trimmed viral sequence</li>
+<li>partial: full sequence as viral or partial sequence as viral; this is defined when a full sequence has score &gt; score cutoff, it is full (0), or else any viral sequence extracted within it is partial (1)</li>
+<li>pr_full: score of the original sequence</li>
+<li>hallmark_cnt: hallmark gene count</li>
+<li>group: the classifier of viral group that gives high score; this should NOT be used as reliable classification</li>
+</ul>
+</li>
+</ul>
+  <div style="width:100%;overflow:scroll;">
+      <table border="1" rules="all" style="width:2000px; height:100px; text-align:center">
+          <tr>
+      <td>seqname</td>
+      <td>trim_orf_index_start</td>
+      <td>trim_orf_index_end</td>
+      <td>trim_bp_start</td>
+      <td>trim_bp_end</td>
+      <td>trim_pr</td>
+      <td>trim_pr_max</td>
+      <td>prox_orf_index_start</td>
+      <td>prox_orf_index_end</td>
+      <td>prox_bp_start</td>
+      <td>prox_bp_end</td>
+      <td>prox_pr</td>
+      <td>prox_pr_max</td>
+      <td>partial</td>
+      <td>full_orf_index_start</td>
+      <td>full_orf_index_end</td>
+      <td>full_bp_start</td>
+      <td>full_bp_end</td>
+      <td>pr_full</td>
+      <td>arc</td>
+      <td>bac</td>
+      <td>euk</td>
+      <td>vir</td>
+      <td>mix</td>
+      <td>unaligned</td>
+      <td>hallmark_cnt</td>
+      <td>group</td>
+      <td>shape</td>
+      <td>seqname_new</td>
+          </tr>
+          <tr>
+      <td>NODE_999_length_4026_cov_7.610929</td>
+      <td>1</td>
+      <td>12</td>
+      <td>1</td>
+      <td>4025</td>
+      <td>0.547</td>
+      <td>0.547</td>
+      <td>1</td>
+      <td>12</td>
+      <td>1</td>
+      <td>4025</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0</td>
+      <td>1</td>
+      <td>12</td>
+      <td>1</td>
+      <td>4025</td>
+      <td>0.547</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>0</td>
+      <td>dsDNAphage</td>
+      <td>linear</td>
+      <td>NODE_999_length_4026_cov_7.610929||full</td>
+          </tr>
+          <tr>
+      <td>NODE_9999_length_1276_cov_11.598690</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1274</td>
+      <td>0.955</td>
+      <td>0.955</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1274</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1274</td>
+      <td>0.955</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>0</td>
+      <td>RNA</td>
+      <td>linear</td>
+      <td>NODE_9999_length_1276_cov_11.598690||full</td>
+          </tr>
+          <tr>
+      <td>NODE_99999_length_314_cov_4.000000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>287</td>
+      <td>0.57</td>
+      <td>0.57</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>287</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>287</td>
+      <td>0.57</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>0</td>
+      <td>RNA</td>
+      <td>linear</td>
+      <td>NODE_99999_length_314_cov_4.000000||full</td>
+          </tr>
+          <tr>
+      <td>NODE_99992_length_314_cov_4.389961</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>275</td>
+      <td>0.747</td>
+      <td>0.747</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>275</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>275</td>
+      <td>0.747</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>100.0</td>
+      <td>0</td>
+      <td>ssDNA</td>
+      <td>linear</td>
+      <td>NODE_99992_length_314_cov_4.389961||full</td>
+          </tr>
+          <tr>
+      <td>NODE_9997_length_1276_cov_44.113841</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1240</td>
+      <td>0.98</td>
+      <td>0.98</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1240</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1240</td>
+      <td>0.98</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>0</td>
+      <td>RNA</td>
+      <td>linear</td>
+      <td>NODE_9997_length_1276_cov_44.113841||full</td>
+          </tr>
+      </table>
+  </div>
+  
+<p>  :::warning<br>  在<ruby>原病毒<rt>provirus </rt></ruby>提取过程中，为了获得更好的敏感性，VirSorter2有时会高估病毒序列的大小。建议清除这些前病毒预测，以去除预测病毒区域边缘的潜在宿主基因，例如使用<a target="_blank" rel="noopener" href="https://bitbucket.org/berkeleylab/checkv">CheckV</a>等工具。<br>  :::</p>
+<p>  :::primary<br>  How to pick a score cutoff?<br>  :::</p>
+<p>  一般来说，score&gt;0.9的人为高置信度。得分在 0.5 到 0.9 之间的可能是病毒和非病毒的混合体。很难确定区分病毒和非病毒的最佳分数，因为它取决于宿主序列和未知序列的百分比。因此，[建议使用默认截止值 (0.5) 以获得最大灵敏度，然后使用 checkV 应用质量检查步骤以消除误报（预测完整性除外）]{.rainbow}。&#x3D;&#x3D;请继续下面的流程。&#x3D;&#x3D;<br>  +++</p>
+</li>
+<li><p>运行checkV</p>
+<p>  +++info 命令解析<br>  Score阈值设为0.5时，VirSorter2结果中可能存在一些非病毒序列或区域。因此，使用CheckV对VirSorter2的结果进行质量控制，并修剪在<ruby>原病毒<rt>proviruses</rt></ruby>末端留下的潜在宿主区域。可以根据CPU内核的可用性调整-t选项。<br>  +++</p>
+<p>  :::default<br>  Time: 0m28.795s<br>  :::</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkv end_to_end vs2-pass1/final-viral-combined.fa checkv -t 50 -d /new_data/hualin/db/checkv/checkv-db-v1.0</span><br></pre></td></tr></table></figure>
+
+<p>  +++success 结果解析</p>
+<ul>
+<li>.&#x2F;checkv&#x2F;</li>
+<li>completeness.tsv</li>
+<li>complete_genomes.tsv</li>
+<li>contamination.tsv</li>
+<li>proviruses.fna</li>
+<li>quality_summary.tsv</li>
+<li>viruses.fna</li>
+<li>tmp<br>  +++</li>
+</ul>
+</li>
+<li><p>再次运行VirSorter2 </p>
+<p>+++info 命令解析</p>
+<ul>
+<li>再次利用checkV-trimmed序列运行VirSorter2以得到”affi-contigs.tab”文件，该文件将作为DRAMv的输入以鉴定AMGs。</li>
+<li>注意”--seqname-suffix-off”选项保留了原始的输入序列名称，因为我们确信在本步骤中，不可能从同一条contig中获得&gt;1个原病毒。</li>
+<li>“--viral-gene-enrich-off”选项关闭了病毒基因要多于宿主基因的要求，以确保VirSorter2在这一步不做任何筛查。</li>
+<li>以上两个选项需要VirSorter2版本&gt;&#x3D;2.2.1。</li>
+<li>可选所有病毒：dsDNAphage,NCLDV,RNA,ssDNA,lavidaviridae<br>+++</li>
+</ul>
+<p>:::default<br>  Time: 18m30.896s<br>  :::</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> checkv/proviruses.fna checkv/viruses.fna &gt; checkv/combined.fna</span><br><span class="line"></span><br><span class="line">virsorter run --seqname-suffix-off --viral-gene-enrich-off --provirus-off --prep-for-dramv -i checkv/combined.fna -w vs2-pass2 --include-groups dsDNAphage,ssDNA --min-length 5000 --min-score 0.5 -j 50 all</span><br></pre></td></tr></table></figure>
+
+<p>  +++success 结果解析</p>
+<ul>
+<li>.&#x2F;vs2-pass2&#x2F;</li>
+<li>inal-viral-combined.fa</li>
+<li>final-viral-score.tsv</li>
+<li>for-dramv&#x2F;final-viral-combined-for-dramv.fa</li>
+<li>for-dramv&#x2F;viral-affi-contigs-for-dramv.tab<br>  +++</li>
+</ul>
+</li>
+<li><p>运行DRAMv</p>
+<p>+++info 命令解析<br>使用DRAMv注释鉴定的病毒序列，以用于后续<ruby>人工整理<rt>manual curation</rt></ruby>。可通过”--threads”控制调用的CPU核心数。<br>+++</p>
+<p>:::default<br>  Time: 8.81h<br>  :::</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># step 1 annotate 耗时步骤，建议投后台运行</span></span><br><span class="line">DRAM-v.py annotate -i vs2-pass2/for-dramv/final-viral-combined-for-dramv.fa -v vs2-pass2/for-dramv/viral-affi-contigs-for-dramv.tab -o dramv-annotate --skip_trnascan --threads 50 --min_contig_size 1000</span><br><span class="line"></span><br><span class="line"><span class="comment">#step 2 summarize anntotations</span></span><br><span class="line">DRAM-v.py distill -i dramv-annotate/annotations.tsv -o dramv-distill</span><br></pre></td></tr></table></figure>
+
+<p>  +++success 结果解析</p>
+<ul>
+<li>dramv-annotate&#x2F;annotations.tsv</li>
+<li>dramv-annotate&#x2F;genbank 各条contig的gbk文件</li>
+<li>dramv-annotate&#x2F;genes.faa</li>
+<li>dramv-annotate&#x2F;genes.fna</li>
+<li>dramv-annotate&#x2F;genes.gff</li>
+<li>dramv-annotate&#x2F;rrnas.tsv</li>
+<li>dramv-annotate&#x2F;scaffolds.fna</li>
+<li>dramv-annotate&#x2F;vMAGs 各条contig的fasta文件<br>  +++</li>
+</ul>
+</li>
+</ul>
+<h1 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h1><h2 id="依据病毒和宿主基因数、分数、hallmark基因数以及contig长度进行筛选"><a href="#依据病毒和宿主基因数、分数、hallmark基因数以及contig长度进行筛选" class="headerlink" title="依据病毒和宿主基因数、分数、hallmark基因数以及contig长度进行筛选"></a>依据病毒和宿主基因数、分数、hallmark基因数以及contig长度进行筛选</h2><p>来自checkV的病毒和宿主基因计数可用于假阳性筛查。由于checkV在预测病毒基因方面非常保守，那些由checkV预测的病毒基因的序列应该是病毒的，而那些没有被checkV预测到病毒基因的序列更可能是非病毒的。</p>
+<p>基于我们对土壤宏基因组的基准测试，(1) 那些没有预测到病毒和宿主基因的序列是病毒；(2) 没有病毒基因但有2个或2个以上宿主基因的大多数为非病毒基因；(3) 那些没有病毒基因和具有1个宿主基因的很难区分其为病毒还是非病毒（可能是可移动的基因元件，类似于VirSorter1中的第3类），除非手动检查，否则应该丢弃。</p>
+<p>只选择那些大于10kb的用于手动检查，因为太短的无法分辨。还有那些VirSorter2 得分≥0.95或hallmark基因计数&gt;2的大多数是病毒。&#x3D;&#x3D;这些经验筛选标准总结如下：&#x3D;&#x3D;</p>
+<p>:::success<br>Keep1: viral_gene &gt;0<br>:::<br>:::success<br>Keep2: viral_gene &#x3D;0 AND (host_gene &#x3D;0 OR score &gt;&#x3D;0.95 OR hallmark &gt;2)<br>:::<br>:::warning<br>Manual check: (NOT in Keep1 OR Keep2) AND viral_gene &#x3D;0 AND host_gene &#x3D;1 AND length &gt;&#x3D;10kb<br>:::<br>:::danger<br>Discard: the rest<br>:::</p>
+<p>[要查看病毒基因、宿主基因、评分和<ruby>序列的特征标记<rt>hallmark of sequences</rt></ruby>，您可以合并”vs2-pass1&#x2F;final-viral-score.tsv”和”checkv&#x2F;contamination.tsv”，并在电子表格中过滤。]{.aqua}本尊为各位提供了Perl脚本<a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo/myScripts/tree/main/1551%20Virome">cat_tsv.pl</a>以实现机动合并！直接在终端运行<code>perl cat_tsv.pl</code>即可得到合并后的文件<code>forCheck.txt</code>。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> %hash;</span><br><span class="line"><span class="keyword">my</span> $head_checkv;</span><br><span class="line"><span class="keyword">my</span> $head_pass1;</span><br><span class="line"><span class="keyword">my</span> $count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">my</span> $num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">open</span> IN, <span class="string">&quot;checkv/contamination.tsv&quot;</span> || <span class="keyword">die</span>;</span><br><span class="line"><span class="keyword">while</span> (&lt;IN&gt;) &#123;</span><br><span class="line">	<span class="keyword">chomp</span>;</span><br><span class="line">	$_ =~<span class="regexp">s/[\r\n]+//g</span>;</span><br><span class="line">	$count++;</span><br><span class="line">	<span class="keyword">if</span> ($count == <span class="number">1</span>) &#123;</span><br><span class="line">		$head_checkv = $_;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">my</span> @lines = <span class="keyword">split</span> <span class="regexp">/\t/</span>;</span><br><span class="line">		$hash&#123;$lines[<span class="number">0</span>]&#125; = $_;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">close</span> IN;</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span> IN, <span class="string">&quot;vs2-pass1/final-viral-score.tsv&quot;</span> || <span class="keyword">die</span>;</span><br><span class="line"><span class="keyword">open</span> OUT, <span class="string">&quot;&gt;forCheck.txt&quot;</span> || <span class="keyword">die</span>;</span><br><span class="line"><span class="keyword">while</span> (&lt;IN&gt;) &#123;</span><br><span class="line">	<span class="keyword">chomp</span>;</span><br><span class="line">	$_ =~<span class="regexp">s/[\r\n]+//g</span>;</span><br><span class="line">	$num++;</span><br><span class="line">	<span class="keyword">if</span> ($num == <span class="number">1</span>) &#123;</span><br><span class="line">		$head_pass1 = $_;</span><br><span class="line">		<span class="keyword">print</span> OUT <span class="string">&quot;$head_pass1\t$head_checkv\n&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">my</span> @line = <span class="keyword">split</span> <span class="regexp">/\t/</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">exists</span> $hash&#123;$line[<span class="number">0</span>]&#125;) &#123;</span><br><span class="line">			<span class="keyword">print</span> OUT <span class="string">&quot;$_\t$hash&#123;$line[0]&#125;\n&quot;</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">print</span> OUT <span class="string">&quot;$_\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">close</span> IN;</span><br><span class="line"><span class="keyword">close</span> OUT;</span><br></pre></td></tr></table></figure>
+
+<p>接下来按照上面的四条规则对<code>forCheck.txt</code>进行拆分，得到病毒<code>Virus.txt</code>、手动核对<code>Manual_check.txt</code>及抛弃的<code>Discard.txt</code>。可以自己看，也可以用<code>get_virus.pl</code>来完成。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/perl</span></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">open</span> IN, <span class="string">&quot;forCheck.txt&quot;</span> || <span class="keyword">die</span>;</span><br><span class="line"><span class="keyword">open</span> VIRUS, <span class="string">&quot;&gt;Virus.txt&quot;</span> || <span class="keyword">die</span>;</span><br><span class="line"><span class="keyword">open</span> MANUAL, <span class="string">&quot;&gt;Manual_check.txt&quot;</span> || <span class="keyword">die</span>;</span><br><span class="line"><span class="keyword">open</span> DISCARD, <span class="string">&quot;&gt;Discard.txt&quot;</span> || <span class="keyword">die</span>;</span><br><span class="line"><span class="keyword">while</span> (&lt;IN&gt;) &#123;</span><br><span class="line">	<span class="keyword">chomp</span>;</span><br><span class="line">	$_ =~<span class="regexp">s/[\r\n]+//g</span>;</span><br><span class="line">	$count++;</span><br><span class="line">	<span class="keyword">if</span> ($count == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">print</span> VIRUS $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		<span class="keyword">print</span> MANUAL $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		<span class="keyword">print</span> DISCARD $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">my</span> @lines = <span class="keyword">split</span> <span class="regexp">/\t/</span>;</span><br><span class="line">		<span class="keyword">if</span> ($lines[<span class="number">15</span>] &gt; <span class="number">0</span>) &#123; <span class="comment"># virus keep1</span></span><br><span class="line">			<span class="keyword">print</span> VIRUS $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;<span class="keyword">elsif</span> (($lines[<span class="number">15</span>] == <span class="number">0</span>) &amp;&amp; ($lines[<span class="number">16</span>] == <span class="number">0</span>)) &#123; <span class="comment"># virus keep2</span></span><br><span class="line">			<span class="keyword">print</span> VIRUS $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;<span class="keyword">elsif</span> (($lines[<span class="number">15</span>] == <span class="number">0</span>) &amp;&amp; ($lines[<span class="number">6</span>] &gt;= <span class="number">0</span>.<span class="number">95</span>)) &#123; <span class="comment"># virus keep2</span></span><br><span class="line">			<span class="keyword">print</span> VIRUS $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;<span class="keyword">elsif</span> (($lines[<span class="number">15</span>] == <span class="number">0</span>) &amp;&amp; ($lines[<span class="number">9</span>] &gt; <span class="number">2</span>)) &#123; <span class="comment"># virus keep2</span></span><br><span class="line">			<span class="keyword">print</span> VIRUS $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;<span class="keyword">elsif</span> (($lines[<span class="number">15</span>] == <span class="number">0</span>) &amp;&amp; ($lines[<span class="number">16</span>] == <span class="number">1</span>) &amp;&amp; ($lines[<span class="number">8</span>] &gt;= <span class="number">10000</span>)) &#123; <span class="comment"># manual check</span></span><br><span class="line">			<span class="keyword">print</span> MANUAL $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123; <span class="comment"># discard</span></span><br><span class="line">			<span class="keyword">print</span> DISCARD $_ . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">close</span> IN;</span><br><span class="line"><span class="keyword">close</span> VIRUS;</span><br><span class="line"><span class="keyword">close</span> MANUAL;</span><br><span class="line"><span class="keyword">close</span> DISCARD;</span><br></pre></td></tr></table></figure>
+
+<p>用法：脚本与<code>forCheck.txt</code>放在同一目录，终端运行如下命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl get_virus.pl</span><br></pre></td></tr></table></figure>
+
+<p>对于<code>Manual_check.txt</code>中的序列，需要用眼睛和脑袋去<code>dramv-annotate/annotations.tsv</code>中找注释信息，然后根据下面的方法判断其属于病毒还是细胞，如果是病毒，就将其所在的那行信息复制到<code>Virus.txt</code>文件的末尾，并保存。</p>
+<h2 id="依据DRAMv注释筛选"><a href="#依据DRAMv注释筛选" class="headerlink" title="依据DRAMv注释筛选"></a>依据DRAMv注释筛选</h2><p>在病毒和宿主中都有一些共同的基因(如{脂多糖^LPS}相关)和移动元件，这些基因可能导致上述“Keep2”类别中的假阳性。因此，++要谨慎对待带有这些基因的contigs++{.dot}。专家们已经编制了一份与此相关的[“可疑”]{.red}基因列表。我们可以使用“Keep2”类别中的contigs对DRAMv表取子集，并在DRAMv子集表中筛选“可疑”基因(忽略大小写，例如在“grep”中使用“-i”选项)，然后将带有这些基因的contigs放入“手动检查”类别中。</p>
+<h2 id="手动检查-tabset"><a href="#手动检查-tabset" class="headerlink" title="手动检查{.tabset}"></a>手动检查{.tabset}</h2><p>对于存在于<ruby>“手动检查”<rt>manual check</rt></ruby>类别中的序列，可以观察其在”dramv-annotate&#x2F;annotations.tsv”中的注释信息。本步骤很难标准化，下面是一些经验之谈：</p>
+<div class="tabs" id="tab-id"><ul class="nav-tabs"><li class="tab active"><a class="#tab-id-1">判定contig为病毒的标准</a></li><li class="tab"><a class="#tab-id-2">判定contig为非病毒的标准</a></li></ul><div class="tab-content"><div class="tab-pane active" id="tab-id-1"><p>;;;id1  判定contig为病毒的标准</p>
+<ul>
+<li>结构基因、hallmark基因、<ruby>注释缺失或假设性富集<rt>depletion in annotations or enrichment for hypotheticals</rt> (~10%的基因具有non-hypothetical注释)。</li>
+<li>缺乏hallmarks，但&gt;&#x3D;50%已注释的基因为病毒，且其中至少一半以上的viral bitcore &gt;100，且contig的长度&lt;50kb。</li>
+<li>Provirus: <ruby>整合酶&#x2F;重组酶&#x2F;切除酶&#x2F;阻遏子<rt>Integrase&#x2F;recombinase&#x2F;excisionase&#x2F;repressor</rt></ruby>，在一侧富集了病毒基因。</li>
+<li>Provirus: 基因组中存在“break”：两个基因之间的<ruby>间隙<rt>gap</rt></ruby>对应于一个<ruby>链开关<rt>strand switch</rt></ruby>，更高的编码密度，注释缺失，以及在一侧噬菌体基因的富集。</li>
+<li><ruby>仅有~1-3个基因有注释，但至少一半命中病毒，且命中基因的bitscore不超过病毒bitscore的150% ，<rt>Few annotations only ~1-3 genes, but with at least half hitting to viruses, and where the genes hitting cells have a bitscore no more than 150% that of the viral bitscores</rt></ruby> <ruby>且&#x2F;或病毒的bitscore &gt;100 <rt> and&#x2F;or viral bitscores are &gt;100</rt></ruby>。</li>
+<li>LPS (脂多糖) <ruby>外观区域对病毒基因的命中率也非常高<rt>looking regions if also has very strong hits to viral genes</rt></ruby>，bitscore&gt;100。<br>;;;</li>
+</ul></div><div class="tab-pane" id="tab-id-2"><p>;;;id1 判定contig为非病毒的标准</p>
+<ul>
+<li><ruby>细胞样基因<rt>cellular like genes</rt></ruby>是病毒基因的3倍，几乎所有基因都有注释，没有基因只命中病毒，也没有病毒<ruby>标志基因<rt>hallmark genes</rt></ruby>。</li>
+<li>缺乏任何病毒hallmark genes，且长度 &gt;50kb。</li>
+<li>许多明显的细胞基因字符串，没有其他病毒标志基因。 在基准测试中遇到的例子包括 1) CRISPR Cas, 2) ABC transporters, 3) Sporulation proteins, 4) Two-component systems, 5) Secretion system。这其中一些可能是由病毒编码的，但在没有进一步证据的情况下并不表明是病毒contig。</li>
+<li>多个质粒基因或转座酶，但没有明确的只命中病毒的基因。</li>
+<li>注释信息很少，仅有~1-3个基因同时命中了病毒和细胞基因，但有stronger bitscores支持其为细胞基因。</li>
+<li><ruby>没有强有力的命中病毒的脂多糖样区域<rt>LPS looking regions if no strong viral hits</rt></ruby>。富含通常与脂多糖相关的基因，如{外聚酶^epimerases}、{糖基转移酶^glycosyl transferases}、{酰基转移酶^acyltransferase}、{短链脱氢酶&#x2F;还原酶^dehydrogenase&#x2F;reductase short-chain}、{脱水酶^dehydratase}。</li>
+<li>注释为 Type IV 和&#x2F;或 Type VI 分析系统，并被非病毒基因围绕。</li>
+<li>注释信息很少，仅有~1-3个基因全部命中细胞基因 (即使 bitscore &lt;100) ，且没有命中病毒的基因。<br>;;;</li>
+</ul></div></div></div>
+
+<p>:::warning<br>最后，用户要注意，VirSorter 2和&#x2F;或checkV预测的任何原病毒边界只是一个近似的估计(寻找“ends”在前噬菌体发现中是一个相当具有挑战性的问题)，也需要仔细地手工检查，特别是在AMG研究中。<br>:::</p>
+<p>最终我们需要拿到病毒contig的序列，用<code>get_virus_seqs.pl</code>完成。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/perl</span></span><br><span class="line">use strict;</span><br><span class="line">use warnings;</span><br><span class="line"></span><br><span class="line">my %<span class="built_in">hash</span>;</span><br><span class="line">open IN, <span class="string">&quot;checkv/combined.fna&quot;</span> || die;</span><br><span class="line"><span class="built_in">local</span> $/ = <span class="string">&quot;&gt;&quot;</span>;</span><br><span class="line">&lt;IN&gt;;</span><br><span class="line"><span class="keyword">while</span> (&lt;IN&gt;) &#123;</span><br><span class="line">	chomp;</span><br><span class="line">	my (<span class="variable">$header</span>, <span class="variable">$seq</span>) = <span class="built_in">split</span>(/\n/, <span class="variable">$_</span>, 2);</span><br><span class="line">	my <span class="variable">$id</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="variable">$header</span> =~/(\S+)\|\|.+/) &#123;</span><br><span class="line">		<span class="variable">$id</span> = <span class="variable">$1</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="variable">$id</span> = <span class="variable">$header</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable">$hash</span>&#123;<span class="variable">$id</span>&#125; = <span class="variable">$seq</span>;</span><br><span class="line">&#125;</span><br><span class="line">close IN;</span><br><span class="line"></span><br><span class="line"><span class="built_in">local</span> $/ = <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">open IN, <span class="string">&quot;Virus.txt&quot;</span> || die;</span><br><span class="line">open OUT, <span class="string">&quot;&gt;Virus.fas&quot;</span> || die;</span><br><span class="line">open NO, <span class="string">&quot;&gt;NoSeqs.ids&quot;</span> || die;</span><br><span class="line">&lt;IN&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (&lt;IN&gt;) &#123;</span><br><span class="line">	chomp;</span><br><span class="line">	my @lines = <span class="built_in">split</span> /\t/;</span><br><span class="line">	<span class="variable">$lines</span>[0] =~/(\S+)\|\|/;</span><br><span class="line">	<span class="keyword">if</span> (exists <span class="variable">$hash</span>&#123;<span class="variable">$1</span>&#125;) &#123;</span><br><span class="line">		<span class="built_in">print</span> OUT <span class="string">&quot;&gt;<span class="variable">$lines</span>[0]\n<span class="variable">$hash</span>&#123;<span class="variable">$1</span>&#125;\n&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">print</span> NO <span class="string">&quot;<span class="variable">$lines</span>[0]\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">close IN;</span><br><span class="line">close OUT;</span><br><span class="line">close NO;</span><br></pre></td></tr></table></figure>
+
+<p>用法：终端运行如下命令即可得到序列文件<code>Virus.fas</code>。</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl get_virus_seqs.pl</span><br></pre></td></tr></table></figure>
+
+<h1 id="脚本获取"><a href="#脚本获取" class="headerlink" title="脚本获取"></a>脚本获取</h1><p>关注公众号“生信之巅”，聊天窗口回复“1551”获取下载链接。</p>
+<table align="center"><tr>
+  <td align="center"><img src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅微信公众号" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-right: 0px;margin-bottom: 5px;align: center;"></td>
+  <td align="center"><img src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅小程序码" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-left: 0px;margin-bottom: 5px;align: center"></td>
+</tr></table>
+
+
+<p><font color="#FF0000"><ruby><b>敬告</b>：使用文中脚本请引用本文网址，请尊重本人的劳动成果，谢谢！<rt><b>Notice</b>: When you use the scripts in this article, please cite the link of this webpage. Thank you!</rt></ruby></font></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jiarong/VirSorter2">VirSorter2</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.protocols.io/view/viral-sequence-identification-sop-with-virsorter2-bwm5pc86">Viral sequence identification SOP with VirSorter2 V.3</a></li>
+</ul>
+<div class="mermaid">graph TD
+	A [Reads] --&gt; B((MetaSpaDES))
+	B --&gt; C [Contigs]
+	C --&gt; D ((VirSorter))
+	C --&gt; E ((VirFinder))
+	E --&gt; F {Score &gt;&#x3D; 0.7 &amp; p &lt; 0.05}
+	F -- YES --&gt; G [Virus]
+	F -- NO --&gt; H [Contigs]
+	D --&gt; G
+	H --&gt; I ((CAT))
+	I --&gt; J {&lt; 40%}
+	J -- YES --&gt; G
+	J -- NO --&gt; K [Not Virus]
+	G --&gt; L ((Nucmer))
+	L --&gt; M {Identity &gt;&#x3D; 95% &amp; Coverage &gt;&#x3D; 80%}
+	M -- YES --&gt; N [Grouped]
+	M -- NO --&gt; O [Not Grouped]
+	G --&gt; P ((Prodigal))
+	P --&gt; Q [Amino Acid Sequences]
+	Q --&gt; R {Length &lt; 10 kb}
+	R -- YES --&gt; S ((Blastp))
+	R -- NO --&gt; T ((vConTACT2))
+	S --&gt; U [Annotated Genes]
+	T --&gt; U</div>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/" class="">
+              生信软件
+            </a>
+          
+            <a href="/tags/ST179/" class="">
+              ST179
+            </a>
+          
+            <a href="/tags/%E5%AE%8F%E7%97%85%E6%AF%92%E7%BB%84/" class="">
+              宏病毒组
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>Hualin Liu</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/post/1551.html" target="_blank" title="宏病毒组分析流程1-VirSorter2">https://www.liaochenlanruo.fun/post/1551.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_98.webp" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_98.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/post/8fb3.html" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">利用GTDB-TK对细菌和古菌基因组进行物种分类</div>
+      </div>
+      
+      <!-- <div class="content">
+        GTDB-Tk 是一个软件工具包，用于根据基因组数据库分类 GTDBGenome Database Taxonomy G
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_95.webp" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_95.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/post/ed43.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Linux中使用tar将大文件压缩为多个小的压缩包</div>
+      </div>
+      <!-- <div class="content">
+        在GitHub上传文件时，单个文件不允许超过100m，超过的话需要使用Git Large File Storage，操作
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/AliPay.jpg" class="lazyload placeholder" data-srcset="/medias/AliPay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/reward-wepay.jpg" class="lazyload placeholder" data-srcset="/medias/reward-wepay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/head.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>了尘兰若</h2>
+        
+        
+          <p>Research Go</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">了尘兰若的小坑</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="http://github.com/liaochenlanruo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B"><span class="toc-text">预测</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4"><span class="toc-text">过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E6%8D%AE%E7%97%85%E6%AF%92%E5%92%8C%E5%AE%BF%E4%B8%BB%E5%9F%BA%E5%9B%A0%E6%95%B0%E3%80%81%E5%88%86%E6%95%B0%E3%80%81hallmark%E5%9F%BA%E5%9B%A0%E6%95%B0%E4%BB%A5%E5%8F%8Acontig%E9%95%BF%E5%BA%A6%E8%BF%9B%E8%A1%8C%E7%AD%9B%E9%80%89"><span class="toc-text">依据病毒和宿主基因数、分数、hallmark基因数以及contig长度进行筛选</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E6%8D%AEDRAMv%E6%B3%A8%E9%87%8A%E7%AD%9B%E9%80%89"><span class="toc-text">依据DRAMv注释筛选</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%A3%80%E6%9F%A5-tabset"><span class="toc-text">手动检查{.tabset}</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96"><span class="toc-text">脚本获取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6685.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-26</span>
+                
+              </div>
+              <a class="post-title" href="/post/6685.html">Shiny从入门到入定——7-图形</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6718.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_206.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_206.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-25</span>
+                
+              </div>
+              <a class="post-title" href="/post/6718.html">Shiny从入门到入定——6-布局、主题、HTML</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/83c3.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_205.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_205.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-24</span>
+                
+              </div>
+              <a class="post-title" href="/post/83c3.html">Shiny从入门到入定——5-工作流</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/377b.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-24</span>
+                
+              </div>
+              <a class="post-title" href="/post/377b.html">Shiny从入门到入定——4-挖坑完毕之案例研究</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/41c3.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_203.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_203.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-20</span>
+                
+              </div>
+              <a class="post-title" href="/post/41c3.html">Shiny从入门到入定——3-在特别大的花园里面挖呀挖呀挖</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social">
+                  
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social">
+                  
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2018 - 2024 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">鄂ICP备2021021941号</a>    <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725号</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script async>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script async src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

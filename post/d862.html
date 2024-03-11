@@ -1,0 +1,3284 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-139249935-1');
+</script>
+
+
+  <title>PGCGAP - the Prokaryotic Genomics and Comparative Genomics Analysis Pipeline v1.0.33 | 了尘兰若的小坑</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script async src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">了尘兰若的小坑</h3>
+      <h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)">
+                  <span>
+                    
+                      <i class="fas fa-archive"></i>
+                    
+                    <span class="name">归档</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(1)">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)">
+                  <span>
+                    
+                      <i class="fas fa-user"></i>
+                    
+                    <span class="name">关于</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(2)">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(3)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">了尘兰若的小坑</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive"></i>
+                  
+                  <span class="name">归档</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user"></i>
+                  
+                  <span class="name">关于</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="menu-item-link" title="开往">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script defer>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_81.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        PGCGAP - the Prokaryotic Genomics and Comparative Genomics Analysis Pipeline v1.0.33
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2022-03-15 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/" class="post-detail-header_category">
+              生物信息
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 7.4k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 45分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <table>
+<thead>
+<tr>
+<th><img src="https://img.shields.io/badge/Platform-WSL%2FLinux%2FmacOS-green" class="lazyload placeholder" data-srcset="https://img.shields.io/badge/Platform-WSL%2FLinux%2FmacOS-green" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></th>
+<th><a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo/pgcgap/blob/master/LICENSE"><img src="https://img.shields.io/github/license/liaochenlanruo/pgcgap" class="lazyload placeholder" data-srcset="https://img.shields.io/github/license/liaochenlanruo/pgcgap" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="License"></a></th>
+<th><a target="_blank" rel="noopener" href="https://anaconda.org/bioconda/pgcgap"><img src="https://anaconda.org/bioconda/pgcgap/badges/version.svg" class="lazyload placeholder" data-srcset="https://anaconda.org/bioconda/pgcgap/badges/version.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="GitHubversion"></a></th>
+<th><img src="https://img.shields.io/conda/dn/bioconda/pgcgap.svg?style=flat" class="lazyload placeholder" data-srcset="https://img.shields.io/conda/dn/bioconda/pgcgap.svg?style=flat" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></th>
+<th><a target="_blank" rel="noopener" href="http://bioconda.github.io/recipes/pgcgap/README.html"><img src="https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat" class="lazyload placeholder" data-srcset="https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="install with bioconda"></a></th>
+<th><a target="_blank" rel="noopener" href="//shang.qq.com/wpa/qunwpa?idkey=fd4637eecd73bf0a5a8caa274843a07afdf1fbbc40a86630df5d4b029749cc7b"><img src="https://pub.idqqimg.com/wpa/images/group.png" class="lazyload placeholder" data-srcset="https://pub.idqqimg.com/wpa/images/group.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅" title="945751012"></a></th>
+</tr>
+</thead>
+</table>
+<p><center>
+<script type="text/javascript" src="//rf.revolvermaps.com/0/0/4.js?i=0ett3z77b0x&amp;m=0&amp;h=128&amp;c=ff0000&amp;r=0" async="async"></script>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<script type="text/javascript" src="//rf.revolvermaps.com/0/0/0.js?i=0ett3z77b0x&amp;d=3&amp;p=1&amp;b=1&amp;w=293&amp;g=2&amp;f=arial&amp;fs=13&amp;r=0&amp;c0=ff8a00&amp;c1=0006ff&amp;c2=000000&amp;ic0=0&amp;ic1=0" async="async"></script>
+</center></p>
+
+<p><a target="_blank" rel="noopener" href="https://liaochenlanruo.github.io/pgcgap">English Readme</a> | <a target="_blank" rel="noopener" href="https://liaochenlanruo.github.io/post/848f.html">中文说明</a></p>
+<pre><code>      ____       ____      ____     ____       _        ____    
+    U|  _&quot;\ u U /&quot;___|u U /&quot;___| U /&quot;___|u U  /&quot;\  u  U|  _&quot;\ u 
+    \| |_) |/ \| |  _ / \| | u   \| |  _ /  \/ _ \/   \| |_) |/ 
+     |  __/    | |_| |   | |/__   | |_| |   / ___ \    |  __/   
+     |_|        \____|    \____|   \____|  /_/   \_\   |_|      
+     ||&gt;&gt;_      _)(|_    _// \\    _)(|_    \\    &gt;&gt;   ||&gt;&gt;_    
+    (__)__)    (__)__)  (__)(__)  (__)__)  (__)  (__) (__)__)   
+</code></pre>
+<h2 id="Multi-version-instructions-This-one-for-the-latest-version"><a href="#Multi-version-instructions-This-one-for-the-latest-version" class="headerlink" title="Multi-version instructions (This one for the latest version)"></a>Multi-version instructions (This one for the latest version)</h2><hr>
+<ul>
+<li><a href="./index-v1.0.29.html">Instructions for V1.0.29</a></li>
+<li><a href="./index-v1.0.32.html">Instructions for V1.0.32</a></li>
+<li><a href="./index.html">Instructions for the latest version</a></li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><hr>
+<p>PGCGAP is a pipeline for prokaryotic comparative genomics analysis. It can take the pair-end reads, ONT reads or PacBio reads as input. In addition to genome assembly, gene prediction and annotation, it can also get common comparative genomics analysis results such as phylogenetic trees of single-core proteins and core SNPs, pan-genome, whole-genome Average Nucleotide Identity (ANI), orthogroups and orthologs, COG annotations, substitutions (SNPs) and insertions&#x2F;deletions (indels), and antimicrobial and virulence genes mining with only one line of commands. <strong><u>To follow this document, please upgrade PGCGAP to version v1.0.33 or later</u></strong>.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><hr>
+<p>The software was tested successfully on Windows WSL, Linux x64 platform, and macOS. Because this software relies on a large number of other software, so it is recommended to install with <strong><a target="_blank" rel="noopener" href="https://bioconda.github.io/index.html">Bioconda</a></strong>.</p>
+<p><strong>Step1: Install PGCGAP</strong></p>
+<ul>
+<li><p>Method 1: use mamba to install PGCGAP</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install mamba first</span></span><br><span class="line">conda install mamba</span><br><span class="line"></span><br><span class="line"><span class="comment"># Usually specify the latest version of PGCGAP (v1.0.33 is coming soon)</span></span><br><span class="line">mamba create -n pgcgap pgcgap=1.0.33</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Notice</strong>: <u>I had submitted the latest version (v1.0.33) of the Bioconda recipe for PGCGAP for a test. However, Bioconda moved to a new test server which allocated very little memory, causing the test to fail. As a result, I had to remove some dependencies from the Bioconda recipe to pass the test, so after installing the main program of PGCGAP v1.0.33 through Conda, users still need to install some dependencies (Installing V1.0.32 and previous versions does not require an additional dependency package installation). This situation will be resolved soon with the release of Conda v4.12 as Bioconda will switch to the less memory-consuming Mamba for recipe testing. After that, users will still be able to install PGCGAP and its dependencies just using the above commands.</u> However, at present, after the previous step, the user needs to execute the following command to complete the installation of the dependency packages:</p>
+<p>  当安装PGCGAP v1.0.33的时候还需要单独安装依赖包，这是由于Bioconda换了新的测试服务器。我在提交最新版本的recipe并进行测试的时候，服务器仅分配了极小的内存，导致测试失败。因此，我不得不从Bioconda recipe中移除一些依赖包以通过测试。所以，在通过conda安装完PGCGAP的主程序后，还需要安装一些依赖包。这种状况将在不久的将来得到解决，即随着conda v4.12释放以后，Bioconda将转用耗费内存更小的mamba来进行recipe的测试，此后，用户仍可通过上述命令完成PGCGAP和其依赖包的安装。目前，在执行完上一步操作之后，用户还需要执行下面这条命令完成依赖包的安装（当然，安装v1.0.32及以前的版本不需要单独再安装依赖包了）：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda activate pgcgap</span><br><span class="line">mamba install -y abricate canu roary orthofinder fastani fastp snippy sickle-trim unicycler perl-file-copy-recursive prokka pal2nal mash trimal</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Method 2: use &quot;environment.yaml&quot;. Run the following commands to download the <a target="_blank" rel="noopener" href="https://bcam.hzau.edu.cn/PGCGAP/conda/pgcgap_latest_env.yml">latest environmental file</a> and install PGCGAP:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install mamba first</span></span><br><span class="line">conda install mamba</span><br><span class="line"></span><br><span class="line"><span class="comment"># download pgcgap_latest_env.yml</span></span><br><span class="line">wget --no-check-certificate https://bcam.hzau.edu.cn/PGCGAP/conda/pgcgap_latest_env.yml</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a conda environment named as pgcgap and install the latest version of PGCGAP</span></span><br><span class="line">mamba <span class="built_in">env</span> create -f pgcgap_latest_env.yml</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>Step2: Setup COG database</strong> (Users should execute this after the first installation of pgcgap)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda activate pgcgap</span><br><span class="line">pgcgap --setup-COGdb</span><br><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
+
+<p>Users with <a target="_blank" rel="noopener" href="https://hub.docker.com/">docker container</a> installed have another choice to install PGCGAP.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull quay.io/biocontainers/pgcgap:&lt;tag&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(see <a target="_blank" rel="noopener" href="https://quay.io/repository/biocontainers/pgcgap?tab=tags">pgcgap&#x2F;tags</a> for valid values for &lt;tag&gt;)</p>
+<h2 id="Required-dependencies"><a href="#Required-dependencies" class="headerlink" title="Required dependencies"></a>Required dependencies</h2><hr>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/tseemann/abricate">Abricate</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.bcgsc.ca/platform/bioinfo/software/abyss/">ABySS</a></li>
+<li><a target="_blank" rel="noopener" href="http://canu.readthedocs.org/">Canu</a></li>
+<li><a target="_blank" rel="noopener" href="http://weizhongli-lab.org/cd-hit/">CD-HIT</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.gnu.org/software/coreutils/">Coreutils</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bbuchfink/diamond">Diamond</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ParBLiSS/FastANI">FastANI</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.atgc-montpellier.fr/fastme/binaries.php">Fastme</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/OpenGene/fastp">Fastp</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.microbesonline.org/fasttree">FastTree</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/samtools/htslib">Htslib</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.iqtree.org/">IQ-TREE</a></li>
+<li><a target="_blank" rel="noopener" href="https://mafft.cbrc.jp/alignment/software/">Mafft</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/marbl/Mash">Mash</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/soedinglab/mmseqs2">Mmseqs2</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ebi.ac.uk/Tools/msa/muscle/">Muscle</a></li>
+<li><a target="_blank" rel="noopener" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download">NCBI-blast+</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/davidemms/OrthoFinder">OrthoFinder</a></li>
+<li><a target="_blank" rel="noopener" href="https://openjdk.java.net/">OpenJDK8</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.bork.embl.de/pal2nal/">PAL2NAL v14</a></li>
+<li><a target="_blank" rel="noopener" href="http://trimal.cgenomics.org/">trimAL</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.perl.org/get.html">Perl</a> &amp; the modules<ul>
+<li><a target="_blank" rel="noopener" href="http://metacpan.org/pod/BioPerl">perl-bioperl</a></li>
+<li><a target="_blank" rel="noopener" href="http://metacpan.org/pod/Data::Dumper">perl-data-dumper</a></li>
+<li><a target="_blank" rel="noopener" href="http://metacpan.org/pod/File::Tee">perl-file-tee</a></li>
+<li><a target="_blank" rel="noopener" href="http://metacpan.org/pod/Getopt::Long">perl-getopt-long</a></li>
+<li><a target="_blank" rel="noopener" href="http://search.cpan.org/~marekr/Pod-Usage-1.69/">perl-pod-usage</a></li>
+<li><a target="_blank" rel="noopener" href="https://metacpan.org/pod/release/DLUX/Parallel-ForkManager-0.7.5/ForkManager.pm">perl-parallel-forkmanager</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tseemann/prokka">Prokka</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/">Python</a> &amp; the modules<ul>
+<li><a target="_blank" rel="noopener" href="https://biopython.org/">biopython</a></li>
+<li><a target="_blank" rel="noopener" href="https://matplotlib.org/">matplotlib</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.numpy.org/">numpy</a></li>
+<li><a target="_blank" rel="noopener" href="http://pandas.pydata.org/">pandas</a></li>
+<li><a target="_blank" rel="noopener" href="http://seaborn.pydata.org/">seaborn</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://www.r-project.org/">R</a> &amp; the packages<ul>
+<li><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/corrplot/index.html">corrplot</a></li>
+<li><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/ggplot2/">ggplot2</a></li>
+<li><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/gplots/">gplots</a></li>
+<li><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/pheatmap/index.html">pheatmap</a></li>
+<li><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/plotrix/">plotrix</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://sanger-pathogens.github.io/Roary/">Roary</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/najoshi/sickle">Sickle-trim</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tseemann/snippy">Snippy</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sanger-pathogens/snp-sites">Snp-sites</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rrwick/Unicycler">unicycler</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.gnu.org/software/wget/">wget</a></li>
+</ul>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><hr>
+<ul>
+<li><p><strong>Print the help messages:</strong></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Check for update:</strong></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --check-update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>General usage:</strong></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap [modules] [options]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Show parameters for each module:</strong></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap [Assemble|Annotate|ANI|AntiRes|CoreTree|MASH|OrthoF|Pan|pCOG|VAR|STREE|ACC]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Show examples of each module:</strong></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap Examples</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Setup COG database:</strong> (Users should execute this after the first installation of pgcgap)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --setup-COGdb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Modules:</strong></p>
+<ul>
+<li><p><strong>[--All]</strong> Perform Assemble, Annotate, CoreTree, Pan, OrthoF, ANI, MASH, AntiRes and pCOG functions with one command</p>
+</li>
+<li><p><strong>[--Assemble]</strong> Assemble reads (short, long or hybrid) into contigs</p>
+</li>
+<li><p><strong>[--Annotate]</strong> Genome annotation</p>
+</li>
+<li><p><strong>[--CoreTree]</strong> Construct single-core proteins tree and SNPs tree of single-copy core genes</p>
+</li>
+<li><p><strong>[--Pan]</strong> Run &quot;roary&quot; pan-genome pipeline with gff3 files, and construct a phylogenetic tree with the sing-copy core proteins called by roary</p>
+</li>
+<li><p><strong>[--OrthoF]</strong> Identify orthologous protein sequence families with &quot;OrthoFinder&quot;, and construct a phylogenetic tree with the sing-copy core Orthologues</p>
+</li>
+<li><p><strong>[--ANI]</strong> Compute whole-genome Average Nucleotide Identity ( ANI )</p>
+</li>
+<li><p><strong>[--MASH]</strong> Genome and metagenome similarity estimation using MinHash</p>
+</li>
+<li><p><strong>[--pCOG]</strong> Run COG annotation for each strain (*.faa), and generate a table containing the relative abundance of each flag for all strains</p>
+</li>
+<li><p><strong>[--VAR]</strong> Rapid haploid variant calling and core genome alignment with &quot;Snippy&quot;</p>
+</li>
+<li><p><strong>[--AntiRes]</strong> Screening of contigs for antimicrobial and virulence genes</p>
+</li>
+<li><p><strong>[--STREE]</strong> Construct a phylogenetic tree based on multiple sequences in one file</p>
+</li>
+<li><p><strong>[--ACC]</strong> Other useful gadgets (now includes &#39;Assess&#39; for filtering short sequences in the genome and assessing the statistics of the genome only)</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Global Options:</strong></p>
+<ul>
+<li><p><strong>[--strain_num (INT)]</strong> [Required by &quot;--All&quot;, &quot;--CoreTree&quot;, &quot;--Pan&quot;, &quot;--VAR&quot; and &quot;--pCOG&quot;] The total number of strains used for analysis, not including the reference genome</p>
+</li>
+<li><p><strong>[--ReadsPath (PATH)]</strong> [Required by &quot;--All&quot;, &quot;--Assemble&quot; and &quot;--VAR&quot;] Reads of all strains as file paths ( Default .&#x2F;Reads&#x2F;Illumina )</p>
+</li>
+<li><p><strong>[--scafPath (PATH)]</strong> [Required by &quot;--All&quot;, &quot;--Assess&quot;, &quot;--Annotate&quot;, &quot;--MASH&quot; and &quot;--AntiRes&quot;] Path for contigs&#x2F;scaffolds (Default &quot;Results&#x2F;Assembles&#x2F;Scaf&#x2F;Illumina&quot;)</p>
+</li>
+<li><p><strong>[--AAsPath (PATH)]</strong> [Required by &quot;--All&quot;, &quot;--Pan&quot;, &quot;--OrthoF&quot; and &quot;--pCOG&quot;] Amino acids of all strains as fasta file paths, ( Default &quot;.&#x2F;Results&#x2F;Annotations&#x2F;AAs&quot; )</p>
+</li>
+<li><p><strong>[--reads1 (STRING)]</strong> [Required by &quot;--All&quot;, &quot;--Assemble&quot; and &quot;--VAR&quot;] The suffix name of reads 1 ( for example: if the name of reads 1 is &quot;YBT-1520_L1_I050.R1.clean.fastq.gz&quot;, &quot;YBT-1520&quot; is the strain same, so the suffix name should be &quot;.R1.clean.fastq.gz&quot;)</p>
+</li>
+<li><p><strong>[--reads2 (STRING)]</strong> [Required by &quot;--All&quot;, &quot;--Assemble&quot; and &quot;--VAR&quot;] The suffix name of reads 2( for example: if the name of reads 2 is &quot;YBT-1520_2.fq&quot;, the suffix name should be &quot;_2.fq&quot; )</p>
+</li>
+<li><p><strong>[--Scaf_suffix (STRING)]</strong> [Required by &quot;--All&quot;, &quot;--Assess&quot;, &quot;--Annotate&quot; &quot;--MASH&quot;, &quot;--ANI&quot; and &quot;--AntiRes&quot;] The suffix of scaffolds or genome files. This is an important parameter that must be set (Default -8.fa)</p>
+</li>
+<li><p><strong>[--filter_length (INT)]</strong> [Required by &quot;--All&quot;, &quot;--Assemble&quot; and &quot;--Assess&quot;]&gt; Sequences shorter than the &#39;filter_length&#39; will be removed from the assembled genomes. ( Default 200 )</p>
+</li>
+<li><p><strong>[--codon (INT)]</strong> [Required by &quot;--All&quot;, &quot;--Annotate&quot;, &quot;--CoreTree&quot; and &quot;--Pan&quot;] Translation table ( Default 11 )</p>
+<pre><code>- 1 Universal code
+- 2 Vertebrate mitochondrial code
+- 3 Yeast mitochondrial code
+- 4 Mold, Protozoan, and Coelenterate Mitochondrial code and Mycoplasma/Spiroplasma code
+- 5 Invertebrate mitochondrial
+- 6 Ciliate, Dasycladacean and Hexamita nuclear code
+- 9 Echinoderm and Flatworm mitochondrial code
+- 10 Euplotid nuclear code
+- 11 Bacterial, archaeal and plant plastid code ( Default )
+- 12 Alternative yeast nuclear code
+- 13 Ascidian mitochondrial code
+- 14 Alternative flatworm mitochondrial code
+- 15 Blepharisma nuclear code
+- 16 Chlorophycean mitochondrial code
+- 21 Trematode mitochondrial code
+- 22 Scenedesmus obliquus mitochondrial code
+- 23 Thraustochytrium mitochondrial code
+</code></pre>
+</li>
+<li><p><strong>[--suffix_len (INT)]</strong> [Required by &quot;--All&quot;, &quot;--Assemble&quot; and &quot;--VAR&quot;] <strong><u>(Strongly recommended)</u></strong> The suffix length of the reads, that is the length of your reads name minus the length of your strain name. For example the --suffix_len of &quot;YBT-1520_L1_I050.R1.clean.fastq.gz&quot; is 26 ( &quot;YBT-1520&quot; is the strain name ) ( Default 0 )</p>
+</li>
+<li><p><strong>[--fasttree]</strong> [Can be used with &quot;CoreTree&quot;, &quot;Pan&quot; and &quot;OrthoF&quot;] Use FastTree to construct phylogenetic tree quickly instead of IQ-TREE</p>
+</li>
+<li><p><strong>[--bsnum (INT)]</strong> [Required by &quot;CoreTree&quot;, &quot;Pan&quot;, &quot;OrthoF&quot;, &quot;STREE&quot;, and &quot;VAR&quot;] Replicates for bootstrap of IQ-TREE ( Default 500 )</p>
+</li>
+<li><p><strong>[--fastboot (INT)]</strong> [Required by &quot;CoreTree&quot;, &quot;Pan&quot;, &quot;OrthoF&quot;, &quot;STREE&quot;, and &quot;VAR&quot;] Replicates for ultrafast bootstrap of IQ-TREE. ( must &gt;&#x3D; 1000, Default 1000 )</p>
+</li>
+<li><p><strong>[--logs (STRING)]</strong> Name of the log file ( Default Logs.txt )</p>
+</li>
+<li><p><strong>[--threads (INT)]</strong> Number of threads to be used ( Default 4 )</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Local Options:</strong></p>
+<ul>
+<li><p><strong>--Assemble</strong></p>
+<ul>
+<li><p><strong>[--platform (STRING)]</strong> [Required] Sequencing Platform, &quot;illumina&quot;, &quot;pacbio&quot;, &quot;oxford&quot; and &quot;hybrid&quot; available ( Default illumina )</p>
+</li>
+<li><p><strong>[--assembler (STRING)]</strong> [Required] Software used for illumina reads assembly, &quot;abyss&quot; and &quot;spades&quot; available ( Default auto )</p>
+</li>
+<li><p><strong>[--kmmer (INT)]</strong> [Required] k-mer size for genome assembly of Illumina data ( Default 81 )</p>
+</li>
+<li><p><strong>[--genomeSize (STRING)]</strong> [Required] An estimate of the size of the genome. Common suffixes are allowed, for example, 3.7m or 2.8g. Needed by PacBio data and ONT data ( Default Unset )</p>
+</li>
+<li><p><strong>[--short1 (STRING)]</strong> [Required] FASTQ file of first short reads in each pair. Needed by hybrid assembly ( Default Unset )</p>
+</li>
+<li><p><strong>[--short2 (STRING)]</strong> [Required] FASTQ file of second short reads in each pair. Needed by hybrid assembly ( Default Unset )</p>
+</li>
+<li><p><strong>[--long (STRING)]</strong> [Required] FASTQ or FASTA file of long reads. Needed by hybrid assembly ( Default Unset )</p>
+</li>
+<li><p><strong>[--hout (STRING)]</strong> [Required] Output directory for hybrid assembly ( Default ..&#x2F;..&#x2F;Results&#x2F;Assembles&#x2F;Hybrid )</p>
+</li>
+</ul>
+</li>
+<li><p><strong>--Annotate</strong></p>
+<ul>
+<li><p><strong>[--genus (STRING)]</strong> Genus name of your strain ( Default &quot;NA&quot; )</p>
+</li>
+<li><p><strong>[--species (STRING)]</strong> Species name of your strain ( Default &quot;NA&quot;)\</p>
+</li>
+</ul>
+</li>
+<li><p><strong>--CoreTree</strong></p>
+<ul>
+<li><p><strong>[--CDsPath (PATH)]</strong> [Required] CDs of all strains as fasta file paths ( Default &quot;.&#x2F;Results&#x2F;Annotations&#x2F;CDs&quot; ), if set to &quot;NO&quot;, the SNPs of single-copy core genes will not be called</p>
+</li>
+<li><p><strong>[-c (FLOAT)]</strong> Sequence identity threshold, ( Default 0.5)</p>
+</li>
+<li><p><strong>[-n (INT)]</strong> Word_length, -n 2 for thresholds 0.4-0.5, -n 3 for thresholds 0.5-0.6, -n 4 for thresholds 0.6-0.7, -n 5 for thresholds 0.7-1.0 ( Default 2 )</p>
+</li>
+<li><p><strong>[-G (INT)]</strong> Use global (set to 1) or local (set to 0) sequence identity, ( Default 0 )</p>
+</li>
+<li><p><strong>[-t (INT)]</strong> Tolerance for redundance ( Default 0 )</p>
+</li>
+<li><p><strong>[-aL (FLOAT)]</strong> Alignment coverage for the longer sequence. If set to 0.9, the alignment must cover 90% of the sequence ( Default 0.5 )</p>
+</li>
+<li><p><strong>[-aS (FLOAT)]</strong> Alignment coverage for the shorter sequence. If set to 0.9, the alignment must covers 90% of the sequence ( Default 0.7 )</p>
+</li>
+<li><p><strong>[-g (INT)]</strong> If set to 0, a sequence is clustered to the first cluster that meets the threshold (fast cluster). If set to 1, the program will cluster it into the most similar cluster that meets the threshold (accurate but slow mode, Default 1)</p>
+</li>
+<li><p><strong>[-d (INT)]</strong> length of description in .clstr file. if set to 0, it takes the fasta defline and stops at first space ( Default 0 )</p>
+</li>
+</ul>
+</li>
+<li><p><strong>--Pan</strong></p>
+<ul>
+<li><strong>[--GffPath (PATH)]</strong> [Required] Gff files of all strains as paths ( Default &quot;.&#x2F;Results&#x2F;Annotations&#x2F;GFF&quot; )</li>
+<li><strong>[--PanTree]</strong> Construct a phylogenetic tree of single-copy core proteins called by roary</li>
+<li><strong>[--identi (INT)]</strong> Minimum percentage identity for blastp ( Default 95 )</li>
+</ul>
+</li>
+<li><p><strong>--OrthoF</strong></p>
+<ul>
+<li><strong>[--Sprogram (STRING)]</strong> Sequence search program, Options: blast, mmseqs, blast_gz, diamond ( Default diamond)</li>
+</ul>
+</li>
+<li><p><strong>--ANI</strong></p>
+<ul>
+<li><p><strong>[--queryL (FILE)]</strong> [Required] The file containing paths to query genomes, one per line ( Default scaf.list )</p>
+</li>
+<li><p><strong>[--refL (FILE)]</strong> [Required] The file containing paths to reference genomes, one per line. ( Default scaf.list )</p>
+</li>
+</ul>
+</li>
+<li><p><strong>--VAR</strong></p>
+<ul>
+<li><p><strong>[--refgbk (FILE)]</strong> [Required] The full path and name of reference genome in GENBANK format ( recommended ), fasta format is also OK. For example: &quot;&#x2F;mnt&#x2F;g&#x2F;test&#x2F;ref.gbk&quot;</p>
+</li>
+<li><p><strong>[--qualtype (STRING)]</strong> [Required] Type of quality values (solexa (CASAVA &lt; 1.3), illumina (CASAVA 1.3 to 1.7), sanger (which is CASAVA &gt;&#x3D; 1.8)). ( Default sanger )</p>
+</li>
+<li><p><strong>[--qual (INT)]</strong> Threshold for trimming based on average quality in a window. ( Default 20 )</p>
+</li>
+<li><p><strong>[--length (INT)]</strong> Threshold to keep a read based on length after trimming. ( Default 20 )</p>
+</li>
+<li><p><strong>[--mincov (INT)]</strong> The minimum number of reads covering a site to be considered ( Default 10 )</p>
+</li>
+<li><p><strong>[--minfrac (FLOAT)]</strong> The minimum proportion of those reads which must differ from the reference ( Default 0.9 )</p>
+</li>
+<li><p><strong>[--minqual (INT)]</strong> The minimum VCF variant call &quot;quality&quot; ( Default 100 )</p>
+</li>
+<li><p><strong>[--ram (INT)]</strong> Try and keep RAM under this many GB ( Default 8 )</p>
+</li>
+</ul>
+</li>
+<li><p><strong>--AntiRes</strong></p>
+<ul>
+<li><p><strong>[--db (STRING)]</strong> [Required] The database to use, options: all, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/24145532">argannot</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/27789705">card</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5343136/">ecoh</a>, <a target="_blank" rel="noopener" href="https://github.com/phac-nml/ecoli_vf">ecoli_vf</a>, <a target="_blank" rel="noopener" href="https://megares.meglab.org/">megares</a>, <a target="_blank" rel="noopener" href="https://www.biorxiv.org/content/10.1101/550707v1">ncbi</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/24777092">plasmidfinder</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/22782487">resfinder</a> and <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/26578559">vfdb</a>. ( Default all )</p>
+</li>
+<li><p><strong>[--identity (INT)]</strong> [Required] Minimum %identity to keep the result, should be a number between 1 to 100. ( Default 75 )</p>
+</li>
+<li><p><strong>[--coverage (INT)]</strong> [Required] Minimum %coverage to keep the result, should be a number between 0 to 100. ( Default 50 )</p>
+</li>
+</ul>
+</li>
+<li><p><strong>--STREE</strong></p>
+<ul>
+<li><p><strong>[--seqfile (STRING)]</strong> [Required] Path of the sequence file for analysis.</p>
+</li>
+<li><p><strong>[--seqtype (INT)]</strong> [Required] Type Of Sequence (p, d, c for Protein, DNA, Codons, respectively). ( Default p )</p>
+</li>
+</ul>
+</li>
+<li><p><strong>--pCOG</strong></p>
+<ul>
+<li><p><strong>[--evalue (FLOAT)]</strong> [Required] Maximum e-value to report alignments, ( Default 1e-3 )</p>
+</li>
+<li><p><strong>[--id (INT)]</strong> [Required] Minimum identity% to report an alignment, ( Default 40 )</p>
+</li>
+<li><p><strong>[--query_cover (INT)]</strong> [Required] Minimum query cover% to report an alignment, ( Default 70 )</p>
+</li>
+<li><p><strong>[--subject_cover (INT)]</strong> [Required] Minimum subject cover% to report an alignment, ( Default 50 )</p>
+</li>
+</ul>
+</li>
+<li><p><strong>--ACC</strong></p>
+<ul>
+<li><strong>[--Assess (STRING)]</strong> Filter short sequences in the genome and assess the status of the genome</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Paths of external programs</strong></p>
+<p>  Not needed if they were in the environment variables path. Users can check with the &quot;--check-external-programs&quot; option for the essential programs.</p>
+<ul>
+<li><p><strong>[--abricate-bin (PATH)]</strong> Path to abyss binary file.<br>Default tries if abyss is in PATH;</p>
+</li>
+<li><p><strong>[--abyss-bin (PATH)]</strong> Path to abyss binary file. Default<br>tries if abyss is in PATH;</p>
+</li>
+<li><p><strong>[--canu-bin (PATH)]</strong> Path to canu binary file. Default<br>tries if canu is in PATH;</p>
+</li>
+<li><p><strong>[--cd-hit-bin (PATH)]</strong> Path to cd-hit binary file. Default<br>tries if cd-hit is in PATH;</p>
+</li>
+<li><p><strong>[--fastANI-bin (PATH)]</strong> Path to the fastANI binary file.<br>Default tries if fastANI is in PATH;</p>
+</li>
+<li><p><strong>[--iqtree-bin (PATH)]</strong> Path to the iqtree binary file.<br>Default tries if iqtree is in PATH;</p>
+</li>
+<li><p><strong>[--mafft-bin (PATH)]</strong> Path to mafft binary file. Default<br>tries if mafft is in PATH;</p>
+</li>
+<li><p><strong>[--mash-bin (PATH)]</strong> Path to the mash binary file. Default<br>tries if mash is in PATH.</p>
+</li>
+<li><p><strong>[--muscle-bin (PATH)]</strong> Path to the muscle binary file.<br>Default tries if muscle is in PATH.</p>
+</li>
+<li><p><strong>[--orthofinder-bin (PATH)]</strong> Path to the orthofinder binary<br>file. Default tries if orthofinder is in PATH;</p>
+</li>
+<li><p><strong>[--pal2nal-bin (PATH)]</strong> Path to the pal2nal.pl binary<br>file. Default tries if pal2nal.pl is in PATH;</p>
+</li>
+<li><p><strong>[--prodigal-bin (PATH)]</strong> Path to prodigal binary file.<br>Default tries if prodigal is in PATH;</p>
+</li>
+<li><p><strong>[--prokka-bin (PATH)]</strong> Path to prokka binary file. Default<br>tries if prokka is in PATH;</p>
+</li>
+<li><p><strong>[--roary-bin (PATH)]</strong> Path to the roary binary file.<br>Default tries if roary is in PATH;</p>
+</li>
+<li><p><strong>[--sickle-bin (PATH)]</strong> Path to the sickle-trim binary<br>file. Default tries if sickle is in PATH.</p>
+</li>
+<li><p><strong>[--snippy-bin (PATH)]</strong> Path to the snippy binary file.<br>Default tries if snippy is in PATH;</p>
+</li>
+<li><p><strong>[--snp-sites-bin (PATH)]</strong> Path to the snp-sites binary<br>file. Default tries if snp-sites is in PATH;</p>
+</li>
+<li><p><strong>[--trimAL-bin (PATH)]</strong> Path to the trimAL binary file.<br>Default tries if trimAL is in PATH;</p>
+</li>
+<li><p><strong>[--unicycler-bin (PATH)]</strong> Path to the unicycler binary<br>file. Default tries if unicycler is in PATH;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Setup COG database</strong></p>
+<ul>
+<li><strong>[--setup-COGdb]</strong> Users should execute this after first<br>installation of pgcgap.</li>
+</ul>
+</li>
+<li><p>Check the required external programs (<strong>It is strongly recommended that this step be performed after the installation of PGCGAP</strong>):</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --check-external-programs</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><p>Example dataset can be download <a target="_blank" rel="noopener" href="http://bcam.hzau.edu.cn/PGCGAP/PGCGAP_Examples.tar.gz">here</a>.</p>
+<ul>
+<li><p><strong>Example 1:</strong> Perform all functions, take the <em>Escherichia coli</em> as an example, total 6 strains for analysis.</p>
+<p>  <strong>Notice</strong>: For the sake of flexibility, The &quot;VAR&quot; function needs to be added additionally.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --All --platform illumina --filter_length 200 --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --suffix_len 11 --kmmer 81 --genus Escherichia --species “Escherichia coli” --codon 11 --PanTree --strain_num 6 --threads 4 --VAR --refgbk /mnt/h/PGCGAP_Examples/Reads/MG1655.gbff --qualtype sanger</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 2:</strong> Genome assembly.</p>
+<ul>
+<li><p>Illumina reads assembly</p>
+<p>In this dataset, the naming format of the genome is “strain_1.fastq.gz” and “strain_2.fastq.gz”. The string after the strain name is “_1.fastq.gz”, and its length is 11, so &quot;--suffix_len&quot; was set to 11.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assemble with ABySS</span></span><br><span class="line">pgcgap --Assemble --platform illumina --assembler abyss --filter_length 200 --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --kmmer 81 --threads 4 --suffix_len 11</span><br><span class="line"></span><br><span class="line"><span class="comment"># Assemble with SPAdes</span></span><br><span class="line">pgcgap --Assemble --platform illumina --assembler spades --filter_length 200 --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --threads 4 --suffix_len 11</span><br><span class="line"></span><br><span class="line"><span class="comment"># Assemble with AUTO</span></span><br><span class="line">pgcgap --Assemble --platform illumina --assembler auto --filter_length 200 --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --kmmer 81 --threads 4 --suffix_len 11</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ONT reads assembly</p>
+<p>Oxford nanopore sequencing usually produces one reads file, so only the parameter of &quot;--reads1&quot; needs to be set, where the value is &quot;.fasta&quot;. “--genomeSize” is the estimated genome size, and users can check the genome size of similar strains in the NCBI database for reference. The parameter was set to &quot;4.8m&quot; here. The suffix of the reads file here is &quot;.fasta&quot; and its length is 6, so &quot;--suffix_len&quot; was set to 6.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --Assemble --platform oxford --filter_length 200 --ReadsPath Reads/Oxford --reads1 .fasta --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PacBio reads assembly</p>
+<p>PacBio also usually produces only one reads file &quot;pacbio.fastq&quot;, the parameter settings are similar to Oxford. The strain name is 6, so &quot;--suffix_len&quot; was set to 6.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --Assemble --platform pacbio --filter_length 200 --ReadsPath Reads/PacBio --reads1 .fastq --genomeSize 4.8m --threads 4 --suffix_len 6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hybrid assembly of short reads and long reads</p>
+<p>Paired-end short reads and long reads in the directory “Reads&#x2F;Hybrid&#x2F;“ were used as inputs. Illumina reads and long reads must be from the same isolates.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --Assemble --platform hybrid --ReadsPath Reads/Hybrid --short1 short_reads_1.fastq.gz --short2 short_reads_2.fastq.gz --long long_reads_high_depth.fastq.gz --threads 4</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>Example 3</strong>: Gene prediction and annotation</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --Annotate --scafPath Results/Assembles/Scaf/Illumina --Scaf_suffix -8.fa --genus Escherichia --species “Escherichia coli” --codon 11 --threads 4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 4</strong>: Constructing single-copy core protein tree and core SNPs tree</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Construct phylogenetic tree with FastTree (Quick without best fit model testing)</span></span><br><span class="line">pgcgap --CoreTree --CDsPath Results/Annotations/CDs --AAsPath Results/Annotations/AAs --codon 11 --strain_num 6 --threads 4 --fasttree</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Very slow with best fit model testing, traditional bootstrap, DEFAULT)</span></span><br><span class="line">pgcgap --CoreTree --CDsPath Results/Annotations/CDs --AAsPath Results/Annotations/AAs --codon 11 --strain_num 6 --threads 4 --bsnum 500</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Slow with best fit model testing, ultrafast bootstrap)</span></span><br><span class="line">pgcgap --CoreTree --CDsPath Results/Annotations/CDs --AAsPath Results/Annotations/AAs --codon 11 --strain_num 6 --threads 4 --fastboot 1000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 5:</strong> Constructing single-copy core protein tree only.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Construct phylogenetic tree with FastTree (Quick without best fit model testing)</span></span><br><span class="line">pgcgap --CoreTree --CDsPath NO --AAsPath Results/Annotations/AAs --codon 11 --strain_num 6 --threads 4 --fasttree</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Very slow with best fit model testing, traditional bootstrap, DEFAULT)</span></span><br><span class="line">pgcgap --CoreTree --CDsPath NO --AAsPath Results/Annotations/AAs --codon 11 --strain_num 6 --threads 4 --bsnum 500</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Slow with best fit model testing, ultrafast bootstrap)</span></span><br><span class="line">pgcgap --CoreTree --CDsPath NO --AAsPath Results/Annotations/AAs --codon 11 --strain_num 6 --threads 4 --fastboot 1000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 6:</strong> Conduct pan-genome analysis and construct a phylogenetic tree of single-copy core proteins called by roary. <strong><u>Applicable to v1.0.27 and later</u></strong>.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Construct phylogenetic tree with FastTree (Quick without best fit model testing)</span></span><br><span class="line">pgcgap --Pan --codon 11 --identi 95 --strain_num 6 --threads 4 --GffPath Results/Annotations/GFF --PanTree --fasttree</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Very slow with best fit model testing, traditional bootstrap, DEFAULT)</span></span><br><span class="line">pgcgap --Pan --codon 11 --identi 95 --strain_num 6 --threads 4 --GffPath Results/Annotations/GFF --PanTree --bsnum 500</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Slow with best fit model testing, ultrafast bootstrap)</span></span><br><span class="line">pgcgap --Pan --codon 11 --identi 95 --strain_num 6 --threads 4 --GffPath Results/Annotations/GFF --PanTree --fastboot 1000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 7:</strong> Inference of orthologous gene groups and construct a phylogenetic tree of single-copy Orthologue proteins. <strong><u>Applicable to v1.0.29 and later</u></strong>.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Construct phylogenetic tree with FastTree (Quick without best fit model testing)</span></span><br><span class="line">pgcgap --OrthoF --threads 4 --AAsPath Results/Annotations/AAs --fasttree</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Very slow with best fit model testing, traditional bootstrap, DEFAULT)</span></span><br><span class="line">pgcgap --OrthoF --threads 4 --AAsPath Results/Annotations/AAs --bsnum 500</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Slow with best fit model testing, ultrafast bootstrap)</span></span><br><span class="line">pgcgap --OrthoF --threads 4 --AAsPath Results/Annotations/AAs --fastboot 1000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 8:</strong> Compute whole-genome Average Nucleotide Identity (ANI).</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --ANI --threads 4 --queryL scaf.list --refL scaf.list --Scaf_suffix .fa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 9:</strong> Genome and metagenome similarity estimation using MinHash.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --MASH --scafPath Results/Assembles/Scaf/Illumina --Scaf_suffix -8.fa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 10:</strong> Run COG annotation for each strain.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --pCOG --threads 4 --strain_num 6 --<span class="built_in">id</span> 40 --query_cover 70 --subject_cover 50 --AAsPath Results/Annotations/AAs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 11:</strong> Variants calling and phylogenetic tree construction based on the reference genome.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Very slow with best fit model testing, traditional bootstrap, DEFAULT)</span></span><br><span class="line">pgcgap --VAR --threads 4 --refgbk /mnt/h/PGCGAP_Examples/Reads/MG1655.gbff --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --suffix_len 11 --strain_num 6 --qualtype sanger --bsnum 500</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Slow with best fit model testing, ultrafast bootstrap)</span></span><br><span class="line">pgcgap --VAR --threads 4 --refgbk /mnt/h/PGCGAP_Examples/Reads/MG1655.gbff --ReadsPath Reads/Illumina --reads1 _1.fastq.gz --reads2 _2.fastq.gz --suffix_len 11 --strain_num 6 --qualtype sanger --fastboot 1000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 12:</strong> Screening of contigs for antimicrobial and virulence genes.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --AntiRes --scafPath Results/Assembles/Scaf/Illumina --Scaf_suffix -8.fa --threads 6 --db all --identity 75 --coverage 50</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 13:</strong> Filter short sequences in the genome and assess the status of the genome.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgcgap --ACC --Assess --scafPath Results/Assembles/Scaf/Illumina --Scaf_suffix -8.fa --filter_length 200</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Example 14:</strong> Construct a phylogenetic tree based on multiple sequences in one file.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Very slow with best fit model testing, traditional bootstrap, DEFAULT)</span></span><br><span class="line">pgcgap --STREE --seqfile proteins.fas --seqtype p --bsnum 500 --threads 4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Construct phylogenetic tree with IQ-TREE (Slow with best fit model testing, ultrafast bootstrap)</span></span><br><span class="line">pgcgap --STREE --seqfile proteins.fas --seqtype p --fastboot 1000 --threads 4</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Generating-Input-files"><a href="#Generating-Input-files" class="headerlink" title="Generating Input files"></a>Generating Input files</h2><hr>
+<h3 id="Working-directory"><a href="#Working-directory" class="headerlink" title="Working directory"></a>Working directory</h3><p>The directory where the PGCGAP software runs.</p>
+<h3 id="Assemble"><a href="#Assemble" class="headerlink" title="Assemble"></a>Assemble</h3><p>Pair-end reads of all strains in a directory or PacBio reads or ONT reads (Default: .&#x2F;Reads&#x2F;Illumina&#x2F; under the working directory).</p>
+<h3 id="Annotate"><a href="#Annotate" class="headerlink" title="Annotate"></a>Annotate</h3><p>Genomes files (complete or draft) in a directory (Default: Results&#x2F;Assembles&#x2F;Scaf&#x2F;Illumina under the working directory).</p>
+<h3 id="ANI"><a href="#ANI" class="headerlink" title="ANI"></a>ANI</h3><p>QUERY_LIST and REFERENCE_LIST files containing full paths to genomes, one per line (default: scaf.list under the working directory). If the “--Assemble” function was run first, the list file will be generated automatically.</p>
+<h3 id="MASH"><a href="#MASH" class="headerlink" title="MASH"></a>MASH</h3><p>Genomes files (complete or draft) in a directory (Default: Results&#x2F;Assembles&#x2F;Scaf&#x2F;Illumina under the working directory).</p>
+<h3 id="CoreTree"><a href="#CoreTree" class="headerlink" title="CoreTree"></a>CoreTree</h3><p>Amino acids file (With “.faa” as the suffix) and nucleotide (With “.ffn” as the suffix) file of each strain placed into two directories (default: “.&#x2F;Results&#x2F;Annotations&#x2F;AAs&#x2F;“ and “.&#x2F;Results&#x2F;Annotations&#x2F;CDs&#x2F;“). The “.faa” and “.ffn” files of the same strain should have the same prefix name. The name of protein IDs and gene IDs should be started with the strain name. The “Prokka” software was suggested to generate the input files. If the “--Annotate” function was run first, the files will be generated automatically. If the “--CDsPath” was set to “NO”, the nucleotide files will not be needed.</p>
+<h3 id="OrthoF"><a href="#OrthoF" class="headerlink" title="OrthoF"></a>OrthoF</h3><p>A set of protein sequence files (one per species) in FASTA format under a directory (default: “.&#x2F;Results&#x2F;Annotations&#x2F;AAs&#x2F;“). If the “--Annotate” function was run first, the files will be generated automatically.</p>
+<h3 id="Pan"><a href="#Pan" class="headerlink" title="Pan"></a>Pan</h3><p>GFF3 files (With “.gff” as the suffix) of each strain placed into a directory. They must contain the nucleotide sequence at the end of the file. All GFF3 files created by Prokka are valid (default: .&#x2F;Results&#x2F;Annotations&#x2F;GFF&#x2F;). If the “--Annotate” function was run first, the files will be generated automatically.</p>
+<h3 id="pCOG"><a href="#pCOG" class="headerlink" title="pCOG"></a>pCOG</h3><p>Amino acids file (With “.faa” as the suffix) of each strain placed into a directory (default: .&#x2F;Results&#x2F;Annotations&#x2F;AAs&#x2F;). If the “--Annotate” function was run first, the files will be generated automatically.</p>
+<h3 id="VAR"><a href="#VAR" class="headerlink" title="VAR"></a>VAR</h3><ul>
+<li><p>Pair-end reads of all strains in a directory (default: .&#x2F;Reads&#x2F;Over&#x2F; under the working directory).</p>
+</li>
+<li><p>The full path of reference genome in FASTA format or GenBank format (<strong>must be provided</strong>).</p>
+</li>
+</ul>
+<h3 id="AntiRes"><a href="#AntiRes" class="headerlink" title="AntiRes"></a>AntiRes</h3><p>Genomes files (complete or draft) in a directory (Default: Results&#x2F;Assembles&#x2F;Scaf&#x2F;Illumina under the working directory).</p>
+<h3 id="STREE"><a href="#STREE" class="headerlink" title="STREE"></a>STREE</h3><p>Multiple-FASTA sequences in a file, can be Protein, DNA and Codons.</p>
+<h2 id="Output-Files"><a href="#Output-Files" class="headerlink" title="Output Files"></a>Output Files</h2><hr>
+<h3 id="Assemble-1"><a href="#Assemble-1" class="headerlink" title="Assemble"></a>Assemble</h3><ul>
+<li><p><strong>Results&#x2F;Assembles&#x2F;Illumina&#x2F;</strong></p>
+<p>  Directories contain Illumina assembly files and information of each strain.</p>
+</li>
+<li><p><strong>Results&#x2F;Assembles&#x2F;PacBio&#x2F;</strong></p>
+<p>  Directories contain PacBio assembly files and information of each strain.</p>
+</li>
+<li><p><strong>Results&#x2F;Assembles&#x2F;Oxford&#x2F;</strong></p>
+<p>  Directories contain ONT assembly files and information of each strain.</p>
+</li>
+<li><p><strong>Results&#x2F;Assembles&#x2F;Hybrid&#x2F;</strong></p>
+<p>  Directory contains hybrid assembly files of the short reads and long reads of the same strain.</p>
+</li>
+<li><p><strong>Results&#x2F;Assembles&#x2F;Scaf&#x2F;Illumina&#x2F;</strong></p>
+<p>  Directory contains Illumina contigs&#x2F;scaffolds of all strains. &quot;*.filtered.fas&quot; is the genome after excluding short sequences. &quot;*.prefilter.stats&quot; describes the stats of the genome before filtering, and &quot;*.filtered.stats&quot; describes the stats of the genome after filtering.</p>
+</li>
+<li><p><strong>Results&#x2F;Assembles&#x2F;Scaf&#x2F;Oxford&#x2F;</strong></p>
+<p>  Directory contains ONT contigs&#x2F;scaffolds of all strains.</p>
+</li>
+<li><p><strong>Results&#x2F;Assembles&#x2F;Scaf&#x2F;PacBio&#x2F;</strong></p>
+<p>  Directory contains PacBio contigs&#x2F;scaffolds of all strains.</p>
+</li>
+</ul>
+<h3 id="Annotate-1"><a href="#Annotate-1" class="headerlink" title="Annotate"></a>Annotate</h3><ul>
+<li><p><strong>Results&#x2F;Annotations&#x2F;*_annotation&#x2F;</strong></p>
+<p>  directories contain <a target="_blank" rel="noopener" href="https://github.com/tseemann/prokka?_blank">annotation files</a> of each strain.</p>
+</li>
+<li><p><strong>Results&#x2F;Annotations&#x2F;AAs&#x2F;</strong></p>
+<p>  Directory contain amino acids sequences of all strains.</p>
+</li>
+<li><p><strong>Results&#x2F;Annotations&#x2F;CDs&#x2F;</strong></p>
+<p>  Directory contain nucleotide sequences of all strains.</p>
+</li>
+<li><p><strong>Results&#x2F;Annotations&#x2F;GFF&#x2F;</strong></p>
+<p>  Directory contain the master annotation of all strains in GFF3 format.</p>
+</li>
+</ul>
+<h3 id="ANI-1"><a href="#ANI-1" class="headerlink" title="ANI"></a>ANI</h3><ul>
+<li><p><strong>Results&#x2F;ANI&#x2F;ANIs</strong></p>
+<p>  The file contains comparation information of genome pairs. The document is composed of five columns, each of which represents query genome, reference genome, ANI value, count of bidirectional fragment mappings, total query fragments.</p>
+</li>
+<li><p><strong>Results&#x2F;ANI&#x2F;ANIs.matrix</strong></p>
+<p>  file with identity values arranged in a <a target="_blank" rel="noopener" href="https://www.mothur.org/wiki/Phylip-formatted_distance_matrix?_blank">phylip-formatted lower triangular matrix</a>.</p>
+</li>
+<li><p><strong>Results&#x2F;ANI&#x2F;ANIs.heatmap</strong></p>
+<p>  An ANI matrix of all strains.</p>
+</li>
+<li><p><strong>Results&#x2F;ANI&#x2F;ANI_matrix.pdf</strong></p>
+<p>  The heatmap plot of &quot;ANIs.heatmap&quot;.</p>
+</li>
+</ul>
+<h3 id="MASH-1"><a href="#MASH-1" class="headerlink" title="MASH"></a>MASH</h3><ul>
+<li><p><strong>Results&#x2F;MASH&#x2F;MASH</strong></p>
+<p>  The pairwise distance between pair genomes, each column represents Reference-ID, Query-ID, Mash-distance, P-value, and Matching-hashes, respectively.</p>
+</li>
+<li><p><strong>Results&#x2F;MASH&#x2F;MASH2</strong></p>
+<p>  The pairwise similarity between pair genomes, each column represents Reference-ID, Query-ID, similarity, P-value, and Matching-hashes, respectively.</p>
+</li>
+<li><p><strong>Results&#x2F;MASH&#x2F;MASH.heatmap</strong></p>
+<p>  A similarity matrix of all genomes.</p>
+</li>
+<li><p><strong>Results&#x2F;MASH&#x2F;MASH_matrix.pdf</strong></p>
+<p>  A heat map plot of &quot;MASH.heatmap&quot;.</p>
+</li>
+</ul>
+<h3 id="CoreTree-1"><a href="#CoreTree-1" class="headerlink" title="CoreTree"></a>CoreTree</h3><ul>
+<li><p><strong>Results&#x2F;CoreTrees&#x2F;ALL.core.protein.fasta</strong></p>
+<p>  Concatenated and aligned sequences file of single-copy core proteins.</p>
+</li>
+<li><p><strong>Results&#x2F;CoreTrees&#x2F;ALL.core.protein.nwk</strong></p>
+<p>  The phylogenetic tree file of single-copy core proteins for all strains constructed by FastTree.</p>
+</li>
+<li><p><strong>Results&#x2F;CoreTrees&#x2F;ALL.core.protein.fasta.gb.treefile</strong></p>
+<p>  The phylogenetic tree file of single-copy core proteins for all strains constructed by IQ-TREE.</p>
+</li>
+<li><p><strong>Results&#x2F;CoreTrees&#x2F;faa2ffn&#x2F;ALL.core.nucl.fasta</strong></p>
+<p>  Concatenated and aligned sequences file of single-copy core genes.</p>
+</li>
+<li><p><strong>Results&#x2F;CoreTrees&#x2F;ALL.core.snp.fasta</strong></p>
+<p>  Core SNPs of single-copy core genes in fasta format.</p>
+</li>
+<li><p><strong>Results&#x2F;CoreTrees&#x2F;ALL.core.snp.fasta.treefile</strong></p>
+<p>  The phylogenetic tree file of SNPs of single-copy core genes for all strains constructed by IQ-TREE.</p>
+</li>
+<li><p><strong>Results&#x2F;CoreTrees&#x2F;&quot;Other_files&quot;</strong></p>
+<p>  Intermediate directories and files.</p>
+</li>
+</ul>
+<h3 id="OrthoF-1"><a href="#OrthoF-1" class="headerlink" title="OrthoF"></a>OrthoF</h3><ul>
+<li><p><strong>Results&#x2F;OrthoFinder&#x2F;Results_orthoF</strong></p>
+<p>  Same as <a target="_blank" rel="noopener" href="https://github.com/davidemms/OrthoFinder?_blank">OrthoFinder</a> outputs.</p>
+</li>
+<li><p><strong>Results&#x2F;OrthoFinder&#x2F;Results_orthoF&#x2F;Single_Copy_Orthologue_Tree&#x2F;</strong></p>
+<p>  Directory contains Phylogenetic tree files based on Single Copy Orthologue sequences.</p>
+</li>
+<li><p><strong>Results&#x2F;OrthoFinder&#x2F;Results_orthoF&#x2F;Single_Copy_Orthologue_Tree&#x2F;Single.Copy.Orthologue.nwk</strong></p>
+<p>  Phylogenetic tree constructed by FastTree.</p>
+</li>
+<li><p><strong>Results&#x2F;OrthoFinder&#x2F;Results_orthoF&#x2F;Single_Copy_Orthologue_Tree&#x2F;Single.Copy.Orthologue.fasta.gb.treefile</strong></p>
+<p>  Phylogenetic tree constructed by IQ-TREE.</p>
+</li>
+</ul>
+<h3 id="Pan-1"><a href="#Pan-1" class="headerlink" title="Pan"></a>Pan</h3><ul>
+<li><p><strong>Results&#x2F;PanGenome&#x2F;Pangenome_Pie.pdf</strong></p>
+<p>  A 3D pie chart and a fan chart of the breakdown of genes and the number of isolates they are present in.</p>
+</li>
+<li><p><strong>Results&#x2F;PanGenome&#x2F;pangenome_frequency.pdf</strong></p>
+<p>  A graph with the frequency of genes versus the number of genomes.</p>
+</li>
+<li><p><strong>Results&#x2F;PanGenome&#x2F;Pangenome_matrix.pdf</strong></p>
+<p>  A figure showing the tree compared to a matrix with the presence and absence of core and accessory genes.</p>
+</li>
+<li><p><strong>Results&#x2F;PanGenome&#x2F;Core&#x2F;Roary.core.protein.fasta</strong></p>
+<p>  Alignments of single-copy core proteins called by roary software.</p>
+</li>
+<li><p><strong>Results&#x2F;PanGenome&#x2F;Core&#x2F;Roary.core.protein.nwk</strong></p>
+<p>  A phylogenetic tree of Roary.core.protein.fasta constructed by FastTree.</p>
+</li>
+<li><p><strong>Results&#x2F;PanGenome&#x2F;Core&#x2F;Roary.core.protein.fasta.gb.treefile</strong></p>
+<p>  A phylogenetic tree of Roary.core.protein.fasta constructed by IQ-TREE.</p>
+</li>
+<li><p><strong>Results&#x2F;PanGenome&#x2F;Other_files</strong></p>
+<p>  see <a target="_blank" rel="noopener" href="https://sanger-pathogens.github.io/Roary/?_blank">roary</a> outputs.</p>
+</li>
+</ul>
+<h3 id="pCOG-1"><a href="#pCOG-1" class="headerlink" title="pCOG"></a>pCOG</h3><ul>
+<li><p><strong>*.COG.xml, *.2gi.table, *.2id.table, *.2Sid.table</strong></p>
+<p>  Intermediate files.</p>
+</li>
+<li><p><strong>*.2Scog.table</strong></p>
+<p>  The super COG table of each strain.</p>
+</li>
+<li><p><strong>*.2Scog.table.pdf</strong></p>
+<p>  A plot of super COG table in pdf format.</p>
+</li>
+<li><p><strong>All_flags_relative_abundances.table</strong></p>
+<p>  A table containing the relative abundance of each flag for all strains.</p>
+</li>
+</ul>
+<h3 id="VAR-1"><a href="#VAR-1" class="headerlink" title="VAR"></a>VAR</h3><ul>
+<li><p><strong>Results&#x2F;Variants&#x2F;directory-named-in-strains</strong></p>
+<p>  directories containing substitutions (snps) and insertions&#x2F;deletions (indels) of each strain. See <a target="_blank" rel="noopener" href="https://github.com/tseemann/snippy?_blank">Snippy</a> outputs for detail.</p>
+</li>
+<li><p><strong>Results&#x2F;Variants&#x2F;Core</strong></p>
+<p>  The directory containing SNP phylogeny files.</p>
+<ul>
+<li><strong>core.aln</strong> : A core SNP alignment includes only SNP sites.</li>
+<li><strong>core.full.aln</strong> : A whole genome SNP alignment (includes invariant sites).</li>
+<li><strong>core.aln.treefile</strong> : Phylogenetic tree of the core SNP alignment based on the best-fit model of evolution selected using IQ-TREE (ignoring possible recombination).</li>
+<li><strong>core.aln.treefile</strong> : The best-fit model of evolution selected using IQ-TREE can be found in this file.</li>
+</ul>
+</li>
+</ul>
+<h3 id="AntiRes-1"><a href="#AntiRes-1" class="headerlink" title="AntiRes"></a>AntiRes</h3><ul>
+<li><strong>Results&#x2F;AntiRes&#x2F;*.tab</strong> : Screening results of each strain.</li>
+<li><strong>Results&#x2F;AntiRes&#x2F;summary.txt</strong> : A matrix of gene presence&#x2F;absence for all strains.</li>
+</ul>
+<h3 id="STREE-1"><a href="#STREE-1" class="headerlink" title="STREE"></a>STREE</h3><ul>
+<li><strong>Results&#x2F;STREE&#x2F;*.aln</strong> : Aligned sequences.</li>
+<li><strong>Results&#x2F;STREE&#x2F;*.aln.gb</strong> : Conserved blocks of the aligned sequences.</li>
+<li><strong>Results&#x2F;STREE&#x2F;*.aln.gb.treefile</strong> : The final phylogenetic tree.</li>
+<li><strong>Results&#x2F;STREE&#x2F;*.aln.gb.iqtree</strong> : Log of IQ-TREE.</li>
+</ul>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><hr>
+<p>PGCGAP is free software, licensed under GPLv3.</p>
+<h2 id="Feedback-and-Issues"><a href="#Feedback-and-Issues" class="headerlink" title="Feedback and Issues"></a>Feedback and Issues</h2><hr>
+<p>Please report any issues to the <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo/pgcgap/issues?_blank">issues page</a> or email us at <a href="mailto:&#108;&#105;&#x61;&#111;&#99;&#x68;&#101;&#110;&#x6c;&#97;&#110;&#114;&#117;&#x6f;&#64;&#119;&#x65;&#x62;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x68;&#x7a;&#x61;&#117;&#x2e;&#101;&#100;&#117;&#46;&#x63;&#110;">&#108;&#105;&#x61;&#111;&#99;&#x68;&#101;&#110;&#x6c;&#97;&#110;&#114;&#117;&#x6f;&#64;&#119;&#x65;&#x62;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x68;&#x7a;&#x61;&#117;&#x2e;&#101;&#100;&#117;&#46;&#x63;&#110;</a>.</p>
+<h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h2><hr>
+<ul>
+<li><p>If you use this software please cite: Liu H, Xin B, Zheng J, Zhong H, Yu Y, Peng D, Sun M. Build a bioinformatics analysis platform and apply it to routine analysis of microbial genomics and comparative<br>  genomics. <em>Protocol exchange</em>, 2022. DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.21203/rs.2.21224/v6">10.21203&#x2F;rs.2.21224&#x2F;v6</a></p>
+</li>
+<li><p>If you use &quot;--Assemble&quot;, please also cite one or two of <a target="_blank" rel="noopener" href="https://github.com/OpenGene/fastp">Fastp</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1101/gr.214346.116">ABySS</a>, <a target="_blank" rel="noopener" href="http://link.springer.com/chapter/10.1007%2F978-3-642-37195-0_13">SPAdes</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1101/gr.215087.116">Canu</a>, or <a target="_blank" rel="noopener" href="https://doi.org/10.1371/journal.pcbi.1005595">Unicycler</a>.</p>
+</li>
+<li><p>If you use &quot;--Annotate&quot;, please also cite <a target="_blank" rel="noopener" href="https://doi.org/10.1093/bioinformatics/btu153">Prokka</a>.</p>
+</li>
+<li><p>If you use &quot;--CoreTree&quot;, please also cite <a target="_blank" rel="noopener" href="https://doi.org/10.1093/bioinformatics/btl158">CD-HIT</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/gkf436">MAFFT</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/gkl315">PAL2NAL</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/bioinformatics/btp348">trimAL</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/molbev/msaa015">IQ-TREE</a> or <a target="_blank" rel="noopener" href="https://doi.org/10.1371/journal.pone.0009490">FastTree</a>, and <a target="_blank" rel="noopener" href="https://dx.doi.org/10.1099%2Fmgen.0.000056">SNP-sites</a>.</p>
+</li>
+<li><p>If you use &quot;--Pan&quot;, please also cite <a target="_blank" rel="noopener" href="https://dx.doi.org/10.1093%2Fbioinformatics%2Fbtv421">Roary</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/gkf436">MAFFT</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/bioinformatics/btp348">trimAL</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/molbev/msaa015">IQ-TREE</a> or <a target="_blank" rel="noopener" href="https://doi.org/10.1371/journal.pone.0009490">FastTree</a>.</p>
+</li>
+<li><p>If you use &quot;--OrthoF&quot;, please also cite <a target="_blank" rel="noopener" href="https://dx.doi.org/10.1186%2Fs13059-019-1832-y">OrthoFinder</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/nar/gkf436">MAFFT</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/bioinformatics/btp348">trimAL</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/molbev/msaa015">IQ-TREE</a> or <a target="_blank" rel="noopener" href="https://doi.org/10.1371/journal.pone.0009490">FastTree</a>.</p>
+</li>
+<li><p>If you use &quot;--ANI&quot;, please also cite <a target="_blank" rel="noopener" href="https://dx.doi.org/10.1038%2Fs41467-018-07641-9">fastANI</a>.</p>
+</li>
+<li><p>If you use &quot;--MASH&quot;, please also cite <a target="_blank" rel="noopener" href="https://dx.doi.org/10.1186%2Fs13059-016-0997-x">Mash</a>.</p>
+</li>
+<li><p>If you use &quot;--VAR&quot;, please also cite <a target="_blank" rel="noopener" href="https://github.com/najoshi/sickle">Sickle</a>, <a target="_blank" rel="noopener" href="https://github.com/tseemann/snippy">Snippy</a>, <a target="_blank" rel="noopener" href="https://dx.doi.org/10.1093%2Fnar%2Fgku1196">Gubbins</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/molbev/msaa015">IQ-TREE</a>, and <a target="_blank" rel="noopener" href="https://dx.doi.org/10.4161%2Ffly.19695">SnpEff</a>.</p>
+</li>
+<li><p>If you use &quot;--AntiRes&quot;, please also cite<br>  <a target="_blank" rel="noopener" href="https://github.com/tseemann/abricate">Abricate</a> and the corresponding database you used: <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6811410">NCBI AMRFinderPlus</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/27789705">CARD</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/22782487">Resfinder</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/24145532">ARG-ANNOT</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/26578559">VFDB</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pubmed/24777092">PlasmidFinder</a>, <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5343136/">EcOH</a>, or <a target="_blank" rel="noopener" href="https://academic.oup.com/nar/article/48/D1/D561/5624973">MEGARES 2.00</a>.</p>
+</li>
+<li><p>If you use &quot;--STREE&quot;, please also cite <a target="_blank" rel="noopener" href="http://europepmc.org/abstract/MED/30976793">Muscle</a>, <a target="_blank" rel="noopener" href="https://doi.org/10.1093/bioinformatics/btp348">trimAL</a>, and <a target="_blank" rel="noopener" href="https://doi.org/10.1093/molbev/msaa015">IQ-TREE</a>.</p>
+</li>
+</ul>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><hr>
+<h3 id="Q1-VAR-function-ran-failed-to-get-annotated-VCFs-and-Core-results"><a href="#Q1-VAR-function-ran-failed-to-get-annotated-VCFs-and-Core-results" class="headerlink" title="Q1 VAR function ran failed to get annotated VCFs and Core results"></a>Q1 VAR function ran failed to get annotated VCFs and Core results</h3><p>Check the log file named in &quot;strain_name.log&quot; under Results&#x2F;Variants&#x2F;&lt;strain_name&gt;&#x2F; directory. If you find a sentence like &quot;WARNING: All frames are zero! This seems rather odd, please check that &#39;frame&#39; information in your &#39;genes&#39; file is accurate.&quot; This is a snpEff error. Users can install JDK8 to solve this problem.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install java-jdk=8.0.112</span><br></pre></td></tr></table></figure>
+
+<p>Click <a target="_blank" rel="noopener" href="https://github.com/tseemann/snippy/issues/259?_blank">here</a> for more solutions.</p>
+<h3 id="Q2-Could-not-determine-version-of-minced-please-install-version-2-or-higher"><a href="#Q2-Could-not-determine-version-of-minced-please-install-version-2-or-higher" class="headerlink" title="Q2 Could not determine version of minced please install version 2 or higher"></a>Q2 Could not determine version of minced please install version 2 or higher</h3><p>When running the Annotate function, this error could happen, the error message shows as following:</p>
+<pre><code>Error: A JNI error has occurred, please check your installation and try again
+Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: minced has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+    at java.lang.ClassLoader.defineClass1(Native Method)
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    at java.net.URLClassLoader.defineClass(URLClassLoader.java:468)
+    at java.net.URLClassLoader.access$100(URLClassLoader.java:74)
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:369)
+    at java.net.URLClassLoader$1.run(URLClassLoader.java:363)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at java.net.URLClassLoader.findClass(URLClassLoader.java:362)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+    at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:495)
+[01:09:40] Could not determine version of minced - please install version 2.0 or higher
+</code></pre>
+<p>Users can downgrade the minced to version 0.3 to solve this problem.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install minced=0.3</span><br></pre></td></tr></table></figure>
+
+<p>Click <a target="_blank" rel="noopener" href="https://github.com/bioconda/bioconda-recipes/pull/15407?_blank">here</a> for detail informations.</p>
+<h3 id="Q3-dyld-Library-not-loaded-rpath-libcrypto-1-0-0-dylib"><a href="#Q3-dyld-Library-not-loaded-rpath-libcrypto-1-0-0-dylib" class="headerlink" title="Q3 dyld: Library not loaded: @rpath&#x2F;libcrypto.1.0.0.dylib"></a>Q3 dyld: Library not loaded: @rpath&#x2F;libcrypto.1.0.0.dylib</h3><p>This error may happen when running function &quot;VAR&quot; on macOS. It is an error of openssl. Users can solve this problem as the following:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Firstly, install brew if have not installed before</span></span><br><span class="line">ruby -e <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Install openssl with brew</span></span><br><span class="line">brew install openssl</span><br><span class="line"></span><br><span class="line"><span class="comment">#Create the soft link for libraries</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/</span><br><span class="line"></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/</span><br></pre></td></tr></table></figure>
+
+<p>Click <a target="_blank" rel="noopener" href="https://gist.github.com/aklap/e885721ef15c8668ed0a1dd64d2ea1a7">here</a> for more informations.</p>
+<h3 id="Q4-Use-of-uninitialized-value-in-require-at-Encode-pm-line-61"><a href="#Q4-Use-of-uninitialized-value-in-require-at-Encode-pm-line-61" class="headerlink" title="Q4 Use of uninitialized value in require at Encode.pm line 61"></a>Q4 Use of uninitialized value in require at Encode.pm line 61</h3><p>This warning may happen when running function &quot;Pan&quot;. It is a warning of Roary software. The content of line 61 is &quot;require Encode::ConfigLocal;&quot;. Users can ignore the warning. Click <a target="_blank" rel="noopener" href="https://github.com/sanger-pathogens/Roary/issues/323">here</a> for details.</p>
+<h2 id="Updates"><a href="#Updates" class="headerlink" title="Updates"></a>Updates</h2><hr>
+<ul>
+<li><p>V1.0.3</p>
+<ul>
+<li>Updated ANI function.</li>
+</ul>
+</li>
+<li><p>V1.0.4</p>
+<ul>
+<li>Add parallel for function &quot;pCOG&quot;.</li>
+<li>Optimized drawing of ANI heat map.</li>
+</ul>
+</li>
+<li><p>V1.0.5</p>
+<ul>
+<li>Bug repair for the input of gubbins.</li>
+</ul>
+</li>
+<li><p>V1.0.6</p>
+<ul>
+<li>Modified CoreTree to split protein and SNPs tree constructing.</li>
+</ul>
+</li>
+<li><p>V1.0.7</p>
+<ul>
+<li>Split Assemble and Annotate into two functions.</li>
+<li>Added third-generation genome assembly function.</li>
+<li>Changed the default parameters of the CoreTree function (aS 0.8 to 0.7 and aL 0.8 to 0.5).</li>
+<li>Changed the name of function &quot;COG&quot; to &quot;pCOG&quot;.</li>
+<li>Fixed the sorting bug for ANI heat map.</li>
+</ul>
+</li>
+<li><p>V1.0.8</p>
+<ul>
+<li>Add the &quot;MASH&quot; function to compute genome distance and similarity using MinHash.</li>
+</ul>
+</li>
+<li><p>V1.0.9</p>
+<ul>
+<li>The function of constructing a single-copy core protein phylogenetic tree was added to &quot;Pan&quot;.</li>
+<li>Fixed a bug of plot_3Dpie.R, Optimized image display, and a fan<br>chart has been added.</li>
+<li>Fixed a bug for plotting the ANI matrix.</li>
+</ul>
+</li>
+<li><p>V1.0.10</p>
+<ul>
+<li>Add the &quot;AntiRes&quot; function to screening of contigs for antimicrobial and virulence genes.</li>
+</ul>
+</li>
+<li><p>V1.0.11</p>
+<ul>
+<li>Users now can choose &quot;abyss&quot; or &quot;spades&quot; for illumina reads aseembly.</li>
+<li>New support for hybrid assembly of paired-end short reads and long reads.</li>
+<li>Add the selecting of best-fit model of evolution for DNA and protein alignments before constructing a phylogenetic tree.</li>
+<li>Optimized display of help information. Users can check parameters for each modulewith command &quot;pgcgap [Assemble|Annotate|ANI|AntiRes|CoreTree|MASH|OrthoF|Pan|pCOG|VAR]&quot;, and can look up the examples of each module with command &quot;pgcgap Examples&quot;.</li>
+</ul>
+</li>
+<li><p>V1.0.12</p>
+<ul>
+<li>Added automatic mode for illumina genome assembly. First, PGCGAP calls &quot;ABySS&quot; for genome assembly. When the assembled N50 is less than 50,000, it automatically calls &quot;SPAdes&quot; to try multiple parameters for assembly.</li>
+<li>Added ability to filter short sequences of assembled genomes.</li>
+<li>Added function of genome assembly status assessment.</li>
+<li>Modified the drawing script of ANI and MASH modules so that it can automatically adjust the font size according to the number of samples.</li>
+</ul>
+</li>
+<li><p>V1.0.13</p>
+<ul>
+<li>Fixed the &quot;running error&quot; bug of function &quot;Assess&quot; in module &quot;ACC&quot;.</li>
+<li>Added module &quot;STREE&quot; for constructing a phylogenetic tree based on multiple sequences in one file.</li>
+</ul>
+</li>
+<li><p>V1.0.14</p>
+<ul>
+<li>The relative_abundances of flags among strains will not be called while the strain number is less than two.</li>
+<li>Fixed the error of function &quot;Assess&quot; in module &quot;ACC&quot;.</li>
+</ul>
+</li>
+<li><p>V1.0.15</p>
+<ul>
+<li>When the number of threads set by the user exceeds the number of threads owned by the system, PGCGAP will automatically adjust the number of threads to avoid program crash.</li>
+<li>Add FASTQ preprocessor before Illunima genome assembly: adapter trimming, polyG tail trimming of Illumina NextSeq&#x2F;NovaSeq reads, quality filtering (Q value filtering, N base filtering, sliding window filtering), length filtering.</li>
+</ul>
+</li>
+<li><p>V1.0.16</p>
+<ul>
+<li>Reduced the number of Racon polishing rounds for better speed performance when peforming genome assembly.</li>
+<li>Force overwriting existing output folder when running &quot;Annotate&quot; analysis to avoid program crash.</li>
+</ul>
+</li>
+<li><p>V1.0.17</p>
+<ul>
+<li>Fixed a bug that the program can not go back to the working directory after genome annotation.</li>
+<li>Added scripts to check if there were single-copy core proteins found while running module &quot;CoreTree&quot;.</li>
+<li>Modified the help message.</li>
+</ul>
+</li>
+<li><p>V1.0.18</p>
+<ul>
+<li>Updated the downloading link of COG database.</li>
+<li>Users can choose the number of threads used for running module &quot;STREE&quot;.</li>
+</ul>
+</li>
+<li><p>V1.0.19</p>
+<ul>
+<li>Can resume from break-point when downloading the COG database.</li>
+<li>Fixed a bug that failed to create multi-level directories.</li>
+</ul>
+</li>
+<li><p>V1.0.20</p>
+<ul>
+<li>Fixed a little bug (path error) of module &quot;VAR&quot;.</li>
+<li>Fixed a little bug of module &quot;CoreTree&quot; to avoid the interference of special characters in sequence ID to the program.</li>
+</ul>
+</li>
+<li><p>V1.0.21</p>
+<ul>
+<li>Change the default search program &quot;blast&quot; to &quot;diamond&quot; of<br>module &quot;OrthoF&quot;.</li>
+<li>Fixed a bug of module &quot;pCOG&quot; to output the right figure.</li>
+</ul>
+</li>
+<li><p>V1.0.22</p>
+<ul>
+<li>The drawing function of module &quot;ANI&quot; and module &quot;MASH&quot; has been enhanced, including automatic adjustment of font size and legend according to the size of the picture.</li>
+<li>Fixed a bug of module &quot;ANI&quot;, that is no heatmap will be drawn when there is &quot;NA&quot; in the ANI matrix in the previous versions.</li>
+<li>When the ANI value or genome similarity is greater than 95%, an asterisk (*) will be drawn in the corresponding cell of the heatmap.</li>
+</ul>
+</li>
+<li><p>V1.0.23</p>
+<ul>
+<li>The &quot;--Assess&quot; function of module &quot;ACC&quot; was enhanced to (1) generate a summary file containing the status of all genomes (before and after the short sequence filtering), (2) auto move the low-quality genomes (that is genomes with N50 length less than 50 k) to a directory, and others to another directory.</li>
+</ul>
+</li>
+<li><p>V1.0.24</p>
+<ul>
+<li>Fixed a little bug of module &quot;Pan&quot; to avoid the interference of special characters (&gt;) in sequence ID to the program.</li>
+</ul>
+</li>
+<li><p>V1.0.25</p>
+<ul>
+<li>Gblocks was used to eliminate poorly aligned positions and divergent regions of an alignment of DNA or protein sequences in module &quot;CoreTree&quot; and &quot;Pan&quot;.</li>
+<li>The parameter &quot;--identi&quot; was added into module &quot;Pan&quot; to allow users to set the minimum percentage identity for blastp.</li>
+</ul>
+</li>
+<li><p>V1.0.26</p>
+<ul>
+<li>Adjusted the font size with the variation of genome number and the string length of the genome name when plotting the heat map of module &quot;ANI&quot; and &quot;MASH&quot;.</li>
+<li>Two heat map are provided, one of which with a star (means the similarity of the two genomes is larger than 95%) and another without a star, when performing the &quot;ANI&quot; and &quot;MASH&quot; analysis.</li>
+</ul>
+</li>
+<li><p>V1.0.27</p>
+<ul>
+<li>The Amino Acid files are no longer needed when performing the Pan-genome analysis with module Pan.</li>
+</ul>
+</li>
+<li><p>V1.0.28</p>
+<ul>
+<li>Users can check and install the latest version of PGCGAP by the command &quot;pgcgap --check-update&quot;.</li>
+<li>Update module Assemble to allow polish after the assembly of PacBio and ONT data.</li>
+<li>Update module pCOG to adjust the latest database of <a target="_blank" rel="noopener" href="https://ftp.ncbi.nih.gov/pub/COG/COG2020/data/">COG 2020</a>.</li>
+<li>Optimized the drawing and color scheme of the module pCOG.</li>
+<li>Fixed the parameter &quot;CoreTree&quot; in the module Pan to avoid program termination caused by the &quot;&gt;&quot; in non-sequence lines.</li>
+</ul>
+</li>
+<li><p>V1.0.29</p>
+<ul>
+<li>Function added to module OrthoF: Phylogenetic tree can be constructed automatically with the Single Copy Orthologue Sequences called by module OrthoF.</li>
+<li>Fixed the &quot;permission denied&quot; error when moving directories on the WSL platform.</li>
+</ul>
+</li>
+<li><p>V1.0.30</p>
+<ul>
+<li>Replace Gblocks with trimAL to trim MSA (module CoreTree, Pan, STREE, and OrthoF).</li>
+<li>Replaced Modeltest-ng and Raxml-ng with IQ-TREE (module CoreTree, Pan OrthoF, and VAR).</li>
+<li>Added the option of using fasttree to build phylogenetic tree (module CoreTree, Pan, and OrthoF).</li>
+</ul>
+</li>
+<li><p>V1.0.31</p>
+<ul>
+<li>The default replicates for bootstrap testing of IQ-TREE was set to 500.</li>
+<li>Add the method for phylogenetic tree constructing with ultrafast bootstrap of IQ-TREE.</li>
+<li>Prevent the log from being written to the tree file generated by FastTree.</li>
+</ul>
+</li>
+<li><p>V1.0.32</p>
+<ul>
+<li>A more colorful version, try &quot;pgcgap Examples&quot; to have a look.</li>
+<li>Updated module AntiRes: the parameter --db had been modified to add choices of &quot;all&quot; and &quot;megares&quot;.</li>
+<li>A little optimization of module VAR.</li>
+<li>Replaced conda with mamba to update PGCGAP more quickly.</li>
+</ul>
+</li>
+<li><p>V1.0.33</p>
+<ul>
+<li>Updated module CoreTree: <a target="_blank" rel="noopener" href="https://bitsandbugs.org/2019/11/06/two-easy-ways-to-run-iq-tree-with-the-correct-number-of-constant-sites/">Run IQ-TREE with the correct number of constant sites</a> when constructing the single-copy core SNPs tree.</li>
+<li>Updated module VAR: Use &quot;SNP-SITE&quot; and &quot;IQ-TREE -fconst&quot; to generate SNP sites from the &quot;core.full.aln&quot; and construct the phylogenetic tree.</li>
+<li>Updated module pCOG: Replace blast with diamond to speed up analysis.</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/WGS/" class="">
+              WGS
+            </a>
+          
+            <a href="/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/" class="">
+              生信软件
+            </a>
+          
+            <a href="/tags/%E6%AF%94%E8%BE%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/" class="">
+              比较基因组学
+            </a>
+          
+            <a href="/tags/PGCGAP/" class="">
+              PGCGAP
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>Hualin Liu</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/post/d862.html" target="_blank" title="PGCGAP - the Prokaryotic Genomics and Comparative Genomics Analysis Pipeline v1.0.33">https://www.liaochenlanruo.fun/post/d862.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_101.webp" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_101.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/post/e6ae.html" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> 上一篇:
+        <div class="title-text">利用PGCGAP根据ids提取序列信息</div>
+      </div>
+      
+      <!-- <div class="content">
+        使用场景假设有一个fasta格式的序列文件SRR9620252.faa，我们想要提取其中的一些序列到一个新的文件中，我们
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_100.webp" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_100.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/post/54a0.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">WSL安装Docker避坑指北</div>
+      </div>
+      <!-- <div class="content">
+        升级WSL
+查看已安装的WSL版本(Windows PowerShell中运行)
+  12wsl.exe -l -v
+ 
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/AliPay.jpg" class="lazyload placeholder" data-srcset="/medias/AliPay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/reward-wepay.jpg" class="lazyload placeholder" data-srcset="/medias/reward-wepay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/head.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>了尘兰若</h2>
+        
+        
+          <p>Research Go</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">了尘兰若的小坑</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="http://github.com/liaochenlanruo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-version-instructions-This-one-for-the-latest-version"><span class="toc-text">Multi-version instructions (This one for the latest version)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Required-dependencies"><span class="toc-text">Required dependencies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage"><span class="toc-text">Usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples"><span class="toc-text">Examples</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Generating-Input-files"><span class="toc-text">Generating Input files</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Working-directory"><span class="toc-text">Working directory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Assemble"><span class="toc-text">Assemble</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Annotate"><span class="toc-text">Annotate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ANI"><span class="toc-text">ANI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MASH"><span class="toc-text">MASH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CoreTree"><span class="toc-text">CoreTree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OrthoF"><span class="toc-text">OrthoF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pan"><span class="toc-text">Pan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pCOG"><span class="toc-text">pCOG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VAR"><span class="toc-text">VAR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AntiRes"><span class="toc-text">AntiRes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STREE"><span class="toc-text">STREE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Output-Files"><span class="toc-text">Output Files</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Assemble-1"><span class="toc-text">Assemble</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Annotate-1"><span class="toc-text">Annotate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ANI-1"><span class="toc-text">ANI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MASH-1"><span class="toc-text">MASH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CoreTree-1"><span class="toc-text">CoreTree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OrthoF-1"><span class="toc-text">OrthoF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pan-1"><span class="toc-text">Pan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pCOG-1"><span class="toc-text">pCOG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VAR-1"><span class="toc-text">VAR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AntiRes-1"><span class="toc-text">AntiRes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#STREE-1"><span class="toc-text">STREE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#License"><span class="toc-text">License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Feedback-and-Issues"><span class="toc-text">Feedback and Issues</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Citation"><span class="toc-text">Citation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FAQ"><span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Q1-VAR-function-ran-failed-to-get-annotated-VCFs-and-Core-results"><span class="toc-text">Q1 VAR function ran failed to get annotated VCFs and Core results</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q2-Could-not-determine-version-of-minced-please-install-version-2-or-higher"><span class="toc-text">Q2 Could not determine version of minced please install version 2 or higher</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q3-dyld-Library-not-loaded-rpath-libcrypto-1-0-0-dylib"><span class="toc-text">Q3 dyld: Library not loaded: @rpath&#x2F;libcrypto.1.0.0.dylib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q4-Use-of-uninitialized-value-in-require-at-Encode-pm-line-61"><span class="toc-text">Q4 Use of uninitialized value in require at Encode.pm line 61</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Updates"><span class="toc-text">Updates</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6685.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-26</span>
+                
+              </div>
+              <a class="post-title" href="/post/6685.html">Shiny从入门到入定——7-图形</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6718.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_206.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_206.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-25</span>
+                
+              </div>
+              <a class="post-title" href="/post/6718.html">Shiny从入门到入定——6-布局、主题、HTML</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/83c3.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_205.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_205.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-24</span>
+                
+              </div>
+              <a class="post-title" href="/post/83c3.html">Shiny从入门到入定——5-工作流</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/377b.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-24</span>
+                
+              </div>
+              <a class="post-title" href="/post/377b.html">Shiny从入门到入定——4-挖坑完毕之案例研究</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/41c3.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_203.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_203.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-20</span>
+                
+              </div>
+              <a class="post-title" href="/post/41c3.html">Shiny从入门到入定——3-在特别大的花园里面挖呀挖呀挖</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social">
+                  
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social">
+                  
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2018 - 2024 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">鄂ICP备2021021941号</a>    <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725号</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script async>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', '')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script async src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>了尘兰若的小坑</title>
+  
+  <subtitle>liaochenlanruo</subtitle>
+  <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
+  
+  <link href="https://www.liaochenlanruo.fun/"/>
+  <updated>2024-01-25T01:03:28.000Z</updated>
+  <id>https://www.liaochenlanruo.fun/</id>
+  
+  <author>
+    <name>Hualin Liu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Shiny从入门到入定——7-图形</title>
+    <link href="https://www.liaochenlanruo.fun/post/6685.html"/>
+    <id>https://www.liaochenlanruo.fun/post/6685.html</id>
+    <published>2024-01-26T14:09:43.000Z</published>
+    <updated>2024-01-25T01:03:28.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;7-图形&quot;&gt;&lt;a href=&quot;#7-图形&quot; class=&quot;headerlink&quot; title=&quot;7 图形&quot;&gt;&lt;/a&gt;7 图形&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;第7章向您展示了如何向绘图添加直接交互以及如何显示以其他方式生成的图像。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我们在第</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——6-布局、主题、HTML</title>
+    <link href="https://www.liaochenlanruo.fun/post/6718.html"/>
+    <id>https://www.liaochenlanruo.fun/post/6718.html</id>
+    <published>2024-01-25T13:49:44.000Z</published>
+    <updated>2024-01-25T01:03:28.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;6-布局，主题，HTML&quot;&gt;&lt;a href=&quot;#6-布局，主题，HTML&quot; class=&quot;headerlink&quot; title=&quot;6 布局，主题，HTML&quot;&gt;&lt;/a&gt;6</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——5-工作流</title>
+    <link href="https://www.liaochenlanruo.fun/post/83c3.html"/>
+    <id>https://www.liaochenlanruo.fun/post/83c3.html</id>
+    <published>2024-01-24T14:24:55.000Z</published>
+    <updated>2024-01-25T01:03:28.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;第二部分概览&quot;&gt;&lt;a href=&quot;#第二部分概览&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Shiny入门系列,编程 - Shiny入门系列 - 编程" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97-%E7%BC%96%E7%A8%8B-Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97-%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——4-挖坑完毕之案例研究</title>
+    <link href="https://www.liaochenlanruo.fun/post/377b.html"/>
+    <id>https://www.liaochenlanruo.fun/post/377b.html</id>
+    <published>2024-01-24T11:17:55.000Z</published>
+    <updated>2024-01-25T01:03:28.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;4-案例研究：ER损伤&quot;&gt;&lt;a href=&quot;#4-案例研究：ER损伤&quot; class=&quot;headerlink&quot; title=&quot;4 案例研究：ER损伤&quot;&gt;&lt;/a&gt;4 案例研究：ER损伤&lt;/h1&gt;&lt;h2 id=&quot;4-1-简介&quot;&gt;&lt;a href=&quot;#4-1-简介&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Shiny入门系列,编程 - Shiny入门系列 - 编程" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97-%E7%BC%96%E7%A8%8B-Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97-%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——3-在特别大的花园里面挖呀挖呀挖</title>
+    <link href="https://www.liaochenlanruo.fun/post/41c3.html"/>
+    <id>https://www.liaochenlanruo.fun/post/41c3.html</id>
+    <published>2024-01-20T08:53:43.000Z</published>
+    <updated>2024-01-24T00:51:07.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;3-基础反应性&quot;&gt;&lt;a href=&quot;#3-基础反应性&quot; class=&quot;headerlink&quot; title=&quot;3 基础反应性&quot;&gt;&lt;/a&gt;3 基础反应性&lt;/h1&gt;&lt;h2 id=&quot;3-1-介绍&quot;&gt;&lt;a href=&quot;#3-1-介绍&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——2-在大大的花园里面挖呀挖呀挖</title>
+    <link href="https://www.liaochenlanruo.fun/post/5369.html"/>
+    <id>https://www.liaochenlanruo.fun/post/5369.html</id>
+    <published>2023-11-18T12:14:50.000Z</published>
+    <updated>2023-11-26T05:15:50.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;基础UI&quot;&gt;&lt;a href=&quot;#基础UI&quot; class=&quot;headerlink&quot; title=&quot;基础UI&quot;&gt;&lt;/a&gt;基础UI&lt;/h1&gt;&lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>16S扩增子测序及宏基因组测序</title>
+    <link href="https://www.liaochenlanruo.fun/post/c617.html"/>
+    <id>https://www.liaochenlanruo.fun/post/c617.html</id>
+    <published>2023-11-13T01:15:23.000Z</published>
+    <updated>2023-11-13T03:31:11.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在本文中，我将着重介绍两种高通量测序技术：&lt;code&gt;16S</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="测序" scheme="https://www.liaochenlanruo.fun/tags/%E6%B5%8B%E5%BA%8F/"/>
+    
+    <category term="扩增子" scheme="https://www.liaochenlanruo.fun/tags/%E6%89%A9%E5%A2%9E%E5%AD%90/"/>
+    
+    <category term="宏基因组" scheme="https://www.liaochenlanruo.fun/tags/%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——1.在小小的花园里面挖呀挖呀挖</title>
+    <link href="https://www.liaochenlanruo.fun/post/b376.html"/>
+    <id>https://www.liaochenlanruo.fun/post/b376.html</id>
+    <published>2023-11-10T13:16:23.000Z</published>
+    <updated>2023-11-26T05:15:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——0欢迎入坑</title>
+    <link href="https://www.liaochenlanruo.fun/post/4b9c.html"/>
+    <id>https://www.liaochenlanruo.fun/post/4b9c.html</id>
+    <published>2023-11-09T10:25:21.000Z</published>
+    <updated>2023-11-13T09:15:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;欢迎语&quot;&gt;&lt;a href=&quot;#欢迎语&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>某某动物与人类基因组的相似性高达x%？——是时候改变这种丈二和尚的说法了</title>
+    <link href="https://www.liaochenlanruo.fun/post/8cdc.html"/>
+    <id>https://www.liaochenlanruo.fun/post/8cdc.html</id>
+    <published>2023-08-06T09:45:29.000Z</published>
+    <updated>2023-08-06T09:56:42.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;h2 id=&quot;缘由&quot;&gt;&lt;a href=&quot;#缘由&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="探讨" scheme="https://www.liaochenlanruo.fun/categories/%E6%8E%A2%E8%AE%A8/"/>
+    
+    
+    <category term="同源家族" scheme="https://www.liaochenlanruo.fun/tags/%E5%90%8C%E6%BA%90%E5%AE%B6%E6%97%8F/"/>
+    
+    <category term="比较基因组学" scheme="https://www.liaochenlanruo.fun/tags/%E6%AF%94%E8%BE%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>公众号9岁了——送给粉丝的话</title>
+    <link href="https://www.liaochenlanruo.fun/post/85ad.html"/>
+    <id>https://www.liaochenlanruo.fun/post/85ad.html</id>
+    <published>2023-07-02T06:54:22.000Z</published>
+    <updated>2023-07-02T07:25:52.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="闲谈" scheme="https://www.liaochenlanruo.fun/categories/%E9%97%B2%E8%B0%88/"/>
+    
+    
+    <category term="公众号" scheme="https://www.liaochenlanruo.fun/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>走向多标签分类：机器学习在微生物组研究中的下一步</title>
+    <link href="https://www.liaochenlanruo.fun/post/801d.html"/>
+    <id>https://www.liaochenlanruo.fun/post/801d.html</id>
+    <published>2023-05-28T07:30:13.000Z</published>
+    <updated>2023-05-28T07:00:27.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="机器学习" scheme="https://www.liaochenlanruo.fun/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="ML与微生物组" scheme="https://www.liaochenlanruo.fun/tags/ML%E4%B8%8E%E5%BE%AE%E7%94%9F%E7%89%A9%E7%BB%84/"/>
+    
+    <category term="ML与疾病诊断" scheme="https://www.liaochenlanruo.fun/tags/ML%E4%B8%8E%E7%96%BE%E7%97%85%E8%AF%8A%E6%96%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>批量下载某研究方向重要文献</title>
+    <link href="https://www.liaochenlanruo.fun/post/29bf.html"/>
+    <id>https://www.liaochenlanruo.fun/post/29bf.html</id>
+    <published>2023-04-24T14:15:30.000Z</published>
+    <updated>2023-04-25T00:43:47.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;安装Python及依赖包&quot;&gt;&lt;a href=&quot;#安装Python及依赖包&quot; class=&quot;headerlink&quot; title=&quot;安装Python及依赖包&quot;&gt;&lt;/a&gt;安装Python及依赖包&lt;/h1&gt;&lt;h2 id=&quot;python下载安装&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="NCBI - 下载 - NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI-%E4%B8%8B%E8%BD%BD-NCBI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于TidyMass的非靶向代谢组学分析</title>
+    <link href="https://www.liaochenlanruo.fun/post/0.html"/>
+    <id>https://www.liaochenlanruo.fun/post/0.html</id>
+    <published>2023-04-19T07:45:39.000Z</published>
+    <updated>2023-04-25T00:37:27.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;代谢组学常用仪器特点&quot;&gt;&lt;a href=&quot;#代谢组学常用仪器特点&quot; class=&quot;headerlink&quot; title=&quot;代谢组学常用仪器特点&quot;&gt;&lt;/a&gt;代谢组学常用仪器特点&lt;/h1&gt;&lt;table</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="代谢组" scheme="https://www.liaochenlanruo.fun/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用metid构建代谢组数据库</title>
+    <link href="https://www.liaochenlanruo.fun/post/df57.html"/>
+    <id>https://www.liaochenlanruo.fun/post/df57.html</id>
+    <published>2023-04-17T09:15:39.000Z</published>
+    <updated>2023-07-04T05:28:37.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;p&gt;metid包能够用于in-house代谢物库构建，并可利用MS2</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="代谢组学" scheme="https://www.liaochenlanruo.fun/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用xcms3处理和分析LC-MS数据</title>
+    <link href="https://www.liaochenlanruo.fun/post/377e.html"/>
+    <id>https://www.liaochenlanruo.fun/post/377e.html</id>
+    <published>2023-02-06T07:45:39.000Z</published>
+    <updated>2023-02-09T00:52:21.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="代谢组" scheme="https://www.liaochenlanruo.fun/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代谢组相关软件的安装及使用</title>
+    <link href="https://www.liaochenlanruo.fun/post/33b.html"/>
+    <id>https://www.liaochenlanruo.fun/post/33b.html</id>
+    <published>2023-02-02T05:42:14.000Z</published>
+    <updated>2023-02-08T11:53:52.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;软件安装&quot;&gt;&lt;a href=&quot;#软件安装&quot; class=&quot;headerlink&quot; title=&quot;软件安装&quot;&gt;&lt;/a&gt;软件安装&lt;/h1&gt;&lt;h2 id=&quot;MZconvert&quot;&gt;&lt;a href=&quot;#MZconvert&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="代谢组" scheme="https://www.liaochenlanruo.fun/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多种方法批量下载NCBI基因组</title>
+    <link href="https://www.liaochenlanruo.fun/post/213.html"/>
+    <id>https://www.liaochenlanruo.fun/post/213.html</id>
+    <published>2022-07-10T02:04:23.000Z</published>
+    <updated>2023-02-15T09:26:56.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;下载有summary的基因组&quot;&gt;&lt;a href=&quot;#下载有summary的基因组&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI/"/>
+    
+    <category term="下载" scheme="https://www.liaochenlanruo.fun/tags/%E4%B8%8B%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用PGCGAP根据ids提取序列信息</title>
+    <link href="https://www.liaochenlanruo.fun/post/e6ae.html"/>
+    <id>https://www.liaochenlanruo.fun/post/e6ae.html</id>
+    <published>2022-04-15T13:57:11.000Z</published>
+    <updated>2022-05-30T13:41:53.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PGCGAP - the Prokaryotic Genomics and Comparative Genomics Analysis Pipeline v1.0.33</title>
+    <link href="https://www.liaochenlanruo.fun/post/d862.html"/>
+    <id>https://www.liaochenlanruo.fun/post/d862.html</id>
+    <published>2022-03-15T11:14:14.000Z</published>
+    <updated>2022-05-30T13:41:53.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;img src=&quot;https://img.shields.io/badge/Platform-WSL%2FLinux%2FmacOS-green&quot; class=&quot;lazyload placeholder&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="比较基因组学" scheme="https://www.liaochenlanruo.fun/tags/%E6%AF%94%E8%BE%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/"/>
+    
+    <category term="PGCGAP" scheme="https://www.liaochenlanruo.fun/tags/PGCGAP/"/>
+    
+  </entry>
+  
+</feed>
