@@ -1,0 +1,2565 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-139249935-1');
+</script>
+
+
+  <title>Shiny从入门到入定——8-用户反馈 | 了尘兰若的小坑</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script async src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">了尘兰若的小坑</h3>
+      <h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)">
+                  <span>
+                    
+                      <i class="fas fa-archive"></i>
+                    
+                    <span class="name">归档</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(1)">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)">
+                  <span>
+                    
+                      <i class="fas fa-user"></i>
+                    
+                    <span class="name">关于</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(2)">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(3)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">了尘兰若的小坑</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive"></i>
+                  
+                  <span class="name">归档</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user"></i>
+                  
+                  <span class="name">关于</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="menu-item-link" title="开往">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script defer>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_208.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        Shiny从入门到入定——8-用户反馈
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2024-04-14 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/IT/" class="post-detail-header_category">
+              IT
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 648 |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 2分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="8-用户反馈"><a href="#8-用户反馈" class="headerlink" title="8 用户反馈"></a>8 用户反馈</h1><p>你通常可以通过向用户展示更多关于正在发生的事情的信息来提高应用程序的可用性。这可能表现为当输入不合理时显示更好的消息，或者对需要很长时间的操作使用进度条。一些反馈是通过输出自然发生的，你已经知道如何使用它们，但你经常还需要其他的东西。本章的目标是向你展示一些其他的选择。</p>
+<p>我们将从<code>验证</code>技术开始，在输入（或输入组合）处于无效状态时通知用户。然后我们将继续讨论<code>通知</code>，向用户发送一般消息，以及<code>进度条</code>，这些为包含许多小步骤的耗时操作提供了详细信息。最后，我们将讨论危险操作，以及如何使用<code>确认</code>对话框或<code>撤销</code>操作的能力来让你的用户安心。</p>
+<p>在本章中，我们将使用Andy Merlino的<a target="_blank" rel="noopener" href="https://github.com/merlinoa/shinyFeedback">shinyFeedback</a>和John Coene的<a target="_blank" rel="noopener" href="http://waiter.john-coene.com/">waiter</a>。你还应该关注Joe Cheng正在开发的<a target="_blank" rel="noopener" href="https://rstudio.github.io/shinyvalidate/">shinyvalidate</a>包。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>shiny<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8-1-验证"><a href="#8-1-验证" class="headerlink" title="8.1 验证"></a>8.1 验证</h2><p>你可以给用户提供的第一个也是最重要的反馈是，他们的输入有误。这与在R中编写好函数类似：用户友好的函数会给出清晰的错误消息，描述期望的输入是什么，以及你是如何违背这些期望的。思考用户可能会如何误用你的应用程序，可以让你在用户界面（UI）中提供有用的消息，而不是让错误渗透到R代码中并产生无用的错误信息。</p>
+<h3 id="8-1-1-验证输入"><a href="#8-1-1-验证输入" class="headerlink" title="8.1.1 验证输入"></a>8.1.1 验证输入</h3><p>通过shinyFeedback包向用户提供额外的反馈是一个很好的方法。使用它分为两步。首先，你需要在用户界面（ui）中添加useShinyFeedback()。这将为显示美观的错误消息设置所需的HTML和JavaScript：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  shinyFeedback<span class="operator">::</span>useShinyFeedback<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  numericInput<span class="punctuation">(</span><span class="string">&quot;n&quot;</span><span class="punctuation">,</span> <span class="string">&quot;n&quot;</span><span class="punctuation">,</span> value <span class="operator">=</span> <span class="number">10</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  textOutput<span class="punctuation">(</span><span class="string">&quot;half&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在您的server()函数中，您调用反馈函数之一：feedback()、feedbackWarning()、feedbackDanger()和feedbackSuccess()。他们都有三个关键参数：</p>
+<ul>
+<li><code>inputId</code>，放置反馈的输入的id。</li>
+<li><code>show</code>，一个逻辑值，确定是否显示反馈。</li>
+<li><code>text</code>，要显示的文本。</li>
+</ul>
+<p>它们还有颜色和图标参数，你可以使用它们进一步自定义外观。更多详细信息请查阅文档。</p>
+<p>让我们看看这在一个真实例子中是如何实现的，假设我们只允许输入偶数。图8.1显示了结果。</p>
+<figure class="highlight plaintext"><figcaption><span><- function(input, output, session) &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  half &lt;- reactive(&#123;</span><br><span class="line">    even &lt;- input$n %% 2 == 0</span><br><span class="line">    shinyFeedback::feedbackWarning(&quot;n&quot;, !even, &quot;Please select an even number&quot;)</span><br><span class="line">    input$n / 2    </span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  output$half &lt;- renderText(half())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/4ce6e5665e89d296ce5ee685d1b44ac44f648c1c/42897/demos/action-feedback/feedback-odd.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/4ce6e5665e89d296ce5ee685d1b44ac44f648c1c/42897/demos/action-feedback/feedback-odd.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.1：使用feedbackWarning()显示无效输入的警告。左侧的应用程序显示了一个有效的输入，右侧的应用程序显示了一个无效的（奇数）输入并带有警告消息。请访问https://hadley.shinyapps.io/ms-feedback查看实时效果。"></p>
+<p>请注意，错误消息已经显示，但输出仍然更新了。通常，你不想这样做，因为无效的输入可能会引发你不希望显示给用户的无用的R错误。要阻止输入触发响应式更改，你需要一个新工具：req()，即“required”的缩写。它的用法如下：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  half <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    even <span class="operator">&lt;-</span> input<span class="operator">$</span>n <span class="operator">%%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span></span><br><span class="line">    shinyFeedback<span class="operator">::</span>feedbackWarning<span class="punctuation">(</span><span class="string">&quot;n&quot;</span><span class="punctuation">,</span> <span class="operator">!</span>even<span class="punctuation">,</span> <span class="string">&quot;Please select an even number&quot;</span><span class="punctuation">)</span></span><br><span class="line">    req<span class="punctuation">(</span>even<span class="punctuation">)</span></span><br><span class="line">    input<span class="operator">$</span>n <span class="operator">/</span> <span class="number">2</span>    </span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>half <span class="operator">&lt;-</span> renderText<span class="punctuation">(</span>half<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>当<code>req()</code>的输入不为真时，它会发送一个特殊信号，告诉Shiny这个响应式组件没有它所需的所有输入，因此应该“暂停”。在将其与<code>validate()</code>结合使用之前，我们先简要讨论一下这个问题。</p>
+<h3 id="8-1-2-使用req-取消执行"><a href="#8-1-2-使用req-取消执行" class="headerlink" title="8.1.2 使用req()取消执行"></a>8.1.2 使用<code>req()</code>取消执行</h3><p>通过跳出验证的范畴，可以更容易地理解<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/req.html">req()</a>。你可能已经注意到，当你启动一个应用程序时，即使用户还没有进行任何操作，完整的响应式图也会被计算出来。当你能够为输入选择有意义的默认<code>值</code>时，这可以很好地工作。但这并不总是可能的，有时你可能希望等到用户实际执行了某些操作再进行计算。这种情况通常出现在以下三种控件中：</p>
+<ul>
+<li><p>在<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/textInput.html">textInput()</a>中，你使用了<code>value = &quot;&quot;</code>，并且不希望用户输入任何内容之前执行任何操作。</p>
+</li>
+<li><p>在<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/selectInput.html">selectInput()</a>中，你提供了一个空选项<code>&quot;&quot;</code>，并且不希望用户进行选择之前执行任何操作。</p>
+</li>
+<li><p>在<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/fileInput.html">fileInput()</a>中，用户在上传任何内容之前，其结果都是空的。我们将在<code>9.1</code>节中再次讨论这个问题。</p>
+</li>
+</ul>
+<p>我们需要一种方法来“暂停”响应式组件，以便在满足某个条件之前不会发生任何事情。这就是<code>req()</code>的工作，它会在允许响应式生产者继续之前检查所需的值。</p>
+<p>例如，考虑以下应用程序，它将生成英语或毛利语的问候语。如果你运行这个应用程序，你会看到一个错误，如图<code>8.2</code>所示，因为在<code>greetings</code>向量中没有与默认选项<code>&quot;&quot;</code>相对应的条目。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;language&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Language&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;&quot;</span><span class="punctuation">,</span> <span class="string">&quot;English&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Maori&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  textInput<span class="punctuation">(</span><span class="string">&quot;name&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Name&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  textOutput<span class="punctuation">(</span><span class="string">&quot;greeting&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  greetings <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span></span><br><span class="line">    English <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    Maori <span class="operator">=</span> <span class="string">&quot;Kia ora&quot;</span></span><br><span class="line">  <span class="punctuation">)</span></span><br><span class="line">  output<span class="operator">$</span>greeting <span class="operator">&lt;-</span> renderText<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    paste0<span class="punctuation">(</span>greetings<span class="punctuation">[[</span>input<span class="operator">$</span>language<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="string">&quot; &quot;</span><span class="punctuation">,</span> input<span class="operator">$</span>name<span class="punctuation">,</span> <span class="string">&quot;!&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/8983f6fd77bdc3b97d45f06a7fdd0c67aaf52b3d/b3d13/demos/action-feedback/require-simple.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/8983f6fd77bdc3b97d45f06a7fdd0c67aaf52b3d/b3d13/demos/action-feedback/require-simple.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.2：当应用程序加载时，由于尚未选择语言，因此会显示一条无信息量的错误消息。"></p>
+<p>我们可以使用<code>req()</code>来解决这个问题，如下所示。现在，在用户为语言和姓名都提供了值之前，将不会显示任何内容，如图<code>8.3</code>所示</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  greetings <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span></span><br><span class="line">    English <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    Maori <span class="operator">=</span> <span class="string">&quot;Kia ora&quot;</span></span><br><span class="line">  <span class="punctuation">)</span></span><br><span class="line">  output<span class="operator">$</span>greeting <span class="operator">&lt;-</span> renderText<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    req<span class="punctuation">(</span>input<span class="operator">$</span>language<span class="punctuation">,</span> input<span class="operator">$</span>name<span class="punctuation">)</span></span><br><span class="line">    paste0<span class="punctuation">(</span>greetings<span class="punctuation">[[</span>input<span class="operator">$</span>language<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="string">&quot; &quot;</span><span class="punctuation">,</span> input<span class="operator">$</span>name<span class="punctuation">,</span> <span class="string">&quot;!&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/e8048494af9066952f69e4c7e9ec06c826202c34/4933a/demos/action-feedback/require-simple2-langauge.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/e8048494af9066952f69e4c7e9ec06c826202c34/4933a/demos/action-feedback/require-simple2-langauge.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.3：通过使用req()，只有在提供了语言和姓名之后，输出才会显示。请访问https://hadley.shinyapps.io/ms-require-simple2查看实时效果。"><br><code>req()</code>通过发出一个特殊<code>条件</code>来工作。这个特殊条件导致所有下游的响应式组件和输出停止执行。从技术上讲，它使任何下游的响应式消费者处于无效状态。我们将在第<code>16</code>章中再次回到这个术语。</p>
+<p><code>req()</code>的设计是使得<code>req(inputx)</code>只有在用户提供了值的情况下才会继续执行，而不考虑输入控件的类型。如果需要，你也可以使用<code>req()</code>与自己的逻辑语句结合使用。例如，<code>req(inputa &gt; 0)</code>会在<code>a</code>大于0时允许计算继续进行；这通常是我们执行验证时使用的形式，我们将在下面看到。</p>
+<h3 id="8-1-3-req-和验证"><a href="#8-1-3-req-和验证" class="headerlink" title="8.1.3 req()和验证"></a>8.1.3 <code>req()</code>和验证</h3><p>让我们将<code>req()</code>和shinyFeedback结合起来，解决一个更具挑战性的问题。我将回到我们在第1章中制作的简单应用程序，该应用程序允许你选择内置数据集并查看其内容。我将通过使用<code>textInput()</code>而不是<code>selectInput()</code>来使其更加通用和复杂。用户界面几乎没有变化：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  shinyFeedback<span class="operator">::</span>useShinyFeedback<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  textInput<span class="punctuation">(</span><span class="string">&quot;dataset&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Dataset name&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span> </span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;data&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>但是服务器函数需要变得稍微复杂一些。我们将以两种方式使用<code>req()</code>：</p>
+<ul>
+<li><p>我们只想在用户输入了值之后才进行计算，所以我们使用<code>req(input$dataset)</code>。</p>
+</li>
+<li><p>然后，我们检查提供的名称是否确实存在。如果不存在，我们将显示一条错误消息，然后使用<code>req()</code>取消计算。请注意<code>cancelOutput = TRUE</code>的使用：通常取消响应式组件会重置所有下游输出；使用<code>cancelOutput = TRUE</code>会使它们保持显示上一次的有效值。这对于<code>textInput()</code>来说很重要，因为您可能在输入名称的过程中触发更新。</p>
+</li>
+</ul>
+<p>结果如图<code>8.4</code>所示。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    req<span class="punctuation">(</span>input<span class="operator">$</span>dataset<span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    exists <span class="operator">&lt;-</span> exists<span class="punctuation">(</span>input<span class="operator">$</span>dataset<span class="punctuation">,</span> <span class="string">&quot;package:datasets&quot;</span><span class="punctuation">)</span></span><br><span class="line">    shinyFeedback<span class="operator">::</span>feedbackDanger<span class="punctuation">(</span><span class="string">&quot;dataset&quot;</span><span class="punctuation">,</span> <span class="operator">!</span>exists<span class="punctuation">,</span> <span class="string">&quot;Unknown dataset&quot;</span><span class="punctuation">)</span></span><br><span class="line">    req<span class="punctuation">(</span>exists<span class="punctuation">,</span> cancelOutput <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">    get<span class="punctuation">(</span>input<span class="operator">$</span>dataset<span class="punctuation">,</span> <span class="string">&quot;package:datasets&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>data <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    head<span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/12970a9665fbc639f4428c014c524b62f9e72373/5af05/demos/action-feedback/require-cancel-ok.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/12970a9665fbc639f4428c014c524b62f9e72373/5af05/demos/action-feedback/require-cancel-ok.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.4：加载时，表格为空，因为数据集名称为空。在我们输入一个有效数据集名称（iris）后，数据会显示出来，即使按下退格键以输入新的数据集名称时，数据仍会继续显示。请访问https://hadley.shinyapps.io/ms-require-cancel查看实时效果。"></p>
+<h3 id="8-1-4-验证输出"><a href="#8-1-4-验证输出" class="headerlink" title="8.1.4 验证输出"></a>8.1.4 验证输出</h3><p>当问题与单个输入相关时，shinyFeedback非常有用。但有时无效状态是多个输入组合的结果。在这种情况下，将错误放在输入旁边并没有太大意义（应该放在哪个输入旁边呢？），相反，将其放在输出中更有意义。</p>
+<p>您可以使用shiny内置的一个工具来实现：<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/validate.html">validate()</a>。当在响应式组件或输出中调用时，<code>validate(message)</code>会停止其余代码的执行，并在任何下游输出中显示<code>message</code>。以下代码显示了一个简单示例，其中我们不想记录或取负值的平方根。您可以在图<code>8.5</code>中查看结果。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  numericInput<span class="punctuation">(</span><span class="string">&quot;x&quot;</span><span class="punctuation">,</span> <span class="string">&quot;x&quot;</span><span class="punctuation">,</span> value <span class="operator">=</span> <span class="number">0</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;trans&quot;</span><span class="punctuation">,</span> <span class="string">&quot;transformation&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    choices <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;square&quot;</span><span class="punctuation">,</span> <span class="string">&quot;log&quot;</span><span class="punctuation">,</span> <span class="string">&quot;square-root&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  textOutput<span class="punctuation">(</span><span class="string">&quot;out&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  output<span class="operator">$</span>out <span class="operator">&lt;-</span> renderText<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="punctuation">(</span>input<span class="operator">$</span>x <span class="operator">&lt;</span> <span class="number">0</span> <span class="operator">&amp;&amp;</span> input<span class="operator">$</span>trans <span class="operator">%in%</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;log&quot;</span><span class="punctuation">,</span> <span class="string">&quot;square-root&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">      validate<span class="punctuation">(</span><span class="string">&quot;x can not be negative for this transformation&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">switch</span><span class="punctuation">(</span>input<span class="operator">$</span>trans<span class="punctuation">,</span></span><br><span class="line">      square <span class="operator">=</span> input<span class="operator">$</span>x <span class="operator">^</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;square-root&quot;</span> <span class="operator">=</span> <span class="built_in">sqrt</span><span class="punctuation">(</span>input<span class="operator">$</span>x<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">      <span class="built_in">log</span> <span class="operator">=</span> <span class="built_in">log</span><span class="punctuation">(</span>input<span class="operator">$</span>x<span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/c1c59bed1d77fa2aea32024bbaa907e5dbba6244/b5824/demos/action-feedback/validate-init.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/c1c59bed1d77fa2aea32024bbaa907e5dbba6244/b5824/demos/action-feedback/validate-init.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.5：如果输入有效，输出会显示转换结果。如果输入的组合无效，则输出会被替换为一条信息性消息。"></p>
+<h2 id="8-2-通知"><a href="#8-2-通知" class="headerlink" title="8.2 通知"></a>8.2 通知</h2><p>如果没有问题，您只是想让用户知道发生了什么，那么您需要一个<code>通知</code>。在Shiny中，通知是通过<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/showNotification.html">showNotification()</a>创建的，并堆叠在页面的右下角。使用<code>showNotification()</code>有三种基本方式：</p>
+<ul>
+<li><p>显示一个临时通知，该通知在固定时间后自动消失。</p>
+</li>
+<li><p>在进程开始时显示通知，并在进程结束时将其移除。</p>
+</li>
+<li><p>使用渐进更新来更新单个通知。</p>
+</li>
+</ul>
+<p>下面将讨论这三种技术。</p>
+<h3 id="8-2-1-临时通知"><a href="#8-2-1-临时通知" class="headerlink" title="8.2.1 临时通知"></a>8.2.1 临时通知</h3><p>使用<code>showNotification()</code>的最简单方法是只传入一个参数：您想要显示的消息。由于很难通过截图捕捉这种行为，所以如果您想看到它的实际效果，请访问<a target="_blank" rel="noopener" href="https://hadley.shinyapps.io/ms-notification-transient">https://hadley.shinyapps.io/ms-notification-transient</a>。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  actionButton<span class="punctuation">(</span><span class="string">&quot;goodnight&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Good night&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>goodnight<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;So long&quot;</span><span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;Farewell&quot;</span><span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;Auf Wiedersehen&quot;</span><span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;Adieu&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，消息将在5秒后消失，你可以通过设置<code>duration</code>来覆盖这个时间，或者用户可以点击关闭按钮提前关闭它。如果你想让通知更加醒目，你可以将<code>type</code>参数设置为“message”、“warning”或“error”其中之一。图<code>8.6</code>展示了这些通知的外观。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>goodnight<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;So long&quot;</span><span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;Farewell&quot;</span><span class="punctuation">,</span> type <span class="operator">=</span> <span class="string">&quot;message&quot;</span><span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;Auf Wiedersehen&quot;</span><span class="punctuation">,</span> type <span class="operator">=</span> <span class="string">&quot;warning&quot;</span><span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;Adieu&quot;</span><span class="punctuation">,</span> type <span class="operator">=</span> <span class="string">&quot;error&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/87c1065fb140b5924f0a32297421656e48ef7e11/4fe18/images/action-feedback/notify-1.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/87c1065fb140b5924f0a32297421656e48ef7e11/4fe18/images/action-feedback/notify-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/d2d0c53e19a116f900ef892da0dd4580b47cf71e/993ed/images/action-feedback/notify-2.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/d2d0c53e19a116f900ef892da0dd4580b47cf71e/993ed/images/action-feedback/notify-2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/9fea3bd7890e9ec4ba7ab1fa1f84d0881cea23ee/d4571/images/action-feedback/notify-3.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/9fea3bd7890e9ec4ba7ab1fa1f84d0881cea23ee/d4571/images/action-feedback/notify-3.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.6：点击“晚安”后通知的显示过程：第一个通知出现，再过三秒，所有通知都将显示出来，随后通知开始消失。实时查看效果，请访问https://hadley.shinyapps.io/ms-notify-persistent。"></p>
+<h3 id="8-2-2-完成时移除"><a href="#8-2-2-完成时移除" class="headerlink" title="8.2.2 完成时移除"></a>8.2.2 完成时移除</h3><p>将通知的存在与一个长时间运行的任务关联起来通常很有用。在这种情况下，你希望在任务开始时显示通知，并在任务完成时移除通知。为此，你需要：</p>
+<ul>
+<li><p>设置<code>duration = NULL</code>和<code>closeButton = FALSE</code>，以确保通知在任务完成之前一直保持可见状态。</p>
+</li>
+<li><p>保存<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/showNotification.html">showNotification()</a>返回的id，然后将其传递给<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/showNotification.html">removeNotification()</a>。最可靠的方法是使用<a target="_blank" rel="noopener" href="https://rdrr.io/r/base/on.exit.html">on.exit()</a>，这可以确保无论任务如何完成（成功或出错），通知都会被移除。你可以在“<a href="v">更改和恢复状态</a>”一章中了解更多关于<code>on.exit()</code>的信息。</p>
+</li>
+</ul>
+<p>以下示例将各个部分组合在一起，展示了如何在读取大型csv文件时向用户更新状态：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    id <span class="operator">&lt;-</span> showNotification<span class="punctuation">(</span><span class="string">&quot;Reading data...&quot;</span><span class="punctuation">,</span> duration <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">,</span> closeButton <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">    <span class="built_in">on.exit</span><span class="punctuation">(</span>removeNotification<span class="punctuation">(</span>id<span class="punctuation">)</span><span class="punctuation">,</span> add <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    read.csv<span class="punctuation">(</span>input<span class="operator">$</span>file<span class="operator">$</span>datapath<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>一般来说，这类通知会存在于一个响应式环境中，因为这可以确保只有当需要时，长时间运行的计算才会重新执行。</p>
+<h3 id="8-2-3-渐进式更新"><a href="#8-2-3-渐进式更新" class="headerlink" title="8.2.3 渐进式更新"></a>8.2.3 渐进式更新</h3><p>正如你在第一个示例中所看到的，多次调用showNotification()通常会创建多个通知。相反，你可以通过捕获第一次调用的id并在后续调用中使用它来更新单个通知。如果你的长时间运行的任务包含多个子组件，这将非常有用。你可以在<a target="_blank" rel="noopener" href="https://hadley.shinyapps.io/ms-notification-updates">https://hadley.shinyapps.io/ms-notification-updates</a>查看结果。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;data&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  notify <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>msg<span class="punctuation">,</span> id <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">    showNotification<span class="punctuation">(</span>msg<span class="punctuation">,</span> id <span class="operator">=</span> id<span class="punctuation">,</span> duration <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">,</span> closeButton <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">  data <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span><span class="punctuation">&#123;</span> </span><br><span class="line">    id <span class="operator">&lt;-</span> notify<span class="punctuation">(</span><span class="string">&quot;Reading data...&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="built_in">on.exit</span><span class="punctuation">(</span>removeNotification<span class="punctuation">(</span>id<span class="punctuation">)</span><span class="punctuation">,</span> add <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">      </span><br><span class="line">    notify<span class="punctuation">(</span><span class="string">&quot;Reticulating splines...&quot;</span><span class="punctuation">,</span> id <span class="operator">=</span> id<span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    notify<span class="punctuation">(</span><span class="string">&quot;Herding llamas...&quot;</span><span class="punctuation">,</span> id <span class="operator">=</span> id<span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">    notify<span class="punctuation">(</span><span class="string">&quot;Orthogonalizing matrices...&quot;</span><span class="punctuation">,</span> id <span class="operator">=</span> id<span class="punctuation">)</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">        </span><br><span class="line">    mtcars</span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>data <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span>head<span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="8-3-进度条"><a href="#8-3-进度条" class="headerlink" title="8.3 进度条"></a>8.3 进度条</h2><p>对于长时间运行的任务，最好的反馈形式就是进度条。它不仅可以告诉你任务进行到了哪一步，还可以帮助你估计还需要多长时间：你是应该深吸一口气，去喝杯咖啡，还是明天再来？在本节中，我将展示两种显示进度条的技术，一种是Shiny内置的，另一种是John Coene开发的<a target="_blank" rel="noopener" href="https://waiter.john-coene.com/">waiter</a>包提供的。</p>
+<p>不幸的是，这两种技术都存在同样的主要缺点：要使用进度条，你需要能够将大任务分成已知数量的、每个都大致需要相同时间来完成的小任务。这通常很难做到，特别是当底层代码是用C语言编写的，且没有办法向你传达进度更新时。我们正在努力开发<a target="_blank" rel="noopener" href="https://github.com/r-lib/progress">progress包</a>中的工具，以便有一天像dplyr、readr和vroom这样的包能够生成进度条，你可以轻松地将它们转发给Shiny。</p>
+<h3 id="8-3-1-Shiny"><a href="#8-3-1-Shiny" class="headerlink" title="8.3.1 Shiny"></a>8.3.1 Shiny</h3><p>要使用Shiny创建进度条，你需要使用<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/withProgress.html">withProgress()</a>和<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/withProgress.html">incProgress()</a>。假设你有一段运行缓慢的代码，如下所示：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="built_in">seq_len</span><span class="punctuation">(</span>step<span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  x <span class="operator">&lt;-</span> function_that_takes_a_long_time<span class="punctuation">(</span>x<span class="punctuation">)</span>     </span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>你首先需要用<code>withProgress()</code>将其包裹起来。当代码开始运行时，这会显示进度条，并在完成时自动移除它：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">withProgress<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="built_in">seq_len</span><span class="punctuation">(</span>step<span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">    x <span class="operator">&lt;-</span> function_that_takes_a_long_time<span class="punctuation">(</span>x<span class="punctuation">)</span>     </span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在每个步骤之后调用<code>incProgress()</code>：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">withProgress<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="built_in">seq_len</span><span class="punctuation">(</span>step<span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">    x <span class="operator">&lt;-</span> function_that_takes_a_long_time<span class="punctuation">(</span>x<span class="punctuation">)</span></span><br><span class="line">    incProgress<span class="punctuation">(</span><span class="number">1</span> <span class="operator">/</span> <span class="built_in">length</span><span class="punctuation">(</span>step<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p><code>incProgress()</code>的第一个参数是进度条要增加的量。默认情况下，进度条从0开始，到1结束，因此通过步骤数除以来增加进度条，可以确保循环结束时进度条完成。</p>
+<p>图<code>8.7</code>展示了在一个完整的Shiny应用程序中，这可能看起来是什么样子。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  numericInput<span class="punctuation">(</span><span class="string">&quot;steps&quot;</span><span class="punctuation">,</span> <span class="string">&quot;How many steps?&quot;</span><span class="punctuation">,</span> <span class="number">10</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  actionButton<span class="punctuation">(</span><span class="string">&quot;go&quot;</span><span class="punctuation">,</span> <span class="string">&quot;go&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  textOutput<span class="punctuation">(</span><span class="string">&quot;result&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> eventReactive<span class="punctuation">(</span>input<span class="operator">$</span>go<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    withProgress<span class="punctuation">(</span>message <span class="operator">=</span> <span class="string">&quot;Computing random number&quot;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="built_in">seq_len</span><span class="punctuation">(</span>input<span class="operator">$</span>steps<span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">        Sys.sleep<span class="punctuation">(</span><span class="number">0.5</span><span class="punctuation">)</span></span><br><span class="line">        incProgress<span class="punctuation">(</span><span class="number">1</span> <span class="operator">/</span> input<span class="operator">$</span>steps<span class="punctuation">)</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">      runif<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>result <span class="operator">&lt;-</span> renderText<span class="punctuation">(</span><span class="built_in">round</span><span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/f8653f6a9d2e8c56ebf035d48a3ec299f67fa99e/19ffd/images/action-feedback/progress-2.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/f8653f6a9d2e8c56ebf035d48a3ec299f67fa99e/19ffd/images/action-feedback/progress-2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.7：进度条有助于指示计算还需运行多长时间。请在线查看https://hadley.shinyapps.io/ms-progress。"></p>
+<p>需要注意的几个事项：</p>
+<ul>
+<li><p>我使用了可选的<code>message</code>参数，在进度条中添加了一些解释性文本。</p>
+</li>
+<li><p>我使用了<a target="_blank" rel="noopener" href="https://rdrr.io/r/base/Sys.sleep.html">Sys.sleep()</a>来模拟一个长时间运行的操作；在你的代码中，这将是一个耗时函数。</p>
+</li>
+<li><p>我通过将一个按钮与<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/observeEvent.html">eventReactive()</a>结合，允许用户控制事件何时开始。这是任何需要进度条的任务的良好做法。</p>
+</li>
+</ul>
+<h3 id="8-3-2-Waiter"><a href="#8-3-2-Waiter" class="headerlink" title="8.3.2 Waiter"></a>8.3.2 Waiter</h3><p>内置的进度条对于基础操作来说非常好，但如果你想要提供更多视觉选项的进度条，你可以尝试使用<a target="_blank" rel="noopener" href="https://waiter.john-coene.com/">waiter</a>包。将上面的代码适配为与Waiter一起工作很简单。在UI中，我们添加use_waitress()：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  waiter<span class="operator">::</span>use_waitress<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  numericInput<span class="punctuation">(</span><span class="string">&quot;steps&quot;</span><span class="punctuation">,</span> <span class="string">&quot;How many steps?&quot;</span><span class="punctuation">,</span> <span class="number">10</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  actionButton<span class="punctuation">(</span><span class="string">&quot;go&quot;</span><span class="punctuation">,</span> <span class="string">&quot;go&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  textOutput<span class="punctuation">(</span><span class="string">&quot;result&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>Waiter的进度条接口略有不同。Waiter包使用R6对象将所有与进度相关的函数捆绑到一个单独的对象中。如果你以前从未使用过R6对象，不必太担心细节；你可以直接复制和粘贴这个模板。基本的生命周期看起来像这样：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a new progress bar</span></span><br><span class="line">waitress <span class="operator">&lt;-</span> waiter<span class="operator">::</span>Waitress<span class="operator">$</span>new<span class="punctuation">(</span><span class="built_in">max</span> <span class="operator">=</span> input<span class="operator">$</span>steps<span class="punctuation">)</span></span><br><span class="line"><span class="comment"># Automatically close it when done</span></span><br><span class="line"><span class="built_in">on.exit</span><span class="punctuation">(</span>waitress<span class="operator">$</span>close<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="built_in">seq_len</span><span class="punctuation">(</span>input<span class="operator">$</span>steps<span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  Sys.sleep<span class="punctuation">(</span><span class="number">0.5</span><span class="punctuation">)</span></span><br><span class="line">  <span class="comment"># increment one step</span></span><br><span class="line">  waitress<span class="operator">$</span>inc<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>我们可以在 Shiny 应用程序中使用它，如下所示：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> eventReactive<span class="punctuation">(</span>input<span class="operator">$</span>go<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    waitress <span class="operator">&lt;-</span> waiter<span class="operator">::</span>Waitress<span class="operator">$</span>new<span class="punctuation">(</span><span class="built_in">max</span> <span class="operator">=</span> input<span class="operator">$</span>steps<span class="punctuation">)</span></span><br><span class="line">    <span class="built_in">on.exit</span><span class="punctuation">(</span>waitress<span class="operator">$</span>close<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> <span class="punctuation">(</span>i <span class="keyword">in</span> <span class="built_in">seq_len</span><span class="punctuation">(</span>input<span class="operator">$</span>steps<span class="punctuation">)</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">      Sys.sleep<span class="punctuation">(</span><span class="number">0.5</span><span class="punctuation">)</span></span><br><span class="line">      waitress<span class="operator">$</span>inc<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">    </span><br><span class="line">    runif<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>result <span class="operator">&lt;-</span> renderText<span class="punctuation">(</span><span class="built_in">round</span><span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>默认显示是在页面顶部的细长进度条（你可以查看<a target="_blank" rel="noopener" href="https://hadley.shinyapps.io/ms-waiter">https://hadley.shinyapps.io/ms-waiter</a>），但有许多方法可以自定义输出：</p>
+<p>你可以覆盖默认<code>主题</code>，选择使用以下主题之一：</p>
+<ul>
+<li><code>overlay</code>：一个不透明的进度条，会隐藏整个页面</li>
+<li><code>overlay-opacity</code>：一个透明的进度条，会覆盖整个页面</li>
+<li><code>overlay-percent</code>：一个不透明的进度条，同时还会显示一个数字百分比。</li>
+<li>除了为整个页面显示进度条之外，你还可以通过设置<code>selector</code>参数将其覆盖在现有的输入或输出上，例如：</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">waitress <span class="operator">&lt;-</span> Waitress<span class="operator">$</span>new<span class="punctuation">(</span>selector <span class="operator">=</span> <span class="string">&quot;#steps&quot;</span><span class="punctuation">,</span> theme <span class="operator">=</span> <span class="string">&quot;overlay&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-3-3-Spinners"><a href="#8-3-3-Spinners" class="headerlink" title="8.3.3 Spinners"></a>8.3.3 Spinners</h3><p>有时，你不知道一个操作需要多长时间才能完成，你只想显示一个动画旋转器，让用户知道有事情正在发生。对于这个任务，你也可以使用waiter包；只需从使用<code>Waitress</code>切换到使用<code>Waiter</code>即可：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  waiter<span class="operator">::</span>use_waiter<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  actionButton<span class="punctuation">(</span><span class="string">&quot;go&quot;</span><span class="punctuation">,</span> <span class="string">&quot;go&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  textOutput<span class="punctuation">(</span><span class="string">&quot;result&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> eventReactive<span class="punctuation">(</span>input<span class="operator">$</span>go<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    waiter <span class="operator">&lt;-</span> waiter<span class="operator">::</span>Waiter<span class="operator">$</span>new<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">    waiter<span class="operator">$</span>show<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">    <span class="built_in">on.exit</span><span class="punctuation">(</span>waiter<span class="operator">$</span>hide<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    Sys.sleep<span class="punctuation">(</span>sample<span class="punctuation">(</span><span class="number">5</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">    runif<span class="punctuation">(</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  output<span class="operator">$</span>result <span class="operator">&lt;-</span> renderText<span class="punctuation">(</span><span class="built_in">round</span><span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/876e7420c98f7344ee1eac35650c26d6257eb839/7c919/images/action-feedback/spinner-1.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/876e7420c98f7344ee1eac35650c26d6257eb839/7c919/images/action-feedback/spinner-1.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.8：“Waiter”会在某个操作发生时显示整个应用程序的旋转器。请在线查看https://hadley.shinyapps.io/ms-spinner-1。"></p>
+<p>与Waitress一样，你也可以针对特定的输出使用Waiters。这些waiter可以在输出更新时自动移除旋转器，因此代码甚至更简单：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  waiter<span class="operator">::</span>use_waiter<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  actionButton<span class="punctuation">(</span><span class="string">&quot;go&quot;</span><span class="punctuation">,</span> <span class="string">&quot;go&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  plotOutput<span class="punctuation">(</span><span class="string">&quot;plot&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> eventReactive<span class="punctuation">(</span>input<span class="operator">$</span>go<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    waiter<span class="operator">::</span>Waiter<span class="operator">$</span>new<span class="punctuation">(</span>id <span class="operator">=</span> <span class="string">&quot;plot&quot;</span><span class="punctuation">)</span><span class="operator">$</span>show<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span></span><br><span class="line">    data.frame<span class="punctuation">(</span>x <span class="operator">=</span> runif<span class="punctuation">(</span><span class="number">50</span><span class="punctuation">)</span><span class="punctuation">,</span> y <span class="operator">=</span> runif<span class="punctuation">(</span><span class="number">50</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>plot <span class="operator">&lt;-</span> renderPlot<span class="punctuation">(</span>plot<span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span> res <span class="operator">=</span> <span class="number">96</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/0fa7426c91728627f36b69d91036aef0876f278c/84714/images/action-feedback/spinner-2.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/0fa7426c91728627f36b69d91036aef0876f278c/84714/images/action-feedback/spinner-2.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图8.9：你也可以为单个输出显示旋转器。请在线查看https://hadley.shinyapps.io/ms-spinner-2。"></p>
+<p>waiter包提供了多种旋转器供你选择；你可以在<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/waiter/man/spinners.html">?waiter::spinners</a>中查看你的选项，然后选择其中一个（例如）使用<code>Waiter$new(html = spin_ripple())</code>。</p>
+<p>一个更简单的选择是使用Dean Attali的<a target="_blank" rel="noopener" href="https://github.com/daattali/shinycssloaders">shinycssloaders</a>包。它使用JavaScript监听Shiny事件，因此甚至不需要服务器端代码。相反，你只需使用<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shinycssloaders/man/withSpinner.html">shinycssloaders::withSpinner()</a>来包装你希望在其失效时自动获得旋转器的输出。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>shinycssloaders<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  actionButton<span class="punctuation">(</span><span class="string">&quot;go&quot;</span><span class="punctuation">,</span> <span class="string">&quot;go&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  withSpinner<span class="punctuation">(</span>plotOutput<span class="punctuation">(</span><span class="string">&quot;plot&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> eventReactive<span class="punctuation">(</span>input<span class="operator">$</span>go<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    Sys.sleep<span class="punctuation">(</span><span class="number">3</span><span class="punctuation">)</span></span><br><span class="line">    data.frame<span class="punctuation">(</span>x <span class="operator">=</span> runif<span class="punctuation">(</span><span class="number">50</span><span class="punctuation">)</span><span class="punctuation">,</span> y <span class="operator">=</span> runif<span class="punctuation">(</span><span class="number">50</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>plot <span class="operator">&lt;-</span> renderPlot<span class="punctuation">(</span>plot<span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span> res <span class="operator">=</span> <span class="number">96</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="8-4-确认和撤销"><a href="#8-4-确认和撤销" class="headerlink" title="8.4 确认和撤销"></a>8.4 确认和撤销</h2><p>有时某个操作可能具有潜在的危险性，你可能想要确保用户确实想要执行该操作，或者你想要在一切都太晚之前给他们一个撤销的机会。本节中的三个技巧列出了你的基本选项，并给出了一些如何在你的应用程序中实现它们的建议。</p>
+<h3 id="8-4-1-明确确认"><a href="#8-4-1-明确确认" class="headerlink" title="8.4.1 明确确认"></a>8.4.1 明确确认</h3><p>保护用户避免因误操作执行危险动作的最简单方法是要求用户进行明确的确认。最简单的方法是使用对话框，该对话框会强制用户从一组小动作中选择。在Shiny中，你可以使用<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/modalDialog.html">modalDialog()</a>创建一个对话框。这被称为“模态”对话框，因为它创建了一种新的交互“模式”；在处理对话框之前，你无法与主应用程序进行交互。</p>
+<p>假设你有一个Shiny应用程序，用于从目录中删除一些文件（或从数据库中删除一些行等）。这个操作很难撤销，因此你需要确保用户确实想要这么做。你可以创建一个对话框，如图<code>8.10</code>所示，要求用户进行明确的确认，如下所示：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">modal_confirm <span class="operator">&lt;-</span> modalDialog<span class="punctuation">(</span></span><br><span class="line">  <span class="string">&quot;Are you sure you want to continue?&quot;</span><span class="punctuation">,</span></span><br><span class="line">  title <span class="operator">=</span> <span class="string">&quot;Deleting files&quot;</span><span class="punctuation">,</span></span><br><span class="line">  footer <span class="operator">=</span> tagList<span class="punctuation">(</span></span><br><span class="line">    actionButton<span class="punctuation">(</span><span class="string">&quot;cancel&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Cancel&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">    actionButton<span class="punctuation">(</span><span class="string">&quot;ok&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Delete&quot;</span><span class="punctuation">,</span> <span class="built_in">class</span> <span class="operator">=</span> <span class="string">&quot;btn btn-danger&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/1fd6b657c2fd4df4ef9de687459e433e0b6144f4/93f7d/demos/action-feedback/dialog.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/1fd6b657c2fd4df4ef9de687459e433e0b6144f4/93f7d/demos/action-feedback/dialog.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图 8.10：检查是否要删除某些文件的对话框。"></p>
+<p>在创建对话框时，需要注意一些虽小但重要的细节：</p>
+<ul>
+<li><p>按钮应该怎么命名？最好描述得具体一些，因此要避免使用“是&#x2F;否”或“继续&#x2F;取消”，而应该复述关键的动词。</p>
+</li>
+<li><p>按钮应该如何排序？你是把“取消”放在前面（像Mac那样），还是把“继续”放在前面（像Windows那样）？你最好的选择是模仿大多数人将使用的平台。</p>
+</li>
+<li><p>你能让危险选项更明显吗？这里我使用了<code>class = &quot;btn btn-danger&quot;</code>来突出显示按钮。</p>
+</li>
+</ul>
+<p>Jakob Nielsen在<a target="_blank" rel="noopener" href="http://www.useit.com/alertbox/ok-cancel.html">http://www.useit.com/alertbox/ok-cancel.html</a>上给出了更多好建议。</p>
+<p>让我们在一个真实（尽管很简单）的应用程序中使用这个对话框。我们的用户界面暴露了一个“删除所有文件”的按钮：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  actionButton<span class="punctuation">(</span><span class="string">&quot;delete&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Delete all files?&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>server()</code>中有两个新的想法：</p>
+<ul>
+<li>我们使用<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/showModal.html">showModal()</a>和<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/showModal.html">removeModal()</a>来显示和隐藏对话框。</li>
+</ul>
+<p>我们观察由UI从<code>modal_confirm</code>生成的事件。这些对象不是静态地在ui中创建的，而是由<code>server()</code>中的<code>showModal()</code>动态添加的。在第<code>10</code>章中，你将更详细地看到这个想法。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>delete<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    showModal<span class="punctuation">(</span>modal_confirm<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>ok<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;Files deleted&quot;</span><span class="punctuation">)</span></span><br><span class="line">    removeModal<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>cancel<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    removeModal<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="8-4-2-撤消操作"><a href="#8-4-2-撤消操作" class="headerlink" title="8.4.2 撤消操作"></a>8.4.2 撤消操作</h3><p>明确的确认对于很少执行且具有破坏性的操作最有用。如果你想要减少因频繁操作而产生的错误，那么应该避免使用它。例如，这种技术不适用于Twitter——如果有一个对话框说“你确定要发这条推文吗？”你会很快学会自动点击“是”，并且在发送推文10秒后注意到拼写错误时，仍然会感到同样的后悔。</p>
+<p>在这种情况下，更好的方法是在实际执行操作前等待几秒钟，给用户一个发现并撤销任何问题的机会。这并不是真正的撤销（因为你实际上没有做任何事情），但这是一个让用户能够理解的词汇。</p>
+<p>我将用一个我个人希望拥有撤销按钮的网站——Twitter来举例说明这项技术。Twitter用户界面的本质非常简单：有一个文本区域用来编辑推文，还有一个发送按钮：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  textAreaInput<span class="punctuation">(</span><span class="string">&quot;message&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    label <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">,</span> </span><br><span class="line">    placeholder <span class="operator">=</span> <span class="string">&quot;What&#x27;s happening?&quot;</span><span class="punctuation">,</span></span><br><span class="line">    rows <span class="operator">=</span> <span class="number">3</span></span><br><span class="line">  <span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  actionButton<span class="punctuation">(</span><span class="string">&quot;tweet&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Tweet&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>服务器函数相当复杂，需要一些我们尚未讨论过的技术。不要太担心理解代码，要专注于基本思路：我们使用一些<a target="_blank" rel="noopener" href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent()</a>特殊的参数，以便在几秒钟后运行一些代码。主要的新想法是，我们捕获<code>observeEvent()</code>的结果并将其保存到一个变量中；这样我们就可以销毁观察者，从而确保实际发送推文的代码永远不会被执行。你可以尝试访问实时应用程序<a target="_blank" rel="noopener" href="https://hadley.shinyapps.io/ms-undo">https://hadley.shinyapps.io/ms-undo</a>。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">runLater <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>action<span class="punctuation">,</span> seconds <span class="operator">=</span> <span class="number">3</span><span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  observeEvent<span class="punctuation">(</span></span><br><span class="line">    invalidateLater<span class="punctuation">(</span>seconds <span class="operator">*</span> <span class="number">1000</span><span class="punctuation">)</span><span class="punctuation">,</span> action<span class="punctuation">,</span> </span><br><span class="line">    ignoreInit <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> </span><br><span class="line">    once <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">,</span> </span><br><span class="line">    ignoreNULL <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span></span><br><span class="line">    autoDestroy <span class="operator">=</span> <span class="literal">FALSE</span></span><br><span class="line">  <span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  waiting <span class="operator">&lt;-</span> <span class="literal">NULL</span></span><br><span class="line">  last_message <span class="operator">&lt;-</span> <span class="literal">NULL</span></span><br><span class="line">  </span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>tweet<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    notification <span class="operator">&lt;-</span> glue<span class="operator">::</span>glue<span class="punctuation">(</span><span class="string">&quot;Tweeted &#x27;&#123;input$message&#125;&#x27;&quot;</span><span class="punctuation">)</span></span><br><span class="line">    last_message <span class="operator">&lt;&lt;-</span> input<span class="operator">$</span>message</span><br><span class="line">    updateTextAreaInput<span class="punctuation">(</span>session<span class="punctuation">,</span> <span class="string">&quot;message&quot;</span><span class="punctuation">,</span> value <span class="operator">=</span> <span class="string">&quot;&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">    showNotification<span class="punctuation">(</span></span><br><span class="line">      notification<span class="punctuation">,</span></span><br><span class="line">      action <span class="operator">=</span> actionButton<span class="punctuation">(</span><span class="string">&quot;undo&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Undo?&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">      duration <span class="operator">=</span> <span class="literal">NULL</span><span class="punctuation">,</span></span><br><span class="line">      closeButton <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">,</span></span><br><span class="line">      id <span class="operator">=</span> <span class="string">&quot;tweeted&quot;</span><span class="punctuation">,</span></span><br><span class="line">      type <span class="operator">=</span> <span class="string">&quot;warning&quot;</span></span><br><span class="line">    <span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">    waiting <span class="operator">&lt;&lt;-</span> runLater<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">      cat<span class="punctuation">(</span><span class="string">&quot;Actually sending tweet...\n&quot;</span><span class="punctuation">)</span></span><br><span class="line">      removeNotification<span class="punctuation">(</span><span class="string">&quot;tweeted&quot;</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>undo<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    waiting<span class="operator">$</span>destroy<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">    showNotification<span class="punctuation">(</span><span class="string">&quot;Tweet retracted&quot;</span><span class="punctuation">,</span> id <span class="operator">=</span> <span class="string">&quot;tweeted&quot;</span><span class="punctuation">)</span></span><br><span class="line">    updateTextAreaInput<span class="punctuation">(</span>session<span class="punctuation">,</span> <span class="string">&quot;message&quot;</span><span class="punctuation">,</span> value <span class="operator">=</span> last_message<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-4-3-回收站"><a href="#8-4-3-回收站" class="headerlink" title="8.4.3 回收站"></a>8.4.3 回收站</h3><p>对于几天后可能会后悔的操作，一种更高级的模式是在计算机上实现类似回收站或垃圾箱的功能。当你删除一个文件时，它并不会被永久删除，而是被移动到一个暂存区，需要执行另一个操作才能清空。这就像是一个强化版的“撤销”选项，你有很长的时间来后悔你的操作。这也有点像确认操作，你需要执行两个分开的操作才能使删除操作永久生效。</p>
+<p>这种技术的主要缺点是实现起来相当复杂（你需要有一个单独的“暂存区”来存储撤销操作所需的信息），并且需要用户定期干预以避免信息积累。因此，我认为除了最复杂的Shiny应用程序之外，这种技术都超出了其他应用程序的范围，所以这里我不会展示它的实现方法。</p>
+<h2 id="8-5-总结"><a href="#8-5-总结" class="headerlink" title="8.5 总结"></a>8.5 总结</h2><p>本章为你提供了一些工具，帮助你向用户传达应用程序正在发生的事情。从某种意义上说，这些技术大多是可选的。虽然你的应用程序没有它们也能工作，但它们的精心应用会对用户体验的质量产生巨大影响。当你是应用程序的唯一用户时，通常可以省略反馈，但使用它的人越多，精心设计的通知就越能发挥作用。</p>
+<p>在下一章中，你将学习如何向用户传输文件。</p>
+<h1 id="加关注"><a href="#加关注" class="headerlink" title="加关注"></a>加关注</h1><p>关注公众号“生信之巅”。</p>
+<table align="center"><tr>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅微信公众号" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-right: 0px;margin-bottom: 5px;align: center;"></td>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅小程序码" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-left: 0px;margin-bottom: 5px;align: center"></td>
+</tr></table>
+
+
+<p><font color="#FF0000"><ruby><b>敬告</b>：使用文中脚本请引用本文网址，请尊重本人的劳动成果，谢谢！<rt><b>Notice</b>: When you use the scripts in this article, please cite the link of this webpage. Thank you!</rt></ruby></font></p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E7%BC%96%E7%A8%8B/" class="">
+              编程
+            </a>
+          
+            <a href="/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/" class="">
+              Shiny入门系列
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>Hualin Liu</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/post/6561.html" target="_blank" title="Shiny从入门到入定——8-用户反馈">https://www.liaochenlanruo.fun/post/6561.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/post/6685.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Shiny从入门到入定——7-图形</div>
+      </div>
+      <!-- <div class="content">
+        7 图形
+第7章向您展示了如何向绘图添加直接交互以及如何显示以其他方式生成的图像。
+
+我们在第 2 章中简要讨论了 re
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/AliPay.jpg" class="lazyload placeholder" data-srcset="/medias/AliPay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/reward-wepay.jpg" class="lazyload placeholder" data-srcset="/medias/reward-wepay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/head.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>了尘兰若</h2>
+        
+        
+          <p>Research Go</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">了尘兰若的小坑</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="http://github.com/liaochenlanruo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E7%94%A8%E6%88%B7%E5%8F%8D%E9%A6%88"><span class="toc-text">8 用户反馈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E9%AA%8C%E8%AF%81"><span class="toc-text">8.1 验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-1-%E9%AA%8C%E8%AF%81%E8%BE%93%E5%85%A5"><span class="toc-text">8.1.1 验证输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-2-%E4%BD%BF%E7%94%A8req-%E5%8F%96%E6%B6%88%E6%89%A7%E8%A1%8C"><span class="toc-text">8.1.2 使用req()取消执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-3-req-%E5%92%8C%E9%AA%8C%E8%AF%81"><span class="toc-text">8.1.3 req()和验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-4-%E9%AA%8C%E8%AF%81%E8%BE%93%E5%87%BA"><span class="toc-text">8.1.4 验证输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E9%80%9A%E7%9F%A5"><span class="toc-text">8.2 通知</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-1-%E4%B8%B4%E6%97%B6%E9%80%9A%E7%9F%A5"><span class="toc-text">8.2.1 临时通知</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-2-%E5%AE%8C%E6%88%90%E6%97%B6%E7%A7%BB%E9%99%A4"><span class="toc-text">8.2.2 完成时移除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-3-%E6%B8%90%E8%BF%9B%E5%BC%8F%E6%9B%B4%E6%96%B0"><span class="toc-text">8.2.3 渐进式更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E8%BF%9B%E5%BA%A6%E6%9D%A1"><span class="toc-text">8.3 进度条</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-1-Shiny"><span class="toc-text">8.3.1 Shiny</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-2-Waiter"><span class="toc-text">8.3.2 Waiter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-3-Spinners"><span class="toc-text">8.3.3 Spinners</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-%E7%A1%AE%E8%AE%A4%E5%92%8C%E6%92%A4%E9%94%80"><span class="toc-text">8.4 确认和撤销</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-1-%E6%98%8E%E7%A1%AE%E7%A1%AE%E8%AE%A4"><span class="toc-text">8.4.1 明确确认</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-2-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C"><span class="toc-text">8.4.2 撤消操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-3-%E5%9B%9E%E6%94%B6%E7%AB%99"><span class="toc-text">8.4.3 回收站</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-5-%E6%80%BB%E7%BB%93"><span class="toc-text">8.5 总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A0%E5%85%B3%E6%B3%A8"><span class="toc-text">加关注</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6561.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_208.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_208.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-14</span>
+                
+              </div>
+              <a class="post-title" href="/post/6561.html">Shiny从入门到入定——8-用户反馈</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6685.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_207.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-26</span>
+                
+              </div>
+              <a class="post-title" href="/post/6685.html">Shiny从入门到入定——7-图形</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6718.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_206.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_206.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-25</span>
+                
+              </div>
+              <a class="post-title" href="/post/6718.html">Shiny从入门到入定——6-布局、主题、HTML</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/83c3.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_205.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_205.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-24</span>
+                
+              </div>
+              <a class="post-title" href="/post/83c3.html">Shiny从入门到入定——5-工作流</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/377b.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_204.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">01-24</span>
+                
+              </div>
+              <a class="post-title" href="/post/377b.html">Shiny从入门到入定——4-挖坑完毕之案例研究</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social">
+                  
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social">
+                  
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2018 - 2024 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">鄂ICP备2021021941号</a>    <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725号</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script async>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', 'liaochenlanruo/liaochenlanruo.github.io')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script async src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

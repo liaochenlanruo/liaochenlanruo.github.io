@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-03-11T13:07:17.000Z</updated>
+  <updated>2024-04-14T05:20:22.501Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Shiny从入门到入定——8-用户反馈</title>
+    <link href="https://www.liaochenlanruo.fun/post/6561.html"/>
+    <id>https://www.liaochenlanruo.fun/post/6561.html</id>
+    <published>2024-04-14T05:18:07.000Z</published>
+    <updated>2024-04-14T05:20:22.501Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;8-用户反馈&quot;&gt;&lt;a href=&quot;#8-用户反馈&quot; class=&quot;headerlink&quot; title=&quot;8 用户反馈&quot;&gt;&lt;/a&gt;8</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
   
   <entry>
     <title>Shiny从入门到入定——7-图形</title>
@@ -521,40 +548,6 @@
     
     
     <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PGCGAP - the Prokaryotic Genomics and Comparative Genomics Analysis Pipeline v1.0.33</title>
-    <link href="https://www.liaochenlanruo.fun/post/d862.html"/>
-    <id>https://www.liaochenlanruo.fun/post/d862.html</id>
-    <published>2022-03-15T11:14:14.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;img src=&quot;https://img.shields.io/badge/Platform-WSL%2FLinux%2FmacOS-green&quot; class=&quot;lazyload placeholder&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="WGS" scheme="https://www.liaochenlanruo.fun/tags/WGS/"/>
-    
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
-    
-    <category term="比较基因组学" scheme="https://www.liaochenlanruo.fun/tags/%E6%AF%94%E8%BE%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/"/>
-    
-    <category term="PGCGAP" scheme="https://www.liaochenlanruo.fun/tags/PGCGAP/"/>
     
   </entry>
   
