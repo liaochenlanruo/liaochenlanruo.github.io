@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-04-27T09:12:06.599Z</updated>
+  <updated>2024-04-27T09:55:40.299Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Shiny从入门到入定——11-书签</title>
+    <link href="https://www.liaochenlanruo.fun/post/8eca.html"/>
+    <id>https://www.liaochenlanruo.fun/post/8eca.html</id>
+    <published>2024-04-27T09:53:52.000Z</published>
+    <updated>2024-04-27T09:55:40.299Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;11-书签&quot;&gt;&lt;a href=&quot;#11-书签&quot; class=&quot;headerlink&quot; title=&quot;11 书签&quot;&gt;&lt;/a&gt;11</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Shiny从入门到入定——10-动态UI</title>
     <link href="https://www.liaochenlanruo.fun/post/e6be.html"/>
     <id>https://www.liaochenlanruo.fun/post/e6be.html</id>
     <published>2024-04-27T09:05:46.000Z</published>
-    <updated>2024-04-27T09:12:06.599Z</updated>
+    <updated>2024-04-27T09:19:58.639Z</updated>
     
     
       
@@ -512,33 +539,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
-    
-    <category term="代谢组" scheme="https://www.liaochenlanruo.fun/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代谢组相关软件的安装及使用</title>
-    <link href="https://www.liaochenlanruo.fun/post/33b.html"/>
-    <id>https://www.liaochenlanruo.fun/post/33b.html</id>
-    <published>2023-02-02T05:42:14.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;软件安装&quot;&gt;&lt;a href=&quot;#软件安装&quot; class=&quot;headerlink&quot; title=&quot;软件安装&quot;&gt;&lt;/a&gt;软件安装&lt;/h1&gt;&lt;h2 id=&quot;MZconvert&quot;&gt;&lt;a href=&quot;#MZconvert&quot; class=&quot;headerlink&quot;</summary>
         
       
     
