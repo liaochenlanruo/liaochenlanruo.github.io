@@ -1,0 +1,2474 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-139249935-1');
+</script>
+
+
+  <title>Shiny从入门到入定——12-Tidy evaluation | 了尘兰若的小坑</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script async src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">了尘兰若的小坑</h3>
+      <h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)">
+                  <span>
+                    
+                      <i class="fas fa-archive"></i>
+                    
+                    <span class="name">归档</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(1)">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)">
+                  <span>
+                    
+                      <i class="fas fa-user"></i>
+                    
+                    <span class="name">关于</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(2)">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(3)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">了尘兰若的小坑</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive"></i>
+                  
+                  <span class="name">归档</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user"></i>
+                  
+                  <span class="name">关于</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://travellings.link/" class="menu-item-link" title="开往">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script defer>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_212.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        Shiny从入门到入定——12-Tidy evaluation
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2024-04-27 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/IT/" class="post-detail-header_category">
+              IT
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 4.2k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 17分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="整洁评估"><a href="#整洁评估" class="headerlink" title="整洁评估"></a>整洁评估</h1><p>如果你在使用Shiny与tidyverse，那么你几乎肯定会遇到整洁评估编程的挑战。整洁评估在tidyverse中被广泛使用，使交互式数据探索更加流畅，但它也有代价：很难间接引用变量，因此编程起来也更加困难。</p>
+<p>在本章中，你将学习如何在Shiny应用程序中包装ggplot2和dplyr函数。（如果你不使用tidyverse，那么可以跳过这一章😄。）将ggplot2和dplyr函数包装在函数和包中的技术略有不同，并且在其他资源如<a target="_blank" rel="noopener" href="http://ggplot2.tidyverse.org/dev/articles/ggplot2-in-packages.html">“在包中使用ggplot2”</a>或<a target="_blank" rel="noopener" href="http://dplyr.tidyverse.org/articles/programming.html">“使用dplyr编程”</a>中有所涵盖。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>shiny<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">,</span> warn.conflicts <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>ggplot2<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-1-动机"><a href="#12-1-动机" class="headerlink" title="12.1 动机"></a>12.1 动机</h2><p>假设我想创建一个应用程序，允许你过滤一个数值变量，以选择大于某个阈值的行。你可能会写出类似这样的代码：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">num_vars <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;carat&quot;</span><span class="punctuation">,</span> <span class="string">&quot;depth&quot;</span><span class="punctuation">,</span> <span class="string">&quot;table&quot;</span><span class="punctuation">,</span> <span class="string">&quot;price&quot;</span><span class="punctuation">,</span> <span class="string">&quot;x&quot;</span><span class="punctuation">,</span> <span class="string">&quot;y&quot;</span><span class="punctuation">,</span> <span class="string">&quot;z&quot;</span><span class="punctuation">)</span></span><br><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;var&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Variable&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> num_vars<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  numericInput<span class="punctuation">(</span><span class="string">&quot;min&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Minimum&quot;</span><span class="punctuation">,</span> value <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;output&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span>diamonds <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>input<span class="operator">$</span>var <span class="operator">&gt;</span> input<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  output<span class="operator">$</span>output <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span>head<span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/2c131334332cadef7ec2b3e3bdf32689f3f1ebc6/f6143/demos/action-tidy/messed-up.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/2c131334332cadef7ec2b3e3bdf32689f3f1ebc6/f6143/demos/action-tidy/messed-up.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图12.1 一个应用程序试图选择用户选定变量中大于阈值的行"></p>
+<p>从<code>图12.1</code>中你可以看到，该应用程序可以无错误地运行，但它并没有返回正确的结果——所有的行中，钻石的净重（<code>carat</code>）值都小于1。本章的目标是帮助你理解为什么这不起作用，以及为什么dplyr认为你请求的是<code>filter(diamonds, &quot;carat&quot; &gt; 1)</code>。</p>
+<p>这是一个<code>间接引用</code>的问题：通常在使用tidyverse函数时，你会直接在函数调用中输入变量的名称。但现在你想要间接引用它：变量（<code>carat</code>）存储在另一个变量（<code>input$var</code>）中。</p>
+<p>这句话可能对你来说很直观，但有点令人困惑，因为我在这里用“变量”来指代两种略有不同的事物。如果我们引入两个新术语来消除这两种用法之间的歧义，那么理解正在发生的事情会更容易：</p>
+<ul>
+<li><p>环境变量（<strong>env-variable</strong>）是一个“编程”变量，你用<code>&lt;-</code>来创建。<code>input$var</code>是一个环境变量。</p>
+</li>
+<li><p>数据变量（<strong>data-variable</strong>）是存储在数据框中的“统计”变量。<code>carat</code>是一个数据变量。</p>
+</li>
+</ul>
+<p>有了这些新术语，我们可以更清楚地阐述间接引用的问题：我们有一个数据变量（<code>carat</code>）存储在一个环境变量（<code>input$var</code>）中，我们需要一种方法来告诉dplyr这一点。根据你所使用的函数是“数据掩蔽”函数还是“整洁选择”函数，实现这一点的方法略有不同。</p>
+<h2 id="12-2-数据掩蔽"><a href="#12-2-数据掩蔽" class="headerlink" title="12.2 数据掩蔽"></a>12.2 数据掩蔽</h2><p>数据掩蔽函数允许你在“当前”数据框中使用变量，而无需任何额外的语法。它在许多dplyr函数（如<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a>、<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a>、<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a>、<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a>和<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a>）以及ggplot2的<a target="_blank" rel="noopener" href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a>中使用。数据掩蔽很有用，因为它允许你使用数据变量，而无需任何额外的语法。</p>
+<h3 id="12-2-1-开始"><a href="#12-2-1-开始" class="headerlink" title="12.2.1 开始"></a>12.2.1 开始</h3><p>让我们从调用<code>filter()</code>函数开始，它使用了一个数据变量（<code>carat</code>）和一个环境变量（<code>min</code>）：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">min</span> <span class="operator">&lt;-</span> 1</span><br><span class="line">diamonds <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>carat <span class="operator">&gt;</span> <span class="built_in">min</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt; # A tibble: 17,502 × 10</span></span><br><span class="line"><span class="comment">#&gt;   carat cut       color clarity depth table price     x     y     z</span></span><br><span class="line"><span class="comment">#&gt;   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span><br><span class="line"><span class="comment">#&gt; 1  1.17 Very Good J     I1       60.2    61  2774  6.83  6.9   4.13</span></span><br><span class="line"><span class="comment">#&gt; 2  1.01 Premium   F     I1       61.8    60  2781  6.39  6.36  3.94</span></span><br><span class="line"><span class="comment">#&gt; 3  1.01 Fair      E     I1       64.5    58  2788  6.29  6.21  4.03</span></span><br><span class="line"><span class="comment">#&gt; 4  1.01 Premium   H     SI2      62.7    59  2788  6.31  6.22  3.93</span></span><br><span class="line"><span class="comment">#&gt; 5  1.05 Very Good J     SI2      63.2    56  2789  6.49  6.45  4.09</span></span><br><span class="line"><span class="comment">#&gt; 6  1.05 Fair      J     SI2      65.8    59  2789  6.41  6.27  4.18</span></span><br><span class="line"><span class="comment">#&gt; # … with 17,496 more rows</span></span><br></pre></td></tr></table></figure>
+
+<p>与基础R的等效代码进行比较：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diamonds<span class="punctuation">[</span>diamonds<span class="operator">$</span>carat <span class="operator">&gt;</span> <span class="built_in">min</span><span class="punctuation">,</span> <span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>在大多数（但不是全部）基础R函数中，你需要使用<code>$</code>来引用数据变量。这意味着你经常需要多次重复数据框的名称，但这确实清楚地表明了什么是数据变量，什么是环境变量。这也使得间接引用变得直接明了，因为你可以将数据变量的名称存储在一个环境变量中，然后从<code>$</code>切换到<code>[[</code>：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var <span class="operator">&lt;-</span> <span class="string">&quot;carat&quot;</span></span><br><span class="line">diamonds<span class="punctuation">[</span>diamonds<span class="punctuation">[[</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> <span class="built_in">min</span><span class="punctuation">,</span> <span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>我们如何使用整洁评估来达到相同的效果呢？我们需要一种方法将<code>$</code>重新加入进来。幸运的是，在数据掩蔽函数中，如果你想明确表示你是在谈论数据变量还是环境变量，你可以使用<code>.data</code>或<code>.env</code>：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diamonds <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>.data<span class="operator">$</span>carat <span class="operator">&gt;</span> .env<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>现在我们可以从$切换到[[：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diamonds <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>.data<span class="punctuation">[[</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> .env<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>让我们通过更新本章开始时使用的服务器函数来检查它是否有效：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">num_vars <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;carat&quot;</span><span class="punctuation">,</span> <span class="string">&quot;depth&quot;</span><span class="punctuation">,</span> <span class="string">&quot;table&quot;</span><span class="punctuation">,</span> <span class="string">&quot;price&quot;</span><span class="punctuation">,</span> <span class="string">&quot;x&quot;</span><span class="punctuation">,</span> <span class="string">&quot;y&quot;</span><span class="punctuation">,</span> <span class="string">&quot;z&quot;</span><span class="punctuation">)</span></span><br><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;var&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Variable&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> num_vars<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  numericInput<span class="punctuation">(</span><span class="string">&quot;min&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Minimum&quot;</span><span class="punctuation">,</span> value <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;output&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span>diamonds <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> .env<span class="operator">$</span>input<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  output<span class="operator">$</span>output <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span>head<span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/878d4b65fc1671d180c91732193924ce2f3b3ea8/ca76b/demos/action-tidy/tidied-up.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/878d4b65fc1671d180c91732193924ce2f3b3ea8/ca76b/demos/action-tidy/tidied-up.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图12.2 我们的应用现在运行良好，因为我们明确了.data和.env以及[[与$的区别。请访问https://hadley.shinyapps.io/ms-tidied-up查看实时效果"></p>
+<p><code>图12.2</code>显示我们已经成功了——我们只看到克拉值大于1的钻石。现在你已经了解了基础知识，我们将开发几个更现实但仍然简单的Shiny应用。</p>
+<h3 id="12-2-2-示例：ggplot2"><a href="#12-2-2-示例：ggplot2" class="headerlink" title="12.2.2 示例：ggplot2"></a>12.2.2 示例：ggplot2</h3><p>让我们将这个想法应用于动态绘图，允许用户通过选择要在<code>x</code>轴和<code>y</code>轴上显示的变量来创建散点图。结果如<code>图12.3</code>所示。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;x&quot;</span><span class="punctuation">,</span> <span class="string">&quot;X variable&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">names</span><span class="punctuation">(</span>iris<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;y&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Y variable&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">names</span><span class="punctuation">(</span>iris<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  plotOutput<span class="punctuation">(</span><span class="string">&quot;plot&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  output<span class="operator">$</span>plot <span class="operator">&lt;-</span> renderPlot<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    ggplot<span class="punctuation">(</span>iris<span class="punctuation">,</span> aes<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>x<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">,</span> .data<span class="punctuation">[[</span>input<span class="operator">$</span>y<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">      geom_point<span class="punctuation">(</span>position <span class="operator">=</span> ggforce<span class="operator">::</span>position_auto<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span> res <span class="operator">=</span> <span class="number">96</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<tr>
+<td><img src="https://d33wubrfki0l68.cloudfront.net/9defdeb8a9d4c779898f02f540feb95283b62c65/23a54/demos/action-tidy/ggplot2-scatter.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/9defdeb8a9d4c779898f02f540feb95283b62c65/23a54/demos/action-tidy/ggplot2-scatter.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></td>
+<td><img src="https://d33wubrfki0l68.cloudfront.net/74cf9f3e211b5f2430a03a5c960da0ab63a1e29e/41abe/demos/action-tidy/ggplot2-swarm.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/74cf9f3e211b5f2430a03a5c960da0ab63a1e29e/41abe/demos/action-tidy/ggplot2-swarm.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"></td>
+</tr>
+<tr>
+<td colspan="2">图12.3 一个简单的应用程序，允许您选择要在x轴和y轴上绘制的变量。请访问<a target="_blank" rel="noopener" href="https://hadley.shinyapps.io/ms-ggplot2">https://hadley.shinyapps.io/ms-ggplot2</a>查看实时效果</td>
+</tr>
+</table>
+
+<p>这里我使用了<a target="_blank" rel="noopener" href="https://ggforce.data-imaginist.com/reference/position_auto.html">ggforce::position_auto()</a>，这样无论x和y变量是连续的还是离散的，<a target="_blank" rel="noopener" href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a>都能很好地工作。或者，我们也可以让用户选择geom。下面的应用程序使用<a target="_blank" rel="noopener" href="https://rdrr.io/r/base/switch.html">switch()</a>语句生成一个反应性的geom，稍后会将其添加到图中。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;x&quot;</span><span class="punctuation">,</span> <span class="string">&quot;X variable&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">names</span><span class="punctuation">(</span>iris<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;y&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Y variable&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">names</span><span class="punctuation">(</span>iris<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;geom&quot;</span><span class="punctuation">,</span> <span class="string">&quot;geom&quot;</span><span class="punctuation">,</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;point&quot;</span><span class="punctuation">,</span> <span class="string">&quot;smooth&quot;</span><span class="punctuation">,</span> <span class="string">&quot;jitter&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  plotOutput<span class="punctuation">(</span><span class="string">&quot;plot&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  plot_geom <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="built_in">switch</span><span class="punctuation">(</span>input<span class="operator">$</span>geom<span class="punctuation">,</span></span><br><span class="line">      point <span class="operator">=</span> geom_point<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">      smooth <span class="operator">=</span> geom_smooth<span class="punctuation">(</span>se <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">      jitter <span class="operator">=</span> geom_jitter<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>plot <span class="operator">&lt;-</span> renderPlot<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    ggplot<span class="punctuation">(</span>iris<span class="punctuation">,</span> aes<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>x<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">,</span> .data<span class="punctuation">[[</span>input<span class="operator">$</span>y<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">      plot_geom<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span> res <span class="operator">=</span> <span class="number">96</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是使用用户选择的变量进行编程时面临的挑战之一：你的代码必须变得更加复杂，以处理用户可能生成的所有情况。</p>
+<h3 id="12-2-3-示例：dplyr"><a href="#12-2-3-示例：dplyr" class="headerlink" title="12.2.3 示例：dplyr"></a>12.2.3 示例：dplyr</h3><p>同样的技术也适用于dplyr。下面的应用程序扩展了前面简单的示例，允许您选择一个变量进行过滤，选择一个最小值进行选择，以及选择一个变量进行排序。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;var&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Select variable&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">names</span><span class="punctuation">(</span>mtcars<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  sliderInput<span class="punctuation">(</span><span class="string">&quot;min&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Minimum value&quot;</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">,</span> <span class="built_in">min</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">,</span> <span class="built_in">max</span> <span class="operator">=</span> <span class="number">100</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;sort&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Sort by&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">names</span><span class="punctuation">(</span>mtcars<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;data&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>var<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    rng <span class="operator">&lt;-</span> <span class="built_in">range</span><span class="punctuation">(</span>mtcars<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br><span class="line">    updateSliderInput<span class="punctuation">(</span></span><br><span class="line">      session<span class="punctuation">,</span> <span class="string">&quot;min&quot;</span><span class="punctuation">,</span> </span><br><span class="line">      value <span class="operator">=</span> rng<span class="punctuation">[[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">,</span> </span><br><span class="line">      <span class="built_in">min</span> <span class="operator">=</span> rng<span class="punctuation">[[</span><span class="number">1</span><span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">,</span> </span><br><span class="line">      <span class="built_in">max</span> <span class="operator">=</span> rng<span class="punctuation">[[</span><span class="number">2</span><span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>data <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    mtcars <span class="operator">%&gt;%</span> </span><br><span class="line">      filter<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> input<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">      arrange<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>sort<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/4b67467c8ad6e40cb3fffad24222564bf4858788/ae5b1/demos/action-tidy/dplyr.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/4b67467c8ad6e40cb3fffad24222564bf4858788/ae5b1/demos/action-tidy/dplyr.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图12.4 一个简单的应用程序，允许您选择一个变量作为阈值，并选择如何对结果进行排序。请访问https://hadley.shinyapps.io/ms-dplyr/查看实时效果"></p>
+<p>大多数其他问题都可以通过结合<code>.data</code>和您的现有编程技能来解决。例如，如果您想要条件性地以升序或降序进行排序，应该怎么做呢？</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;var&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Sort by&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">names</span><span class="punctuation">(</span>mtcars<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  checkboxInput<span class="punctuation">(</span><span class="string">&quot;desc&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Descending order?&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;data&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  sorted <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="punctuation">(</span>input<span class="operator">$</span>desc<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">      arrange<span class="punctuation">(</span>mtcars<span class="punctuation">,</span> desc<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span> <span class="keyword">else</span> <span class="punctuation">&#123;</span></span><br><span class="line">      arrange<span class="punctuation">(</span>mtcars<span class="punctuation">,</span> .data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  output<span class="operator">$</span>data <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span>sorted<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>随着你提供更多控制选项，你会发现代码变得越来越复杂，同时创建一个既全面又友好的用户界面也变得越来越难。这就是为什么我一直专注于数据分析的代码工具：创建好的用户界面真的非常难！</p>
+<h3 id="12-2-4-用户提供的数据"><a href="#12-2-4-用户提供的数据" class="headerlink" title="12.2.4 用户提供的数据"></a>12.2.4 用户提供的数据</h3><p>在继续讨论整洁选择之前，我们还需要讨论最后一个话题：用户提供的数据。以<code>图12.5</code>中显示的这个应用程序为例：它允许用户上传一个tsv文件，然后选择一个变量并根据该变量进行筛选。它适用于绝大多数你可能会尝试的输入。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  fileInput<span class="punctuation">(</span><span class="string">&quot;data&quot;</span><span class="punctuation">,</span> <span class="string">&quot;dataset&quot;</span><span class="punctuation">,</span> accept <span class="operator">=</span> <span class="string">&quot;.tsv&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;var&quot;</span><span class="punctuation">,</span> <span class="string">&quot;var&quot;</span><span class="punctuation">,</span> character<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  numericInput<span class="punctuation">(</span><span class="string">&quot;min&quot;</span><span class="punctuation">,</span> <span class="string">&quot;min&quot;</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">,</span> <span class="built_in">min</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">,</span> step <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;output&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  data <span class="operator">&lt;-</span> reactive<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    req<span class="punctuation">(</span>input<span class="operator">$</span>data<span class="punctuation">)</span></span><br><span class="line">    vroom<span class="operator">::</span>vroom<span class="punctuation">(</span>input<span class="operator">$</span>data<span class="operator">$</span>datapath<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  observeEvent<span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    updateSelectInput<span class="punctuation">(</span>session<span class="punctuation">,</span> <span class="string">&quot;var&quot;</span><span class="punctuation">,</span> choices <span class="operator">=</span> <span class="built_in">names</span><span class="punctuation">(</span>data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  observeEvent<span class="punctuation">(</span>input<span class="operator">$</span>var<span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">    val <span class="operator">&lt;-</span> data<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span></span><br><span class="line">    updateNumericInput<span class="punctuation">(</span>session<span class="punctuation">,</span> <span class="string">&quot;min&quot;</span><span class="punctuation">,</span> value <span class="operator">=</span> <span class="built_in">min</span><span class="punctuation">(</span>val<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line">  </span><br><span class="line">  output<span class="operator">$</span>output <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    req<span class="punctuation">(</span>input<span class="operator">$</span>var<span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    data<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">      filter<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> input<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">      arrange<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">      head<span class="punctuation">(</span><span class="number">10</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/a2b57fbb1d8a118a0410942708a051e92355b7a6/a504d/demos/action-tidy/user-supplied.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/a2b57fbb1d8a118a0410942708a051e92355b7a6/a504d/demos/action-tidy/user-supplied.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图12.5 一个过滤用户提供的数据的应用程序，具有令人惊讶的故障模式。请访问https://hadley.shinyapps.io/ms-user-supplied/查看实时效果"></p>
+<p>这里使用<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a>有一个微妙的问题。让我们把对<code>filter()</code>的调用提取出来，这样我们就可以在应用程序之外直接操作它：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df <span class="operator">&lt;-</span> data.frame<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span> y <span class="operator">=</span> <span class="number">2</span><span class="punctuation">)</span></span><br><span class="line">input <span class="operator">&lt;-</span> <span class="built_in">list</span><span class="punctuation">(</span>var <span class="operator">=</span> <span class="string">&quot;x&quot;</span><span class="punctuation">,</span> <span class="built_in">min</span> <span class="operator">=</span> <span class="number">0</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">df <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> input<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt;   x y</span></span><br><span class="line"><span class="comment">#&gt; 1 1 2</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你试验这段代码，你会发现它对于绝大多数数据框都能很好地工作。然而，有一个微妙的问题：如果数据框中包含一个名为<code>input</code>的变量，会发生什么？</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df <span class="operator">&lt;-</span> data.frame<span class="punctuation">(</span>x <span class="operator">=</span> <span class="number">1</span><span class="punctuation">,</span> y <span class="operator">=</span> <span class="number">2</span><span class="punctuation">,</span> input <span class="operator">=</span> <span class="number">3</span><span class="punctuation">)</span></span><br><span class="line">df <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> input<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt; Error in `filter()`:</span></span><br><span class="line"><span class="comment">#&gt; ! Problem while computing `..1 = .data[[&quot;x&quot;]] &gt; input$min`.</span></span><br><span class="line"><span class="comment">#&gt; Caused by error in `input$min`:</span></span><br><span class="line"><span class="comment">#&gt; ! $ operator is invalid for atomic vectors</span></span><br></pre></td></tr></table></figure>
+
+<p>我们收到一条错误信息，因为<code>filter()</code>正在尝试计算<code>df$input$min</code>：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df<span class="operator">$</span>input<span class="operator">$</span><span class="built_in">min</span></span><br><span class="line"><span class="comment">#&gt; Error in df$input$min: $ operator is invalid for atomic vectors</span></span><br></pre></td></tr></table></figure>
+
+<p>这个问题是由于数据变量和环境变量的歧义造成的，并且在两者都可用时，数据掩蔽更倾向于使用数据变量。我们可以通过使用<code>.env</code>来告诉<code>filter()</code>只在环境变量中查找<code>min</code>来解决这个问题：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df <span class="operator">%&gt;%</span> filter<span class="punctuation">(</span>.data<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> .env<span class="operator">$</span>input<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt;   x y input</span></span><br><span class="line"><span class="comment">#&gt; 1 1 2     3</span></span><br></pre></td></tr></table></figure>
+
+<p>请注意，这个问题只有在处理用户提供的数据时才需要考虑；在处理自己的数据时，你可以确保数据变量的名称不会与环境变量的名称冲突（如果不小心冲突了，你会立刻发现）。</p>
+<h3 id="12-2-5-为什么不使用基础R？"><a href="#12-2-5-为什么不使用基础R？" class="headerlink" title="12.2.5 为什么不使用基础R？"></a>12.2.5 为什么不使用基础R？</h3><p>到这时，你可能会想，如果没有<code>filter()</code>函数，使用等效的基础R代码会不会更好？</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df<span class="punctuation">[</span>df<span class="punctuation">[[</span>input<span class="operator">$</span>var<span class="punctuation">]</span><span class="punctuation">]</span> <span class="operator">&gt;</span> input<span class="operator">$</span><span class="built_in">min</span><span class="punctuation">,</span> <span class="punctuation">]</span></span><br><span class="line"><span class="comment">#&gt;   x y input</span></span><br><span class="line"><span class="comment">#&gt; 1 1 2     3</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个完全合理的立场，只要你意识到<code>filter()</code>为你做的工作，以便你能生成等效的基础R代码。在这种情况下：</p>
+<ul>
+<li><p>如果df只包含一列，你需要使用<code>drop = FALSE</code>（否则你会得到一个向量而不是数据框）。</p>
+</li>
+<li><p>你需要使用<a target="_blank" rel="noopener" href="https://rdrr.io/r/base/which.html">which()</a>或类似函数来删除任何缺失值。</p>
+</li>
+<li><p>你不能进行分组过滤（例如，<code>df %&gt;% group_by(g) %&gt;% filter(n() == 1)</code>）。</p>
+</li>
+</ul>
+<p>一般来说，如果你只是使用dplyr来处理非常简单的案例，你可能会发现使用不使用数据掩蔽的基础R函数更容易。然而，在我看来，tidyverse的一个优势在于它仔细考虑了边缘情况，以便函数能更一致地工作。我不想夸大这一点，但同时，很容易忘记特定基础R函数的怪癖，并编写出95%以上时间都能工作，但在另外5%的时间里会以不寻常的方式失败的代码。</p>
+<h2 id="12-3-整洁选择-Tidy-selection"><a href="#12-3-整洁选择-Tidy-selection" class="headerlink" title="12.3 整洁选择 Tidy-selection"></a>12.3 整洁选择 Tidy-selection</h2><p>除了数据掩蔽之外，整洁评估还有一个重要的部分：整洁选择。整洁选择提供了一种简洁的方式来通过位置、名称或类型选择列。它在<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a>和<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/across.html">dplyr::across()</a>以及tidyr中的许多函数（如<a target="_blank" rel="noopener" href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a>、<a target="_blank" rel="noopener" href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a>、<a target="_blank" rel="noopener" href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a>、<a target="_blank" rel="noopener" href="https://tidyr.tidyverse.org/reference/extract.html">extract()</a>和<a target="_blank" rel="noopener" href="https://tidyr.tidyverse.org/reference/unite.html">unite()</a>）中使用。</p>
+<h3 id="12-3-1-间接引用"><a href="#12-3-1-间接引用" class="headerlink" title="12.3.1 间接引用"></a>12.3.1 间接引用</h3><p>要间接引用变量，可以使用<a target="_blank" rel="noopener" href="https://tidyselect.r-lib.org/reference/all_of.html">any_of()</a>或<a target="_blank" rel="noopener" href="https://tidyselect.r-lib.org/reference/all_of.html">all_of()</a>：两者都期望一个包含数据变量名称的字符向量作为环境变量。唯一的区别是，如果你提供了一个在输入中不存在的变量名，<code>all_of()</code>会引发错误，而<code>any_of()</code>则会静默地忽略它。</p>
+<p>例如，以下应用程序允许用户使用多选输入选择任意数量的变量，同时使用<code>all_of()</code>：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;vars&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Variables&quot;</span><span class="punctuation">,</span> <span class="built_in">names</span><span class="punctuation">(</span>mtcars<span class="punctuation">)</span><span class="punctuation">,</span> multiple <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;data&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  output<span class="operator">$</span>data <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    req<span class="punctuation">(</span>input<span class="operator">$</span>vars<span class="punctuation">)</span></span><br><span class="line">    mtcars <span class="operator">%&gt;%</span> select<span class="punctuation">(</span>all_of<span class="punctuation">(</span>input<span class="operator">$</span>vars<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="12-3-2-整洁选择与数据掩蔽"><a href="#12-3-2-整洁选择与数据掩蔽" class="headerlink" title="12.3.2 整洁选择与数据掩蔽"></a>12.3.2 整洁选择与数据掩蔽</h3><p>当使用采用整洁选择的函数时，处理多个变量变得轻而易举：您只需将包含变量名的字符向量传递给<code>any_of()</code>或<code>all_of()</code>。如果我们也能在数据掩蔽函数中使用这种方法，那该有多好？这正是dplyr 1.0.0版本中添加的<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/across.html">across()</a>函数的设计理念。它允许您在数据掩蔽函数中使用整洁选择。</p>
+<p><code>across()</code>函数通常使用一个或两个参数。第一个参数用于选择变量，在<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a>或<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/distinct.html">distinct()</a>等函数中非常有用。例如，以下应用程序允许您选择任意数量的变量并计算它们的唯一值数量。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;vars&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Variables&quot;</span><span class="punctuation">,</span> <span class="built_in">names</span><span class="punctuation">(</span>mtcars<span class="punctuation">)</span><span class="punctuation">,</span> multiple <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;count&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  output<span class="operator">$</span>count <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    req<span class="punctuation">(</span>input<span class="operator">$</span>vars<span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    mtcars <span class="operator">%&gt;%</span> </span><br><span class="line">      group_by<span class="punctuation">(</span>across<span class="punctuation">(</span>all_of<span class="punctuation">(</span>input<span class="operator">$</span>vars<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">      summarise<span class="punctuation">(</span>n <span class="operator">=</span> n<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">,</span> .groups <span class="operator">=</span> <span class="string">&quot;drop&quot;</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/20b7acd57783cbc15cf0d64d8964bba1e093ba06/1c155/demos/action-tidy/across.png" class="lazyload placeholder" data-srcset="https://d33wubrfki0l68.cloudfront.net/20b7acd57783cbc15cf0d64d8964bba1e093ba06/1c155/demos/action-tidy/across.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图12.6 此应用程序允许您选择任意数量的变量，并计算它们的唯一组合数量。请访问https://hadley.shinyapps.io/ms-across实时查看"></p>
+<p>第二个参数是一个函数（或函数列表），应用于每个选定的列。这使得它非常适合<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a>和<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a>等函数，因为您通常想要以某种方式转换每个变量。例如，以下代码允许用户选择任意数量的分组变量，以及任意数量的变量，以计算它们的平均值进行汇总。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ui <span class="operator">&lt;-</span> fluidPage<span class="punctuation">(</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;vars_g&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Group by&quot;</span><span class="punctuation">,</span> <span class="built_in">names</span><span class="punctuation">(</span>mtcars<span class="punctuation">)</span><span class="punctuation">,</span> multiple <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  selectInput<span class="punctuation">(</span><span class="string">&quot;vars_s&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Summarise&quot;</span><span class="punctuation">,</span> <span class="built_in">names</span><span class="punctuation">(</span>mtcars<span class="punctuation">)</span><span class="punctuation">,</span> multiple <span class="operator">=</span> <span class="literal">TRUE</span><span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">  tableOutput<span class="punctuation">(</span><span class="string">&quot;data&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">server <span class="operator">&lt;-</span> <span class="keyword">function</span><span class="punctuation">(</span>input<span class="punctuation">,</span> output<span class="punctuation">,</span> session<span class="punctuation">)</span> <span class="punctuation">&#123;</span></span><br><span class="line">  output<span class="operator">$</span>data <span class="operator">&lt;-</span> renderTable<span class="punctuation">(</span><span class="punctuation">&#123;</span></span><br><span class="line">    mtcars <span class="operator">%&gt;%</span> </span><br><span class="line">      group_by<span class="punctuation">(</span>across<span class="punctuation">(</span>all_of<span class="punctuation">(</span>input<span class="operator">$</span>vars_g<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">      summarise<span class="punctuation">(</span>across<span class="punctuation">(</span>all_of<span class="punctuation">(</span>input<span class="operator">$</span>vars_s<span class="punctuation">)</span><span class="punctuation">,</span> mean<span class="punctuation">)</span><span class="punctuation">,</span> n <span class="operator">=</span> n<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-4-parse-eval"><a href="#12-4-parse-eval" class="headerlink" title="12.4 parse() + eval()"></a>12.4 parse() + eval()</h2><p>在我们继续之前，有必要对<a target="_blank" rel="noopener" href="https://rdrr.io/r/base/paste.html">paste()</a> + <a target="_blank" rel="noopener" href="https://rdrr.io/r/base/parse.html">parse()</a> + <a target="_blank" rel="noopener" href="https://rdrr.io/r/base/eval.html">eval()</a>组合进行简短的评论。如果你完全不了解这个组合，可以跳过这一节，但如果你已经使用过它，我想给你一个小小的警告。</p>
+<p>这是一个诱人的方法，因为它只需要学习很少的新概念。但它也有一些主要的缺点：由于你正在将字符串拼接在一起，很容易意外地创建出无效的代码，或者可能被滥用以执行你不希望的操作的代码。如果这只是你自己使用的Shiny应用程序，这可能不是非常重要，但这并不是一个值得养成的好习惯——否则，很容易在你广泛分享的应用程序中意外地创建一个安全漏洞。我们将在第<code>22章</code>中再次提及这个观点。</p>
+<p>（如果你发现这是解决问题的唯一方法，不必感到沮丧。但当你有了更多的思考空间时，我建议花些时间弄清楚如何在不进行字符串操作的情况下实现。这将有助于你成为一名更好的R程序员。）</p>
+<h2 id="12-5-总结"><a href="#12-5-总结" class="headerlink" title="12.5 总结"></a>12.5 总结</h2><p>在本章中，你学习了如何创建Shiny应用程序，让用户选择将哪些变量输入到如<a target="_blank" rel="noopener" href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a>和<a target="_blank" rel="noopener" href="https://ggplot2.tidyverse.org/reference/aes.html">ggplot2::aes()</a>这样的tidyverse函数中。这需要你理解一个你之前可能从未考虑过的关键区别：数据变量和环境变量的不同。这可能需要一些练习才能变得自然，但一旦你掌握了这些概念，你就能够解锁tidyverse的数据分析功能，并将其暴露给非R用户。</p>
+<p>这是本书<code>“Shiny实战”</code>部分的最后一章。既然你已经拥有了制作一系列有用应用程序所需的工具，我将重点提高你对Shiny底层理论的理解。</p>
+<h1 id="加关注"><a href="#加关注" class="headerlink" title="加关注"></a>加关注</h1><table align="center"><tr>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅微信公众号" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-right: 0px;margin-bottom: 5px;align: center;"></td>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅小程序码" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-left: 0px;margin-bottom: 5px;align: center"></td>
+</tr></table>
+
+
+<p><font color="#FF0000"><ruby><b>敬告</b>：使用文中脚本请引用本文网址，请尊重本人的劳动成果，谢谢！<rt><b>Notice</b>: When you use the scripts in this article, please cite the link of this webpage. Thank you!</rt></ruby></font></p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E7%BC%96%E7%A8%8B/" class="">
+              编程
+            </a>
+          
+            <a href="/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/" class="">
+              Shiny入门系列
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>Hualin Liu</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/post/3709.html" target="_blank" title="Shiny从入门到入定——12-Tidy evaluation">https://www.liaochenlanruo.fun/post/3709.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_211.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_211.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/post/8eca.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Shiny从入门到入定——11-书签</div>
+      </div>
+      <!-- <div class="content">
+        11 书签与大多数网站相比，Shiny应用程序有一个主要的缺点：您无法为应用程序添加书签以便将来返回同一位置，也无法通过
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/AliPay.jpg" class="lazyload placeholder" data-srcset="/medias/AliPay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/reward-wepay.jpg" class="lazyload placeholder" data-srcset="/medias/reward-wepay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/head.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>了尘兰若</h2>
+        
+        
+          <p>Research Go</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">了尘兰若的小坑</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="http://github.com/liaochenlanruo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E6%B4%81%E8%AF%84%E4%BC%B0"><span class="toc-text">整洁评估</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E5%8A%A8%E6%9C%BA"><span class="toc-text">12.1 动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E6%95%B0%E6%8D%AE%E6%8E%A9%E8%94%BD"><span class="toc-text">12.2 数据掩蔽</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-1-%E5%BC%80%E5%A7%8B"><span class="toc-text">12.2.1 开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-2-%E7%A4%BA%E4%BE%8B%EF%BC%9Aggplot2"><span class="toc-text">12.2.2 示例：ggplot2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-3-%E7%A4%BA%E4%BE%8B%EF%BC%9Adplyr"><span class="toc-text">12.2.3 示例：dplyr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-4-%E7%94%A8%E6%88%B7%E6%8F%90%E4%BE%9B%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">12.2.4 用户提供的数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-2-5-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80R%EF%BC%9F"><span class="toc-text">12.2.5 为什么不使用基础R？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-%E6%95%B4%E6%B4%81%E9%80%89%E6%8B%A9-Tidy-selection"><span class="toc-text">12.3 整洁选择 Tidy-selection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-1-%E9%97%B4%E6%8E%A5%E5%BC%95%E7%94%A8"><span class="toc-text">12.3.1 间接引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-3-2-%E6%95%B4%E6%B4%81%E9%80%89%E6%8B%A9%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8E%A9%E8%94%BD"><span class="toc-text">12.3.2 整洁选择与数据掩蔽</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-4-parse-eval"><span class="toc-text">12.4 parse() + eval()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-5-%E6%80%BB%E7%BB%93"><span class="toc-text">12.5 总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A0%E5%85%B3%E6%B3%A8"><span class="toc-text">加关注</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/3709.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_212.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_212.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-27</span>
+                
+              </div>
+              <a class="post-title" href="/post/3709.html">Shiny从入门到入定——12-Tidy evaluation</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/8eca.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_211.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_211.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-27</span>
+                
+              </div>
+              <a class="post-title" href="/post/8eca.html">Shiny从入门到入定——11-书签</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/e6be.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_210.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_210.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-27</span>
+                
+              </div>
+              <a class="post-title" href="/post/e6be.html">Shiny从入门到入定——10-动态UI</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/72d6.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_209.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_209.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-27</span>
+                
+              </div>
+              <a class="post-title" href="/post/72d6.html">Shiny从入门到入定——9-上传和下载</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/6561.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_208.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_208.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-14</span>
+                
+              </div>
+              <a class="post-title" href="/post/6561.html">Shiny从入门到入定——8-用户反馈</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social">
+                  
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social">
+                  
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2018 - 2024 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">鄂ICP备2021021941号</a>    <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725号</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script async>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', 'liaochenlanruo/liaochenlanruo.github.io')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script async src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

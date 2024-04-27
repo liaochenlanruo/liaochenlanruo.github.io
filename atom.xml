@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-04-27T09:55:40.299Z</updated>
+  <updated>2024-04-27T12:59:49.755Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Shiny从入门到入定——12-Tidy evaluation</title>
+    <link href="https://www.liaochenlanruo.fun/post/3709.html"/>
+    <id>https://www.liaochenlanruo.fun/post/3709.html</id>
+    <published>2024-04-27T12:58:06.000Z</published>
+    <updated>2024-04-27T12:59:49.755Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;整洁评估&quot;&gt;&lt;a href=&quot;#整洁评估&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Shiny从入门到入定——11-书签</title>
     <link href="https://www.liaochenlanruo.fun/post/8eca.html"/>
     <id>https://www.liaochenlanruo.fun/post/8eca.html</id>
     <published>2024-04-27T09:53:52.000Z</published>
-    <updated>2024-04-27T09:55:40.299Z</updated>
+    <updated>2024-04-27T09:55:47.969Z</updated>
     
     
       
@@ -523,33 +550,6 @@
     <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
     
     <category term="代谢组学" scheme="https://www.liaochenlanruo.fun/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用xcms3处理和分析LC-MS数据</title>
-    <link href="https://www.liaochenlanruo.fun/post/377e.html"/>
-    <id>https://www.liaochenlanruo.fun/post/377e.html</id>
-    <published>2023-02-06T07:45:39.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
-    
-    <category term="代谢组" scheme="https://www.liaochenlanruo.fun/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84/"/>
     
   </entry>
   
