@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-04-27T13:38:35.974Z</updated>
+  <updated>2024-07-30T15:07:54.187Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>用MaAsLin2包做微生物组多变量线性模型关联分析</title>
+    <link href="https://www.liaochenlanruo.fun/post/1177.html"/>
+    <id>https://www.liaochenlanruo.fun/post/1177.html</id>
+    <published>2024-07-30T14:41:21.000Z</published>
+    <updated>2024-07-30T15:07:54.187Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;MaAsLin 2 是 MaAsLin（微生物组多变量线性模型关联，Microbiome Multivariable</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="扩增子" scheme="https://www.liaochenlanruo.fun/tags/%E6%89%A9%E5%A2%9E%E5%AD%90/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+    <category term="R语言" scheme="https://www.liaochenlanruo.fun/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Shiny从入门到入定——13-Why reactivity?</title>
     <link href="https://www.liaochenlanruo.fun/post/5e3d.html"/>
     <id>https://www.liaochenlanruo.fun/post/5e3d.html</id>
     <published>2024-04-27T13:37:04.000Z</published>
-    <updated>2024-04-27T13:38:35.974Z</updated>
+    <updated>2024-04-27T13:38:58.624Z</updated>
     
     
       
@@ -523,33 +552,6 @@
     
     
     <category term="NCBI - 下载 - NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI-%E4%B8%8B%E8%BD%BD-NCBI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于TidyMass的非靶向代谢组学分析</title>
-    <link href="https://www.liaochenlanruo.fun/post/0.html"/>
-    <id>https://www.liaochenlanruo.fun/post/0.html</id>
-    <published>2023-04-19T07:45:39.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;代谢组学常用仪器特点&quot;&gt;&lt;a href=&quot;#代谢组学常用仪器特点&quot; class=&quot;headerlink&quot; title=&quot;代谢组学常用仪器特点&quot;&gt;&lt;/a&gt;代谢组学常用仪器特点&lt;/h1&gt;&lt;table</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
-    
-    <category term="代谢组" scheme="https://www.liaochenlanruo.fun/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84/"/>
     
   </entry>
   
