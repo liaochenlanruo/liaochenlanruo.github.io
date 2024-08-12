@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-08-03T07:27:11.986Z</updated>
+  <updated>2024-08-12T12:01:50.986Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>深入理解特征标准化：为何、如何及其重要性</title>
+    <link href="https://www.liaochenlanruo.fun/post/43fc.html"/>
+    <id>https://www.liaochenlanruo.fun/post/43fc.html</id>
+    <published>2024-08-12T10:30:19.000Z</published>
+    <updated>2024-08-12T12:01:50.986Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="机器学习" scheme="https://www.liaochenlanruo.fun/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="特征工程" scheme="https://www.liaochenlanruo.fun/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用MaAsLin2包做微生物组多变量线性模型关联分析</title>
     <link href="https://www.liaochenlanruo.fun/post/1177.html"/>
     <id>https://www.liaochenlanruo.fun/post/1177.html</id>
     <published>2024-07-30T14:41:21.000Z</published>
-    <updated>2024-08-03T07:27:11.986Z</updated>
+    <updated>2024-08-03T07:39:22.285Z</updated>
     
     
       
@@ -527,31 +554,6 @@
     <category term="ML与微生物组" scheme="https://www.liaochenlanruo.fun/tags/ML%E4%B8%8E%E5%BE%AE%E7%94%9F%E7%89%A9%E7%BB%84/"/>
     
     <category term="ML与疾病诊断" scheme="https://www.liaochenlanruo.fun/tags/ML%E4%B8%8E%E7%96%BE%E7%97%85%E8%AF%8A%E6%96%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>批量下载某研究方向重要文献</title>
-    <link href="https://www.liaochenlanruo.fun/post/29bf.html"/>
-    <id>https://www.liaochenlanruo.fun/post/29bf.html</id>
-    <published>2023-04-24T14:15:30.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;安装Python及依赖包&quot;&gt;&lt;a href=&quot;#安装Python及依赖包&quot; class=&quot;headerlink&quot; title=&quot;安装Python及依赖包&quot;&gt;&lt;/a&gt;安装Python及依赖包&lt;/h1&gt;&lt;h2 id=&quot;python下载安装&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="NCBI - 下载 - NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI-%E4%B8%8B%E8%BD%BD-NCBI/"/>
     
   </entry>
   
