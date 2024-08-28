@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-08-12T12:01:50.986Z</updated>
+  <updated>2024-08-28T13:12:11.597Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NCBI上传基因簇之table2asn的使用</title>
+    <link href="https://www.liaochenlanruo.fun/post/7449.html"/>
+    <id>https://www.liaochenlanruo.fun/post/7449.html</id>
+    <published>2024-08-28T12:44:49.000Z</published>
+    <updated>2024-08-28T13:12:11.597Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;向&lt;a href=&quot;https://www.ncbi.nlm.nih.gov/&quot;&gt;NCBI&lt;/a&gt;提交基因簇的时候需要提供sqn格式的文件，之前我在文章&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI/"/>
+    
+    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>深入理解特征标准化：为何、如何及其重要性</title>
@@ -527,33 +556,6 @@
     
     
     <category term="公众号" scheme="https://www.liaochenlanruo.fun/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>走向多标签分类：机器学习在微生物组研究中的下一步</title>
-    <link href="https://www.liaochenlanruo.fun/post/801d.html"/>
-    <id>https://www.liaochenlanruo.fun/post/801d.html</id>
-    <published>2023-05-28T07:30:13.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="机器学习" scheme="https://www.liaochenlanruo.fun/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="ML与微生物组" scheme="https://www.liaochenlanruo.fun/tags/ML%E4%B8%8E%E5%BE%AE%E7%94%9F%E7%89%A9%E7%BB%84/"/>
-    
-    <category term="ML与疾病诊断" scheme="https://www.liaochenlanruo.fun/tags/ML%E4%B8%8E%E7%96%BE%E7%97%85%E8%AF%8A%E6%96%AD/"/>
     
   </entry>
   
