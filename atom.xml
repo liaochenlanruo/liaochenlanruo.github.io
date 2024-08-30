@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-08-28T13:12:11.597Z</updated>
+  <updated>2024-08-30T14:59:29.868Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Scikit-learn机器学习实战-HumanResourcesAnalytics</title>
+    <link href="https://www.liaochenlanruo.fun/post/d8ef.html"/>
+    <id>https://www.liaochenlanruo.fun/post/d8ef.html</id>
+    <published>2024-08-30T14:24:05.000Z</published>
+    <updated>2024-08-30T14:59:29.868Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://www.liaochenlanruo.fun/categories/AI/"/>
+    
+    
+    <category term="机器学习" scheme="https://www.liaochenlanruo.fun/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Scikit-learn" scheme="https://www.liaochenlanruo.fun/tags/Scikit-learn/"/>
+    
+  </entry>
   
   <entry>
     <title>NCBI上传基因簇之table2asn的使用</title>
@@ -531,31 +558,6 @@
     <category term="同源家族" scheme="https://www.liaochenlanruo.fun/tags/%E5%90%8C%E6%BA%90%E5%AE%B6%E6%97%8F/"/>
     
     <category term="比较基因组学" scheme="https://www.liaochenlanruo.fun/tags/%E6%AF%94%E8%BE%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>公众号9岁了——送给粉丝的话</title>
-    <link href="https://www.liaochenlanruo.fun/post/85ad.html"/>
-    <id>https://www.liaochenlanruo.fun/post/85ad.html</id>
-    <published>2023-07-02T06:54:22.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="闲谈" scheme="https://www.liaochenlanruo.fun/categories/%E9%97%B2%E8%B0%88/"/>
-    
-    
-    <category term="公众号" scheme="https://www.liaochenlanruo.fun/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
     
   </entry>
   

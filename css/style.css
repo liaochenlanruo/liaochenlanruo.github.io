@@ -1773,6 +1773,9 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   padding: 6px 13px;
   background-color: rgba(217,241,231,0.8);
   color: rgba(66,185,133,0.8);
+  word-wrap: break-word; /* 长单词强制换行 */
+  white-space: pre-wrap; /* 保留空白符同时换行 */
+  overflow: hidden; /* 隐藏超出部分 */
 }
 .post-detail table tr td {
   text-align: left;
@@ -1780,6 +1783,9 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   padding: 6px 13px;
   word-wrap: break-word;
   border: 1px solid rgba(217,241,231,0.8);
+  word-wrap: break-word; /* 长单词强制换行 */
+  white-space: pre-wrap; /* 保留空白符同时换行 */
+  overflow: hidden; /* 隐藏超出部分 */
 }
 .post-detail table:not(.highlight table) tr:hover {
   background-color: rgba(226,245,237,0.8);
