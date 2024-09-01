@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-09-01T04:57:42.611Z</updated>
+  <updated>2024-09-01T08:47:58.888Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Scikit-learn机器学习实战-PCA</title>
+    <link href="https://www.liaochenlanruo.fun/post/61ae.html"/>
+    <id>https://www.liaochenlanruo.fun/post/61ae.html</id>
+    <published>2024-09-01T08:38:58.000Z</published>
+    <updated>2024-09-01T08:47:58.888Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;PCA的全称是&lt;strong&gt;Principal Component</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://www.liaochenlanruo.fun/categories/AI/"/>
+    
+    
+    <category term="机器学习" scheme="https://www.liaochenlanruo.fun/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Scikit-learn" scheme="https://www.liaochenlanruo.fun/tags/Scikit-learn/"/>
+    
+  </entry>
   
   <entry>
     <title>PyTorch实战-利用卷积神经网络完成手写数字识别</title>
@@ -524,33 +551,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
-    
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shiny从入门到入定——0欢迎入坑</title>
-    <link href="https://www.liaochenlanruo.fun/post/4b9c.html"/>
-    <id>https://www.liaochenlanruo.fun/post/4b9c.html</id>
-    <published>2023-11-09T10:25:21.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;欢迎语&quot;&gt;&lt;a href=&quot;#欢迎语&quot; class=&quot;headerlink&quot;</summary>
         
       
     

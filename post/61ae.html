@@ -22,7 +22,7 @@
 </script>
 
 
-  <title>新课题 | 了尘兰若的小坑</title>
+  <title>Scikit-learn机器学习实战-PCA | 了尘兰若的小坑</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -752,21 +752,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_25.webp')">
+  background-position: center center;position: relative;background-image:url('https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/PCA_files/PCA_32_0.png')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        新课题
+        Scikit-learn机器学习实战-PCA
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2015-09-13 |
+          <i class="fas fa-calendar"></i> 发表于：2024-09-01 |
         </span>
       
 
@@ -774,8 +774,8 @@
         <span class="post-detail-header_categories">
           <i class="iconfont iconbookmark1"></i> 分类：
           
-            <a href="/categories/%E5%B0%8F%E8%AF%B4/" class="post-detail-header_category">
-              小说
+            <a href="/categories/AI/" class="post-detail-header_category">
+              AI
             </a>
           
         </span>
@@ -784,11 +784,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> 字数统计: 6.9k |
+            <i class="fas fa-file-text-o"></i> 字数统计: 5k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> 阅读时长: 23分钟 |
+            <i class="fas fa-clock"></i> 阅读时长: 25分钟 |
           </span>
   
           
@@ -815,18 +815,620 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <p>躺在床上玩了会儿手机，困意来袭，便睡了过去，半梦半醒的似乎被谁扯了一下左胳膊，我一下子清醒了过来。刚才那一下子十分真实，我打开手机灯光四周查看了一遍，并未发现有何异常。难道是做梦了？自己真的是有点神经质，总是做一些离奇的梦，这样子下去怕是要去看心理医生了。回到寝室总是要把每个角落查看一遍，确信安全才会关灯，怕的是某个地方会藏着不寻常的东西。</p>
-<span id="more"></span>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>PCA的全称是<strong>Principal Component Analysis</strong>，即主成分分析。这是一种常用的数据分析方法，主要用于数据降维。PCA的主要思想是将原始的高维特征空间通过线性变换投射到一个新的低维特征空间上，同时尽量保持原始数据的方差，使得在新的低维空间中数据的差异性得以保留。这一过程中，通过计算数据集的协方差矩阵，找到其特征值和特征向量，进而确定主成分的方向和贡献率，实现数据的有效降维。</p>
+<p>具体来说，PCA的计算过程包括以下几个步骤：</p>
+<ul>
+<li>数据标准化：将原始数据转换为均值为0，标准差为1的标准化数据，以消除不同量纲对分析结果的影响。</li>
+<li>计算协方差矩阵：标准化后的数据矩阵的协方差矩阵反映了各变量之间的相关性。</li>
+<li>计算特征值和特征向量：对协方差矩阵进行特征值分解，得到特征值和对应的特征向量。特征值的大小反映了对应主成分的重要性，而特征向量则指示了主成分的方向。</li>
+<li>选取主成分：根据特征值的大小，选取前k个主成分，使得这k个主成分的累计贡献率达到一定的阈值（如80%或90%）。</li>
+<li>转换数据到新的主成分空间：将原始数据转换到由选定的主成分构成的新空间中，得到降维后的数据。</li>
+</ul>
+<p>PCA在数据分析和机器学习领域有着广泛的应用，如特征提取、数据压缩、噪声消除、图像识别等。同时，PCA也是一种无监督学习的方法，它不需要数据的标签信息，就可以从数据中提取出有用的特征信息。</p>
+<p>本文通过鸢尾花数据集演示PCA方法，讲解如何确定降维采用的特征向量的数量，并完成降维。包括手写函数实现和通过SK-learn实现代码。</p>
+<h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;iris.data&#x27;</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
 
-<p>话说刚才那一下把我从睡眠中拉醒，虽然并未发现什么异常，但黑灯瞎火的我总还是感到有几分不安，又不想下床去开灯，这个时候床上比较安全。我在心中说服自己，是自己想多了，估计是神经中枢跟我开玩笑闹着玩的。我蜷缩到被子里，不让身体的任何一点地方暴露在空气中，这样心里踏实了一些。</br><br>浑浑噩噩的又睡了过去，睡了不久，感到右边的胳膊也被扯了一下。我睁开眼，看到自己身处一条街道之上，阳光昏暗已是黄昏。街上聚集了很多人，人群中间是一根十多米的竿子，大家围着竿子不知道议论着什么。喜欢凑热闹的我走上前想一探究竟，不料随着我逐渐的接近竿子，自己的身体却越来越轻，当我走到竿子底下的时候，我竟然不由自主的飘了起来。我吓坏了，努力挣扎着却无济于事，身体一直在上升，看着地上的人逐渐变小，我也离地面越来越远，恐高的我尖叫着希望能有人来救我。</br><br>然而，不论我升多高，却一直超越不了竿子的高度，我发现本来十几米的竿子在不断的长高，直插云霄，把天捅了个窟窿。而我也在不断的往上飘，但只能直线上升而不能水平移动。高空的空气开始稀薄起来，我感到一阵头晕和恶心，最后晕死过去了。</br><br>醒来之后发现自己已经在地面了，我心中疑惑，我是怎么到达地面的，如果是摔下来的，这么高肯定是必死无疑，可是我检查了一下身体，竟然没有任何损伤。难道是我飘到了飞机上，被捎回了地面？这也太匪夷所思了。我看了看四周，已经不在那条街上了，记得我上天的时候一直保持与那根竿子平行，而竿子是笔直的，按理说我掉下来应该还是会落到这条街上才对。难道我下落时遇到了狂风把我吹跑偏了？很有这个可能。其实说我是落下来的谁都不会相信，没有谁从高空自由落体下来摔不死，难不成我已经死了，现在的我只是个游魂？我摸了一下自己，肉是实实在在长在身上的，掐一下也会疼。这证明了两点:第一，我还活着；第二，这不是在做梦。</br><br>我思前想后，绞尽脑汁也没有想明白这一切是怎么发生的，明明是躺在床上睡觉，怎么会到了那条街上，为何自己会飘起来，而我在高空中晕过去以后究竟发生了什么，为何我又毫发无损的落到了地面？难道我是飘下来的？想想也不排除这种可能，既然能飘上去，那么也有可能会飘下来，不论是飘上还是飘下，总之都是超越了物理学的范畴。至于这一切究竟是怎么发生的，已经超越了我的理解范围，我所能做的只能是接受现实。最重要的是要搞清楚我现在究竟是在哪里，又该怎么回到我所在的宿舍。</br><br>我观望了一下四周，发现我所处的位置是一个完全陌生的地方，这里不是宿舍，也不再是那条街，放眼望去，这里一片凄凉，没有城市，也没有村庄，而是一片荒凉的草地，一望无际的荒草，如大海一般看不到彼岸。此时此刻的我显得那么渺小，如天地之间的一只屡蚁，被时间与空间所忽略。满目的苍夷，让我的心中充满了绝望，这一片荒原，我找不到方向，该如何才能走的出去？叹天地之苍茫，吾辈之甚微，如此渺小改变不了世界，而世界也不屑于改变我。突然感到自己是多余的，找不到存在的价值和缘由。生与死，存在与否似乎并不影响地球的转动，也不影响他人。然而活着就是活着，哪怕没人在乎也要活出自己的精彩。</br><br>我看向前方，虽然是一望无际，但世界终归有其尽头，只要我沿着直线往前走，总会走到世界的边缘。虽然我没有粮食，没有水，但总不能困死在原地，能走多远算多远。战士总是要死在战场上才不枉这个名号。</br><br>真正的孤独不是面对着很多人玩手机，而是拿起手机却不知道该找谁求助。何况此时此刻，我的手机根本搜索不到任何信号。夕阳洒在枯萎的荒草之上，别有一番风味。所谓吃自己的饭，流自己的汗，自己的事情自己干，靠人靠王靠祖先，不算是好汉。如今我没有任何人可以依靠，不妨拼命一搏，哪怕是死在这荒原之上也没有什么遗憾的。人总是要死的，或早或晚而已，若是没有太多留恋，生不如死。</br><br>我漫无目的的向前走着，人所畏惧的不是路途遥远，而是不知道路有多长，无尽的边际消磨着我的意志，向前或许可以生，然而前方有多远没有人能告诉我，或许我会死在路途中，是该驻足等死，还是要继前行累死，亦或足够幸运而走出去？想想自己的人生不是很如意， 该有的还没有，不该遭受的却要忍受着，或许在此长眠也算是一种解脱。生于天地间，葬于天地间，又何尝不是一种大自然的平衡？</br><br>我累了，真的很累了。我不怕奋斗，而怕不知道该为什么而奋斗。人一旦失去了希望，那是一件很恐怖的事情。没有目标，那就是行尸走肉。我目前就是处于这种状态，想着走出去，却又找不到方向，那为何不淹没于这个地方，何必苦苦挣扎？我越想越绝望，索性停下前行的脚步，躺下来看着昏暗的天空。我累了，真的很累了，不如闭上眼睡一觉，或许醒来就会到达另一片天地。</br><br>昏昏沉沉的，我睡了过去。睡梦中，我回到了学校，回到了寝室的床上，每天忙碌着该忙碌的事情，那是多么美好的事情。虽然时刻牵挂着课题的进展，也会有担心和烦恼，但那也是实实在在的事情，那些困难是可以克服的，相对于现在，那都不是事！</br><br>梦终归是梦，不论是美梦还是噩梦，总会有醒来的时候。待我醒来怕是还要面对那一片荒原，整个人湮灭在孤独之中。</br><br>突然，我的胳膊被谁扯了一下。我惊醒来，发现天空黑暗一片，四周也是黑漆漆的。我伸手摸向四周，感到自己似乎被困在一个箱子内。我伸手摸向自己的口袋，幸好手机还在。我打开手机，照向四周，不找不要紧，待我看明白了四周之后整个人都吓傻了。</br><br>我发现自己躺在一个铺满被子的棺材之内，棺材盖已经翻倒在地，棺材坐落于一个小坟丘之上，四周是漫无边际的荒原。我脑袋里空白一片，难道我已经死了？怎么会躺在棺材之中，就算是死，也要火化的呀，而我现在竟然是尸体保存完好，而且已经诈尸了。就算是死，也不该埋葬于这么个鬼地方，风水不好，竟然诈尸了，死都不能做一个安静的美男子，与我生前的形象真的是判若两人。</br><br>对于自己躺在棺材里，我还是感到莫名其妙，为何每次睡着后，醒来都会出现在不同的地点，而且越来越玄乎。难不成是梦中梦？在我所处的以马克思主义为指导的社会之中，是不会有这种玄幻的事情发生的。思前想后，想到了看过的电影《盗梦空间》，如果处在梦境之中，那么逃离梦境的方法就是自杀 。然而，若混淆了梦境与现实，那么自杀这种举动是极其危险的，比如说如果你处于现实之中，你却误以为自己在梦境之中，如果你自杀，那么就真的会挂掉。</br><br>我再次看了一下四周，感觉目前应该不是处于现实之中。再看向自己的衣服，明显的是古装啊。在我所处的那个年代，就算是不火化，那也不至于穿古装啊。活人穿古装那叫做复古，而古装穿在死人身上，那叫做诡异！就目前的情形来看，我百分之九十九的确信自己处于梦境之中。要想脱离这个梦境，那就要自杀。这里诡异的气氛让我感到恐惧和不安，我迫切的想要逃离这里。于是我不再犹豫，狠狠地一头撞向棺材之上。</br><br>醒来之后，发现自己躺在床上，只是这张床不同于学校的那张床，而是一张古色古香的实木床。不妙啊，我心想刚才肯定是撞晕了，而没有撞死！想到这里，我急切的想要回到现实世界，于是我从床上爬起来就撞向旁边的柱子上。</br><br>刚撞了几下就看到门外进来一个穿古装的女孩子，只见她慌忙走上前来拦住我，口中说道：“老爷，不要！”</br><br>我彻底蒙圈了，心想怎么睡了几觉就升级为老爷了。平时“老子，老子”的喊着自己，没想到这会儿真的有人喊自己老爷了。我第一个想法是自己被整蛊了，记得前段时间去恩施开会也被整过一次，只是那一次是通过电话骚扰的。而这一次未免玩的有点大了吧，怎么都换上了古装？就算是要整蛊，也没必要花费这么大的代价吧，且不说这一身古装，就这个房子的租金怕也是不菲吧。想整我很简单，深更半夜的一个电话就可以吓死我，没必要花费这么大的代价。再看向面前的这个女孩，我根本就不认识，那几个龟孙子为了整我请了个女演员？!</br><br>我觉得他们做的有些过分，便恼怒了起来。破口大骂：“你们这是要搞哪出？这样子整我有意思吗？！”</br><br>谁料那女生竟然惊慌失措，一下子跪了下来。我脑袋一大，心想这他妈玩的也太过了吧，直接给老子跪了！这种被尊重的感觉真他妈的爽，既然他们愿意玩，不如我就陪他们玩下去。我整了整衣领，清了清嗓子，说道：“起来吧！”</br><br>那女生应了一声便站了起来。</br><br>“老爷我这是在哪里啊？”我问道。</br><br>丫头回道；“老爷，这是在家里啊。”</br><br>正在心里盘算着，这个家是谁的家，从外面走进一位三十左右岁的女人，刚进门就喊道；“老爷，你可算是醒过来了！”</br><br>听她这番言语，她应该是我老婆了？真的是搞笑，就算是演戏也应该从相识，相知到相爱演下来吧！我心中有些不快，面无表情的问道:“你哪位？”</br><br>女人愣了一下，开口道；“我是你的夫人啊，老爷，你是不是撞坏了脑袋了？”</br><br>听到她亲口说出自己的身份，我才开始仔细地打量着她，此人虽不是国色天香，也不能倾国倾城，但也散发出三十岁少妇成熟的韵味，品貌端庄，举止得体，颇有大家闺秀的气质，似乎很符合我想象中未来老婆的配置。想到此，不如将计就计，陪他们演一出穿越回明朝当王爷。只是我从她们的衣着上并看不出这是哪朝哪代，于是便试探着问道：“夫人啊，你可知今夕是何年？”</br><br>夫人楞了一下，随后叹息一声说道：“日复日，年复年，何须记得今夕是何年？你醒来便好。”</br><br>放眼看去，她的脸上写满了忧郁，眼眶中竟然有泪水在打转儿。梨花带雨虽美，看久了却也会心生怜悯，于是便关心的问道：“夫人因何而哭？”</br><br>听闻此言，她再也控制不住自己的情绪，竟然是放声痛哭起来。一边的丫头看不下去，开口道：“老爷，你昏睡的这些年，可知道夫人她受了多少苦？”</br><br>听丫头的意思是我做了多年的植物人，我只不过是睡了一觉而已，怎么就变成了她所谓的“这些年”了呢？“丫头，发生了什么，你给我细细道来！”想了想又道：“先扶夫人下去休息！”</br><br>不久，丫头便回来了，将事情的原委跟我说了一遍。听完她的诉说，我勃然大怒，这万恶的世界，总是存在那么多恃强凌弱、欺男霸女的败类。我大脑充血，跳下床四处转悠，终于找到了一把砍柴刀，大喝一声：“来人，带路，待我砍将过去！”</br><br>家丁们先是一愣，随后便各抄家伙，想与我一起砍杀仇家，定然是在我昏睡的这几年中，他们受到了太多的欺凌，如今我已清醒，哪怕是丢了性命，也要出了这口恶气。更何况我本就不属于这个世界，哪怕是被砍死了，也无所谓，或许死后，我便可以回到属于自己的世界。</br><br>“站住！”一个女人的声音从身后传来，正是夫人。</br><br>“夫人休要拦我，我近日定要为你讨回一个公道！”</br><br>“那人神通广大，你不是他对手！”夫人的话语充满着无助。</br><br>“难不成他成精了？！”我心有不服，这么多人还打不过一个人？说罢，我头也不回的走出了家门。</br><br>几十个人，浩浩荡荡的向大山杀去。山的名字就叫做大山，但大山并不大，也不雄伟，只是普通的一座山而已，只是在一望无际的平原上，这座山显得有些特别。山上有一无名洞，洞中住着的便是仇家，亦不知其名号，待我来到洞前，之间他盘膝而坐，闭眼不语。此人生的颇为俊俏，脸上却无胡须，无法判断其年纪。我也不言语，快步上前，一刀挥去，欲将其项上人头斩落。从未杀过人的我很想体验一下杀人的快感，更何况此人万恶不赦，乃是我家的仇人。</br><br>“且慢！”他终于说话了。</br><br>“终究是怕死，你想说什么？”我轻蔑的问道。</br><br>他嘴角一扬，微微摇头说道：“再怎么说你也是一位科研工作者，凡事需要思考与求证，为何听信他人片面之词便要置我于死地？”</br><br>听了他的话，我心头一颤，我曹，科研工作者？我在古代也是一位科研工作者？我试探着问道：“什么科研工作者，研究什么？”</br><br>“了尘兰若，你装傻还是真傻，难道你看不出我是谁？”</br><br>“你谁呀？！”刚喊出口我便感觉到不对劲，他竟然知道我的名字，我真正的名字，如此说来，他也是从我的那个世界里穿越过来的。</br><br>“你是穿越过来的？”我试探着问道。</br><br>“废话！我要不穿越过来，怕你乐不思蜀了！”</br><br>“你身上的这副皮囊让我无法判断你到底是谁，别绕弯子，直接说名字！”我有些急的说道。</br><br>“除了实验室大总管，还会有谁跨越时间与空间来寻你？”那人得意的说道。</br><br>“我去，怪不得这么骚气，原来是你啊！快告诉我，究竟发生了什么？”</br><br>“你随我进洞来。”</br><br>我懂得他的意思，便摒退了左右，来到洞中。</br><br>“说，你为什么天天去我家欺负我一家老少？！”我有些恼火的问道。</br><br>“你家？你还真的天真的以为那是你家？”他不屑的回了我一句。</br><br>我有些摸不着头脑，于是便让他将事情的原委说与我听。</br><br>“所有的事情都是源于我们实验室刚刚申请的一个重大项目”，他递给我一杯水说道。</br><br>“再怎么重大的项目也只不过是投入人力物力而已，为什么我还穿越了，不觉得很扯淡吗？”我有些摸不着头脑。</br><br>“并非穿越，而是入了鬼门，这里是鬼界！”</br><br>“你说什么？莫不成外面那些都是鬼？”我惊讶的问道。</br><br>“确是如此。”</br><br>“为何会这样？”</br><br>总管长叹一口气，说道：“只因课题的特殊性，我们的项目是想研究全国各地村落中坟地的土壤微生物群落结构组成差异，由于农村墓地相比城市的公墓而言人为生态破坏比较少。在全民开垦荒地的潮流下，墓地更能代表其地域的原生态。再者，墓地阴气较重，气场与一般的环境不同，很可能具有特异的微生物多样性和群落结构组成。至今为止，还没有人做过这方面的研究。我们的导师决定在该领域搞出几篇大文章，于是以调查国内有益微生物资源为由申请了国家重点课题。你负责的是我国西南地区农村墓地微生物资源多样性及群落结构差异研究，其中重要的一部分在于调查同一墓地每个时间点的微生物动态变化。”</br><br>“等等，你是说同一地点取24次样品？为何？”我好奇的问道。</br><br>“的确是24次，我们除了调查不同地域的微生物差异之外，还想调查磁场对微生物群落结构动态变化的影响。”</br><br>“难道不同时间点，环境磁场也会变化？”</br><br>“确实如此，我们需要知道在微生物群落结构上，鬼活动所产生的磁场波动到底有多大的影响力，宏基因组分析会得知，哪些微生物更喜欢鬼散发的磁场，从中发掘一部分有益微生物，或许可以找到攻克当今世界上还无法决绝的人类疑难杂症的微生物源的治疗资源。只要我们找到了相关规律，便可以人工模仿鬼磁场，定向筛选有益微生物，此研究若是成功了，不仅仅是几篇《Nature》和《Science》的荣耀，更是为人类谋福，这将大大降低人类的死亡率，甚至有一天，我们真的可以做到长生不老。”总管侃侃而谈，唾沫飞溅。</br><br>“停，你说的这些我怎么完全没有印象？”</br><br>总管注视我良久说道：“因为你采样时，灵魂出窍坠入鬼界，你失去了很多记忆。我们请了巫师，将我的魂魄传送到这里寻你，由于魂魄需要载体，所以我暂时寄居在这副躯体之上。”</br><br>“那么我呢？也寄居在这副老爷的躯壳之中？”</br><br>“你不是寄居，而是被施了咒困在这副死人的躯壳中，由于你挖坟太多，激起众怒，这些鬼便想将你永远的困在尸体之中，不得返回现实世界之中。”</br><br>我挖坟太多？还不是按上级领导指示做事？！</br><br>“你不要有怨言，我们所从事的科研，是为人类谋福，虽然看起来不是很光彩，但确确实实是在做好事。”总管语重心长地说着。</br><br>“所以，你去我家，不，是你去那户人家里闹腾是为了救我出去？”</br><br>“正是如此！”</br><br>“我睡了几年？”</br><br>“五年！”</br><br>“什么，五年？那我岂不是延期了？！”我大怒。</br><br>“你发什么脾气，我在这里救了你五年！”总管也有些恼怒。</br><br>“救了五年为何我们还在这里，这就是你做事的态度和效率吗？”我引用导师尝尝批评我们的话来只问他。</br><br>“这五年里，我每天都要跑去那个宅子厮杀一番，为的只是将这东西喂给你吃，好让你早日醒来，只要你不醒，我便无法带你离开！”总管手中握着一些五颜六色的药丸说道。</br><br>看来是我误会他了，真的没想到，他为了我在这里也耗了五年青春。我轻声说道：“对不起，把你害的也延期了。”</br><br>“先不要说这些了，我们要尽快想办法出去才是。”总管眼睛向洞外看去，叹了口气继续说道：“出去的路必定是艰辛而血腥的！”</br><br>“我们该如何才能回到人间？”</br><br>“回到你这副尸体所在的棺材之中，在那里点燃巫师给的还魂香，你便可以追随香烟而离开。”</br><br>“那你呢？”</br><br>“我自有办法，我跟它们斗了五年，自然不怕它们”，总管目光中充满着自信。</br><br>想想也是，看那宅子里的鬼过的的确有些惨，每天都要被总管杀一遍，自然是对他心生恐惧。这也是为什么它们要编造谎言，引诱我杀死总管，幸亏没让它们得逞，否则就不单单是延期的问题了，而是一辈子被封死在这具老爷的尸体之中沉睡。</br><br>出去很简单，总管是那么英勇，一路杀将到墓地之中，我躺在棺材里，闭上眼，随着点燃的还魂香冒出的青烟一路向上飘去。</br><br>“快看快看，谁家祖坟冒青烟了唉”，人群一片躁动，争相拍照录视频。这些影像资料很快便在各社交平台传播开来，引来了不少专家和学者，试图从科学的角度来解释这个奇观。然而，只有我才知道，那缕青烟是还魂香冒出来的，而我的魂魄也夹杂在其中。青烟飘啊飘，一直飘到了医院的病床上，飘进了躺在床上的那个人的鼻孔之中。我一下子惊醒，坐在床上四顾无人，只有旁边的仪器在滴滴的响。躺了五年，我终于醒了！</br><br>屋子中央有一个帘子，帘子的那边是另一张病床，我看到一双大脚露在床边，一动不动。难不成隔壁的病友死了？我拔下身上的管子，慢慢地摸下床，朝那边走去。来至近前发现，那人竟然是总管，他还没有醒。刚刚他让我先走一步，不知道他在下面还要做些什么，估计也要不了多久。果不其然，在我狠狠的甩了他几记耳光之后，他也惊醒过来，两人相视而笑，随即是热泪盈眶，终于出来了。</br><br>由于长期卧床，我们进行了一个月的康复训练，身体总算是有了力气。一个阳光明媚的周末，约在美食城的一家餐厅，包间内只有我们两人。</br><br>“课题还要继续？”我问道。</br><br>“当然要继续，我们俩可以合作，将西南地区的事情说清楚，在下面的这五年，除了厮杀之外，我对那片坟地的人口组成做了详细的统计，确切的说是鬼口。”总管颇有些得意。</br><br>“哦？你的意思是鬼的组成会对微生物的群落结构造成影响？”我也有些兴奋起来。</br><br>“还不确定，具体还要等待分析结果，你前期采的样品已经有人抽提了总DNA并测了宏基因组，数据还烂在那里，就等你分析了。你先把群落结构搞清楚，然后将各种环境因素考虑进去，看哪些主成分对微生物的群落结构影响最大。如果幸运的话，我们可以揭示出人类所未知的新的影响因素，比如鬼磁场。而不同的鬼所散发的磁场是不一样的，这就是为什么我要去统计那些鬼的分布与组成。”总管的眼神中充满着希望与光明，他举起酒杯一口喝下，继续说道：“兄弟，老天总是公平的，虽然我们昏睡五年，延了期，然而，这五年中我们累积了重要的数据，现在大文章呼之欲出，还愁什么没文章毕业？！”</br><br>看他激动的神情，我也有些被感染，斟满一杯酒举杯说道：“为了我们的大文章，干杯！”</br><br>喝得正高兴，一群白大褂推门而入，二话不说就将我们带走。</br><br>“你们干嘛，哪家医院的，我们没喝多，不需要去医院”，总管大声的嚷嚷道。</br><br>我也在纳闷，没人打120啊，抓错人了吧，眼睛的余光突然瞟到了白大褂胸前的小字，写着“武汉市第一精神病医院”。</br><br>“我不是精神病，不是！”我大声嚷嚷着。</br><br>“我真的没喝多”，总管继续嚷嚷着。</br><br>围观的人群掏出手机记录着这一刻所发生的趣事，瞬间，朋友圈、微博等等平台出现了头条“科研者的悲哀——华农某实验室两位博士太过渴望发大文章而出现严重精神问题”。</br><br>事情就是这么糟糕，一些科学问题在没有发表并得到公认之前，其研究者总会被认为成是疯子，或许有些新东西只有疯子才能发现，比如说我们所提出的《墓地微生物学》,谁敢说将来它不会火？</br></p>
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>5.1</th>
+      <th>3.5</th>
+      <th>1.4</th>
+      <th>0.2</th>
+      <th>Iris-setosa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.4</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>0.4</td>
+      <td>Iris-setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加列名，分别为 sepal_len, sepal_wid, petal_len, petal_wid, class</span></span><br><span class="line"><span class="comment"># 前四列为特征，最后一列为类别，共有3种类别</span></span><br><span class="line">df.columns=[<span class="string">&#x27;sepal_len&#x27;</span>, <span class="string">&#x27;sepal_wid&#x27;</span>, <span class="string">&#x27;petal_len&#x27;</span>, <span class="string">&#x27;petal_wid&#x27;</span>, <span class="string">&#x27;class&#x27;</span>]</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_len</th>
+      <th>sepal_wid</th>
+      <th>petal_len</th>
+      <th>petal_wid</th>
+      <th>class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>Iris-setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.4</td>
+      <td>3.9</td>
+      <td>1.7</td>
+      <td>0.4</td>
+      <td>Iris-setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拆分特征和标签</span></span><br><span class="line"></span><br><span class="line">X = df.iloc[:,<span class="number">0</span>:<span class="number">4</span>].values</span><br><span class="line">y = df.iloc[:,<span class="number">4</span>].values</span><br></pre></td></tr></table></figure>
+
+<h1 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h1><h2 id="特征展示"><a href="#特征展示" class="headerlink" title="特征展示"></a>特征展示</h2><p>查看特征的取值范围以及其和类别的关系。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入matplotlib库中的pyplot模块，用于绘图</span></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># 导入math库</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个字典，映射数字到鸢尾花的种类名称</span></span><br><span class="line">label_dict = &#123;<span class="number">1</span>: <span class="string">&#x27;Iris-Setosa&#x27;</span>,</span><br><span class="line">              <span class="number">2</span>: <span class="string">&#x27;Iris-Versicolor&#x27;</span>,</span><br><span class="line">              <span class="number">3</span>: <span class="string">&#x27;Iris-Virgnica&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个字典，映射数字到鸢尾花的特征名称</span></span><br><span class="line">feature_dict = &#123;<span class="number">0</span>: <span class="string">&#x27;sepal length [cm]&#x27;</span>,</span><br><span class="line">                <span class="number">1</span>: <span class="string">&#x27;sepal width [cm]&#x27;</span>,</span><br><span class="line">                <span class="number">2</span>: <span class="string">&#x27;petal length [cm]&#x27;</span>,</span><br><span class="line">                <span class="number">3</span>: <span class="string">&#x27;petal width [cm]&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个8x6英寸的图像</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line"><span class="comment"># 循环绘制4个子图，每个子图代表一个特征的直方图</span></span><br><span class="line"><span class="keyword">for</span> cnt <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    <span class="comment"># 在图像中创建2x2的子图，并指定当前子图的位置</span></span><br><span class="line">    plt.subplot(<span class="number">2</span>, <span class="number">2</span>, cnt+<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 遍历每种鸢尾花类别，绘制直方图</span></span><br><span class="line">    <span class="keyword">for</span> lab <span class="keyword">in</span> (<span class="string">&#x27;Iris-setosa&#x27;</span>, <span class="string">&#x27;Iris-versicolor&#x27;</span>, <span class="string">&#x27;Iris-virginica&#x27;</span>):</span><br><span class="line">        <span class="comment"># 绘制指定特征的直方图，使用不同颜色和透明度区分不同类别</span></span><br><span class="line">        plt.hist(X[y==lab, cnt],</span><br><span class="line">                 label=lab,</span><br><span class="line">                 bins=<span class="number">10</span>,</span><br><span class="line">                 alpha=<span class="number">0.3</span>,)</span><br><span class="line">    <span class="comment"># 设置子图的x轴标签</span></span><br><span class="line">    plt.xlabel(feature_dict[cnt])</span><br><span class="line">    <span class="comment"># 添加图例，用于标识不同类别的鸢尾花</span></span><br><span class="line">    plt.legend(loc=<span class="string">&#x27;upper right&#x27;</span>, fancybox=<span class="literal">True</span>, fontsize=<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调整子图间的间距，使布局更加紧凑</span></span><br><span class="line">plt.tight_layout()</span><br><span class="line"><span class="comment"># 显示绘制的图像</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/PCA_files/PCA_5_0.png" class="lazyload placeholder" data-srcset="/PCA_files/PCA_5_0.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="png"></p>
+<ul>
+<li>发现<code>花萼的长度</code>和<code>宽度</code>能够较好的区分3种类别。</li>
+<li>四个特征取值范围差异较大，需要进行标准化。</li>
+</ul>
+<h2 id="数据标准化"><a href="#数据标准化" class="headerlink" title="数据标准化"></a>数据标准化</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进行数据标准化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">X_std = StandardScaler().fit_transform(X)</span><br><span class="line"><span class="built_in">print</span> (X_std)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[-1.1483555  -0.11805969 -1.35396443 -1.32506301]
+ [-1.3905423   0.34485856 -1.41098555 -1.32506301]
+ [-1.51163569  0.11339944 -1.29694332 -1.32506301]
+ [-1.02726211  1.27069504 -1.35396443 -1.32506301]
+ [-0.54288852  1.9650724  -1.18290109 -1.0614657 ]
+ [-1.51163569  0.8077768  -1.35396443 -1.19326436]
+ [-1.02726211  0.8077768  -1.29694332 -1.32506301]
+ [-1.75382249 -0.34951881 -1.35396443 -1.32506301]
+ [-1.1483555   0.11339944 -1.29694332 -1.45686167]
+ [-0.54288852  1.50215416 -1.29694332 -1.32506301]
+ [-1.2694489   0.8077768  -1.23992221 -1.32506301]
+ [-1.2694489  -0.11805969 -1.35396443 -1.45686167]
+ [-1.87491588 -0.11805969 -1.52502777 -1.45686167]
+ [-0.05851493  2.19653152 -1.46800666 -1.32506301]
+ [-0.17960833  3.122368   -1.29694332 -1.0614657 ]
+ [-0.54288852  1.9650724  -1.41098555 -1.0614657 ]
+ [-0.90616871  1.03923592 -1.35396443 -1.19326436]
+ [-0.17960833  1.73361328 -1.18290109 -1.19326436]
+ [-0.90616871  1.73361328 -1.29694332 -1.19326436]
+ [-0.54288852  0.8077768  -1.18290109 -1.32506301]
+ [-0.90616871  1.50215416 -1.29694332 -1.0614657 ]
+ [-1.51163569  1.27069504 -1.58204889 -1.32506301]
+ [-0.90616871  0.57631768 -1.18290109 -0.92966704]
+ [-1.2694489   0.8077768  -1.06885886 -1.32506301]
+ [-1.02726211 -0.11805969 -1.23992221 -1.32506301]
+ [-1.02726211  0.8077768  -1.23992221 -1.0614657 ]
+ [-0.78507531  1.03923592 -1.29694332 -1.32506301]
+ [-0.78507531  0.8077768  -1.35396443 -1.32506301]
+ [-1.3905423   0.34485856 -1.23992221 -1.32506301]
+ [-1.2694489   0.11339944 -1.23992221 -1.32506301]
+ [-0.54288852  0.8077768  -1.29694332 -1.0614657 ]
+ [-0.78507531  2.42799064 -1.29694332 -1.45686167]
+ [-0.42179512  2.65944976 -1.35396443 -1.32506301]
+ [-1.1483555   0.11339944 -1.29694332 -1.45686167]
+ [-1.02726211  0.34485856 -1.46800666 -1.32506301]
+ [-0.42179512  1.03923592 -1.41098555 -1.32506301]
+ [-1.1483555   0.11339944 -1.29694332 -1.45686167]
+ [-1.75382249 -0.11805969 -1.41098555 -1.32506301]
+ [-0.90616871  0.8077768  -1.29694332 -1.32506301]
+ [-1.02726211  1.03923592 -1.41098555 -1.19326436]
+ [-1.63272909 -1.73827353 -1.41098555 -1.19326436]
+ [-1.75382249  0.34485856 -1.41098555 -1.32506301]
+ [-1.02726211  1.03923592 -1.23992221 -0.79786838]
+ [-0.90616871  1.73361328 -1.06885886 -1.0614657 ]
+ [-1.2694489  -0.11805969 -1.35396443 -1.19326436]
+ [-0.90616871  1.73361328 -1.23992221 -1.32506301]
+ [-1.51163569  0.34485856 -1.35396443 -1.32506301]
+ [-0.66398191  1.50215416 -1.29694332 -1.32506301]
+ [-1.02726211  0.57631768 -1.35396443 -1.32506301]
+ [ 1.39460583  0.34485856  0.52773232  0.25652088]
+ [ 0.66804545  0.34485856  0.41369009  0.38831953]
+ [ 1.27351244  0.11339944  0.64177455  0.38831953]
+ [-0.42179512 -1.73827353  0.12858453  0.12472222]
+ [ 0.78913885 -0.58097793  0.47071121  0.38831953]
+ [-0.17960833 -0.58097793  0.41369009  0.12472222]
+ [ 0.54695205  0.57631768  0.52773232  0.52011819]
+ [-1.1483555  -1.50681441 -0.27056327 -0.27067375]
+ [ 0.91023225 -0.34951881  0.47071121  0.12472222]
+ [-0.78507531 -0.81243705  0.07156341  0.25652088]
+ [-1.02726211 -2.43265089 -0.15652104 -0.27067375]
+ [ 0.06257847 -0.11805969  0.24262675  0.38831953]
+ [ 0.18367186 -1.96973265  0.12858453 -0.27067375]
+ [ 0.30476526 -0.34951881  0.52773232  0.25652088]
+ [-0.30070172 -0.34951881 -0.09949993  0.12472222]
+ [ 1.03132564  0.11339944  0.35666898  0.25652088]
+ [-0.30070172 -0.11805969  0.41369009  0.38831953]
+ [-0.05851493 -0.81243705  0.18560564 -0.27067375]
+ [ 0.42585866 -1.96973265  0.41369009  0.38831953]
+ [-0.30070172 -1.27535529  0.07156341 -0.1388751 ]
+ [ 0.06257847  0.34485856  0.58475344  0.78371551]
+ [ 0.30476526 -0.58097793  0.12858453  0.12472222]
+ [ 0.54695205 -1.27535529  0.64177455  0.38831953]
+ [ 0.30476526 -0.58097793  0.52773232 -0.00707644]
+ [ 0.66804545 -0.34951881  0.29964787  0.12472222]
+ [ 0.91023225 -0.11805969  0.35666898  0.25652088]
+ [ 1.15241904 -0.58097793  0.58475344  0.25652088]
+ [ 1.03132564 -0.11805969  0.69879566  0.65191685]
+ [ 0.18367186 -0.34951881  0.41369009  0.38831953]
+ [-0.17960833 -1.04389617 -0.15652104 -0.27067375]
+ [-0.42179512 -1.50681441  0.0145423  -0.1388751 ]
+ [-0.42179512 -1.50681441 -0.04247882 -0.27067375]
+ [-0.05851493 -0.81243705  0.07156341 -0.00707644]
+ [ 0.18367186 -0.81243705  0.75581678  0.52011819]
+ [-0.54288852 -0.11805969  0.41369009  0.38831953]
+ [ 0.18367186  0.8077768   0.41369009  0.52011819]
+ [ 1.03132564  0.11339944  0.52773232  0.38831953]
+ [ 0.54695205 -1.73827353  0.35666898  0.12472222]
+ [-0.30070172 -0.11805969  0.18560564  0.12472222]
+ [-0.42179512 -1.27535529  0.12858453  0.12472222]
+ [-0.42179512 -1.04389617  0.35666898 -0.00707644]
+ [ 0.30476526 -0.11805969  0.47071121  0.25652088]
+ [-0.05851493 -1.04389617  0.12858453 -0.00707644]
+ [-1.02726211 -1.73827353 -0.27056327 -0.27067375]
+ [-0.30070172 -0.81243705  0.24262675  0.12472222]
+ [-0.17960833 -0.11805969  0.24262675 -0.00707644]
+ [-0.17960833 -0.34951881  0.24262675  0.12472222]
+ [ 0.42585866 -0.34951881  0.29964787  0.12472222]
+ [-0.90616871 -1.27535529 -0.44162661 -0.1388751 ]
+ [-0.17960833 -0.58097793  0.18560564  0.12472222]
+ [ 0.54695205  0.57631768  1.2690068   1.70630611]
+ [-0.05851493 -0.81243705  0.75581678  0.91551417]
+ [ 1.51569923 -0.11805969  1.21198569  1.17911148]
+ [ 0.54695205 -0.34951881  1.04092235  0.78371551]
+ [ 0.78913885 -0.11805969  1.15496457  1.31091014]
+ [ 2.12116622 -0.11805969  1.61113348  1.17911148]
+ [-1.1483555  -1.27535529  0.41369009  0.65191685]
+ [ 1.75788602 -0.34951881  1.44007014  0.78371551]
+ [ 1.03132564 -1.27535529  1.15496457  0.78371551]
+ [ 1.63679263  1.27069504  1.32602791  1.70630611]
+ [ 0.78913885  0.34485856  0.75581678  1.04731282]
+ [ 0.66804545 -0.81243705  0.869859    0.91551417]
+ [ 1.15241904 -0.11805969  0.98390123  1.17911148]
+ [-0.17960833 -1.27535529  0.69879566  1.04731282]
+ [-0.05851493 -0.58097793  0.75581678  1.57450745]
+ [ 0.66804545  0.34485856  0.869859    1.4427088 ]
+ [ 0.78913885 -0.11805969  0.98390123  0.78371551]
+ [ 2.24225961  1.73361328  1.6681546   1.31091014]
+ [ 2.24225961 -1.04389617  1.78219682  1.4427088 ]
+ [ 0.18367186 -1.96973265  0.69879566  0.38831953]
+ [ 1.27351244  0.34485856  1.09794346  1.4427088 ]
+ [-0.30070172 -0.58097793  0.64177455  1.04731282]
+ [ 2.24225961 -0.58097793  1.6681546   1.04731282]
+ [ 0.54695205 -0.81243705  0.64177455  0.78371551]
+ [ 1.03132564  0.57631768  1.09794346  1.17911148]
+ [ 1.63679263  0.34485856  1.2690068   0.78371551]
+ [ 0.42585866 -0.58097793  0.58475344  0.78371551]
+ [ 0.30476526 -0.11805969  0.64177455  0.78371551]
+ [ 0.66804545 -0.58097793  1.04092235  1.17911148]
+ [ 1.63679263 -0.11805969  1.15496457  0.52011819]
+ [ 1.87897942 -0.58097793  1.32602791  0.91551417]
+ [ 2.48444641  1.73361328  1.49709126  1.04731282]
+ [ 0.66804545 -0.58097793  1.04092235  1.31091014]
+ [ 0.54695205 -0.58097793  0.75581678  0.38831953]
+ [ 0.30476526 -1.04389617  1.04092235  0.25652088]
+ [ 2.24225961 -0.11805969  1.32602791  1.4427088 ]
+ [ 0.54695205  0.8077768   1.04092235  1.57450745]
+ [ 0.66804545  0.11339944  0.98390123  0.78371551]
+ [ 0.18367186 -0.11805969  0.58475344  0.78371551]
+ [ 1.27351244  0.11339944  0.92688012  1.17911148]
+ [ 1.03132564  0.11339944  1.04092235  1.57450745]
+ [ 1.27351244  0.11339944  0.75581678  1.4427088 ]
+ [-0.05851493 -0.81243705  0.75581678  0.91551417]
+ [ 1.15241904  0.34485856  1.21198569  1.4427088 ]
+ [ 1.03132564  0.57631768  1.09794346  1.70630611]
+ [ 1.03132564 -0.11805969  0.81283789  1.4427088 ]
+ [ 0.54695205 -1.27535529  0.69879566  0.91551417]
+ [ 0.78913885 -0.11805969  0.81283789  1.04731282]
+ [ 0.42585866  0.8077768   0.92688012  1.4427088 ]
+ [ 0.06257847 -0.11805969  0.75581678  0.78371551]]
+</code></pre>
+<h1 id="确定特征向量的数量"><a href="#确定特征向量的数量" class="headerlink" title="确定特征向量的数量"></a>确定特征向量的数量</h1><h2 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h2><p>协方差是衡量两个变量总体误差的期望，用于描述两个变量之间的线性关系程度和方向。两个特征间的协方差值越大，表明其相关性越强。</p>
+<p>对于两个随机变量$X$和$Y$，其协方差$Cov(X,Y)$的计算公式为：</p>
+<p>$$Cov(X,Y) &#x3D; E[(X - E[X])(Y - E[Y])]$$</p>
+<p>其中，$E[X]$和$E[Y]$分别是$X$和$Y$的期望值（即均值）。</p>
+<p>在实际应用中，当我们只有样本数据时，我们通常使用样本协方差来估计总体协方差。对于包含$n$个样本点的数据集，样本协方差$s_{xy}$的计算公式为：</p>
+<p>$$s_{xy} &#x3D; \frac{1}{n-1} \sum_{i&#x3D;1}^{n} (x_i - \bar{x})(y_i - \bar{y})$$</p>
+<p>其中，$x_i$和$y_i$是样本点，$\bar{x}$和$\bar{y}$分别是$X$和$Y$的样本均值，计算公式为：</p>
+<p>$$\bar{x} &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} x_i$$</p>
+<p>$$\bar{y} &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} y_i$$</p>
+<p>注意，在计算样本协方差时，分母是$n-1$而不是$n$，这是为了得到总体协方差的无偏估计。</p>
+<p><strong>以下命令二选一</strong>：</p>
+<ul>
+<li>构造函数计算协方差矩阵</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算特征向量的均值，用于中心化数据</span></span><br><span class="line">mean_vec = np.mean(X_std, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算数据的协方差矩阵，用于理解特征之间的线性关系</span></span><br><span class="line"><span class="comment"># (X_std - mean_vec).T.dot((X_std - mean_vec) )计算的是(X_std - mean_vec)的矩阵乘法</span></span><br><span class="line"><span class="comment"># 除以(X_std.shape[0]-1)是为了获得一个无偏估计</span></span><br><span class="line">cov_mat = (X_std - mean_vec).T.dot((X_std - mean_vec)) / (X_std.shape[<span class="number">0</span>]-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出协方差矩阵，以便于后续分析和使用</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Covariance matrix \n%s&#x27;</span> %cov_mat)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Covariance matrix 
+[[ 1.00675676 -0.10448539  0.87716999  0.82249094]
+ [-0.10448539  1.00675676 -0.41802325 -0.35310295]
+ [ 0.87716999 -0.41802325  1.00675676  0.96881642]
+ [ 0.82249094 -0.35310295  0.96881642  1.00675676]]
+</code></pre>
+<ul>
+<li>使用numpy计算协方差矩阵</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;NumPy covariance matrix: \n%s&#x27;</span> %np.cov(X_std.T))</span><br></pre></td></tr></table></figure>
+
+<pre><code>NumPy covariance matrix: 
+[[ 1.00675676 -0.10448539  0.87716999  0.82249094]
+ [-0.10448539  1.00675676 -0.41802325 -0.35310295]
+ [ 0.87716999 -0.41802325  1.00675676  0.96881642]
+ [ 0.82249094 -0.35310295  0.96881642  1.00675676]]
+</code></pre>
+<p>求协方差矩阵的特征向量和特征值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 求协方差矩阵</span></span><br><span class="line">cov_mat = np.cov(X_std.T)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 求协方差矩阵的特征向量，返回特征向量（eig_vecs）和特征值（eig_vals）</span></span><br><span class="line">eig_vals, eig_vecs = np.linalg.eig(cov_mat)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Eigenvectors \n%s&#x27;</span> %eig_vecs)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;\nEigenvalues \n%s&#x27;</span> %eig_vals)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Eigenvectors 
+[[ 0.52308496 -0.36956962 -0.72154279  0.26301409]
+ [-0.25956935 -0.92681168  0.2411952  -0.12437342]
+ [ 0.58184289 -0.01912775  0.13962963 -0.80099722]
+ [ 0.56609604 -0.06381646  0.63380158  0.52321917]]
+
+Eigenvalues 
+[2.92442837 0.93215233 0.14946373 0.02098259]
+</code></pre>
+<p>肉眼观察<code>Eigenvalues</code>，应当取前2个特征值对应的特征向量，因为其最重要。</p>
+<p>创建一个包含特征值和对应特征向量的元组列表。按特征值降序排序这些元组。打印排序后的特征值，确认排序正确。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Make a list of (eigenvalue, eigenvector) tuples</span></span><br><span class="line">eig_pairs = [(np.<span class="built_in">abs</span>(eig_vals[i]), eig_vecs[:,i]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(eig_vals))]</span><br><span class="line"><span class="built_in">print</span> (eig_pairs)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;----------&#x27;</span>)</span><br><span class="line"><span class="comment"># Sort the (eigenvalue, eigenvector) tuples from high to low</span></span><br><span class="line">eig_pairs.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>], reverse=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Visually confirm that the list is correctly sorted by decreasing eigenvalues</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Eigenvalues in descending order:&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> eig_pairs:</span><br><span class="line">    <span class="built_in">print</span>(i[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[(np.float64(2.9244283691111117), array([ 0.52308496, -0.25956935,  0.58184289,  0.56609604])), (np.float64(0.9321523302535062), array([-0.36956962, -0.92681168, -0.01912775, -0.06381646])), (np.float64(0.14946373489813364), array([-0.72154279,  0.2411952 ,  0.13962963,  0.63380158])), (np.float64(0.020982592764271016), array([ 0.26301409, -0.12437342, -0.80099722,  0.52321917]))]
+----------
+Eigenvalues in descending order:
+2.9244283691111117
+0.9321523302535062
+0.14946373489813364
+0.020982592764271016
+</code></pre>
+<p>计算累计变异解释百分比，以评估前几个主成分能解释的总变异比例。最后输出累计变异解释百分比。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 计算所有特征值的总和</span></span><br><span class="line">tot = <span class="built_in">sum</span>(eig_vals)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算每个特征值占总和的百分比，并按降序排序</span></span><br><span class="line"><span class="comment"># 这一步的目的是确定每个特征值在总变异中所占的百分比</span></span><br><span class="line">var_exp = [(i / tot)*<span class="number">100</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">sorted</span>(eig_vals, reverse=<span class="literal">True</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出每个特征值的变异解释百分比</span></span><br><span class="line"><span class="built_in">print</span>(var_exp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算累计变异解释百分比</span></span><br><span class="line"><span class="comment"># 这一步是为了了解前几个主成分可以解释多少总变异</span></span><br><span class="line">cum_var_exp = np.cumsum(var_exp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 累计变异解释百分比</span></span><br><span class="line">cum_var_exp</span><br></pre></td></tr></table></figure>
+
+<pre><code>[np.float64(72.62003332692032), np.float64(23.147406858644143), np.float64(3.711515564584531), np.float64(0.5210442498510259)]
+
+
+
+
+
+array([ 72.62003333,  95.76744019,  99.47895575, 100.        ])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 演示np.cumsum() 函数的用法</span></span><br><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span> (a)</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&#x27;-----------&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> (np.cumsum(a)) <span class="comment"># 元素的累加和</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[1 2 3 4]
+-----------
+[ 1  3  6 10]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制特征值的重要性</span></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">4</span>))</span><br><span class="line"></span><br><span class="line">plt.bar(<span class="built_in">range</span>(<span class="number">4</span>), var_exp, alpha=<span class="number">0.5</span>, align=<span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">            label=<span class="string">&#x27;individual explained variance&#x27;</span>)</span><br><span class="line">plt.step(<span class="built_in">range</span>(<span class="number">4</span>), cum_var_exp, where=<span class="string">&#x27;mid&#x27;</span>,</span><br><span class="line">             label=<span class="string">&#x27;cumulative explained variance&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Explained variance ratio&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Principal components&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/PCA_files/PCA_20_0.png" class="lazyload placeholder" data-srcset="/PCA_files/PCA_20_0.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="png"></p>
+<p>根据上图可以决定取几个特征值进行降维，此例中前两个特征值已经足够（~95.77%）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据前两个主要成分构造转换矩阵W</span></span><br><span class="line"><span class="comment"># 选择主要成分分析（PCA）得到的前两个特征向量</span></span><br><span class="line"><span class="comment"># 将特征向量重塑为4x1的矩阵形式，以便进行矩阵操作</span></span><br><span class="line"><span class="comment"># 这两个特征向量代表了数据中方差最大的两个方向</span></span><br><span class="line">matrix_w = np.hstack((eig_pairs[<span class="number">0</span>][<span class="number">1</span>].reshape(<span class="number">4</span>,<span class="number">1</span>),</span><br><span class="line">                      eig_pairs[<span class="number">1</span>][<span class="number">1</span>].reshape(<span class="number">4</span>,<span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印转换矩阵W，以便于查看和验证结果</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Matrix W:\n&#x27;</span>, matrix_w)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Matrix W:
+ [[ 0.52308496 -0.36956962]
+ [-0.25956935 -0.92681168]
+ [ 0.58184289 -0.01912775]
+ [ 0.56609604 -0.06381646]]
+</code></pre>
+<h1 id="矩阵降维"><a href="#矩阵降维" class="headerlink" title="矩阵降维"></a>矩阵降维</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标准化数据X_std与权重矩阵matrix_w进行点积运算，用于特征提取和数据转换</span></span><br><span class="line">Y = X_std.dot(matrix_w)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出转换后的数据Y</span></span><br><span class="line">Y</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[-2.10795032,  0.64427554],
+       [-2.38797131,  0.30583307],
+       [-2.32487909,  0.56292316],
+       [-2.40508635, -0.687591  ],
+       [-2.08320351, -1.53025171],
+       [-2.4636848 , -0.08795413],
+       [-2.25174963, -0.25964365],
+       [-2.3645813 ,  1.08255676],
+       [-2.20946338,  0.43707676],
+       [-2.17862017, -1.08221046],
+       [-2.34525657, -0.17122946],
+       [-2.24590315,  0.6974389 ],
+       [-2.66214582,  0.92447316],
+       [-2.2050227 , -1.90150522],
+       [-2.25993023, -2.73492274],
+       [-2.21591283, -1.52588897],
+       [-2.20705382, -0.52623535],
+       [-1.9077081 , -1.4415791 ],
+       [-2.35411558, -1.17088308],
+       [-1.93202643, -0.44083479],
+       [-2.21942518, -0.96477499],
+       [-2.79116421, -0.50421849],
+       [-1.83814105, -0.11729122],
+       [-2.24572458, -0.17450151],
+       [-1.97825353,  0.59734172],
+       [-2.06935091, -0.27755619],
+       [-2.18514506, -0.56366755],
+       [-2.15824269, -0.34805785],
+       [-2.28843932,  0.30256102],
+       [-2.16501749,  0.47232759],
+       [-1.8491597 , -0.45547527],
+       [-2.62023392, -1.84237072],
+       [-2.44885384, -2.1984673 ],
+       [-2.20946338,  0.43707676],
+       [-2.23112223,  0.17266644],
+       [-2.06147331, -0.6957435 ],
+       [-2.20946338,  0.43707676],
+       [-2.45783833,  0.86912843],
+       [-2.1884075 , -0.30439609],
+       [-2.30357329, -0.48039222],
+       [-1.89932763,  2.31759817],
+       [-2.57799771,  0.4400904 ],
+       [-1.98020921, -0.50889705],
+       [-2.14679556, -1.18365675],
+       [-2.09668176,  0.68061705],
+       [-2.39554894, -1.16356284],
+       [-2.41813611,  0.34949483],
+       [-2.24196231, -1.03745802],
+       [-2.22484727, -0.04403395],
+       [ 1.09225538, -0.86148748],
+       [ 0.72045861, -0.59920238],
+       [ 1.2299583 , -0.61280832],
+       [ 0.37598859,  1.756516  ],
+       [ 1.05729685,  0.21303055],
+       [ 0.36816104,  0.58896262],
+       [ 0.73800214, -0.77956125],
+       [-0.52021731,  1.84337921],
+       [ 0.9113379 , -0.02941906],
+       [-0.01292322,  1.02537703],
+       [-0.15020174,  2.65452146],
+       [ 0.42437533,  0.05686991],
+       [ 0.52894687,  1.77250558],
+       [ 0.70241525,  0.18484154],
+       [-0.05385675,  0.42901221],
+       [ 0.86277668, -0.50943908],
+       [ 0.33388091,  0.18785518],
+       [ 0.13504146,  0.7883247 ],
+       [ 1.19457128,  1.63549265],
+       [ 0.13677262,  1.30063807],
+       [ 0.72711201, -0.40394501],
+       [ 0.45564294,  0.41540628],
+       [ 1.21038365,  0.94282042],
+       [ 0.61327355,  0.4161824 ],
+       [ 0.68512164,  0.06335788],
+       [ 0.85951424, -0.25016762],
+       [ 1.23906722,  0.08500278],
+       [ 1.34575245, -0.32669695],
+       [ 0.64732915,  0.22336443],
+       [-0.06728496,  1.05414028],
+       [ 0.10033285,  1.56100021],
+       [-0.00745518,  1.57050182],
+       [ 0.2179082 ,  0.77368423],
+       [ 1.04116321,  0.63744742],
+       [ 0.20719664,  0.27736006],
+       [ 0.42154138, -0.85764157],
+       [ 1.03691937, -0.52112206],
+       [ 1.015435  ,  1.39413373],
+       [ 0.0519502 ,  0.20903977],
+       [ 0.25582921,  1.32747797],
+       [ 0.25384813,  1.11700714],
+       [ 0.60915822, -0.02858679],
+       [ 0.31116522,  0.98711256],
+       [-0.39679548,  2.01314578],
+       [ 0.26536661,  0.85150613],
+       [ 0.07385897,  0.17160757],
+       [ 0.20854936,  0.37771566],
+       [ 0.55843737,  0.15286277],
+       [-0.47853403,  1.53421644],
+       [ 0.23545172,  0.59332536],
+       [ 1.8408037 , -0.86943848],
+       [ 1.13831104,  0.70171953],
+       [ 2.19615974, -0.54916658],
+       [ 1.42613827,  0.05187679],
+       [ 1.8575403 , -0.28797217],
+       [ 2.74511173, -0.78056359],
+       [ 0.34010583,  1.5568955 ],
+       [ 2.29180093, -0.40328242],
+       [ 1.98618025,  0.72876171],
+       [ 2.26382116, -1.91685818],
+       [ 1.35591821, -0.69255356],
+       [ 1.58471851,  0.43102351],
+       [ 1.87342402, -0.41054652],
+       [ 1.23656166,  1.16818977],
+       [ 1.45128483,  0.4451459 ],
+       [ 1.58276283, -0.67521526],
+       [ 1.45956552, -0.25105642],
+       [ 2.43560434, -2.55096977],
+       [ 3.29752602,  0.01266612],
+       [ 1.23377366,  1.71954411],
+       [ 2.03218282, -0.90334021],
+       [ 0.95980311,  0.57047585],
+       [ 2.88717988, -0.38895776],
+       [ 1.31405636,  0.48854962],
+       [ 1.69619746, -1.01153249],
+       [ 1.94868773, -0.99881497],
+       [ 1.1574572 ,  0.31987373],
+       [ 1.007133  , -0.06550254],
+       [ 1.7733922 ,  0.19641059],
+       [ 1.85327106, -0.55077372],
+       [ 2.4234788 , -0.2397454 ],
+       [ 2.31353522, -2.62038074],
+       [ 1.84800289,  0.18799967],
+       [ 1.09649923,  0.29708201],
+       [ 1.1812503 ,  0.81858241],
+       [ 2.79178861, -0.83668445],
+       [ 1.57340399, -1.07118383],
+       [ 1.33614369, -0.420823  ],
+       [ 0.91061354, -0.01965942],
+       [ 1.84350913, -0.66872729],
+       [ 2.00701161, -0.60663655],
+       [ 1.89319854, -0.68227708],
+       [ 1.13831104,  0.70171953],
+       [ 2.03519535, -0.86076914],
+       [ 1.99464025, -1.04517619],
+       [ 1.85977129, -0.37934387],
+       [ 1.54200377,  0.90808604],
+       [ 1.50925493, -0.26460621],
+       [ 1.3690965 , -1.01583909],
+       [ 0.94680339,  0.02182097]])
+</code></pre>
+<p>查看降维前的区分表现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">4</span>))</span><br><span class="line"><span class="keyword">for</span> lab, col <span class="keyword">in</span> <span class="built_in">zip</span>((<span class="string">&#x27;Iris-setosa&#x27;</span>, <span class="string">&#x27;Iris-versicolor&#x27;</span>, <span class="string">&#x27;Iris-virginica&#x27;</span>),</span><br><span class="line">                        (<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;green&#x27;</span>)):</span><br><span class="line">     plt.scatter(X[y==lab, <span class="number">0</span>],</span><br><span class="line">                X[y==lab, <span class="number">1</span>],</span><br><span class="line">                label=lab,</span><br><span class="line">                c=col)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;sepal_len&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;sepal_wid&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;best&#x27;</span>)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/PCA_files/PCA_26_0.png" class="lazyload placeholder" data-srcset="/PCA_files/PCA_26_0.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="png"></p>
+<p>查看降维后的区分表现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">4</span>))</span><br><span class="line"><span class="keyword">for</span> lab, col <span class="keyword">in</span> <span class="built_in">zip</span>((<span class="string">&#x27;Iris-setosa&#x27;</span>, <span class="string">&#x27;Iris-versicolor&#x27;</span>, <span class="string">&#x27;Iris-virginica&#x27;</span>),</span><br><span class="line">                        (<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;green&#x27;</span>)):</span><br><span class="line">     plt.scatter(Y[y==lab, <span class="number">0</span>],</span><br><span class="line">                Y[y==lab, <span class="number">1</span>],</span><br><span class="line">                label=lab,</span><br><span class="line">                c=col)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Principal Component 1&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Principal Component 2&#x27;</span>)</span><br><span class="line">plt.legend(loc=<span class="string">&#x27;lower center&#x27;</span>)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/PCA_files/PCA_28_0.png" class="lazyload placeholder" data-srcset="/PCA_files/PCA_28_0.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="png"></p>
+<h1 id="利用SK-LEARN-PCA进行降维"><a href="#利用SK-LEARN-PCA进行降维" class="headerlink" title="利用SK-LEARN PCA进行降维"></a>利用SK-LEARN PCA进行降维</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 加载鸢尾花数据集</span></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data</span><br><span class="line">y = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 数据标准化</span></span><br><span class="line">scaler = StandardScaler()</span><br><span class="line">X_std = scaler.fit_transform(X)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 应用PCA降维</span></span><br><span class="line">pca = PCA()</span><br><span class="line">X_pca = pca.fit_transform(X_std)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 计算特征值总和</span></span><br><span class="line">tot = <span class="built_in">sum</span>(pca.explained_variance_)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 计算每个特征值占总和的百分比，并按降序排序</span></span><br><span class="line">var_exp = [(i / tot) * <span class="number">100</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">sorted</span>(pca.explained_variance_, reverse=<span class="literal">True</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 输出每个特征值的变异解释百分比</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;变异解释百分比:&quot;</span>, var_exp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 7. 计算累计变异解释百分比</span></span><br><span class="line">cum_var_exp = np.cumsum(var_exp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 8. 输出累计变异解释百分比</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;累计变异解释百分比:&quot;</span>, cum_var_exp)</span><br></pre></td></tr></table></figure>
+
+<pre><code>变异解释百分比: [np.float64(72.96244541329987), np.float64(22.850761786701742), np.float64(3.668921889282886), np.float64(0.5178709107154782)]
+累计变异解释百分比: [ 72.96244541  95.8132072   99.48212909 100.        ]
+</code></pre>
+<p>由上述结果同样可见，前两个特征向量累计贡献的方差为95.81%，故取前2个特征向量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 应用PCA降维到2个主成分</span></span><br><span class="line">pca = PCA(n_components=<span class="number">2</span>)</span><br><span class="line">X_pca = pca.fit_transform(X_std)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 绘制PCA图</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为不同的类别绘制不同颜色的点</span></span><br><span class="line">colors = [<span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;b&#x27;</span>]</span><br><span class="line">markers = [<span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;o&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx, color, marker <span class="keyword">in</span> <span class="built_in">zip</span>(<span class="built_in">range</span>(<span class="number">3</span>), colors, markers):</span><br><span class="line">    plt.scatter(x=X_pca[y == idx, <span class="number">0</span>], </span><br><span class="line">                y=X_pca[y == idx, <span class="number">1</span>],</span><br><span class="line">                c=color, </span><br><span class="line">                marker=marker,</span><br><span class="line">                label=iris.target_names[idx])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加标题和标签</span></span><br><span class="line">plt.title(<span class="string">&#x27;PCA of Iris Dataset&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Principal Component 1&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Principal Component 2&#x27;</span>)</span><br><span class="line">plt.legend()</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示图形</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/PCA_files/PCA_32_0.png" class="lazyload placeholder" data-srcset="/PCA_files/PCA_32_0.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="png"></p>
+<h1 id="加关注"><a href="#加关注" class="headerlink" title="加关注"></a>加关注</h1><p>关注公众号“生信之巅”，获取更多教程。</p>
+<table align="center"><tr>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅微信公众号" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-right: 0px;margin-bottom: 5px;align: center;"></td>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅小程序码" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-left: 0px;margin-bottom: 5px;align: center"></td>
+</tr></table>
+
+
+<p><font color="#FF0000"><ruby><b>敬告</b>：使用文中脚本请引用本文网址，请尊重本人的劳动成果，谢谢！<rt><b>Notice</b>: When you use the scripts in this article, please cite the link of this webpage. Thank you!</rt></ruby></font></p>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/%E9%9D%9E%E9%80%BB%E8%BE%91%E5%B0%8F%E8%AF%B4/" class="">
-              非逻辑小说
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="">
+              机器学习
+            </a>
+          
+            <a href="/tags/Scikit-learn/" class="">
+              Scikit-learn
             </a>
           
         </div>
@@ -840,7 +1442,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/post/cf94.html" target="_blank" title="新课题">https://www.liaochenlanruo.fun/post/cf94.html</a>
+    <a href="/post/61ae.html" target="_blank" title="Scikit-learn机器学习实战-PCA">https://www.liaochenlanruo.fun/post/61ae.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -858,40 +1460,21 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_33.webp" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_33.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-    </div>
-    <a href="/post/1128.html" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
-        <div class="title-text">屠龙</div>
-      </div>
-      
-      <!-- <div class="content">
-        阳西下，天空一片红晕，我骑车走在马路上，右手边便是清水河。
-记得儿时的清水河是有水的，也没有污染，河中也有小鱼小虾和鹅鸭
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_20.webp" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_20.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_217.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_217.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/post/4e69.html" class="post-nav-link">
+    <a href="/post/a7fe.html" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fas fa-angle-right"></i>
-        <div class="title-text">逍遥于世</div>
+        <div class="title-text">PyTorch实战-利用卷积神经网络完成手写数字识别</div>
       </div>
       <!-- <div class="content">
-        躺在床上玩了会儿手机，困意来袭，便睡了过去，半梦半醒的似乎被谁扯了一下左胳膊，我一下子清醒了过来。刚才那一下子十分真实，
+        前言卷积神经网络（Convolutional Neural Networks, CNNs）是一种特殊类型的神经网络，在图
       </div> -->
     </a>
   </div>
@@ -1115,7 +1698,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!--  -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-text">导入数据集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-text">特征工程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%B1%95%E7%A4%BA"><span class="toc-text">特征展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%87%E5%87%86%E5%8C%96"><span class="toc-text">数据标准化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A1%AE%E5%AE%9A%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-text">确定特征向量的数量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5"><span class="toc-text">协方差矩阵</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E9%99%8D%E7%BB%B4"><span class="toc-text">矩阵降维</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8SK-LEARN-PCA%E8%BF%9B%E8%A1%8C%E9%99%8D%E7%BB%B4"><span class="toc-text">利用SK-LEARN PCA进行降维</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A0%E5%85%B3%E6%B3%A8"><span class="toc-text">加关注</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -1378,6 +1961,59 @@
 		height: 100%;
 	}
 </style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
 
