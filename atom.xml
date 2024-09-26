@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2024-09-01T09:07:23.418Z</updated>
+  <updated>2024-09-26T14:29:04.963Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,87 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Shiny从入门到入定——16-Escaping the graph</title>
+    <link href="https://www.liaochenlanruo.fun/post/cff.html"/>
+    <id>https://www.liaochenlanruo.fun/post/cff.html</id>
+    <published>2024-09-26T14:05:28.000Z</published>
+    <updated>2024-09-26T14:29:04.963Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;跳出反应式图&quot;&gt;&lt;a href=&quot;#跳出反应式图&quot; class=&quot;headerlink&quot; title=&quot;跳出反应式图&quot;&gt;&lt;/a&gt;跳出反应式图&lt;/h1&gt;&lt;h2 id=&quot;16-1-引言&quot;&gt;&lt;a href=&quot;#16-1-引言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——15-Reactive building blocks</title>
+    <link href="https://www.liaochenlanruo.fun/post/4142.html"/>
+    <id>https://www.liaochenlanruo.fun/post/4142.html</id>
+    <published>2024-09-26T14:00:23.000Z</published>
+    <updated>2024-09-26T14:28:52.313Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;15-反应式构建块&quot;&gt;&lt;a href=&quot;#15-反应式构建块&quot; class=&quot;headerlink&quot; title=&quot;15 反应式构建块&quot;&gt;&lt;/a&gt;15</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——14-The reactive graph</title>
+    <link href="https://www.liaochenlanruo.fun/post/dcef.html"/>
+    <id>https://www.liaochenlanruo.fun/post/dcef.html</id>
+    <published>2024-09-26T13:56:01.000Z</published>
+    <updated>2024-09-26T14:28:41.583Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;反应图&quot;&gt;&lt;a href=&quot;#反应图&quot; class=&quot;headerlink&quot; title=&quot;反应图&quot;&gt;&lt;/a&gt;反应图&lt;/h1&gt;&lt;h2 id=&quot;14-1-引言&quot;&gt;&lt;a href=&quot;#14-1-引言&quot; class=&quot;headerlink&quot; title=&quot;14.1</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
   
   <entry>
     <title>Scikit-learn机器学习实战-PCA</title>
@@ -468,89 +549,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;3-基础反应性&quot;&gt;&lt;a href=&quot;#3-基础反应性&quot; class=&quot;headerlink&quot; title=&quot;3 基础反应性&quot;&gt;&lt;/a&gt;3 基础反应性&lt;/h1&gt;&lt;h2 id=&quot;3-1-介绍&quot;&gt;&lt;a href=&quot;#3-1-介绍&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
-    
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shiny从入门到入定——2-在大大的花园里面挖呀挖呀挖</title>
-    <link href="https://www.liaochenlanruo.fun/post/5369.html"/>
-    <id>https://www.liaochenlanruo.fun/post/5369.html</id>
-    <published>2023-11-18T12:14:50.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;基础UI&quot;&gt;&lt;a href=&quot;#基础UI&quot; class=&quot;headerlink&quot; title=&quot;基础UI&quot;&gt;&lt;/a&gt;基础UI&lt;/h1&gt;&lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
-    
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>16S扩增子测序及宏基因组测序</title>
-    <link href="https://www.liaochenlanruo.fun/post/c617.html"/>
-    <id>https://www.liaochenlanruo.fun/post/c617.html</id>
-    <published>2023-11-13T01:15:23.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在本文中，我将着重介绍两种高通量测序技术：&lt;code&gt;16S</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="测序" scheme="https://www.liaochenlanruo.fun/tags/%E6%B5%8B%E5%BA%8F/"/>
-    
-    <category term="扩增子" scheme="https://www.liaochenlanruo.fun/tags/%E6%89%A9%E5%A2%9E%E5%AD%90/"/>
-    
-    <category term="宏基因组" scheme="https://www.liaochenlanruo.fun/tags/%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shiny从入门到入定——1.在小小的花园里面挖呀挖呀挖</title>
-    <link href="https://www.liaochenlanruo.fun/post/b376.html"/>
-    <id>https://www.liaochenlanruo.fun/post/b376.html</id>
-    <published>2023-11-10T13:16:23.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
         
       
     
