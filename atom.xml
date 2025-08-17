@@ -251,11 +251,11 @@
     <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
     
     
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
-    
     <category term="NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI/"/>
     
     <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
+    
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
