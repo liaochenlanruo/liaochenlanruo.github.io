@@ -22,7 +22,7 @@
 </script>
 
 
-  <title>友情链接 | 了尘兰若的小坑</title>
+  <title>在Ubuntu中配置Python文字识别环境（基于Tesseract OCR） | 了尘兰若的小坑</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -752,17 +752,52 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/medias/11.jpg')">
+  background-position: center center;position: relative;background-image:url('https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_227.webp')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        friends
+        在Ubuntu中配置Python文字识别环境（基于Tesseract OCR）
       </span>
     </div>
     
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2025-10-19 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/IT/" class="post-detail-header_category">
+              IT
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 1.1k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 4分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
     
   </div>
   
@@ -780,14 +815,101 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h2 id="友链交换"><a href="#友链交换" class="headerlink" title="友链交换"></a>友链交换</h2><p>请到<a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo/friends/issues">GitHub上提ISSUE</a>，并将本站添加到你的友链中。</p>
-<p>Site：[了尘兰若的小坑]{.rainbow}<br>Link：<code>https://www.liaochenlanruo.fun</code><br>Avatar：<code>https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/head.jpg</code><br>Description: 分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！<br><br/></p>
-<!--<div class="issues-api sites"api="https://api.github.com/repos/liaochenlanruo/friends/issues?sort=updated&state=open&page=1&per_page=100&labels=active"></div>-->
+        <p>文字识别（OCR）是处理图像或PDF中文字内容的重要技术，Tesseract OCR是一款开源高效的OCR引擎，结合Python库可快速实现文字提取功能。本文将详细介绍在Ubuntu系统中配置支持中文的Python文字识别环境的步骤，适用于处理图片、PDF等文件中的文字内容。</p>
+<h2 id="一、安装Tesseract-OCR引擎"><a href="#一、安装Tesseract-OCR引擎" class="headerlink" title="一、安装Tesseract OCR引擎"></a>一、安装Tesseract OCR引擎</h2><p>Tesseract是核心OCR引擎，需先安装其基础程序。</p>
+<ol>
+<li><p>打开终端，更新系统包列表：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装Tesseract OCR引擎：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tesseract-ocr</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>这一步将安装Tesseract的核心程序，支持基础的文字识别功能（默认包含英文语言包）。</p>
+<h2 id="二、安装并配置中文语言包"><a href="#二、安装并配置中文语言包" class="headerlink" title="二、安装并配置中文语言包"></a>二、安装并配置中文语言包</h2><p>默认安装的Tesseract不包含中文语言包，需单独安装并修正文件名（避免因命名格式导致识别失败）。</p>
+<ol>
+<li><p>安装中文简体语言包：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tesseract-ocr-chi-sim</span><br></pre></td></tr></table></figure>
 
-<div class="issues-api sites"api="https://api.github.com/repos/liaochenlanruo/friends/issues?sort=updated&state=open&labels=active&page=1&per_page=100"group="group:都是我的,我关注的,这是友链"></div>
+<p> （可选）若需识别繁体中文，可额外安装：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tesseract-ocr-chi-tra</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修正语言包文件名（关键步骤）：</p>
+</li>
+</ol>
+<p>Tesseract对语言包的文件名格式有严格规范，但实际使用中，其对文件名的识别存在一定兼容性差异：安装后中文语言包默认文件名为下划线格式（<code>chi_sim.traineddata</code> 对应简体，<code>chi_tra.traineddata</code> 对应繁体），但部分场景下程序可能要求使用连字符格式（<code>chi-sim.traineddata</code>、<code>chi-tra.traineddata</code>）。为避免因文件名格式导致识别失败，建议复制一份以连字符命名的文件，从而兼容不同场景下的调用需求。：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修正简体中文包文件名</span></span><br><span class="line">sudo <span class="built_in">cp</span> /usr/share/tesseract-ocr/4.00/tessdata/chi_sim.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi-sim.traineddata</span><br><span class="line"></span><br><span class="line"><span class="comment"># （可选）修正繁体中文包文件名</span></span><br><span class="line">sudo <span class="built_in">cp</span> /usr/share/tesseract-ocr/4.00/tessdata/chi_tra.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi-tra.traineddata</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、验证Tesseract安装与语言包配置"><a href="#三、验证Tesseract安装与语言包配置" class="headerlink" title="三、验证Tesseract安装与语言包配置"></a>三、验证Tesseract安装与语言包配置</h2><p>安装完成后，需确认引擎和语言包是否正常生效。</p>
+<ol>
+<li><p>检查Tesseract版本（验证引擎安装）：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tesseract --version</span><br></pre></td></tr></table></figure>
+
+<p> 若输出类似<code>tesseract 4.0.0</code>的版本信息，说明引擎安装成功。</p>
+</li>
+<li><p>检查已安装的语言包（验证中文支持）：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tesseract --list-langs</span><br></pre></td></tr></table></figure>
+
+<p> 若输出包含<code>chi-sim</code>（简体中文）和<code>chi-tra</code>（繁体中文），说明中文语言包配置成功。</p>
+</li>
+</ol>
+<h2 id="四、配置TESSDATA-PREFIX环境变量"><a href="#四、配置TESSDATA-PREFIX环境变量" class="headerlink" title="四、配置TESSDATA_PREFIX环境变量"></a>四、配置TESSDATA_PREFIX环境变量</h2><p>Tesseract需要通过<code>TESSDATA_PREFIX</code>环境变量定位语言包目录，需手动配置以确保引擎能正确找到语言包。</p>
+<ol>
+<li><p>编辑环境变量配置文件（以bash为例）：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/&#x27;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p> 说明：<code>TESSDATA_PREFIX</code>需指向<code>tessdata</code>目录。</p>
+</li>
+<li><p>使环境变量生效：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>（若使用zsh，需将命令中的<code>~/.bashrc</code>替换为<code>~/.zshrc</code>）</p>
+<h2 id="五、安装Python相关依赖库"><a href="#五、安装Python相关依赖库" class="headerlink" title="五、安装Python相关依赖库"></a>五、安装Python相关依赖库</h2><p>通过Python调用Tesseract需安装对应的接口库，同时为处理PDF文件需补充相关工具库。</p>
+<ol>
+<li><p>安装核心Python库：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pytesseract PyPDF2 pdf2image pdfplumber opencv-python pillow</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 各库作用说明：</p>
+<ul>
+<li><p><code>pytesseract</code>：Python调用Tesseract OCR的接口库；</p>
+</li>
+<li><p><code>PyPDF2</code>&#x2F;<code>pdfplumber</code>：用于读取PDF文件（支持文本型PDF直接提取）；</p>
+</li>
+<li><p><code>pdf2image</code>：将图片型PDF转换为图片格式（以便Tesseract识别）;</p>
+</li>
+<li><p><code>opencv-python</code>：主要用于计算机视觉任务，可实现图像处理、视频分析、目标检测、边缘识别等复杂功能，是机器视觉领域的常用库；</p>
+</li>
+<li><p><code>pillow</code>：是轻量易用的 Python 图像库，核心用于基础图像操作，包括图像的读写、裁剪、尺寸调整、色彩调整及简单滤镜效果实现。</p>
+</li>
+</ul>
+</li>
+<li><p>（可选）若<code>pdf2image</code>运行时提示缺少依赖，需安装图片处理工具：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install poppler-utils</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="六、注意事项"><a href="#六、注意事项" class="headerlink" title="六、注意事项"></a>六、注意事项</h2><ol>
+<li><p>环境变量生效范围：上述配置仅对当前用户生效，若需全局生效，可将环境变量写入<code>/etc/profile</code>（需管理员权限）。</p>
+</li>
+<li><p>虚拟环境问题：若在Python虚拟环境中使用，需在虚拟环境激活后重新执行<code>source ~/.bashrc</code>（或手动设置<code>TESSDATA_PREFIX</code>）。</p>
+</li>
+<li><p>权限问题：确保运行程序的用户对<code>/usr/share/tesseract-ocr/4.00/tessdata/</code>目录及语言包文件有读取权限（默认权限已满足，无需额外配置）。</p>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过以上步骤，即可在Ubuntu系统中完成支持中文的Python文字识别环境配置。基于Tesseract OCR和Python库，可实现图片、PDF等文件的文字提取功能，为后续的文本分析、内容处理等场景奠定基础。</p>
+<h2 id="加关注"><a href="#加关注" class="headerlink" title="加关注"></a>加关注</h2><p>关注公众号“生信之巅”。</p>
+<table align="center"><tr>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅微信公众号" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-right: 0px;margin-bottom: 5px;align: center;"></td>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅小程序码" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-left: 0px;margin-bottom: 5px;align: center"></td>
+</tr></table>
 
       </div>
       <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/" class="">
+              图像识别
+            </a>
+          
+        </div>
         
       </div>
       
@@ -798,7 +920,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/friends/index.html" target="_blank" title="friends">https://www.liaochenlanruo.fun/friends/index.html</a>
+    <a href="/post/7972.html" target="_blank" title="在Ubuntu中配置Python文字识别环境（基于Tesseract OCR）">https://www.liaochenlanruo.fun/post/7972.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -817,6 +939,23 @@
 
 
 
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_223.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_223.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/post/81e1.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">CentOS 7 升级 GCC 教程（以 GCC 9 为例）</div>
+      </div>
+      <!-- <div class="content">
+        一、教程背景CentOS 7 系统默认预装的 GCC 版本为 4.8.5（发布于 2015 年），而现代开发场景中，许多
+      </div> -->
+    </a>
+  </div>
 
 </div>
 
@@ -1025,103 +1164,29 @@
   <div class="layout_sticky">    
     
       
-        
-    <section class="widget side_category">
-      
+<section class="widget side_toc">
+  
   <header>
     
-      <a style="color: " href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
     
   </header>
 
 
-      <div class='content'>
-        <ul class="entry navigation">
-          
-            <li><a class="flat-box"
-              title="/categories/AI/" href="/categories/AI/"
-              id="categoriesAI"
-              ><div class='name'>AI</div><div class='badge'>(3)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/IT/" href="/categories/IT/"
-              id="categoriesIT"
-              ><div class='name'>IT</div><div class='badge'>(35)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/" href="/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/"
-              id="categoriesE58FAFE8A786E58C96"
-              ><div class='name'>可视化</div><div class='badge'>(6)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E5%9C%B0%E4%BF%A1/" href="/categories/%E5%9C%B0%E4%BF%A1/"
-              id="categoriesE59CB0E4BFA1"
-              ><div class='name'>地信</div><div class='badge'>(2)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E5%B0%8F%E8%AF%B4/" href="/categories/%E5%B0%8F%E8%AF%B4/"
-              id="categoriesE5B08FE8AFB4"
-              ><div class='name'>小说</div><div class='badge'>(38)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E6%8A%95%E7%A8%BF/" href="/categories/%E6%8A%95%E7%A8%BF/"
-              id="categoriesE68A95E7A8BF"
-              ><div class='name'>投稿</div><div class='badge'>(2)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E6%8E%A2%E8%AE%A8/" href="/categories/%E6%8E%A2%E8%AE%A8/"
-              id="categoriesE68EA2E8AEA8"
-              ><div class='name'>探讨</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"
-              id="categoriesE69CBAE599A8E5ADA6E4B9A0"
-              ><div class='name'>机器学习</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E6%B4%BB%E5%8A%A8/" href="/categories/%E6%B4%BB%E5%8A%A8/"
-              id="categoriesE6B4BBE58AA8"
-              ><div class='name'>活动</div><div class='badge'>(2)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/" href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"
-              id="categoriesE7949FE789A9E4BFA1E681AF"
-              ><div class='name'>生物信息</div><div class='badge'>(47)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"
-              id="categoriesE7BD91E7AB99E5BBBAE8AEBE"
-              ><div class='name'>网站建设</div><div class='badge'>(3)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E9%97%B2%E8%B0%88/" href="/categories/%E9%97%B2%E8%B0%88/"
-              id="categoriesE997B2E8B088"
-              ><div class='name'>闲谈</div><div class='badge'>(1)</div></a></li>
-          
-        </ul>
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85Tesseract-OCR%E5%BC%95%E6%93%8E"><span class="toc-text">一、安装Tesseract OCR引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E5%B9%B6%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%87%E8%AF%AD%E8%A8%80%E5%8C%85"><span class="toc-text">二、安装并配置中文语言包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%AA%8C%E8%AF%81Tesseract%E5%AE%89%E8%A3%85%E4%B8%8E%E8%AF%AD%E8%A8%80%E5%8C%85%E9%85%8D%E7%BD%AE"><span class="toc-text">三、验证Tesseract安装与语言包配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%85%8D%E7%BD%AETESSDATA-PREFIX%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">四、配置TESSDATA_PREFIX环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%85Python%E7%9B%B8%E5%85%B3%E4%BE%9D%E8%B5%96%E5%BA%93"><span class="toc-text">五、安装Python相关依赖库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">六、注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%85%B3%E6%B3%A8"><span class="toc-text">加关注</span></a></li></ol> -->
+        <div class="toc"></div>
       </div>
-    </section>
-  
-  
-      
-      
-        
-<section class="widget side_tagcloud">
-    
-  <header>
-    
-      <a style="color: " href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-    <a href="/tags/ARGs/" style="font-size: 14px; color: #999">ARGs</a> <a href="/tags/BioPerl/" style="font-size: 14px; color: #999">BioPerl</a> <a href="/tags/Bioconda/" style="font-size: 14px; color: #999">Bioconda</a> <a href="/tags/CAZy/" style="font-size: 14.83px; color: #939393">CAZy</a> <a href="/tags/Functional-genomics/" style="font-size: 18.17px; color: #7d7d7d">Functional genomics</a> <a href="/tags/Github/" style="font-size: 15.67px; color: #8e8e8e">Github</a> <a href="/tags/Hexo/" style="font-size: 15.67px; color: #8e8e8e">Hexo</a> <a href="/tags/JAVA/" style="font-size: 14px; color: #999">JAVA</a> <a href="/tags/Linux/" style="font-size: 20.67px; color: #6c6c6c">Linux</a> <a href="/tags/ML%E4%B8%8E%E5%BE%AE%E7%94%9F%E7%89%A9%E7%BB%84/" style="font-size: 14px; color: #999">ML与微生物组</a> <a href="/tags/ML%E4%B8%8E%E7%96%BE%E7%97%85%E8%AF%8A%E6%96%AD/" style="font-size: 14px; color: #999">ML与疾病诊断</a> <a href="/tags/NCBI/" style="font-size: 16.5px; color: #888">NCBI</a> <a href="/tags/NCBI-%E4%B8%8B%E8%BD%BD-NCBI/" style="font-size: 14px; color: #999">NCBI - 下载 - NCBI</a> <a href="/tags/PGCGAP/" style="font-size: 14.83px; color: #939393">PGCGAP</a> <a href="/tags/PubMed/" style="font-size: 14px; color: #999">PubMed</a> <a href="/tags/PyTorch/" style="font-size: 14px; color: #999">PyTorch</a> <a href="/tags/R%E8%AF%AD%E8%A8%80/" style="font-size: 19px; color: #777">R语言</a> <a href="/tags/SNPs/" style="font-size: 14px; color: #999">SNPs</a> <a href="/tags/ST179/" style="font-size: 14px; color: #999">ST179</a> <a href="/tags/SY179/" style="font-size: 19px; color: #777">SY179</a> <a href="/tags/Scikit-learn/" style="font-size: 14.83px; color: #939393">Scikit-learn</a> <a href="/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/" style="font-size: 21.5px; color: #666">Shiny入门系列</a> <a href="/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97-%E7%BC%96%E7%A8%8B-Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97-%E7%BC%96%E7%A8%8B/" style="font-size: 14.83px; color: #939393">Shiny入门系列,编程 - Shiny入门系列 - 编程</a> <a href="/tags/T3SS/" style="font-size: 14px; color: #999">T3SS</a> <a href="/tags/WGS/" style="font-size: 19.83px; color: #717171">WGS</a> <a href="/tags/perl/" style="font-size: 17.33px; color: #828282">perl</a> <a href="/tags/%E4%B8%8B%E8%BD%BD/" style="font-size: 16.5px; color: #888">下载</a> <a href="/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84/" style="font-size: 15.67px; color: #8e8e8e">代谢组</a> <a href="/tags/%E4%BB%A3%E8%B0%A2%E7%BB%84%E5%AD%A6/" style="font-size: 14px; color: #999">代谢组学</a> <a href="/tags/%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 14px; color: #999">公众号</a> <a href="/tags/%E5%8D%95%E7%BB%86%E8%83%9E%E6%B5%8B%E5%BA%8F/" style="font-size: 14px; color: #999">单细胞测序</a> <a href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">卷积神经网络</a> <a href="/tags/%E5%90%8C%E6%BA%90%E5%AE%B6%E6%97%8F/" style="font-size: 14.83px; color: #939393">同源家族</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/" style="font-size: 14.83px; color: #939393">图像识别</a> <a href="/tags/%E5%9C%B0%E5%9B%BE/" style="font-size: 14.83px; color: #939393">地图</a> <a href="/tags/%E5%9F%B9%E8%AE%AD/" style="font-size: 14.83px; color: #939393">培训</a> <a href="/tags/%E5%9F%BA%E5%9B%A0%E5%B2%9B/" style="font-size: 14px; color: #999">基因岛</a> <a href="/tags/%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84/" style="font-size: 15.67px; color: #8e8e8e">宏基因组</a> <a href="/tags/%E5%AE%8F%E7%97%85%E6%AF%92%E7%BB%84/" style="font-size: 14px; color: #999">宏病毒组</a> <a href="/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/" style="font-size: 17.33px; color: #828282">序列处理</a> <a href="/tags/%E6%89%A9%E5%A2%9E%E5%AD%90/" style="font-size: 17.33px; color: #828282">扩增子</a> <a href="/tags/%E6%8A%95%E7%A8%BF%E7%BB%8F%E9%AA%8C/" style="font-size: 14.83px; color: #939393">投稿经验</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 16.5px; color: #888">机器学习</a> <a href="/tags/%E6%AF%94%E8%BE%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AD%A6/" style="font-size: 15.67px; color: #8e8e8e">比较基因组学</a> <a href="/tags/%E6%B5%8B%E5%BA%8F/" style="font-size: 14px; color: #999">测序</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">深度学习</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 14px; color: #999">爬虫</a> <a href="/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/" style="font-size: 14px; color: #999">特征工程</a> <a href="/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/" style="font-size: 22.33px; color: #606060">生信软件</a> <a href="/tags/%E7%B3%BB%E7%BB%9F/" style="font-size: 16.5px; color: #888">系统</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 15.67px; color: #8e8e8e">绘图</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 23.17px; color: #5b5b5b">编程</a> <a href="/tags/%E7%BD%91%E7%9B%98/" style="font-size: 14px; color: #999">网盘</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="font-size: 15.67px; color: #8e8e8e">虚拟机</a> <a href="/tags/%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%BB%84/" style="font-size: 14px; color: #999">蛋白质组</a> <a href="/tags/%E8%A1%A8%E5%9E%8B%E9%A2%84%E6%B5%8B/" style="font-size: 14px; color: #999">表型预测</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 15.67px; color: #8e8e8e">软件</a> <a href="/tags/%E8%BF%9B%E5%8C%96/" style="font-size: 14px; color: #999">进化</a> <a href="/tags/%E9%9D%9E%E9%80%BB%E8%BE%91%E5%B0%8F%E8%AF%B4/" style="font-size: 24px; color: #555">非逻辑小说</a> <a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 14px; color: #999">音乐</a>
     </div>
+  </div>
 </section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
 
-  
-      
       
   <section class="widget side_recent_post">
     
@@ -1246,229 +1311,6 @@
       </div>
     </div>
   </section>
-
-      
-  <section class="widget side_archives">
-    
-    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">5</span></a></li></ul></div>
-  </section>
-
-      <section class="widget side_webinfo">
-  
-  <header>
-    
-      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name' style="color: ">站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>143 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2018/02/06'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-        <div class="webinfo-item">
-          <div>本站总字数：</div>
-          <div>433.7k 字</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Sun Oct 19 2025 21:54:33 GMT+0800 (China Standard Time)</div>
-            <div id="last-update-show">2025-10-19 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2025-10-19 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
-      
-  
-    <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='https://qm.qq.com/cgi-bin/qm/qr?k=1u4V8LZlGRSp60LIVNsqiufh9Xhw11Cx&jump_from=webapi'><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i><span class='name'>加关注</span></a>
-        
-      </header>
-      <div class="content">
-         <div> <img src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅微信公众号" style="width: 90px;height: 90px;vertical-align: -20px;border-radius: 0%;margin-right: 5px;margin-bottom: 5px;align: left;"> <img src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅小程序码" style="width: 90px;height: 90px;vertical-align: -20px;border-radius: 0%;margin-right: 5px;margin-bottom: 5px;align: right"> </div> 
-      </div>
-  </div>
-  
-    <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='https://clustrmaps.com/site/1bki1'><i class="fas fa-eye fa-fw" aria-hidden="true"></i><span class='name'>Visit tracker</span></a>
-        
-      </header>
-      <div class="content">
-         <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=n&d=b_6VH6qDVZu9yRjcSPBKKP0uAoFMexxe-mFw5zPQtPA'></script> 
-      </div>
-  </div>
-  
-    <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: blue" target="_blank" rel="noopener" href='https://chat-shared3.zhile.io/'><i class="fa fa-microchip fa-fw" aria-hidden="true"></i><span class='name'>AI-Tools</span></a>
-        
-      </header>
-      <div class="content">
-         <ul style="padding-left: 20px;"> <li><a target="_blank" rel="noopener" href="https://free.easychat.work/">EASYGPT<a></li> <li><a target="_blank" rel="noopener" href="https://www.bigbigai.com/">大设AI绘图</a></li> </ul> 
-      </div>
-  </div>
-  
-    <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='https://miniwebtool.com/'><i class="fas fa-dice fa-fw" aria-hidden="true"></i><span class='name'>随机选择器</span></a>
-        
-      </header>
-      <div class="content">
-         <div class="miniwebtoolwidget" data-calculator="random-picker" data-width="260"><div class="miniwebtoolh"></div><p><a href="https://miniwebtool.com/zh-cn/random-picker/" target="_blank">随机选择器 ©miniwebtool.com</a></p></div><script async src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/js/miniwebtool.com_zh-cn_embed.js"></script> 
-      </div>
-  </div>
-  
-    <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAxOTYyMzczNA==&action=getalbum&album_id=2190548434338807809&scene=173&from_msgid=2454328452&from_itemidx=4&count=3&nolastread=1#wechat_redirect'><i class="fa fa-fish fa-fw" aria-hidden="true"></i><span class='name'>摸鱼人日历</span></a>
-        
-      </header>
-      <div class="content">
-         <div> <img src="https://api.vvhan.com/api/moyu" class="lazyload placeholder" data-srcset="https://api.vvhan.com/api/moyu" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="摸鱼人日历" style="width: 210px;height: 300px;vertical-align: -20px;border-radius: 0%;margin-right: 5px;margin-bottom: 5px;align: center;"> </div> 
-      </div>
-  </div>
-  
-    <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='https://weibo.com/u/2715210923'><i class="fab fa-weibo fa-fw" aria-hidden="true"></i><span class='name'>微博热搜</span></a>
-        
-      </header>
-      <div class="content">
-         <div id="myWeibo">
-<!-- 如果不要滚动，则去掉 vue-seamless-scroll标签就行了，这个插件使用cdn向左向右滚动好像有问题 -->
-<vue-seamless-scroll :data="content" :class-option="classOption" class="warp" > <div class="weibo-container" v-for="(item, index) in content" :key="index"> <div class="left"> <div class="order" :class="{ red: index<=2 }">{{index + 1}}</div> <div class="name"><a :href="item.url" target="_blank">{{item.name}}</a></div> </div> <div class="hot">{{item.hot}}</div> </div> </vue-seamless-scroll> </div>
-<script src="/weibo/index.js"></script> <link href="/weibo/index.css" rel="stylesheet"> 
-      </div>
-  </div>
-  
-    <div class="widget historyToday" id="historyToday" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-calendar-week fa-fw" aria-hidden="true"></i><span class='name'>历史上的今天</span></a>
-        
-      </header>
-      <div class="content">
-         <div id="myHistorySwiper" @mouseenter="stopAutoPlay()" @mouseleave="startAutoPlay()"> <swiper class="myhistoryswiper" ref="myhistoryswiper" style="height:80px;" :options="swiperOption"> <swiper-slide v-for="(item, index) in content" :key="index"> {{item}} </swiper-slide> </swiper> </div> <script src="/historyToday/index.js"></script> 
-      </div>
-  </div>
-  
-    <div class="widget testLove" id="testLove" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-heart fa-fw" aria-hidden="true"></i><span class='name'>恋爱墙</span></a>
-        
-      </header>
-      <div class="content">
-        
-<div style="text-align: center;"> <img src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/hl.jpg" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/hl.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-right: 5px;margin-bottom: 5px;-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);border: 2px solid #fff;" /> <svg viewbox="0 0 1024 1024" style="margin-left: 5px;margin-right: 5px;" version="1.0" width="15" height="15" class="my-face"> <path d="M863.597631 513.574282l-271.33965-140.213484L729.783667 81.926656c3.583731-7.87141 7.167462-15.742819 7.167462-25.214109C736.887134 25.226908 708.345275 0.012799 672.635953 0.012799a63.611229 63.611229 0 0 0-39.293053 12.607055c-1.791866 1.59988-3.519736 3.19976-5.311602 3.19976L147.87531 418.925381a55.547834 55.547834 0 0 0-19.646527 47.356448c1.791866 17.278704 14.27093 33.021523 32.125591 42.492813l271.33965 141.749369L292.504463 945.221908c-12.479064 25.214109-1.791866 53.563983 23.166262 69.306802 10.751194 6.335525 23.230258 9.47129 35.709322 9.47129 16.062795 0 32.125591-4.735645 44.604655-15.742819l480.091993-403.297753a55.547834 55.547834 0 0 0 19.646526-47.228458 61.243407 61.243407 0 0 0-32.12559-44.156688z" fill="#515151" /> </svg> <img src="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/yy.jpg" class="lazyload placeholder" data-srcset="https://fastly.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/yy.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-left: 5px;margin-bottom: 5px;-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);border: 2px solid #fff;" /><br /> <span id="htmer_time"></span> </div>
-<script data-pjax src="/love/index.js"></script> 
-      </div>
-  </div>
-  
 
     
   </div>

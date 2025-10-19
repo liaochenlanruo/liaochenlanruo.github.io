@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2025-10-19T13:40:05.402Z</updated>
+  <updated>2025-10-19T13:54:23.353Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>在Ubuntu中配置Python文字识别环境（基于Tesseract OCR）</title>
+    <link href="https://www.liaochenlanruo.fun/post/7972.html"/>
+    <id>https://www.liaochenlanruo.fun/post/7972.html</id>
+    <published>2025-10-19T13:41:46.000Z</published>
+    <updated>2025-10-19T13:54:23.353Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;文字识别（OCR）是处理图像或PDF中文字内容的重要技术，Tesseract</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="图像识别" scheme="https://www.liaochenlanruo.fun/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS 7 升级 GCC 教程（以 GCC 9 为例）</title>
     <link href="https://www.liaochenlanruo.fun/post/81e1.html"/>
     <id>https://www.liaochenlanruo.fun/post/81e1.html</id>
     <published>2025-10-19T13:33:35.000Z</published>
-    <updated>2025-10-19T13:40:05.402Z</updated>
+    <updated>2025-10-19T13:40:18.210Z</updated>
     
     
       
@@ -520,33 +545,6 @@
 &lt;li&gt;第7章向您展示了如何向绘图添加直接交互以及如何显示以其他方式生成的图像。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;我们在第</summary>
-        
-      
-    
-    
-    
-    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
-    
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shiny从入门到入定——6-布局、主题、HTML</title>
-    <link href="https://www.liaochenlanruo.fun/post/6718.html"/>
-    <id>https://www.liaochenlanruo.fun/post/6718.html</id>
-    <published>2024-01-25T13:49:44.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;6-布局，主题，HTML&quot;&gt;&lt;a href=&quot;#6-布局，主题，HTML&quot; class=&quot;headerlink&quot; title=&quot;6 布局，主题，HTML&quot;&gt;&lt;/a&gt;6</summary>
         
       
     
