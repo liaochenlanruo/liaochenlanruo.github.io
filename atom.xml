@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2025-11-11T11:56:38.573Z</updated>
+  <updated>2025-11-11T15:11:03.321Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基因组语言模型的机遇与挑战</title>
+    <link href="https://www.liaochenlanruo.fun/post/f0aa.html"/>
+    <id>https://www.liaochenlanruo.fun/post/f0aa.html</id>
+    <published>2025-11-11T15:08:16.000Z</published>
+    <updated>2025-11-11T15:11:03.321Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>AI 在生物信息学的方法革新与应用全景</title>
@@ -515,33 +542,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;10-动态UI&quot;&gt;&lt;a href=&quot;#10-动态UI&quot; class=&quot;headerlink&quot; title=&quot;10 动态UI&quot;&gt;&lt;/a&gt;10</summary>
-        
-      
-    
-    
-    
-    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
-    
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shiny从入门到入定——9-上传和下载</title>
-    <link href="https://www.liaochenlanruo.fun/post/72d6.html"/>
-    <id>https://www.liaochenlanruo.fun/post/72d6.html</id>
-    <published>2024-04-27T03:01:58.000Z</published>
-    <updated>2024-04-27T03:04:31.887Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;9-上传和下载&quot;&gt;&lt;a href=&quot;#9-上传和下载&quot; class=&quot;headerlink&quot; title=&quot;9 上传和下载&quot;&gt;&lt;/a&gt;9</summary>
         
       
     
