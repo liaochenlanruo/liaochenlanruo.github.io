@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2025-10-19T13:54:33.097Z</updated>
+  <updated>2025-11-11T11:56:38.573Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AI 在生物信息学的方法革新与应用全景</title>
+    <link href="https://www.liaochenlanruo.fun/post/81e3.html"/>
+    <id>https://www.liaochenlanruo.fun/post/81e3.html</id>
+    <published>2025-11-11T11:33:35.000Z</published>
+    <updated>2025-11-11T11:56:38.573Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;摘要&lt;/strong&gt;：随着人工智能（AI）技术的快速迭代，从传统深度学习到预训练模型、大型语言模型（LLMs）的演进，生物信息学领域正经历从“数据驱动”到“知识赋能”的范式转变。本文整合2024-2025年最新综述成果，系统梳理AI在生物信息学中的核心方法</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BioAI 专辑：解读 AI 重塑生物信息学研究逻辑</title>
+    <link href="https://www.liaochenlanruo.fun/post/81e2.html"/>
+    <id>https://www.liaochenlanruo.fun/post/81e2.html</id>
+    <published>2025-11-11T10:33:35.000Z</published>
+    <updated>2025-11-11T11:56:35.606Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;当AI撞开生命科学的大门：我为什么要做这个BioAI专辑？&quot;&gt;&lt;a href=&quot;#当AI撞开生命科学的大门：我为什么要做这个BioAI专辑？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>在Ubuntu中配置Python文字识别环境（基于Tesseract OCR）</title>
@@ -303,11 +357,11 @@
     <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
     
     
+    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
+    
     <category term="NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI/"/>
     
     <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
-    
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
@@ -488,63 +542,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;9-上传和下载&quot;&gt;&lt;a href=&quot;#9-上传和下载&quot; class=&quot;headerlink&quot; title=&quot;9 上传和下载&quot;&gt;&lt;/a&gt;9</summary>
-        
-      
-    
-    
-    
-    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
-    
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shiny从入门到入定——8-用户反馈</title>
-    <link href="https://www.liaochenlanruo.fun/post/6561.html"/>
-    <id>https://www.liaochenlanruo.fun/post/6561.html</id>
-    <published>2024-04-14T05:18:07.000Z</published>
-    <updated>2024-04-14T05:37:41.141Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;8-用户反馈&quot;&gt;&lt;a href=&quot;#8-用户反馈&quot; class=&quot;headerlink&quot; title=&quot;8 用户反馈&quot;&gt;&lt;/a&gt;8</summary>
-        
-      
-    
-    
-    
-    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
-    
-    
-    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shiny从入门到入定——7-图形</title>
-    <link href="https://www.liaochenlanruo.fun/post/6685.html"/>
-    <id>https://www.liaochenlanruo.fun/post/6685.html</id>
-    <published>2024-01-26T14:09:43.000Z</published>
-    <updated>2024-03-11T13:07:17.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;7-图形&quot;&gt;&lt;a href=&quot;#7-图形&quot; class=&quot;headerlink&quot; title=&quot;7 图形&quot;&gt;&lt;/a&gt;7 图形&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;第7章向您展示了如何向绘图添加直接交互以及如何显示以其他方式生成的图像。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;我们在第</summary>
         
       
     

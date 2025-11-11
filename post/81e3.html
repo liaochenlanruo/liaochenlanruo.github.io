@@ -1,0 +1,2808 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139249935-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-139249935-1');
+</script>
+
+
+  <title>AI 在生物信息学的方法革新与应用全景 | 了尘兰若的小坑</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+    <script>
+        var themeModelId = '';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script async src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  
+  
+  <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  <script>
+    var endLoading = function () {
+      document.body.style.overflow = 'auto';
+      document.getElementById('loader').classList.add("loaded");
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+  </script>
+
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script defer>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">了尘兰若的小坑</h3>
+      <h5 class="drawer-box-head_desc">分享微生物生物信息学分析方法，欢迎加入QQ群交流945751012，不接受群内广告！</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(1)">
+                  <span>
+                    
+                      <i class="fas fa-archive"></i>
+                    
+                    <span class="name">归档</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(1)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(1)">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(2)">
+                  <span>
+                    
+                      <i class="fas fa-user"></i>
+                    
+                    <span class="name">关于</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(2)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(2)">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(3)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://www.travellings.cn/go-by-clouds.html" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/head.jpg" class="lazyload placeholder" data-srcset="/medias/head.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">了尘兰若的小坑</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="首页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">首页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive"></i>
+                  
+                  <span class="name">归档</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/archives">
+                      
+                      <i class="fas fa-archive" style="margin-top: -20px;"></i>
+                      
+                      <span>Archives</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/categories">
+                      
+                      <i class="fas fa-bookmark" style="margin-top: -20px;"></i>
+                      
+                      <span>Categories</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/tags">
+                      
+                      <i class="fas fa-tags" style="margin-top: -20px;"></i>
+                      
+                      <span>Tags</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="关于">
+                  
+                    <i class="fas fa-user"></i>
+                  
+                  <span class="name">关于</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-user-secret" style="margin-top: -20px;"></i>
+                      
+                      <span>About</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/me">
+                      
+                      <i class="fas fa-user-md" style="margin-top: -20px;"></i>
+                      
+                      <span>我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/skip/box">
+                      
+                      <i class="fas fa-box-open" style="margin-top: -20px;"></i>
+                      
+                      <span>魔盒</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-camera-retro" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="https://liaochenlanruo.fun/reference/">
+                      
+                      <i class="fab fa-unity" style="margin-top: -20px;"></i>
+                      
+                      <span>速查表</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-link" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://liaochenlanruo.gitee.io" class="menu-item-link" title="English">
+                  
+                    <i class="fas fa-external-link" aria-hidden="true"></i>
+                  
+                  <span class="name">English</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a target="_blank" rel="noopener" href="https://www.travellings.cn/go-by-clouds.html" class="menu-item-link" title="开往">
+                  
+                    <i class="fas fa-subway" aria-hidden="true"></i>
+                  
+                  <span class="name">开往</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">本地搜索</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="请输入关键字"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="http://github.com/liaochenlanruo" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+    <div id="he-plugin-simple"></div>
+    <script defer>
+      WIDGET = {
+        CONFIG: {
+          "modules": "012",
+          "background": 5,
+          "tmpColor": "4A4A4A",
+          "tmpSize": 16,
+          "cityColor": "4A4A4A",
+          "citySize": 16,
+          "aqiSize": 16,
+          "weatherIconSize": 24,
+          "alertIconSize": 18,
+          "padding": "10px 10px 10px 10px",
+          "shadow": "1",
+          "language": "auto",
+          "borderRadius": 5,
+          "fixed": "false",
+          "vertical": "middle",
+          "horizontal": "center",
+          "key": "2784dd3fcb1e4f0f9a9b579bf69641f2"
+        }
+      }
+    </script>
+    <script defer src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> 
+    
+</header>
+        <!-- 内容区域 -->
+        
+<!-- prismjs 代码高亮 -->
+
+
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_225.webp')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        AI 在生物信息学的方法革新与应用全景
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> 发表于：2025-11-11 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> 分类：
+          
+            <a href="/categories/BioAI/" class="post-detail-header_category">
+              BioAI
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> 字数统计: 6.3k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> 阅读时长: 23分钟 |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> 阅读量：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script defer src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <p><strong>摘要</strong>：随着人工智能（AI）技术的快速迭代，从传统深度学习到预训练模型、大型语言模型（LLMs）的演进，生物信息学领域正经历从“数据驱动”到“知识赋能”的范式转变。本文整合2024-2025年最新综述成果，系统梳理AI在生物信息学中的核心方法体系（语言模型、图模型、多模态模型）、技术演进脉络（从单一任务模型到基础模型）、典型应用领域（基因组分析、蛋白质研究、微生物组挖掘等），并总结当前面临的数据质量、可解释性、计算成本等挑战，展望多模态融合、小样本学习、临床转化等未来方向。本文旨在为读者建立AI赋能生物信息学的全局认知框架，为后续细分模型与场景篇章奠定基础。</p>
+<p><strong>关键词</strong>：人工智能；生物信息学；大型语言模型；基础模型；预训练模型</p>
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h2><p>生物信息学的核心目标是解析生物分子序列（DNA、RNA、蛋白质）中的信息编码规律，揭示基因表达、蛋白质功能、细胞代谢等生命过程的分子机制。传统研究依赖实验测序与手工分析，难以应对高通量测序技术带来的“数据爆炸”——截至2025年，全球基因组数据库已积累超过100万个人类基因组序列、10亿条蛋白质序列<sup>[1]</sup>。AI技术的兴起为这一困境提供了破局方案：从2015年卷积神经网络（CNN）用于DNA motif预测，到2021年首个DNA预训练模型<code>DNABERT</code>问世，再到2024-2025年基因组语言模型（gLMs）、蛋白质语言模型（PLMs）实现跨模态功能预测，AI已成为生物信息学从<strong>描述性研究</strong>向<strong>预测性研究</strong>跨越的核心工具<sup>[2]</sup>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig00.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig00.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图0 可视化大模型工具，专为提升生物信息学各应用领域的研究效能而开发&lt;sup&gt;[2]&lt;/sup&gt;。"></p>
+<p>本文通过整合多篇权威综述，从<strong>技术演进-方法体系-应用领域-挑战展望</strong>四个维度，构建AI在生物信息学的全景图谱，为后续章节深入探讨细分模型（DNA模型、蛋白质模型等）提供理论与方法基础。</p>
+<h2 id="2-AI赋能生物信息学的技术演进"><a href="#2-AI赋能生物信息学的技术演进" class="headerlink" title="2 AI赋能生物信息学的技术演进"></a>2 AI赋能生物信息学的技术演进</h2><p>AI在生物信息学的应用可分为三个阶段，各阶段的技术特征、代表模型与核心突破存在显著差异，其演进逻辑与生物数据复杂度、计算能力提升高度契合<sup>[3]</sup>。</p>
+<h3 id="2-1-阶段1：传统深度学习（2015-2020）——任务特异性建模"><a href="#2-1-阶段1：传统深度学习（2015-2020）——任务特异性建模" class="headerlink" title="2.1 阶段1：传统深度学习（2015-2020）——任务特异性建模"></a>2.1 阶段1：传统深度学习（2015-2020）——任务特异性建模</h3><p>此阶段以“<strong>单一任务、手工特征</strong>”为核心，模型设计针对具体生物问题（如DNA结合位点预测、蛋白质二级结构预测），依赖领域专家提取特征（如k-mer频率、序列保守性）。</p>
+<ul>
+<li><p><strong>代表技术</strong>：CNN（捕捉局部序列 motif）、循环神经网络（LSTM&#x2F;GRU，捕捉序列长程依赖）、图神经网络（GNN，处理蛋白质相互作用网络）；</p>
+</li>
+<li><p><strong>典型应用</strong>：</p>
+<ul>
+<li>CNN用于转录因子结合位点（TFBS）预测（如Basset模型，2016）；</li>
+<li>LSTM用于RNA剪接位点识别（如SpliceAI，2019）；</li>
+</ul>
+</li>
+<li><p><strong>局限</strong>：泛化能力弱（换用数据集需重新训练）、依赖手工特征、难以处理多模态生物数据（如DNA+表观遗传数据）。</p>
+</li>
+</ul>
+<h3 id="2-2-阶段2：预训练模型（2021-2023）——跨任务知识迁移"><a href="#2-2-阶段2：预训练模型（2021-2023）——跨任务知识迁移" class="headerlink" title="2.2 阶段2：预训练模型（2021-2023）——跨任务知识迁移"></a>2.2 阶段2：预训练模型（2021-2023）——跨任务知识迁移</h3><p>受自然语言处理（NLP）中BERT模型启发，生物信息学领域开始构建“<strong>预训练-微调</strong>”范式：先在大规模无标注生物序列（如人类基因组、UniProt蛋白质库）上预训练，再针对下游任务（如变异效应预测）微调，实现知识跨任务迁移。</p>
+<ul>
+<li><p><strong>代表模型</strong>：</p>
+<ul>
+<li><code>DNA领域</code>：DNABERT（2021，首个DNA-BERT模型，基于k-mer tokenization）、Nucleotide Transformer（2023，多物种基因组预训练）；</li>
+<li><code>蛋白质领域</code>：ProteinBERT（2022，统一蛋白质序列与功能建模）、ESM系列（2021-2023，蛋白质结构预测）；</li>
+</ul>
+</li>
+<li><p><strong>核心突破</strong>：摆脱手工特征依赖，模型可自动学习生物序列的“<strong>语义信息</strong>”（如DNA的调控语法、蛋白质的结构-功能关联），泛化能力显著提升（2021-DNABERT）。</p>
+</li>
+</ul>
+<h3 id="2-3-阶段3：基础模型-大模型（2024-2025）——跨模态与通用智能"><a href="#2-3-阶段3：基础模型-大模型（2024-2025）——跨模态与通用智能" class="headerlink" title="2.3 阶段3：基础模型&#x2F;大模型（2024-2025）——跨模态与通用智能"></a>2.3 阶段3：基础模型&#x2F;大模型（2024-2025）——跨模态与通用智能</h3><p>此阶段模型具备“<strong>大规模数据输入、跨模态融合、多任务适配</strong>”特征，被称为“生物信息学基础模型（Foundation Models）”，可同时处理DNA、RNA、蛋白质、表观遗传等多类型数据，适配从序列分析到功能设计的全链条任务。</p>
+<ul>
+<li><p><strong>代表模型</strong>：</p>
+<ul>
+<li><code>基因组领域</code>：Genomic Touchstone（2025，gLMs基准测试框架，跨DNA&#x2F;RNA&#x2F;蛋白质功能预测）、Generator（2025，长序列基因组生成模型）；</li>
+<li><code>多模态领域</code>：LucaOne（2025，统一核酸与蛋白质语言的基础模型）、CD-GPT（2024，连接中心法则的跨分子模型）；</li>
+</ul>
+</li>
+<li><p><strong>核心突破</strong>：实现“<strong>从数据到知识</strong>”的跨越，可解释性与实用性同步提升（如gLMs可解析基因组功能元件的进化规律，2025-Genomic Touchstone）。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig01.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig01.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图1 生物信息学领域大型语言模型（LLMs）整合的里程碑：在DNA、RNA、蛋白质及单细胞RNA（scRNA）应用方面取得的突破&lt;sup&gt;[3]&lt;/sup&gt;。"></p>
+<h2 id="3-AI-在生物信息学的核心方法体系"><a href="#3-AI-在生物信息学的核心方法体系" class="headerlink" title="3 AI 在生物信息学的核心方法体系"></a>3 AI 在生物信息学的核心方法体系</h2><p>AI赋能生物信息学的方法可分为三大类：<strong>语言模型（主导序列建模）、图模型（主导网络建模）、多模态模型（主导跨类型数据融合）</strong>，各类方法的核心原理、适用场景与代表技术存在显著差异。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig02.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig02.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图2 生物信息学领域大型语言模型（LLMs）整合的里程碑：在DNA、RNA、蛋白质及单细胞RNA（scRNA）应用方面取得的突破&lt;sup&gt;[6]&lt;/sup&gt;。"></p>
+<h3 id="3-1-语言模型：生物序列的“语义解析”工具"><a href="#3-1-语言模型：生物序列的“语义解析”工具" class="headerlink" title="3.1 语言模型：生物序列的“语义解析”工具"></a>3.1 语言模型：生物序列的“语义解析”工具</h3><p>语言模型是当前生物信息学最主流的AI方法，核心思想是将生物序列（如DNA、蛋白质）视为“生物语言”，通过预训练学习序列的上下文依赖关系，适配序列分类、预测、生成等任务。  </p>
+<h4 id="3-1-1-核心训练目标"><a href="#3-1-1-核心训练目标" class="headerlink" title="3.1.1 核心训练目标"></a>3.1.1 核心训练目标</h4><p>语言模型的训练目标决定其对序列信息的捕捉能力，主流目标包括：</p>
+<ol>
+<li><p><strong>掩码语言模型（Masked Language Modeling, MLM）</strong></p>
+<p>随机掩码序列中的部分“token”（如DNA中的k-mer、蛋白质中的氨基酸），模型预测掩码位置的真实token，适用于序列理解任务（如变异效应预测）。</p>
+<p>数学表达：给定序列 $( X &#x3D; (X_1, X_2, …, X_n) )$，随机选择掩码集合 {Masked}，模型学习条件概率分布：</p>
+<p>$\mathbb{P}[X_i | X_{-i}] \quad (i \in \text{Masked})$</p>
+</li>
+<li><p><strong>因果语言模型（Causal Language Modeling, CLM）</strong></p>
+<p>模型按“从左到右”顺序预测下一个token，适用于序列生成任务（如DNA调控序列设计）。</p>
+<p>数学表达：模型学习条件概率分布：</p>
+<p>$\mathbb{P}[X_k | X_{1:k-1}] \quad (k &#x3D; 1, 2, …, n)$</p>
+</li>
+</ol>
+<h4 id="3-1-2-关键技术：Tokenization"><a href="#3-1-2-关键技术：Tokenization" class="headerlink" title="3.1.2 关键技术：Tokenization"></a>3.1.2 关键技术：Tokenization</h4><p>Tokenization是将生物序列转化为模型可处理<code>词汇</code>的过程，直接影响模型对序列特征的捕捉能力，主流方法对比见表1：  </p>
+<p><strong>表1 DNA序列分析的Tokenization方法对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tokenization方法</th>
+<th>原理</th>
+<th>优势</th>
+<th>劣势</th>
+<th>代表模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单核苷酸（Nucleotide-level）</td>
+<td>每个碱基（A&#x2F;C&#x2F;G&#x2F;T）作为1个token</td>
+<td>可解释性强，适配变异分析</td>
+<td>上下文信息少，计算成本高</td>
+<td>GPN（2023）、HyenaDNA（2023）</td>
+</tr>
+<tr>
+<td>重叠k-mer</td>
+<td>滑动窗口截取k个连续碱基作为1个token（如6-mer）</td>
+<td>捕捉局部 motif 信息</td>
+<td>存在序列冗余，词汇表大</td>
+<td>DNABERT（2021）、SpliceBERT（2024）</td>
+</tr>
+<tr>
+<td>非重叠k-mer</td>
+<td>固定窗口截取k个连续碱基作为1个token</td>
+<td>无冗余，计算效率高</td>
+<td>可能割裂长程依赖</td>
+<td>Nucleotide Transformer（2023）</td>
+</tr>
+<tr>
+<td>字节对编码（BPE）</td>
+<td>基于序列频率合并高频子序列</td>
+<td>适配长序列，词汇表小</td>
+<td>可解释性弱</td>
+<td>DNABERT-2（2023）、GENA-LM（2023）</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-图模型：生物网络的“关系挖掘”工具"><a href="#3-2-图模型：生物网络的“关系挖掘”工具" class="headerlink" title="3.2 图模型：生物网络的“关系挖掘”工具"></a>3.2 图模型：生物网络的“关系挖掘”工具</h3><p>生物系统中大量存在网络结构（如蛋白质-蛋白质互作网络、微生物共丰度网络），图模型通过将节点（如蛋白质、微生物）与边（如互作关系、共丰度）建模，挖掘网络中的隐藏关联。  </p>
+<h4 id="3-2-1-核心模型类型"><a href="#3-2-1-核心模型类型" class="headerlink" title="3.2.1 核心模型类型"></a>3.2.1 核心模型类型</h4><ol>
+<li><p><strong>图注意力网络（GAT）</strong>：通过注意力机制分配节点权重，突出关键节点对（如核心蛋白质），适用于蛋白质互作预测（如PGAT-ABPp，2024）；</p>
+</li>
+<li><p><strong>图卷积网络（GCN）</strong>：通过邻接矩阵聚合节点特征，适用于微生物组-疾病关联分析（如2023-Leveraging pre-trained language models）；</p>
+</li>
+</ol>
+<h4 id="3-2-2-典型应用"><a href="#3-2-2-典型应用" class="headerlink" title="3.2.2 典型应用"></a>3.2.2 典型应用</h4><ul>
+<li><strong>蛋白质互作预测</strong>：输入蛋白质序列特征与已知互作网络，GAT模型预测未发现的互作关系（2025-PLM-interact）；  </li>
+<li><strong>微生物组分层</strong>：GCN模型基于微生物共丰度网络，识别疾病相关的微生物集群（2025-AI-empowered human microbiome research）。</li>
+</ul>
+<h3 id="3-3-多模态模型：跨类型数据的“融合建模”工具"><a href="#3-3-多模态模型：跨类型数据的“融合建模”工具" class="headerlink" title="3.3 多模态模型：跨类型数据的“融合建模”工具"></a>3.3 多模态模型：跨类型数据的“融合建模”工具</h3><p>生物数据具有多模态特征（如DNA序列+表观遗传标记+蛋白质结构），多模态模型通过统一表示空间融合不同类型数据，解决“单一数据信息有限”的问题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig03.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig03.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图3 多模态基础模型的计算组件。a、多模态基础模型的预期组件。该模型由多模态输入数据构成，通过混合统一标记和多级注意力操作进行处理。可采用多种自监督和监督学习目标进行预训练和迁移学习。b、多模态内/跨模态注意力机制的放大模型，展示模型中使用的多头注意力变体。放大面板直观呈现单个注意力头的跨模态与模态内操作，密集方块表示对应查询(Q)与键(K)对之间的注意力计算，虚线方块则表示未进行注意力计算。查询、键和值(V)均为Transformer模型计算的实数向量。Nx表示连续堆叠的注意力块数量&lt;sup&gt;[4]&lt;/sup&gt;。"></p>
+<h4 id="3-3-1-核心融合策略"><a href="#3-3-1-核心融合策略" class="headerlink" title="3.3.1 核心融合策略"></a>3.3.1 核心融合策略</h4><ol>
+<li><p><strong>早期融合</strong>：将多模态数据（如DNA序列嵌入+ histone修饰信号）在输入层拼接，共同输入模型（如Enformer，2021，用于基因表达预测）；</p>
+</li>
+<li><p><strong>晚期融合</strong>：各模态数据单独建模，在输出层融合预测结果（如LucaOne，2025，融合核酸与蛋白质特征）；</p>
+</li>
+</ol>
+<h4 id="3-3-2-代表应用"><a href="#3-3-2-代表应用" class="headerlink" title="3.3.2 代表应用"></a>3.3.2 代表应用</h4><ul>
+<li><strong>跨模态功能预测</strong>：Genomic Touchstone（2025）通过多模态模型，从DNA序列预测RNA稳定性与蛋白质结构，准确率超单一模态模型15%-20%；  </li>
+<li><strong>细胞分子建模</strong>：整合DNA、RNA、蛋白质与细胞影像数据，解析细胞功能调控网络<sup>[4]</sup>。</li>
+</ul>
+<h2 id="4-AI-在生物信息学的典型应用领域"><a href="#4-AI-在生物信息学的典型应用领域" class="headerlink" title="4 AI 在生物信息学的典型应用领域"></a>4 AI 在生物信息学的典型应用领域</h2><p>AI技术已渗透生物信息学的全链条研究，从基础分子序列分析到临床应用，形成多维度应用体系。以下按“基因组→蛋白质组→微生物组→单细胞组学”分类，结合2024-2025年综述成果<sup>[5,6]</sup>，总结各领域的核心应用、代表模型与数据来源。  </p>
+<h3 id="4-1-基因组领域：从序列解读到功能设计"><a href="#4-1-基因组领域：从序列解读到功能设计" class="headerlink" title="4.1 基因组领域：从序列解读到功能设计"></a>4.1 基因组领域：从序列解读到功能设计</h3><p>基因组是生物信息学的基础，AI的核心作用是“<strong>解析DNA序列中的功能编码</strong>”，应用场景涵盖基因注释、变异分析、序列设计等。  </p>
+<h4 id="4-1-1-核心应用场景"><a href="#4-1-1-核心应用场景" class="headerlink" title="4.1.1 核心应用场景"></a>4.1.1 核心应用场景</h4><ol>
+<li><strong>基因组功能注释</strong>：预测DNA中的功能元件（如启动子、增强子、CTCF结合位点），代表模型包括：  <ul>
+<li>gLMs（如GPN，2023）：通过MLM预训练，识别拟南芥基因组中的转录因子结合位点（TFBS），准确率达0.86（F1 score）；  </li>
+<li>基准框架（如Genomic Touchstone，2025）：评估gLMs在人类基因组注释的性能，Top模型（如NTv2-500m-Multi）的增强子预测F1 score达0.55；</li>
+</ul>
+</li>
+<li><strong>遗传变异效应预测</strong>：判断变异（如SNP、Indel）是否影响基因功能，代表模型包括：  <ul>
+<li>Nucleotide Transformer（2023）：预测人类基因组中SNP的致病性，AUC达0.89；  </li>
+<li>GPN-MSA（2023）：结合多物种序列比对（MSA），提升罕见变异效应预测准确率；</li>
+</ul>
+</li>
+<li><strong>DNA序列设计</strong>：生成具有特定功能的DNA序列（如启动子、CRISPR向导RNA），代表模型包括：  <ul>
+<li>regLM（2024）：基于HyenaDNA，生成酵母与人类细胞的启动子序列，功能验证成功率达78%；  </li>
+<li>EVO（2024）：设计新型CRISPR-Cas系统，预测结构与天然系统相似度达0.92。</li>
+</ul>
+</li>
+</ol>
+<p><strong>表2 基因组领域AI应用总结</strong></p>
+<table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>代表模型</th>
+<th>数据来源</th>
+<th>核心指标（准确率&#x2F;F1 score）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动子注释</td>
+<td>NTv2-500m-Multi</td>
+<td>人类基因组（hg38）</td>
+<td>0.86</td>
+</tr>
+<tr>
+<td>增强子分类</td>
+<td>DNABERT2</td>
+<td>ENCODE SCREEN数据库</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>SNP致病性预测</td>
+<td>Nucleotide Transformer</td>
+<td>ClinVar数据库</td>
+<td>0.89（AUC）</td>
+</tr>
+<tr>
+<td>启动子生成</td>
+<td>regLM</td>
+<td>酵母&#x2F;人类调控序列</td>
+<td>0.78（功能成功率）</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-蛋白质领域：从结构预测到功能优化"><a href="#4-2-蛋白质领域：从结构预测到功能优化" class="headerlink" title="4.2 蛋白质领域：从结构预测到功能优化"></a>4.2 蛋白质领域：从结构预测到功能优化</h3><p>蛋白质是生命活动的执行者，AI的核心作用是“破解蛋白质序列-结构-功能的关联”，应用场景涵盖结构预测、功能注释、酶工程等。  </p>
+<h4 id="4-2-1-核心应用场景"><a href="#4-2-1-核心应用场景" class="headerlink" title="4.2.1 核心应用场景"></a>4.2.1 核心应用场景</h4><ol>
+<li><strong>蛋白质结构预测</strong>：预测二级（α-螺旋&#x2F;β-折叠）与三级结构，代表模型包括：  <ul>
+<li>ESM-2（2023）：基于650M参数PLM，二级结构预测Q3 score达0.86；  </li>
+<li>AlphaFold3（2024）：多模态模型，整合序列与结构数据，三级结构预测TM-score达0.92；</li>
+</ul>
+</li>
+<li><strong>蛋白质功能注释</strong>：预测蛋白质的酶分类、翻译后修饰（PTM）位点，代表模型包括：  <ul>
+<li>ProteinBERT（2022）：酶分类准确率达0.74，PTM位点预测F1 score达0.72；  </li>
+<li>DPFunc（2025）：结合结构域信息，蛋白质功能预测准确率超传统模型12%；</li>
+</ul>
+</li>
+<li><strong>酶工程优化</strong>：改造酶的动力学参数（如催化效率、稳定性），代表模型包括：  <ul>
+<li>UniKP（2023）：统一框架预测酶的Km&#x2F;Kcat值，预测误差比传统方法降低30%；  </li>
+<li>强化学习模型（2025）：优化脂肪酶的温度稳定性，Tm值提升15℃。</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-3-微生物组领域：从群落解析到疾病关联"><a href="#4-3-微生物组领域：从群落解析到疾病关联" class="headerlink" title="4.3 微生物组领域：从群落解析到疾病关联"></a>4.3 微生物组领域：从群落解析到疾病关联</h3><p>微生物组与人类健康密切相关（如肠道微生物影响代谢疾病），AI的核心作用是“挖掘微生物群落的组成规律与功能关联”，应用场景涵盖群落分类、疾病关联、功能预测等。  </p>
+<h4 id="4-3-1-核心应用场景"><a href="#4-3-1-核心应用场景" class="headerlink" title="4.3.1 核心应用场景"></a>4.3.1 核心应用场景</h4><ol>
+<li><strong>微生物群落分类</strong>：识别样本中的微生物种类与丰度，代表模型包括：  <ul>
+<li>ViBE（2022）：基于Transformer，病毒序列分类准确率达0.91；  </li>
+<li>预训练模型（2023）：基于16S rRNA序列，微生物物种分类F1 score达0.88；</li>
+</ul>
+</li>
+<li><strong>微生物组-疾病关联</strong>：挖掘影响疾病的关键微生物，代表模型包括：  <ul>
+<li>预训练语言模型（2023）：分析肠道微生物与糖尿病的关联，AUC达0.83；  </li>
+<li>图模型（2025）：基于微生物共丰度网络，识别肥胖相关微生物集群，准确率达0.79；</li>
+</ul>
+</li>
+<li><strong>微生物功能预测</strong>：预测微生物的代谢通路与酶功能，代表模型包括：  <ul>
+<li>MetaBERT（2024）：基于宏基因组序列，代谢通路预测准确率达0.81；  </li>
+<li>多模态模型（2025）：整合微生物序列与代谢组数据，酶功能预测F1 score达0.76。</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-4-单细胞组学领域：从细胞分型到调控解析"><a href="#4-4-单细胞组学领域：从细胞分型到调控解析" class="headerlink" title="4.4 单细胞组学领域：从细胞分型到调控解析"></a>4.4 单细胞组学领域：从细胞分型到调控解析</h3><p>单细胞组学（如单细胞RNA-seq）可解析细胞异质性，AI的核心作用是“从高维单细胞数据中提取生物学信息”，应用场景涵盖细胞分型、轨迹推断、调控网络构建等。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig04.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/BioAI/01/Fig04.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="图4 单细胞组学的Transformer模型。该模型的输入可为单细胞组学的单一或多种检测模式，其核心架构由M层Transformer构成，通过多层结构对输入数据进行特征转换。这类单细胞Transformer通常通过自监督学习任务（如预测细胞内特定基因的表达模式）进行预训练，可广泛应用于下游任务，既可用于细胞层面的注释分析，也可用于基因层面的功能预测&lt;sup&gt;[7]&lt;/sup&gt;。"></p>
+<h4 id="4-4-1-核心应用场景"><a href="#4-4-1-核心应用场景" class="headerlink" title="4.4.1 核心应用场景"></a>4.4.1 核心应用场景</h4><ol>
+<li><strong>细胞分型</strong>：识别单细胞数据中的细胞类型，代表模型包括：  <ul>
+<li>Transformer-based模型（2024）：处理人类PBMC单细胞数据，细胞分型准确率达0.94；  </li>
+<li>基础模型（2024）：Large-scale foundation model，跨数据集细胞分型泛化率达0.89；</li>
+</ul>
+</li>
+<li><strong>细胞轨迹推断</strong>：预测细胞分化&#x2F;发育路径，代表模型包括：  <ul>
+<li>图神经网络（2024）：分析胚胎干细胞分化轨迹，与实验结果一致性达0.91；  </li>
+<li>多模态模型（2025）：整合单细胞RNA-seq与ATAC-seq数据，轨迹推断准确率提升15%；</li>
+</ul>
+</li>
+<li><strong>单细胞调控网络</strong>：构建细胞内基因调控关系，代表模型包括：  <ul>
+<li>注意力模型（2024）：预测TF-gene调控对，AUC达0.87；  </li>
+<li>因果推断模型（2025）：解析单细胞中的基因因果关系，假阳性率降低20%。</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-AI-在生物信息学面临的挑战"><a href="#5-AI-在生物信息学面临的挑战" class="headerlink" title="5 AI 在生物信息学面临的挑战"></a>5 AI 在生物信息学面临的挑战</h2><p>尽管AI在生物信息学取得显著进展，但2024-2025年综述普遍指出，当前技术仍面临<strong>数据质量、可解释性、计算成本、临床转化</strong>四大核心挑战。  </p>
+<h3 id="5-1-数据质量：生物数据的“先天缺陷”"><a href="#5-1-数据质量：生物数据的“先天缺陷”" class="headerlink" title="5.1 数据质量：生物数据的“先天缺陷”"></a>5.1 数据质量：生物数据的“先天缺陷”</h3><ol>
+<li><strong>标注稀缺与偏差</strong>：  <ul>
+<li>功能标注数据不足（如人类基因组中仅3.3%碱基有明确功能标注）；  </li>
+<li>临床数据偏差（如ClinVar数据库中欧洲人群变异占比超80%，导致模型对其他人群的预测准确率下降15%-20%）；</li>
+</ul>
+</li>
+<li><strong>序列重复与冗余</strong>：  <ul>
+<li>基因组中50%以上为重复序列（如人类基因组），导致模型过度拟合重复区域，对功能区域预测精度下降；  </li>
+<li>蛋白质数据库中同源序列占比超40%，影响模型泛化能力；</li>
+</ul>
+</li>
+<li><strong>多模态数据异构</strong>：  <ul>
+<li>不同类型生物数据（如DNA序列、蛋白质结构、表观数据）的格式与尺度差异大，融合难度高，易导致模型“偏倚”（如过度依赖序列数据，忽视表观信息）。</li>
+</ul>
+</li>
+</ol>
+<p><strong>表3 AI 在生物信息学的主要挑战分类</strong></p>
+<table>
+<thead>
+<tr>
+<th>挑战类型</th>
+<th>具体表现</th>
+<th>对模型的影响</th>
+<th>潜在解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据质量</td>
+<td>标注稀缺、重复序列多、多模态异构</td>
+<td>泛化能力弱、预测偏差大</td>
+<td>半监督学习、重复序列降权、统一模态表示</td>
+</tr>
+<tr>
+<td>可解释性</td>
+<td>模型“黑箱”，难以解析预测逻辑</td>
+<td>临床应用信任度低、难以指导实验设计</td>
+<td>注意力可视化、 motif 解析、因果推断</td>
+</tr>
+<tr>
+<td>计算成本</td>
+<td>大模型训练需千卡GPU时，推理速度慢</td>
+<td>小实验室难以使用、实时分析困难</td>
+<td>模型压缩、高效架构（如Mamba）、蒸馏</td>
+</tr>
+<tr>
+<td>临床转化</td>
+<td>模型性能与临床需求脱节（如假阳性率高）</td>
+<td>难以落地疾病诊断、药物研发</td>
+<td>临床数据微调、多中心验证</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-可解释性：AI-模型的“黑箱困境”"><a href="#5-2-可解释性：AI-模型的“黑箱困境”" class="headerlink" title="5.2 可解释性：AI 模型的“黑箱困境”"></a>5.2 可解释性：AI 模型的“黑箱困境”</h3><ol>
+<li><strong>预测逻辑不可追溯</strong>：  <ul>
+<li>大模型（如2.5B参数的Nucleotide Transformer）的预测依赖复杂的注意力权重，难以解析“为何某变异被预测为致病性”；  </li>
+<li>对比传统方法（如 conservation score），gLMs的功能元件预测缺乏明确的生物学解释（如未直接关联进化保守性）；</li>
+</ul>
+</li>
+<li><strong>缺乏机制性解释</strong>：  <ul>
+<li>模型可预测“某DNA序列为增强子”，但无法解释“该序列通过何种机制调控基因表达”（如结合哪些TF）；  </li>
+<li>蛋白质结构预测模型（如AlphaFold3）可输出结构，但难以解析“结构如何决定功能”<sup>[6]</sup>。</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-3-计算成本：大模型的“资源门槛”"><a href="#5-3-计算成本：大模型的“资源门槛”" class="headerlink" title="5.3 计算成本：大模型的“资源门槛”"></a>5.3 计算成本：大模型的“资源门槛”</h3><ol>
+<li><strong>训练成本高昂</strong>：  <ul>
+<li>基础模型（如LucaOne）训练需1000+ GPU时，硬件成本超100万美元，小实验室难以承担；  </li>
+<li>长序列模型（如HyenaDNA，处理1M碱基）推理时间是传统模型的5-10倍，难以满足实时分析需求；</li>
+</ul>
+</li>
+<li><strong>数据存储与预处理</strong>：  <ul>
+<li>多物种基因组数据（如850个物种）存储量超10TB，预处理需专门的分布式系统；  </li>
+<li>单细胞数据维度超10<sup>5</sup>，需降维处理，易丢失关键信息<sup>[7]</sup>。</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-4-临床转化：从“实验室”到“病床”的鸿沟"><a href="#5-4-临床转化：从“实验室”到“病床”的鸿沟" class="headerlink" title="5.4 临床转化：从“实验室”到“病床”的鸿沟"></a>5.4 临床转化：从“实验室”到“病床”的鸿沟</h3><ol>
+<li><strong>模型性能与临床需求脱节</strong>：  <ul>
+<li>变异致病性预测模型在数据库中的AUC达0.89，但在真实临床样本中假阳性率超30%，难以直接用于诊断；  </li>
+<li>微生物组-疾病关联模型多基于横断面数据，缺乏纵向验证，难以指导疾病预防；</li>
+</ul>
+</li>
+<li><strong>伦理与隐私问题</strong>：  <ul>
+<li>人类基因组数据涉及隐私，模型训练需合规（如GDPR），限制数据共享；  </li>
+<li>AI设计的生物序列（如抗菌肽）可能存在未知安全性风险，缺乏统一的伦理评估标准<sup>[6]</sup>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-未来展望"><a href="#6-未来展望" class="headerlink" title="6 未来展望"></a>6 未来展望</h2><p>基于2024-2025年综述的共识，AI在生物信息学的未来发展将聚焦<strong>多模态融合、小样本学习、可解释性提升、临床转化</strong>四大方向，旨在解决当前挑战，实现“从技术创新到生物学发现”的跨越<sup>[4,6]</sup>。</p>
+<h3 id="6-1-多模态融合：构建“生物系统全景模型”"><a href="#6-1-多模态融合：构建“生物系统全景模型”" class="headerlink" title="6.1 多模态融合：构建“生物系统全景模型”"></a>6.1 多模态融合：构建“生物系统全景模型”</h3><ul>
+<li><strong>目标</strong>：整合DNA、RNA、蛋白质、表观遗传、细胞影像等多类型数据，构建覆盖“分子-细胞-个体”的多层次模型；  </li>
+<li><strong>关键技术</strong>：  <ul>
+<li>统一模态表示（如将蛋白质结构转化为序列嵌入，与DNA嵌入融合）；  </li>
+<li>跨模态注意力机制（突出关键模态对（如DNA+表观数据）的协同作用）；</li>
+</ul>
+</li>
+<li><strong>预期应用</strong>：  <ul>
+<li>多模态基础模型可同时预测基因表达、蛋白质结构、细胞功能，为合成生物学提供“全链条设计工具”；  </li>
+<li>跨尺度模型（如分子-细胞）解析疾病的分子机制（如癌症发生的基因-蛋白质-细胞异常 cascade）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-2-小样本学习：解决“数据稀缺”难题"><a href="#6-2-小样本学习：解决“数据稀缺”难题" class="headerlink" title="6.2 小样本学习：解决“数据稀缺”难题"></a>6.2 小样本学习：解决“数据稀缺”难题</h3><ul>
+<li><strong>目标</strong>：在少标注数据（如罕见疾病变异、新发现微生物）场景下，仍保持高预测精度；  </li>
+<li><strong>关键技术</strong>：  <ul>
+<li>迁移学习（如从人类基因组模型迁移到稀有物种基因组）；  </li>
+<li>数据增强（如生成合成生物序列，扩充训练集）；  </li>
+<li>零样本学习（如利用进化关系，预测未标注物种的蛋白质功能）；</li>
+</ul>
+</li>
+<li><strong>预期应用</strong>：  <ul>
+<li>罕见病变异诊断：基于100-1000个标注样本，模型致病性预测准确率达0.90；  </li>
+<li>新发现微生物功能解析：零样本预测新微生物的代谢通路，与实验结果一致性达0.85。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-3-可解释性提升：从“黑箱”到“透明模型”"><a href="#6-3-可解释性提升：从“黑箱”到“透明模型”" class="headerlink" title="6.3 可解释性提升：从“黑箱”到“透明模型”"></a>6.3 可解释性提升：从“黑箱”到“透明模型”</h3><ul>
+<li><strong>目标</strong>：让AI模型的预测可追溯、可验证，提供明确的生物学机制解释；  </li>
+<li><strong>关键技术</strong>：  <ul>
+<li>注意力可视化（如解析gLMs中哪些碱基对功能预测起关键作用）；  </li>
+<li>motif 提取（如从PLMs中提取酶的催化位点 motif，与实验验证的 motif 比对）；  </li>
+<li>因果推断（如区分模型预测中的“相关关系”与“因果关系”，避免假阳性）；</li>
+</ul>
+</li>
+<li><strong>预期应用</strong>：  <ul>
+<li>临床变异解读：模型不仅预测致病性，还输出“该变异影响XX基因的XX功能域，导致XX蛋白结构异常”；  </li>
+<li>实验设计指导：模型推荐验证实验（如突变某TFBS，验证其对基因表达的影响）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-4-临床转化：加速“AI-实验-临床”闭环"><a href="#6-4-临床转化：加速“AI-实验-临床”闭环" class="headerlink" title="6.4 临床转化：加速“AI-实验-临床”闭环"></a>6.4 临床转化：加速“AI-实验-临床”闭环</h3><ul>
+<li><strong>目标</strong>：将AI模型从实验室推向临床，实现疾病诊断、药物研发、精准医疗的落地应用；  </li>
+<li><strong>关键技术</strong>：  <ul>
+<li>临床数据微调（如用多中心临床样本微调模型，降低人群偏差）；  </li>
+<li>模型标准化（如制定gLMs的性能基准与评估标准，确保不同模型的可比性）；  </li>
+<li>安全性评估（如AI设计的生物序列需通过体外实验验证安全性）；</li>
+</ul>
+</li>
+<li><strong>预期应用</strong>：  <ul>
+<li>精准诊断：AI辅助解读肿瘤基因组变异，诊断准确率提升20%，假阳性率降低30%；  </li>
+<li>药物研发：AI设计抗菌肽药物，研发周期从2年缩短至6个月，临床试验成功率提升15%。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-结论"><a href="#7-结论" class="headerlink" title="7 结论"></a>7 结论</h2><p>本文通过整合2024-2025年AI在生物信息学的最新综述成果，系统梳理了技术演进（从传统深度学习到基础模型）、方法体系（语言模型、图模型、多模态模型）、应用领域（基因组、蛋白质组、微生物组、单细胞组学）与核心挑战（数据质量、可解释性、计算成本、临床转化），并展望了未来发展方向。  </p>
+<p>AI已成为生物信息学的核心驱动力，但其价值不仅在于“提升分析效率”，更在于“发现新的生物学规律”——如gLMs解析基因组的功能语法、PLMs揭示蛋白质的进化规律。后续系列文章将聚焦细分模型（DNA模型、蛋白质模型、统一模型）与场景（肽设计、酶工程、蛋白质互作），深入拆解AI技术的具体实现与应用细节，为读者提供从“全局认知”到“实践落地”的完整指引。  </p>
+<p>未来，随着多模态融合、小样本学习、可解释性技术的突破，AI将进一步推动生物信息学从“数据驱动”向“知识驱动”转型，为生命科学研究与临床应用提供更强大的工具支撑。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><p>[1] Asim MN, Ibrahim MA, Zaib A and Dengel A (2025) DNA sequence analysis landscape: a comprehensive review of DNA sequence analysis task types, databases, datasets, word embedding methods, and language models. Front. Med. 12:1503229. doi: <a target="_blank" rel="noopener" href="https://doi.org/10.3389/fmed.2025.1503229">10.3389&#x2F;fmed.2025.1503229</a></p>
+</li>
+<li><p>[2] Sarumi, Oluwafemi A. et al., Large language models and their applications in bioinformatics. Computational and Structural Biotechnology Journal, Volume 23, 3498-3505. doi: <a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.csbj.2024.09.031">https://doi.org/10.1016/j.csbj.2024.09.031</a></p>
+</li>
+<li><p>[3]Zhenyu Wang, Zikang Wang, Jiyue Jiang, Pengan Chen, Xiangyu Shi, Yu Li. Large Language Models in Bioinformatics: A Survey.  arXiv:2503.04490v2. doi: <a href="">https://doi.org/10.48550/arXiv.2503.04490</a><a target="_blank" rel="noopener" href="https://doi.org/10.48550/arXiv.2503.04490">https://doi.org/10.48550/arXiv.2503.04490</a></p>
+</li>
+<li><p>[4] Cui, H., Tejada-Lapuerta, A., Brbić, M. et al. Towards multimodal foundation models in molecular cell biology. Nature 640, 623–633 (2025). <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41586-025-08710-y">https://doi.org/10.1038/s41586-025-08710-y</a></p>
+</li>
+<li><p>[5] Chen Z, Wei L, Gao G. Foundation models for bioinformatics. Quantitative Biology. 2024; 12(4): 339–44. <a target="_blank" rel="noopener" href="https://doi.org/10.1002/qub2.69">https://doi.org/10.1002/qub2.69</a></p>
+</li>
+<li><p>[6] Wei Ruan, Yanjun Lyu, Jing Zhang et al., Large Language Models for Bioinformatics. arXiv:2501.06271v1. doi:<br><a target="_blank" rel="noopener" href="https://doi.org/10.48550/arXiv.2501.06271">https://doi.org/10.48550/arXiv.2501.06271</a></p>
+</li>
+<li><p>[7] Szałata, A., Hrovatin, K., Becker, S. et al. Transformers in single-cell omics: a review and new perspectives. Nat Methods 21, 1430–1443 (2024). <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41592-024-02353-z">https://doi.org/10.1038/s41592-024-02353-z</a></p>
+</li>
+</ul>
+<table align="center"><tr>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/生信之巅公众号.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅微信公众号" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-right: 0px;margin-bottom: 5px;align: center;"></td>
+  <td align="center"><img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/social/小程序码.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="生信之巅小程序码" style="width: 100px;height: 100px;vertical-align: -20px;border-radius: 0%;margin-left: 0px;margin-bottom: 5px;align: center"></td>
+</tr></table>
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/LLM/" class="">
+              LLM
+            </a>
+          
+            <a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/" class="">
+              生物信息
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>作者:  </strong>Hualin Liu</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>文章链接:  </strong>
+    <a href="/post/81e3.html" target="_blank" title="AI 在生物信息学的方法革新与应用全景">https://www.liaochenlanruo.fun/post/81e3.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明:   </strong>
+      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      许可协议。转载请注明出处!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_224.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_224.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/post/81e2.html" class="post-nav-link">
+      <div class="title">
+        下一篇: <i class="fas fa-angle-right"></i>
+        <div class="title-text">BioAI 专辑：解读 AI 重塑生物信息学研究逻辑</div>
+      </div>
+      <!-- <div class="content">
+        当AI撞开生命科学的大门：我为什么要做这个BioAI专辑？作为一名深耕生物信息学13年的研究者，我亲历过行业的“数据焦虑
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="/medias/AliPay.jpg" class="lazyload placeholder" data-srcset="/medias/AliPay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="/medias/reward-wepay.jpg" class="lazyload placeholder" data-srcset="/medias/reward-wepay.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script defer src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+
+<!-- 还需要在后面这个地址里设置script, comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/head.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>了尘兰若</h2>
+        
+        
+          <p>Research Go</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">了尘兰若的小坑</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="http://github.com/liaochenlanruo"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BC%95%E8%A8%80"><span class="toc-text">1 引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-AI%E8%B5%8B%E8%83%BD%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%9A%84%E6%8A%80%E6%9C%AF%E6%BC%94%E8%BF%9B"><span class="toc-text">2 AI赋能生物信息学的技术演进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%98%B6%E6%AE%B51%EF%BC%9A%E4%BC%A0%E7%BB%9F%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%882015-2020%EF%BC%89%E2%80%94%E2%80%94%E4%BB%BB%E5%8A%A1%E7%89%B9%E5%BC%82%E6%80%A7%E5%BB%BA%E6%A8%A1"><span class="toc-text">2.1 阶段1：传统深度学习（2015-2020）——任务特异性建模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%98%B6%E6%AE%B52%EF%BC%9A%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%EF%BC%882021-2023%EF%BC%89%E2%80%94%E2%80%94%E8%B7%A8%E4%BB%BB%E5%8A%A1%E7%9F%A5%E8%AF%86%E8%BF%81%E7%A7%BB"><span class="toc-text">2.2 阶段2：预训练模型（2021-2023）——跨任务知识迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E9%98%B6%E6%AE%B53%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B-%E5%A4%A7%E6%A8%A1%E5%9E%8B%EF%BC%882024-2025%EF%BC%89%E2%80%94%E2%80%94%E8%B7%A8%E6%A8%A1%E6%80%81%E4%B8%8E%E9%80%9A%E7%94%A8%E6%99%BA%E8%83%BD"><span class="toc-text">2.3 阶段3：基础模型&#x2F;大模型（2024-2025）——跨模态与通用智能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-AI-%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%BD%93%E7%B3%BB"><span class="toc-text">3 AI 在生物信息学的核心方法体系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%EF%BC%9A%E7%94%9F%E7%89%A9%E5%BA%8F%E5%88%97%E7%9A%84%E2%80%9C%E8%AF%AD%E4%B9%89%E8%A7%A3%E6%9E%90%E2%80%9D%E5%B7%A5%E5%85%B7"><span class="toc-text">3.1 语言模型：生物序列的“语义解析”工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E6%A0%B8%E5%BF%83%E8%AE%AD%E7%BB%83%E7%9B%AE%E6%A0%87"><span class="toc-text">3.1.1 核心训练目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%EF%BC%9ATokenization"><span class="toc-text">3.1.2 关键技术：Tokenization</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%9B%BE%E6%A8%A1%E5%9E%8B%EF%BC%9A%E7%94%9F%E7%89%A9%E7%BD%91%E7%BB%9C%E7%9A%84%E2%80%9C%E5%85%B3%E7%B3%BB%E6%8C%96%E6%8E%98%E2%80%9D%E5%B7%A5%E5%85%B7"><span class="toc-text">3.2 图模型：生物网络的“关系挖掘”工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.2.1 核心模型类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="toc-text">3.2.2 典型应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%A4%9A%E6%A8%A1%E6%80%81%E6%A8%A1%E5%9E%8B%EF%BC%9A%E8%B7%A8%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E2%80%9C%E8%9E%8D%E5%90%88%E5%BB%BA%E6%A8%A1%E2%80%9D%E5%B7%A5%E5%85%B7"><span class="toc-text">3.3 多模态模型：跨类型数据的“融合建模”工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E6%A0%B8%E5%BF%83%E8%9E%8D%E5%90%88%E7%AD%96%E7%95%A5"><span class="toc-text">3.3.1 核心融合策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E4%BB%A3%E8%A1%A8%E5%BA%94%E7%94%A8"><span class="toc-text">3.3.2 代表应用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-AI-%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E7%9A%84%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8%E9%A2%86%E5%9F%9F"><span class="toc-text">4 AI 在生物信息学的典型应用领域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%9F%BA%E5%9B%A0%E7%BB%84%E9%A2%86%E5%9F%9F%EF%BC%9A%E4%BB%8E%E5%BA%8F%E5%88%97%E8%A7%A3%E8%AF%BB%E5%88%B0%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1"><span class="toc-text">4.1 基因组领域：从序列解读到功能设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E6%A0%B8%E5%BF%83%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4.1.1 核心应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%9B%8B%E7%99%BD%E8%B4%A8%E9%A2%86%E5%9F%9F%EF%BC%9A%E4%BB%8E%E7%BB%93%E6%9E%84%E9%A2%84%E6%B5%8B%E5%88%B0%E5%8A%9F%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">4.2 蛋白质领域：从结构预测到功能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E6%A0%B8%E5%BF%83%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4.2.1 核心应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%BE%AE%E7%94%9F%E7%89%A9%E7%BB%84%E9%A2%86%E5%9F%9F%EF%BC%9A%E4%BB%8E%E7%BE%A4%E8%90%BD%E8%A7%A3%E6%9E%90%E5%88%B0%E7%96%BE%E7%97%85%E5%85%B3%E8%81%94"><span class="toc-text">4.3 微生物组领域：从群落解析到疾病关联</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-%E6%A0%B8%E5%BF%83%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4.3.1 核心应用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%8D%95%E7%BB%86%E8%83%9E%E7%BB%84%E5%AD%A6%E9%A2%86%E5%9F%9F%EF%BC%9A%E4%BB%8E%E7%BB%86%E8%83%9E%E5%88%86%E5%9E%8B%E5%88%B0%E8%B0%83%E6%8E%A7%E8%A7%A3%E6%9E%90"><span class="toc-text">4.4 单细胞组学领域：从细胞分型到调控解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1-%E6%A0%B8%E5%BF%83%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">4.4.1 核心应用场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-AI-%E5%9C%A8%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%9D%A2%E4%B8%B4%E7%9A%84%E6%8C%91%E6%88%98"><span class="toc-text">5 AI 在生物信息学面临的挑战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%EF%BC%9A%E7%94%9F%E7%89%A9%E6%95%B0%E6%8D%AE%E7%9A%84%E2%80%9C%E5%85%88%E5%A4%A9%E7%BC%BA%E9%99%B7%E2%80%9D"><span class="toc-text">5.1 数据质量：生物数据的“先天缺陷”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7%EF%BC%9AAI-%E6%A8%A1%E5%9E%8B%E7%9A%84%E2%80%9C%E9%BB%91%E7%AE%B1%E5%9B%B0%E5%A2%83%E2%80%9D"><span class="toc-text">5.2 可解释性：AI 模型的“黑箱困境”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E8%AE%A1%E7%AE%97%E6%88%90%E6%9C%AC%EF%BC%9A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E2%80%9C%E8%B5%84%E6%BA%90%E9%97%A8%E6%A7%9B%E2%80%9D"><span class="toc-text">5.3 计算成本：大模型的“资源门槛”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E4%B8%B4%E5%BA%8A%E8%BD%AC%E5%8C%96%EF%BC%9A%E4%BB%8E%E2%80%9C%E5%AE%9E%E9%AA%8C%E5%AE%A4%E2%80%9D%E5%88%B0%E2%80%9C%E7%97%85%E5%BA%8A%E2%80%9D%E7%9A%84%E9%B8%BF%E6%B2%9F"><span class="toc-text">5.4 临床转化：从“实验室”到“病床”的鸿沟</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B"><span class="toc-text">6 未来展望</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E5%A4%9A%E6%A8%A1%E6%80%81%E8%9E%8D%E5%90%88%EF%BC%9A%E6%9E%84%E5%BB%BA%E2%80%9C%E7%94%9F%E7%89%A9%E7%B3%BB%E7%BB%9F%E5%85%A8%E6%99%AF%E6%A8%A1%E5%9E%8B%E2%80%9D"><span class="toc-text">6.1 多模态融合：构建“生物系统全景模型”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%A7%A3%E5%86%B3%E2%80%9C%E6%95%B0%E6%8D%AE%E7%A8%80%E7%BC%BA%E2%80%9D%E9%9A%BE%E9%A2%98"><span class="toc-text">6.2 小样本学习：解决“数据稀缺”难题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7%E6%8F%90%E5%8D%87%EF%BC%9A%E4%BB%8E%E2%80%9C%E9%BB%91%E7%AE%B1%E2%80%9D%E5%88%B0%E2%80%9C%E9%80%8F%E6%98%8E%E6%A8%A1%E5%9E%8B%E2%80%9D"><span class="toc-text">6.3 可解释性提升：从“黑箱”到“透明模型”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E4%B8%B4%E5%BA%8A%E8%BD%AC%E5%8C%96%EF%BC%9A%E5%8A%A0%E9%80%9F%E2%80%9CAI-%E5%AE%9E%E9%AA%8C-%E4%B8%B4%E5%BA%8A%E2%80%9D%E9%97%AD%E7%8E%AF"><span class="toc-text">6.4 临床转化：加速“AI-实验-临床”闭环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BB%93%E8%AE%BA"><span class="toc-text">7 结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/81e3.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_225.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_225.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-11</span>
+                
+              </div>
+              <a class="post-title" href="/post/81e3.html">AI 在生物信息学的方法革新与应用全景</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/81e2.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_224.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_224.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-11</span>
+                
+              </div>
+              <a class="post-title" href="/post/81e2.html">BioAI 专辑：解读 AI 重塑生物信息学研究逻辑</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/7972.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_227.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_227.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-19</span>
+                
+              </div>
+              <a class="post-title" href="/post/7972.html">在Ubuntu中配置Python文字识别环境（基于Tesseract OCR）</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/81e1.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_223.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_223.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">10-19</span>
+                
+              </div>
+              <a class="post-title" href="/post/81e1.html">CentOS 7 升级 GCC 教程（以 GCC 9 为例）</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/post/27cd.html" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_222.webp" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/custom/bgs/thumb_222.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">08-03</span>
+                
+              </div>
+              <a class="post-title" href="/post/27cd.html">What is RAG</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script defer src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script defer>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:liaochenlanruo@webmail.hzau.edu.cn" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo" class="social">
+                  
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=549830082" class="social">
+                  
+                    <i class="fab fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2018 - 2024 <a target="_blank" rel="noopener" href="https://github.com/liaochenlanruo">liaochenlanruo</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><p><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">鄂ICP备2021021941号</a>    <img src="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" class="lazyload placeholder" data-srcset="https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/img/logo/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="备案图标"> <a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102004725">鄂公网安备 42011102004725号</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark" onclick="toggleDarkMode()">
+  <div class="dark-content">
+    <i class="fas" id="darkIcon" aria-hidden="true"></i>
+  </div>
+</div>
+
+<script defer>
+  $(function() {
+    // 初始化暗黑模式状态
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    updateDarkModeIcon(isDark);
+  });
+
+  function toggleDarkMode() {
+    const isDark = $(document.body).hasClass('darkModel');
+    $(document.body).toggleClass('darkModel');
+    localStorage.setItem('dark', !isDark);
+    updateDarkModeIcon(!isDark);
+  }
+
+  function updateDarkModeIcon(isDark) {
+    const iconElement = document.getElementById('darkIcon');
+    if (isDark) {
+      iconElement.classList.remove('fa-moon');
+      iconElement.classList.add('fa-lightbulb');
+    } else {
+      iconElement.classList.remove('fa-lightbulb');
+      iconElement.classList.add('fa-moon');
+    }
+  }
+</script>
+
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script defer src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+<script async>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?aea6c1471d6299bdd1c87a0836f18675";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script async>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script async type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h1, h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = '复制';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+        <script type="text/javascript">
+  var utteranceComment = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceComment.Theme = 'github-dark';
+    } else {
+      utteranceComment.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceComment.Theme)
+      utterances.setAttribute('repo', 'liaochenlanruo/liaochenlanruo.github.io')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceComment.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+      
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script async src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
