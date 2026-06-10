@@ -94,7 +94,9 @@
         
     
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml">
+<!-- hexo injector head_end start -->
+    <link rel="stylesheet" href="/css/gallery.css" media="print" onload="this.media='all'">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="了尘兰若的小坑" type="application/atom+xml">
 </head>
 
   
@@ -328,16 +330,27 @@
           
             <li class="drawer-box-content_item" style="position: relative;">
               
-                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(3)">
+                <a href="/photos" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-camera-retro" aria-hidden="true"></i>
+                  
+                  <span class="name">相册</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
                   <span>
                     
                       <i class="fas fa-link"></i>
                     
                     <span class="name">更多</span>
                   </span>
-                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(3)}" aria-hidden="true"></i>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
                 </a>
-                <ul class="drawer-sub-menu" v-if="isOpen(3)">
+                <ul class="drawer-sub-menu" v-if="isOpen(4)">
                   
                   <li>
                     <a href="/gallery">
@@ -556,6 +569,17 @@
                   </li>
                   
                 </ul>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/photos" class="menu-item-link" title="相册">
+                  
+                    <i class="fas fa-camera-retro" aria-hidden="true"></i>
+                  
+                  <span class="name">相册</span>
+                </a>
               
             </li>
           
@@ -2940,8 +2964,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Tue Jun 02 2026 19:48:02 GMT+0800 (China Standard Time)</div>
-            <div id="last-update-show">2026-06-02 日</div>
+            <div id="last-update" style="display: none;">Wed Jun 10 2026 21:20:06 GMT+0800 (China Standard Time)</div>
+            <div id="last-update-show">2026-06-10 日</div>
           
         </div>
         
@@ -2991,7 +3015,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2026-06-02 日';
+            document.getElementById('last-update-show').innerHTML = '2026-06-10 日';
           }
         </script>
         
@@ -4070,5 +4094,7 @@
 
 
 
-  </body>
+  <!-- hexo injector body_end start -->
+    <script src="/js/gallery.js" async></script>
+<!-- hexo injector body_end end --></body>
 </html>
