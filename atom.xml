@@ -6,7 +6,7 @@
   <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
   
   <link href="https://www.liaochenlanruo.fun/"/>
-  <updated>2025-12-18T11:21:09.255Z</updated>
+  <updated>2026-06-10T13:36:09.000Z</updated>
   <id>https://www.liaochenlanruo.fun/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hexo Bamboo 主题添加相册</title>
+    <link href="https://www.liaochenlanruo.fun/post/a6dc.html"/>
+    <id>https://www.liaochenlanruo.fun/post/a6dc.html</id>
+    <published>2026-06-10T13:33:41.000Z</published>
+    <updated>2026-06-10T13:36:09.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;📘-Hexo-Bamboo-主题添加相册&quot;&gt;&lt;a href=&quot;#📘-Hexo-Bamboo-主题添加相册&quot; class=&quot;headerlink&quot; title=&quot;📘 Hexo Bamboo 主题添加相册&quot;&gt;&lt;/a&gt;📘 Hexo Bamboo</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://www.liaochenlanruo.fun/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="Hexo" scheme="https://www.liaochenlanruo.fun/tags/Hexo/"/>
+    
+    <category term="网站建设" scheme="https://www.liaochenlanruo.fun/tags/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CentOS7.9 Ollama GPU 调用血泪史！从编译失败到 Docker 部署全攻略</title>
     <link href="https://www.liaochenlanruo.fun/post/fef2.html"/>
     <id>https://www.liaochenlanruo.fun/post/fef2.html</id>
     <published>2025-12-18T11:18:18.000Z</published>
-    <updated>2025-12-18T11:21:09.255Z</updated>
+    <updated>2025-12-18T11:21:09.000Z</updated>
     
     
       
@@ -51,7 +78,7 @@
     <link href="https://www.liaochenlanruo.fun/post/8471.html"/>
     <id>https://www.liaochenlanruo.fun/post/8471.html</id>
     <published>2025-12-16T11:18:18.000Z</published>
-    <updated>2025-12-18T11:15:07.448Z</updated>
+    <updated>2025-12-18T11:15:07.000Z</updated>
     
     
       
@@ -80,7 +107,7 @@
     <link href="https://www.liaochenlanruo.fun/post/2e05.html"/>
     <id>https://www.liaochenlanruo.fun/post/2e05.html</id>
     <published>2025-12-16T10:18:18.000Z</published>
-    <updated>2025-12-16T10:36:01.929Z</updated>
+    <updated>2025-12-16T10:36:01.000Z</updated>
     
     
       
@@ -107,7 +134,7 @@
     <link href="https://www.liaochenlanruo.fun/post/e149.html"/>
     <id>https://www.liaochenlanruo.fun/post/e149.html</id>
     <published>2025-11-16T08:19:58.000Z</published>
-    <updated>2025-12-16T10:14:31.821Z</updated>
+    <updated>2025-12-16T10:14:31.000Z</updated>
     
     
       
@@ -134,7 +161,7 @@
     <link href="https://www.liaochenlanruo.fun/post/a21.html"/>
     <id>https://www.liaochenlanruo.fun/post/a21.html</id>
     <published>2025-11-16T02:42:14.000Z</published>
-    <updated>2025-11-23T02:03:51.679Z</updated>
+    <updated>2025-11-23T02:03:51.000Z</updated>
     
     
       
@@ -161,7 +188,7 @@
     <link href="https://www.liaochenlanruo.fun/post/ea14.html"/>
     <id>https://www.liaochenlanruo.fun/post/ea14.html</id>
     <published>2025-11-13T11:26:15.000Z</published>
-    <updated>2025-11-13T12:25:57.636Z</updated>
+    <updated>2025-11-13T12:25:57.000Z</updated>
     
     
       
@@ -188,7 +215,7 @@
     <link href="https://www.liaochenlanruo.fun/post/f0aa.html"/>
     <id>https://www.liaochenlanruo.fun/post/f0aa.html</id>
     <published>2025-11-11T15:08:16.000Z</published>
-    <updated>2025-11-11T15:11:30.465Z</updated>
+    <updated>2025-11-11T15:11:30.000Z</updated>
     
     
       
@@ -215,7 +242,7 @@
     <link href="https://www.liaochenlanruo.fun/post/81e3.html"/>
     <id>https://www.liaochenlanruo.fun/post/81e3.html</id>
     <published>2025-11-11T11:33:35.000Z</published>
-    <updated>2025-11-11T11:56:38.573Z</updated>
+    <updated>2025-11-11T11:56:38.000Z</updated>
     
     
       
@@ -242,7 +269,7 @@
     <link href="https://www.liaochenlanruo.fun/post/81e2.html"/>
     <id>https://www.liaochenlanruo.fun/post/81e2.html</id>
     <published>2025-11-11T10:33:35.000Z</published>
-    <updated>2025-11-11T11:56:35.606Z</updated>
+    <updated>2025-11-11T11:56:35.000Z</updated>
     
     
       
@@ -269,7 +296,7 @@
     <link href="https://www.liaochenlanruo.fun/post/7972.html"/>
     <id>https://www.liaochenlanruo.fun/post/7972.html</id>
     <published>2025-10-19T13:41:46.000Z</published>
-    <updated>2025-10-19T13:54:33.097Z</updated>
+    <updated>2025-10-19T13:54:33.000Z</updated>
     
     
       
@@ -294,7 +321,7 @@
     <link href="https://www.liaochenlanruo.fun/post/81e1.html"/>
     <id>https://www.liaochenlanruo.fun/post/81e1.html</id>
     <published>2025-10-19T13:33:35.000Z</published>
-    <updated>2025-10-19T13:40:18.210Z</updated>
+    <updated>2025-10-19T13:40:18.000Z</updated>
     
     
       
@@ -321,7 +348,7 @@
     <link href="https://www.liaochenlanruo.fun/post/27cd.html"/>
     <id>https://www.liaochenlanruo.fun/post/27cd.html</id>
     <published>2025-08-03T08:49:01.000Z</published>
-    <updated>2025-08-03T08:53:50.219Z</updated>
+    <updated>2025-08-03T08:53:50.000Z</updated>
     
     
       
@@ -342,7 +369,7 @@
     <link href="https://www.liaochenlanruo.fun/post/287e.html"/>
     <id>https://www.liaochenlanruo.fun/post/287e.html</id>
     <published>2025-06-30T12:42:04.000Z</published>
-    <updated>2025-07-11T14:10:37.243Z</updated>
+    <updated>2025-07-11T14:10:37.000Z</updated>
     
     
       
@@ -369,7 +396,7 @@
     <link href="https://www.liaochenlanruo.fun/post/cff.html"/>
     <id>https://www.liaochenlanruo.fun/post/cff.html</id>
     <published>2024-09-26T14:05:28.000Z</published>
-    <updated>2024-09-26T14:29:29.863Z</updated>
+    <updated>2024-09-26T14:29:29.000Z</updated>
     
     
       
@@ -396,7 +423,7 @@
     <link href="https://www.liaochenlanruo.fun/post/4142.html"/>
     <id>https://www.liaochenlanruo.fun/post/4142.html</id>
     <published>2024-09-26T14:00:23.000Z</published>
-    <updated>2024-09-26T14:29:29.863Z</updated>
+    <updated>2024-09-26T14:29:29.000Z</updated>
     
     
       
@@ -423,7 +450,7 @@
     <link href="https://www.liaochenlanruo.fun/post/dcef.html"/>
     <id>https://www.liaochenlanruo.fun/post/dcef.html</id>
     <published>2024-09-26T13:56:01.000Z</published>
-    <updated>2024-09-26T14:29:29.863Z</updated>
+    <updated>2024-09-26T14:29:29.000Z</updated>
     
     
       
@@ -450,7 +477,7 @@
     <link href="https://www.liaochenlanruo.fun/post/61ae.html"/>
     <id>https://www.liaochenlanruo.fun/post/61ae.html</id>
     <published>2024-09-01T08:38:58.000Z</published>
-    <updated>2024-09-01T09:07:23.418Z</updated>
+    <updated>2024-09-01T09:07:23.000Z</updated>
     
     
       
@@ -477,7 +504,7 @@
     <link href="https://www.liaochenlanruo.fun/post/a7fe.html"/>
     <id>https://www.liaochenlanruo.fun/post/a7fe.html</id>
     <published>2024-09-01T04:37:55.000Z</published>
-    <updated>2024-09-01T04:57:42.611Z</updated>
+    <updated>2024-09-01T04:57:42.000Z</updated>
     
     
       
@@ -508,7 +535,7 @@
     <link href="https://www.liaochenlanruo.fun/post/d8ef.html"/>
     <id>https://www.liaochenlanruo.fun/post/d8ef.html</id>
     <published>2024-08-30T14:24:05.000Z</published>
-    <updated>2024-08-30T14:59:29.868Z</updated>
+    <updated>2024-08-30T14:59:29.000Z</updated>
     
     
       
@@ -527,35 +554,6 @@
     <category term="机器学习" scheme="https://www.liaochenlanruo.fun/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Scikit-learn" scheme="https://www.liaochenlanruo.fun/tags/Scikit-learn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NCBI上传基因簇之table2asn的使用</title>
-    <link href="https://www.liaochenlanruo.fun/post/7449.html"/>
-    <id>https://www.liaochenlanruo.fun/post/7449.html</id>
-    <published>2024-08-28T12:44:49.000Z</published>
-    <updated>2024-08-28T13:12:11.597Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;向&lt;a href=&quot;https://www.ncbi.nlm.nih.gov/&quot;&gt;NCBI&lt;/a&gt;提交基因簇的时候需要提供sqn格式的文件，之前我在文章&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
-    
-    
-    <category term="NCBI" scheme="https://www.liaochenlanruo.fun/tags/NCBI/"/>
-    
-    <category term="序列处理" scheme="https://www.liaochenlanruo.fun/tags/%E5%BA%8F%E5%88%97%E5%A4%84%E7%90%86/"/>
-    
-    <category term="生信软件" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E4%BF%A1%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
