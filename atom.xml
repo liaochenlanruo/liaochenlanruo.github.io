@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>了尘兰若的小坑</title>
+  
+  <subtitle>liaochenlanruo</subtitle>
+  <link href="https://www.liaochenlanruo.fun/atom.xml" rel="self"/>
+  
+  <link href="https://www.liaochenlanruo.fun/"/>
+  <updated>2026-06-10T13:36:09.000Z</updated>
+  <id>https://www.liaochenlanruo.fun/</id>
+  
+  <author>
+    <name>Hualin Liu</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo Bamboo 主题添加相册</title>
+    <link href="https://www.liaochenlanruo.fun/post/a6dc.html"/>
+    <id>https://www.liaochenlanruo.fun/post/a6dc.html</id>
+    <published>2026-06-10T13:33:41.000Z</published>
+    <updated>2026-06-10T13:36:09.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;📘-Hexo-Bamboo-主题添加相册&quot;&gt;&lt;a href=&quot;#📘-Hexo-Bamboo-主题添加相册&quot; class=&quot;headerlink&quot; title=&quot;📘 Hexo Bamboo 主题添加相册&quot;&gt;&lt;/a&gt;📘 Hexo Bamboo</summary>
+        
+      
+    
+    
+    
+    <category term="网站建设" scheme="https://www.liaochenlanruo.fun/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="Hexo" scheme="https://www.liaochenlanruo.fun/tags/Hexo/"/>
+    
+    <category term="网站建设" scheme="https://www.liaochenlanruo.fun/tags/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS7.9 Ollama GPU 调用血泪史！从编译失败到 Docker 部署全攻略</title>
+    <link href="https://www.liaochenlanruo.fun/post/fef2.html"/>
+    <id>https://www.liaochenlanruo.fun/post/fef2.html</id>
+    <published>2025-12-18T11:18:18.000Z</published>
+    <updated>2025-12-18T11:21:09.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;📝作为 CentOS7.9 老用户，想跑 Ollama 大模型却被狠狠拿捏：glibc 版本低、编译后 GPU 不识别、装了 CUDA 也白搭… 折腾一周终于打通全流程，把每个坑和解决方案都扒得明明白白，同款环境的朋友直接抄作业！&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+    <category term="系统" scheme="https://www.liaochenlanruo.fun/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="Ollama" scheme="https://www.liaochenlanruo.fun/tags/Ollama/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>终版实测！CentOS 7.9（glibc 2.17）升级 Go 1.24.4 编译 Ollama 0.13.3，4 张 L4 GPU 满血运行～</title>
+    <link href="https://www.liaochenlanruo.fun/post/8471.html"/>
+    <id>https://www.liaochenlanruo.fun/post/8471.html</id>
+    <published>2025-12-16T11:18:18.000Z</published>
+    <updated>2025-12-18T11:15:07.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;🔥 作为坚守 CentOS 7.9 的运维 &amp;#x2F; 开发者，谁懂啊！官方 Ollama 二进制包直接报错「GLIBC_2.27 not found」，而系统 glibc 2.17 根本没法升级（怕崩系统）😫 但 4 张 NVIDIA L4 GPU（总计 96GB</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+    <category term="系统" scheme="https://www.liaochenlanruo.fun/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="Ollama" scheme="https://www.liaochenlanruo.fun/tags/Ollama/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>加装 GPU 后 IB 网卡（ib0）消失？CentOS 7.9 自动恢复教程（亲测有效）</title>
+    <link href="https://www.liaochenlanruo.fun/post/2e05.html"/>
+    <id>https://www.liaochenlanruo.fun/post/2e05.html</id>
+    <published>2025-12-16T10:18:18.000Z</published>
+    <updated>2025-12-16T10:36:01.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在集群运维中，IB（InfiniBand）网卡是高速数据传输的核心，但很多人遇到过这样的坑：给服务器加装 GPU 扩展卡后，原本正常的 ib0 设备突然消失，无法通过 IB 交换机与其他节点通信。本文结合实际案例，详细拆解问题根源，提供一步到位的自动修复方案，让 ib0</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+    <category term="系统" scheme="https://www.liaochenlanruo.fun/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基因组试金石：在中心法则背景下对基因组语言模型进行基准测试</title>
+    <link href="https://www.liaochenlanruo.fun/post/e149.html"/>
+    <id>https://www.liaochenlanruo.fun/post/e149.html</id>
+    <published>2025-11-16T08:19:58.000Z</published>
+    <updated>2025-12-16T10:14:31.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;2025年6月，香港科技大学计算机科学与工程系的Yihui Wang、Zhiyuan Cai及Hao Chen（通讯作者）等研究者在bioRxiv预印本发表了题为“Genomic Touchstone: Benchmarking Genomic Language</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Segmentation models实战</title>
+    <link href="https://www.liaochenlanruo.fun/post/a21.html"/>
+    <id>https://www.liaochenlanruo.fun/post/a21.html</id>
+    <published>2025-11-16T02:42:14.000Z</published>
+    <updated>2025-11-23T02:03:51.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-Segmentation-models-简介&quot;&gt;&lt;a href=&quot;#1-Segmentation-models-简介&quot; class=&quot;headerlink&quot; title=&quot;1. Segmentation models 简介&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用DNA基础模型在单核苷酸分辨率上注释基因组</title>
+    <link href="https://www.liaochenlanruo.fun/post/ea14.html"/>
+    <id>https://www.liaochenlanruo.fun/post/ea14.html</id>
+    <published>2025-11-13T11:26:15.000Z</published>
+    <updated>2025-11-13T12:25:57.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;2025年9月，InstaDeep（英国伦敦）、BioNTech（德国美因茨）、哥本哈根大学计算机系等机构的Bernardo P. de Almeida、Hugo Dalla-Torre（共同第一作者）、Thomas Pierrot（通讯作者）等研究者在《Nature</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基因组语言模型的机遇与挑战</title>
+    <link href="https://www.liaochenlanruo.fun/post/f0aa.html"/>
+    <id>https://www.liaochenlanruo.fun/post/f0aa.html</id>
+    <published>2025-11-11T15:08:16.000Z</published>
+    <updated>2025-11-11T15:11:30.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AI 在生物信息学的方法革新与应用全景</title>
+    <link href="https://www.liaochenlanruo.fun/post/81e3.html"/>
+    <id>https://www.liaochenlanruo.fun/post/81e3.html</id>
+    <published>2025-11-11T11:33:35.000Z</published>
+    <updated>2025-11-11T11:56:38.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;摘要&lt;/strong&gt;：随着人工智能（AI）技术的快速迭代，从传统深度学习到预训练模型、大型语言模型（LLMs）的演进，生物信息学领域正经历从“数据驱动”到“知识赋能”的范式转变。本文整合2024-2025年最新综述成果，系统梳理AI在生物信息学中的核心方法</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BioAI 专辑：解读 AI 重塑生物信息学研究逻辑</title>
+    <link href="https://www.liaochenlanruo.fun/post/81e2.html"/>
+    <id>https://www.liaochenlanruo.fun/post/81e2.html</id>
+    <published>2025-11-11T10:33:35.000Z</published>
+    <updated>2025-11-11T11:56:35.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;当AI撞开生命科学的大门：我为什么要做这个BioAI专辑？&quot;&gt;&lt;a href=&quot;#当AI撞开生命科学的大门：我为什么要做这个BioAI专辑？&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="BioAI" scheme="https://www.liaochenlanruo.fun/categories/BioAI/"/>
+    
+    
+    <category term="LLM" scheme="https://www.liaochenlanruo.fun/tags/LLM/"/>
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Ubuntu中配置Python文字识别环境（基于Tesseract OCR）</title>
+    <link href="https://www.liaochenlanruo.fun/post/7972.html"/>
+    <id>https://www.liaochenlanruo.fun/post/7972.html</id>
+    <published>2025-10-19T13:41:46.000Z</published>
+    <updated>2025-10-19T13:54:33.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;文字识别（OCR）是处理图像或PDF中文字内容的重要技术，Tesseract</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="图像识别" scheme="https://www.liaochenlanruo.fun/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS 7 升级 GCC 教程（以 GCC 9 为例）</title>
+    <link href="https://www.liaochenlanruo.fun/post/81e1.html"/>
+    <id>https://www.liaochenlanruo.fun/post/81e1.html</id>
+    <published>2025-10-19T13:33:35.000Z</published>
+    <updated>2025-10-19T13:40:18.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、教程背景&quot;&gt;&lt;a href=&quot;#一、教程背景&quot; class=&quot;headerlink&quot; title=&quot;一、教程背景&quot;&gt;&lt;/a&gt;一、教程背景&lt;/h2&gt;&lt;p&gt;CentOS 7 系统默认预装的 GCC 版本为 &lt;strong&gt;4.8.5&lt;/strong&gt;（发布于</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="Linux" scheme="https://www.liaochenlanruo.fun/tags/Linux/"/>
+    
+    <category term="系统" scheme="https://www.liaochenlanruo.fun/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>What is RAG</title>
+    <link href="https://www.liaochenlanruo.fun/post/27cd.html"/>
+    <id>https://www.liaochenlanruo.fun/post/27cd.html</id>
+    <published>2025-08-03T08:49:01.000Z</published>
+    <updated>2025-08-03T08:53:50.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://cdn.jsdelivr.net/gh/liaochenlanruo/cdn@master/images/post/RAG.png&quot; class=&quot;lazyload placeholder&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一种用于多重图像处理与分析的端到端工作流程</title>
+    <link href="https://www.liaochenlanruo.fun/post/287e.html"/>
+    <id>https://www.liaochenlanruo.fun/post/287e.html</id>
+    <published>2025-06-30T12:42:04.000Z</published>
+    <updated>2025-07-11T14:10:37.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="生物信息" scheme="https://www.liaochenlanruo.fun/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF/"/>
+    
+    
+    <category term="图像识别" scheme="https://www.liaochenlanruo.fun/tags/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/"/>
+    
+    <category term="单细胞测序" scheme="https://www.liaochenlanruo.fun/tags/%E5%8D%95%E7%BB%86%E8%83%9E%E6%B5%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——16-Escaping the graph</title>
+    <link href="https://www.liaochenlanruo.fun/post/cff.html"/>
+    <id>https://www.liaochenlanruo.fun/post/cff.html</id>
+    <published>2024-09-26T14:05:28.000Z</published>
+    <updated>2024-09-26T14:29:29.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;跳出反应式图&quot;&gt;&lt;a href=&quot;#跳出反应式图&quot; class=&quot;headerlink&quot; title=&quot;跳出反应式图&quot;&gt;&lt;/a&gt;跳出反应式图&lt;/h1&gt;&lt;h2 id=&quot;16-1-引言&quot;&gt;&lt;a href=&quot;#16-1-引言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——15-Reactive building blocks</title>
+    <link href="https://www.liaochenlanruo.fun/post/4142.html"/>
+    <id>https://www.liaochenlanruo.fun/post/4142.html</id>
+    <published>2024-09-26T14:00:23.000Z</published>
+    <updated>2024-09-26T14:29:29.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;15-反应式构建块&quot;&gt;&lt;a href=&quot;#15-反应式构建块&quot; class=&quot;headerlink&quot; title=&quot;15 反应式构建块&quot;&gt;&lt;/a&gt;15</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shiny从入门到入定——14-The reactive graph</title>
+    <link href="https://www.liaochenlanruo.fun/post/dcef.html"/>
+    <id>https://www.liaochenlanruo.fun/post/dcef.html</id>
+    <published>2024-09-26T13:56:01.000Z</published>
+    <updated>2024-09-26T14:29:29.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;反应图&quot;&gt;&lt;a href=&quot;#反应图&quot; class=&quot;headerlink&quot; title=&quot;反应图&quot;&gt;&lt;/a&gt;反应图&lt;/h1&gt;&lt;h2 id=&quot;14-1-引言&quot;&gt;&lt;a href=&quot;#14-1-引言&quot; class=&quot;headerlink&quot; title=&quot;14.1</summary>
+        
+      
+    
+    
+    
+    <category term="IT" scheme="https://www.liaochenlanruo.fun/categories/IT/"/>
+    
+    
+    <category term="编程" scheme="https://www.liaochenlanruo.fun/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Shiny入门系列" scheme="https://www.liaochenlanruo.fun/tags/Shiny%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scikit-learn机器学习实战-PCA</title>
+    <link href="https://www.liaochenlanruo.fun/post/61ae.html"/>
+    <id>https://www.liaochenlanruo.fun/post/61ae.html</id>
+    <published>2024-09-01T08:38:58.000Z</published>
+    <updated>2024-09-01T09:07:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;PCA的全称是&lt;strong&gt;Principal Component</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://www.liaochenlanruo.fun/categories/AI/"/>
+    
+    
+    <category term="机器学习" scheme="https://www.liaochenlanruo.fun/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Scikit-learn" scheme="https://www.liaochenlanruo.fun/tags/Scikit-learn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PyTorch实战-利用卷积神经网络完成手写数字识别</title>
+    <link href="https://www.liaochenlanruo.fun/post/a7fe.html"/>
+    <id>https://www.liaochenlanruo.fun/post/a7fe.html</id>
+    <published>2024-09-01T04:37:55.000Z</published>
+    <updated>2024-09-01T04:57:42.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;卷积神经网络（Convolutional Neural Networks,</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://www.liaochenlanruo.fun/categories/AI/"/>
+    
+    
+    <category term="机器学习" scheme="https://www.liaochenlanruo.fun/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="深度学习" scheme="https://www.liaochenlanruo.fun/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="PyTorch" scheme="https://www.liaochenlanruo.fun/tags/PyTorch/"/>
+    
+    <category term="卷积神经网络" scheme="https://www.liaochenlanruo.fun/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scikit-learn机器学习实战-HumanResourcesAnalytics</title>
+    <link href="https://www.liaochenlanruo.fun/post/d8ef.html"/>
+    <id>https://www.liaochenlanruo.fun/post/d8ef.html</id>
+    <published>2024-08-30T14:24:05.000Z</published>
+    <updated>2024-08-30T14:59:29.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://www.liaochenlanruo.fun/categories/AI/"/>
+    
+    
+    <category term="机器学习" scheme="https://www.liaochenlanruo.fun/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Scikit-learn" scheme="https://www.liaochenlanruo.fun/tags/Scikit-learn/"/>
+    
+  </entry>
+  
+</feed>
